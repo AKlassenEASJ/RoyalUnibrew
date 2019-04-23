@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using RURS.Annotations;
+using RURS.View;
 
 namespace RURS.HamburgerMenu
 {

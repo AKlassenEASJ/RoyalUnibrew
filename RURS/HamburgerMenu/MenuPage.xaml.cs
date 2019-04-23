@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using RURS.View;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,7 +27,7 @@ namespace RURS.HamburgerMenu
         {
             this.InitializeComponent();
             NavigationService.NavigationFrame = NavFrame;
-            NavigationService.Navigate(typeof(MainPage));
+            NavigationService.Navigate(typeof(View.MainPage));
         }
 
         private void NavView_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
