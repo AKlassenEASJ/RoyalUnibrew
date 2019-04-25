@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ModelLibary.Models;
 
 
 
@@ -18,13 +19,13 @@ namespace REST_Service.Controllers
         }
 
         // GET: api/Ansats/5
-        public string Get(int id)
+        public Ansat Get(string id)
         {
             return "value";
         }
 
         // POST: api/Ansats
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Ansat value)
         {
         }
 

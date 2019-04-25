@@ -167,6 +167,7 @@
     <Compile Include="Controllers\AnsatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DBUtil\AnsatManager.cs" />
     <Compile Include="DBUtil\TappeKontrolManger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
