@@ -39,15 +39,64 @@ namespace REST_Service.DBUtil
 
         private TappeKontrol ReadTappeKontrol(SqlDataReader reader)
         {
-            TappeKontrol tappeKontrol = new TappeKontrol();
+            TappeKontrol tappeKontrol = new TappeKontrol()
             {
-
-            }
-            ;
+                ProcessOrderNr = reader.GetInt32(0),
+                Tidspunkt = reader.GetDateTime(1),
+                Daasenr = reader.GetInt32(2),
+                Laagnr = reader.GetInt32(3),
+                Helhed = reader.GetString(4),
+                KameraTjek = reader.GetString(5),
+                Ccp = reader.GetString(6),
+                VaeskeTemp = reader.GetDouble(7),
+                KontrolTemp = reader.GetDouble(8),
+                TunnelPhTjek = reader.GetString(9),
+                VaegtKontrol = reader.GetDouble(10),
+                SmagsTestNr = reader.GetInt32(11),
+                SmagsTest = reader.GetString(12),
+                KviterProve = reader.GetString(13),
+                SukkerTjek = reader.GetString(14),
+                Co2Kontrol = reader.GetDouble(15),
+                Signatur = reader.GetString(16)
+            };
+            
 
             return tappeKontrol;
         }
 
+        public bool Post(TappeKontrol tappeKontrol)
+        {
+            bool retValue = false;
+
+            SqlConnection conn = new SqlConnection(ConnString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(INSERT, conn);
+            cmd.Parameters.AddWithValue("@Process_Ordre_Nr", tappeKontrol.ProcessOrderNr);
+            cmd.Parameters.AddWithValue("@Tidspunkt", tappeKontrol.Tidspunkt);
+            cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.Daasenr);
+            cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.Laagnr);
+            cmd.Parameters.AddWithValue("@Helhed", tappeKontrol.Helhed);
+            cmd.Parameters.AddWithValue("@Kamera_Tjek", tappeKontrol.KameraTjek);
+            cmd.Parameters.AddWithValue("@CCP", tappeKontrol.Ccp);
+            cmd.Parameters.AddWithValue("@Vaeske_Temp", tappeKontrol.VaeskeTemp);
+            cmd.Parameters.AddWithValue("@Kontrol_Temp", tappeKontrol.KontrolTemp);
+            cmd.Parameters.AddWithValue("@Tunnel_PH_Tjek", tappeKontrol.TunnelPhTjek);
+            cmd.Parameters.AddWithValue("@Vaegt_Kontrol", tappeKontrol.VaegtKontrol);
+            cmd.Parameters.AddWithValue("@Smag_Test_Nr", tappeKontrol.SmagsTestNr);
+            cmd.Parameters.AddWithValue("@Smag_Test", tappeKontrol.SmagsTest);
+            cmd.Parameters.AddWithValue("@Kvitter_Proeve", tappeKontrol.KviterProve);
+            cmd.Parameters.AddWithValue("@Sukker_Tjek", tappeKontrol.SukkerTjek);
+            cmd.Parameters.AddWithValue("@CO2_Kontrol", tappeKontrol.Co2Kontrol);
+            cmd.Parameters.AddWithValue("@Signatur", tappeKontrol.Signatur);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            retValue = rowsAffected == 1 ? true : false;
+
+            conn.Close();
+            return retValue;
+
+        }
 
     }
 }

@@ -17,9 +17,9 @@ namespace ModelLibrary.Models
         private double _vaegtKontrol;
         private int _smagsTestNr;
         private string _smagsTest;
-        private string _kviterPrøve;
+        private string _kviterProve;
         private string _sukkerTjek;
-        private string _co2Kontrol;
+        private double _co2Kontrol;
         private string _signatur;
 
         public TappeKontrol()
@@ -27,7 +27,7 @@ namespace ModelLibrary.Models
             
         }
 
-        public TappeKontrol(int processOrderNr, DateTime tidspunkt, int daasenr, int laagnr, string helhed, string kameraTjek, string ccp, double vaeskeTemp, double kontrolTemp, string tunnelPhTjek, double vaegtKontrol, int smagsTestNr, string smagsTest, string kviterPrøve, string sukkerTjek, string co2Kontrol, string signatur)
+        public TappeKontrol(int processOrderNr, DateTime tidspunkt, int daasenr, int laagnr, string helhed, string kameraTjek, string ccp, double vaeskeTemp, double kontrolTemp, string tunnelPhTjek, double vaegtKontrol, int smagsTestNr, string smagsTest, string kviterProve, string sukkerTjek, double co2Kontrol, string signatur)
         {
             ProcessOrderNr = processOrderNr;
             Tidspunkt = tidspunkt;
@@ -42,7 +42,7 @@ namespace ModelLibrary.Models
             VaegtKontrol = vaegtKontrol;
             SmagsTestNr = smagsTestNr;
             SmagsTest = smagsTest;
-            KviterPrøve = kviterPrøve;
+            KviterProve = kviterProve;
             SukkerTjek = sukkerTjek;
             Co2Kontrol = co2Kontrol;
             Signatur = signatur;
@@ -126,10 +126,10 @@ namespace ModelLibrary.Models
             set => _smagsTest = value;
         }
 
-        public string KviterPrøve
+        public string KviterProve
         {
-            get => _kviterPrøve;
-            set => _kviterPrøve = value;
+            get => _kviterProve;
+            set => _kviterProve = value;
         }
 
         public string SukkerTjek
@@ -138,7 +138,7 @@ namespace ModelLibrary.Models
             set => _sukkerTjek = value;
         }
 
-        public string Co2Kontrol
+        public double Co2Kontrol
         {
             get => _co2Kontrol;
             set => _co2Kontrol = value;
