@@ -64,6 +64,39 @@ namespace REST_Service.DBUtil
             return tappeKontrol;
         }
 
+        public bool Post(TappeKontrol tappeKontrol)
+        {
+            bool retValue = false;
+
+            SqlConnection conn = new SqlConnection(ConnString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(INSERT, conn);
+            cmd.Parameters.AddWithValue("@Process_Ordre_Nr", tappeKontrol.ProcessOrderNr);
+            cmd.Parameters.AddWithValue("@Tidspunkt", tappeKontrol.Tidspunkt);
+            cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.Daasenr);
+            cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.Laagnr);
+            cmd.Parameters.AddWithValue("@Helhed", tappeKontrol.Helhed);
+            cmd.Parameters.AddWithValue("@Kamera_Tjek", tappeKontrol.KameraTjek);
+            cmd.Parameters.AddWithValue("@CCP", tappeKontrol.Ccp);
+            cmd.Parameters.AddWithValue("@Vaeske_Temp", tappeKontrol.VaeskeTemp);
+            cmd.Parameters.AddWithValue("@Kontrol_Temp", tappeKontrol.KontrolTemp);
+            cmd.Parameters.AddWithValue("@Tunnel_PH_Tjek", tappeKontrol.TunnelPhTjek);
+            cmd.Parameters.AddWithValue("@Vaegt_Kontrol", tappeKontrol.VaegtKontrol);
+            cmd.Parameters.AddWithValue("@Smag_Test_Nr", tappeKontrol.SmagsTestNr);
+            cmd.Parameters.AddWithValue("@Smag_Test", tappeKontrol.SmagsTest);
+            cmd.Parameters.AddWithValue("@Kvitter_Proeve", tappeKontrol.KviterProve);
+            cmd.Parameters.AddWithValue("@Sukker_Tjek", tappeKontrol.SukkerTjek);
+            cmd.Parameters.AddWithValue("@CO2_Kontrol", tappeKontrol.Co2Kontrol);
+            cmd.Parameters.AddWithValue("@Signatur", tappeKontrol.Signatur);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            retValue = rowsAffected == 1 ? true : false;
+
+            conn.Close();
+            return retValue;
+
+        }
 
     }
 }
