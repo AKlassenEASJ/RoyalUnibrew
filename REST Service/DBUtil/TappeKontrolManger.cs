@@ -48,15 +48,15 @@ namespace REST_Service.DBUtil
                 Helhed = reader.GetString(4),
                 KameraTjek = reader.GetString(5),
                 Ccp = reader.GetString(6),
-                VaeskeTemp = reader.GetInt32(7),
-                KontrolTemp = reader.GetInt32(8),
+                VaeskeTemp = reader.GetDouble(7),
+                KontrolTemp = reader.GetDouble(8),
                 TunnelPhTjek = reader.GetString(9),
-                VaegtKontrol = reader.GetInt32(10),
+                VaegtKontrol = reader.GetDouble(10),
                 SmagsTestNr = reader.GetInt32(11),
                 SmagsTest = reader.GetString(12),
                 KviterProve = reader.GetString(13),
                 SukkerTjek = reader.GetString(14),
-                Co2Kontrol = reader.GetString(15),
+                Co2Kontrol = reader.GetDouble(15),
                 Signatur = reader.GetString(16)
             };
             
