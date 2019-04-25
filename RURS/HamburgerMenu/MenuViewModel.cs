@@ -41,6 +41,7 @@ namespace RURS.HamburgerMenu
         private void GetNagivationItems()
         {
             NavigationItems.Add(new NavigationViewItem { Content = "Home", Icon = new SymbolIcon(Symbol.Home), Tag = typeof(MainPage) });
+            //tilføj sider under her, ligesom oppeover
            
         }
 
