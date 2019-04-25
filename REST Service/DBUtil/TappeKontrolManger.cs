@@ -39,11 +39,27 @@ namespace REST_Service.DBUtil
 
         private TappeKontrol ReadTappeKontrol(SqlDataReader reader)
         {
-            TappeKontrol tappeKontrol = new TappeKontrol();
+            TappeKontrol tappeKontrol = new TappeKontrol()
             {
-
-            }
-            ;
+                ProcessOrderNr = reader.GetInt32(0),
+                Tidspunkt = reader.GetDateTime(1),
+                Daasenr = reader.GetInt32(2),
+                Laagnr = reader.GetInt32(3),
+                Helhed = reader.GetString(4),
+                KameraTjek = reader.GetString(5),
+                Ccp = reader.GetString(6),
+                VaeskeTemp = reader.GetInt32(7),
+                KontrolTemp = reader.GetInt32(8),
+                TunnelPhTjek = reader.GetString(9),
+                VaegtKontrol = reader.GetInt32(10),
+                SmagsTestNr = reader.GetInt32(11),
+                SmagsTest = reader.GetString(12),
+                KviterProve = reader.GetString(13),
+                SukkerTjek = reader.GetString(14),
+                Co2Kontrol = reader.GetString(15),
+                Signatur = reader.GetString(16)
+            };
+            
 
             return tappeKontrol;
         }
