@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Ansat.cs" />
+    <Compile Include="Models\ProcessOrdre.cs" />
     <Compile Include="Models\TappeKontrol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
