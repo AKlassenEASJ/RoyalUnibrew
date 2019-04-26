@@ -166,9 +166,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AnsatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProcessOrdreController.cs" />
     <Compile Include="Controllers\TappeKontrolsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DBUtil\AnsatManager.cs" />
+    <Compile Include="DBUtil\ProcessOrdreManager.cs" />
     <Compile Include="DBUtil\TappeKontrolManger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
