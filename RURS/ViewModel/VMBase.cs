@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using ModelLibary.Models;
 
 namespace RURS.ViewModel
 {
-    public class VMBase
+    public class VMBase: INotifyPropertyChanged
     {
         #region InstanceFields
         protected ProcessOrdre _processOrdre;
@@ -30,6 +31,8 @@ namespace RURS.ViewModel
             get => _processOrdre;
             set => _processOrdre = value;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
     }
 }
