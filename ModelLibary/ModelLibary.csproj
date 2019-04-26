@@ -41,6 +41,7 @@
     <Compile Include="Models\Ansat.cs" />
     <Compile Include="Models\ProcessOrdre.cs" />
     <Compile Include="Models\TappeKontrol.cs" />
+    <Compile Include="Models\VaegtKontrol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
