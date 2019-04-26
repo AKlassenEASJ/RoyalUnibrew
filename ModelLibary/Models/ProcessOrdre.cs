@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLibary.Models
 {
-    class ProcessOrdre
+    public class ProcessOrdre
     {
         private int _processOrdreNr;
         private int _faerdigVareNr;
