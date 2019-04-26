@@ -5,13 +5,21 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ModelLibary.Models;
-
+using REST_Service.DBUtil;
 
 
 namespace REST_Service.Controllers
 {
     public class AnsatsController : ApiController
     {
+
+        #region Manager
+
+        AnsatManager manager = new AnsatManager();
+
+        #endregion
+
+
         // GET: api/Ansats
         public IEnumerable<string> Get()
         {
@@ -19,14 +27,15 @@ namespace REST_Service.Controllers
         }
 
         // GET: api/Ansats/5
-        public Ansat Get(string id)
+        public Ansat Get(string initialer)
         {
-            return "value";
+            return manager.Get(initialer);
         }
 
         // POST: api/Ansats
-        public void Post([FromBody]Ansat value)
+        public bool Post([FromBody]Ansat ansat)
         {
+            return manager.Post(ansat);
         }
 
         // PUT: api/Ansats/5
@@ -35,8 +44,9 @@ namespace REST_Service.Controllers
         }
 
         // DELETE: api/Ansats/5
-        public void Delete(int id)
+        public bool Delete(string initialer)
         {
+            return manager.Delete(initialer);
         }
     }
 }
