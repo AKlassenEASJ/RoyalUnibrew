@@ -105,27 +105,30 @@ namespace REST_Service.DBUtil
             cmd.Parameters.AddWithValue("@Tidspunkt", tappeKontrol.Tidspunkt);
             cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.Daasenr);
             cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.Laagnr);
-            cmd.Parameters.AddWithValue("@Helhed", tappeKontrol.Helhed);
-            cmd.Parameters.AddWithValue("@Kamera_Tjek", tappeKontrol.KameraTjek);
-            cmd.Parameters.AddWithValue("@CCP", tappeKontrol.Ccp);
+            cmd.Parameters.AddWithValue("@Helhed", tappeKontrol.Helhed == null ? (object)DBNull.Value: tappeKontrol.Helhed);
+            cmd.Parameters.AddWithValue("@Kamera_Tjek", tappeKontrol.KameraTjek == null ? (object)DBNull.Value : tappeKontrol.KameraTjek);
+            cmd.Parameters.AddWithValue("@CCP", tappeKontrol.Ccp == null ? (object)DBNull.Value : tappeKontrol.Ccp);
             cmd.Parameters.AddWithValue("@Vaeske_Temp", tappeKontrol.VaeskeTemp);
             cmd.Parameters.AddWithValue("@Kontrol_Temp", tappeKontrol.KontrolTemp);
-            cmd.Parameters.AddWithValue("@Tunnel_PH_Tjek", tappeKontrol.TunnelPhTjek);
-            cmd.Parameters.AddWithValue("@Vaegt_Kontrol", tappeKontrol.VaegtKontrol);
-            cmd.Parameters.AddWithValue("@Smag_Test_Nr", tappeKontrol.SmagsTestNr);
-            cmd.Parameters.AddWithValue("@Smag_Test", tappeKontrol.SmagsTest);
-            cmd.Parameters.AddWithValue("@Kvitter_Proeve", tappeKontrol.KviterProve);
-            cmd.Parameters.AddWithValue("@Sukker_Tjek", tappeKontrol.SukkerTjek);
-            cmd.Parameters.AddWithValue("@CO2_Kontrol", tappeKontrol.Co2Kontrol);
+            cmd.Parameters.AddWithValue("@Tunnel_PH_Tjek", tappeKontrol.TunnelPhTjek == null ? (object)DBNull.Value : tappeKontrol.TunnelPhTjek);
+            cmd.Parameters.AddWithValue("@Vaegt_Kontrol", tappeKontrol.VaegtKontrol == -1 ? (object)DBNull.Value : tappeKontrol.VaegtKontrol);
+            cmd.Parameters.AddWithValue("@Smag_Test_Nr", tappeKontrol.SmagsTestNr == -1 ? (object)DBNull.Value : tappeKontrol.SmagsTestNr);
+            cmd.Parameters.AddWithValue("@Smag_Test", tappeKontrol.SmagsTest == null ? (object)DBNull.Value :tappeKontrol.SmagsTest );
+            cmd.Parameters.AddWithValue("@Kvitter_Proeve", tappeKontrol.KviterProve == null ? (object)DBNull.Value : tappeKontrol.KviterProve);
+            cmd.Parameters.AddWithValue("@Sukker_Tjek", tappeKontrol.SukkerTjek == null ? (object)DBNull.Value : tappeKontrol.SukkerTjek);
+            cmd.Parameters.AddWithValue("@CO2_Kontrol", tappeKontrol.Co2Kontrol == -1 ? (object)DBNull.Value : tappeKontrol.Co2Kontrol);
             cmd.Parameters.AddWithValue("@Signatur", tappeKontrol.Signatur);
 
+            
             int rowsAffected = cmd.ExecuteNonQuery();
             retValue = rowsAffected == 1 ? true : false;
 
             conn.Close();
             return retValue;
-
+            
         }
+
+        
 
     }
 }
