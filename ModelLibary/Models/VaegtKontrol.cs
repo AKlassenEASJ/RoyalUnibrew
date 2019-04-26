@@ -19,7 +19,6 @@ namespace ModelLibary.Models
         //Default Constructor
         public VaegtKontrol()
         {
-
         }
         //Constructor
         public VaegtKontrol(int processOrdreNr, int kontrolNr, DateTime datoTid)
@@ -29,8 +28,7 @@ namespace ModelLibary.Models
             DatoTid = datoTid;
         }
         #endregion
-
-
+        
         #region Properties
         public int ProcessOrdreNr
         {
@@ -49,6 +47,15 @@ namespace ModelLibary.Models
             get { return _datoTid; }
             set { _datoTid = value; }
         }
+        #endregion
+
+        #region ToString
+
+        public override string ToString()
+        {
+            return $"{nameof(ProcessOrdreNr)}: {ProcessOrdreNr}, {nameof(KontrolNr)}: {KontrolNr}, {nameof(DatoTid)}: {DatoTid}";
+        }
+       
         #endregion
     }
 }
