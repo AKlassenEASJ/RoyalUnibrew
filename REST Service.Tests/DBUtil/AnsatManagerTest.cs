@@ -94,8 +94,10 @@ namespace REST_Service.Tests.DBUtil
 
             //Act
 
-            //Assert
+            bool status =_manager.Delete(_trialAnsat.Initial);
 
+            //Assert
+            Assert.IsFalse(status);
 
 
         }
