@@ -20,11 +20,39 @@ namespace REST_Service.DBUtil
 
         #region SqlStatements
 
+        private const string GetOne = "Select * from Ansatte where Initialer = @Initialer";
         private const string Insert = "Insert into Ansatte (Initialer, Navn, ID) Values (@Initialer, @Navn, @ID)";
         private const string DeleteStatement = "Delete from Ansatte where Initialer = @Initialer";
-        
+
 
         #endregion
+
+
+        #region Methods
+
+        public Ansat Get(string initialer)
+        {
+            Ansat tempAnsat = new Ansat();
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(GetOne, connection);
+            command.Parameters.AddWithValue("@Initialer", initialer);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                tempAnsat = ReadAnsat(reader);
+            }
+
+            connection.Close();
+
+            return tempAnsat;
+
+        }
+
 
         public bool Post(Ansat ansat)
         {
@@ -75,6 +103,27 @@ namespace REST_Service.DBUtil
             return status;
 
         }
+
+
+        #endregion
+
+        #region HelpMethods
+
+        private Ansat ReadAnsat(SqlDataReader reader)
+        {
+            Ansat tempAnsat = new Ansat();
+
+            tempAnsat.Initial = reader.GetString(0);
+            tempAnsat.Navn = reader.GetString(1);
+            tempAnsat.Id = reader.GetInt32(2);
+
+            return tempAnsat;
+
+        }
+
+        #endregion
+
+
 
 
 

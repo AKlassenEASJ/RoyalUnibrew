@@ -41,6 +41,11 @@ namespace ModelLibary.Models
 
         #region Constructor
 
+        public Ansat()
+        {
+            
+        }
+
         public Ansat(string initial, string navn, int id)
         {
             _Initial = initial;
