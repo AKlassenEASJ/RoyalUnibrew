@@ -45,23 +45,52 @@ namespace REST_Service.DBUtil
                 Tidspunkt = reader.GetDateTime(1),
                 Daasenr = reader.GetInt32(2),
                 Laagnr = reader.GetInt32(3),
-                Helhed = reader.GetString(4),
-                KameraTjek = reader.GetString(5),
-                Ccp = reader.GetString(6),
+                Helhed = tjekStringNull(reader, 4),
+                KameraTjek = tjekStringNull(reader, 5),
+                Ccp = tjekStringNull(reader, 6),
                 VaeskeTemp = reader.GetDouble(7),
                 KontrolTemp = reader.GetDouble(8),
-                TunnelPhTjek = reader.GetString(9),
-                VaegtKontrol = reader.GetDouble(10),
-                SmagsTestNr = reader.GetInt32(11),
-                SmagsTest = reader.GetString(12),
-                KviterProve = reader.GetString(13),
-                SukkerTjek = reader.GetString(14),
-                Co2Kontrol = reader.GetDouble(15),
+                TunnelPhTjek = tjekStringNull(reader, 9),
+                VaegtKontrol = tjekDoubleNull(reader, 10),
+                SmagsTestNr = tjekIntNull(reader, 11),
+                SmagsTest = tjekStringNull(reader, 12),
+                KviterProve = tjekStringNull(reader, 13),
+                SukkerTjek = tjekStringNull(reader, 14),
+                Co2Kontrol = tjekDoubleNull(reader, 15),
                 Signatur = reader.GetString(16)
             };
-            
-
+           
             return tappeKontrol;
+        }
+
+        private string tjekStringNull(SqlDataReader reader, int index)
+        {
+            if (!reader.IsDBNull(index))
+            {
+                return reader.GetString(index);
+            }
+
+            return null;
+        }
+
+        private int tjekIntNull(SqlDataReader reader, int index)
+        {
+            if (!reader.IsDBNull(index))
+            {
+                    return reader.GetInt32(index);
+            }
+
+            return -1;
+        }
+
+        private double tjekDoubleNull(SqlDataReader reader, int index)
+        {
+            if (!reader.IsDBNull(index))
+            {
+                return reader.GetDouble(index);
+            }
+
+            return -1;
         }
 
         public bool Post(TappeKontrol tappeKontrol)

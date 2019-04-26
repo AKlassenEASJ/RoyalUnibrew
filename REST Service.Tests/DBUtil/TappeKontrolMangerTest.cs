@@ -27,7 +27,7 @@ namespace REST_Service.Tests.DBUtil
 
             // Assert
             
-            Assert.AreEqual(resFør+2, resEfter);
+            Assert.AreNotEqual(resFør, resEfter);
             
         }
 
@@ -39,7 +39,7 @@ namespace REST_Service.Tests.DBUtil
             
             
             //// Act
-            bool res = manger.Post(new TappeKontrol(2, DateTime.Now, 2, 2, null, null, null, 2, 2, null, 0, 0, null,
+            bool res = manger.Post(new TappeKontrol(2, DateTime.Now, 2, 2, "o", null, null, 2, 2, null, 0, 0, null,
                 null, null, 0, "o"));
             
 
