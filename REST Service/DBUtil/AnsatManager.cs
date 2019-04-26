@@ -13,24 +13,52 @@ namespace REST_Service.DBUtil
 
         #region ConnectionString
 
-        private const string _connectionString =
+        private const string ConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""RURS TestDatabase"";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         #endregion
 
         #region SqlStatements
 
+        private const string GetOne = "Select * from Ansatte where Initialer = @Initialer";
         private const string Insert = "Insert into Ansatte (Initialer, Navn, ID) Values (@Initialer, @Navn, @ID)";
-        private const string DELETE = "Delete from Ansatte where Initialer = @Initialer";
-        
+        private const string DeleteStatement = "Delete from Ansatte where Initialer = @Initialer";
+
 
         #endregion
+
+
+        #region Methods
+
+        public Ansat Get(string initialer)
+        {
+            Ansat tempAnsat = new Ansat();
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(GetOne, connection);
+            command.Parameters.AddWithValue("@Initialer", initialer);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                tempAnsat = ReadAnsat(reader);
+            }
+
+            connection.Close();
+
+            return tempAnsat;
+
+        }
+
 
         public bool Post(Ansat ansat)
         {
             bool status = false;
 
-            SqlConnection connection = new SqlConnection(_connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             connection.Open();
 
@@ -56,11 +84,11 @@ namespace REST_Service.DBUtil
         {
             bool status = false;
 
-            SqlConnection connection = new SqlConnection(_connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             connection.Open();
 
-            SqlCommand command = new SqlCommand(DELETE, connection);
+            SqlCommand command = new SqlCommand(DeleteStatement, connection);
             command.Parameters.AddWithValue("@Initialer", initialer);
 
             int rowsAffected = command.ExecuteNonQuery();
@@ -75,6 +103,27 @@ namespace REST_Service.DBUtil
             return status;
 
         }
+
+
+        #endregion
+
+        #region HelpMethods
+
+        private Ansat ReadAnsat(SqlDataReader reader)
+        {
+            Ansat tempAnsat = new Ansat();
+
+            tempAnsat.Initial = reader.GetString(0);
+            tempAnsat.Navn = reader.GetString(1);
+            tempAnsat.Id = reader.GetInt32(2);
+
+            return tempAnsat;
+
+        }
+
+        #endregion
+
+
 
 
 
