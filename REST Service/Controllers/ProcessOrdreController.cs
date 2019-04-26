@@ -4,36 +4,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ModelLibary.Models;
+using REST_Service.DBUtil;
 
 namespace REST_Service.Controllers
 {
     public class ProcessOrdreController : ApiController
     {
+        ProcessOrdreManager manager = new ProcessOrdreManager();
         // GET: api/ProcessOrdre
-        public IEnumerable<string> Get()
+        public IEnumerable<ProcessOrdre> Get()
         {
-            return new string[] { "value1", "value2" };
+            return manager.Get();
         }
 
         // GET: api/ProcessOrdre/5
-        public string Get(int id)
+        public ProcessOrdre Get(int processOrdreNr)
         {
-            return "value";
+            return manager.Get(processOrdreNr);
         }
 
         // POST: api/ProcessOrdre
-        public void Post([FromBody]string value)
+        public bool Post([FromBody]ProcessOrdre processOrdre)
         {
-        }
-
-        // PUT: api/ProcessOrdre/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/ProcessOrdre/5
-        public void Delete(int id)
-        {
+            return manager.Post(processOrdre);
         }
     }
 }

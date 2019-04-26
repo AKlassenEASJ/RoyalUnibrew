@@ -14,7 +14,7 @@ namespace REST_Service.DBUtil
 
         private const string GETAll = "GET * FROM ProcessOrdre";
         private const string GETONE = "GET * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
-        private const string INSERT = "INSERT INTO ProcessOrdre VALUES (@Process_Ordre_Nr, @Faerdigvare_Nr, @Dato, @Kolonne)";
+        private const string INSERT = "INSERT INTO ProcessOrdre (Process_Ordre_Nr, Faerdigvare_Nr, Dato, Kolonne) VALUES (@Process_Ordre_Nr, @Faerdigvare_Nr, @Dato, @Kolonne)";
 
         //GETALL: API/ProcessOrdre
         public IEnumerable<ProcessOrdre> Get()
