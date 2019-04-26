@@ -44,9 +44,9 @@ namespace REST_Service.Controllers
         }
 
         // DELETE: api/Ansats/5
-        public void Delete(string initialer)
+        public bool Delete(string initialer)
         {
-            manager.Delete(initialer);
+            return manager.Delete(initialer);
         }
     }
 }
