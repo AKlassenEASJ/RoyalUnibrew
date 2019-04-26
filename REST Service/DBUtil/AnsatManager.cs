@@ -13,7 +13,7 @@ namespace REST_Service.DBUtil
 
         #region ConnectionString
 
-        private const string _connectionString =
+        private const string ConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""RURS TestDatabase"";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         #endregion
@@ -21,7 +21,7 @@ namespace REST_Service.DBUtil
         #region SqlStatements
 
         private const string Insert = "Insert into Ansatte (Initialer, Navn, ID) Values (@Initialer, @Navn, @ID)";
-        private const string DELETE = "Delete from Ansatte where Initialer = @Initialer";
+        private const string DeleteStatement = "Delete from Ansatte where Initialer = @Initialer";
         
 
         #endregion
@@ -30,7 +30,7 @@ namespace REST_Service.DBUtil
         {
             bool status = false;
 
-            SqlConnection connection = new SqlConnection(_connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             connection.Open();
 
@@ -56,11 +56,11 @@ namespace REST_Service.DBUtil
         {
             bool status = false;
 
-            SqlConnection connection = new SqlConnection(_connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             connection.Open();
 
-            SqlCommand command = new SqlCommand(DELETE, connection);
+            SqlCommand command = new SqlCommand(DeleteStatement, connection);
             command.Parameters.AddWithValue("@Initialer", initialer);
 
             int rowsAffected = command.ExecuteNonQuery();
