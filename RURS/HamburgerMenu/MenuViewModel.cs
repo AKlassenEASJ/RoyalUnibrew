@@ -12,7 +12,7 @@ using RURS.View;
 
 namespace RURS.HamburgerMenu
 {
-    class MenuViewModel : INotifyPropertyChanged
+    public class MenuViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<NavigationViewItemBase> NavigationItems { get; set; }
 

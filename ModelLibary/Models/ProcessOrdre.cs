@@ -25,5 +25,31 @@ namespace ModelLibary.Models
         }
         #endregion
 
+        #region Properties
+
+        public int ProcessOrdreNr
+        {
+            get => _processOrdreNr;
+            set => _processOrdreNr = value;
+        }
+        public int FaerdigVareNr
+        {
+            get => _faerdigVareNr;
+            set => _faerdigVareNr = value;
+        }
+        public DateTime Dato
+        {
+            get => _dato;
+            set => _dato = value;
+        }
+
+        public int Kolonne
+        {
+            get => _kolonne;
+            set => _kolonne = value;
+        }
+        #endregion
+
+
     }
 }
