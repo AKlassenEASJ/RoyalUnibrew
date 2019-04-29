@@ -44,6 +44,7 @@ namespace RURS.HamburgerMenu
         {
             NavigationItems.Add(new NavigationViewItem { Content = "Home", Icon = new SymbolIcon(Symbol.Home), Tag = typeof(MainPage) });
             //tilføj sider under her, ligesom oppeover
+            NavigationItems.Add(new NavigationViewItem { Content = "Tilføj Ansat", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(TilføjAnsatPage) });
 
         }
 
