@@ -9,6 +9,35 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Hub></Hub>
+      
+        <Hub Header="TappeKontrol">
+            <HubSection MinWidth="400">
+                <DataTemplate>
+                    <StackPanel>
+                        <TimePicker ClockIdentifier="24HourClock" Header="Tidspunkt"/>
+                        <TextBox Header="Dåse nummer" Text="" ToolTipService.ToolTip="Skriv dåse nummer"/>
+                        <TextBox Header="Låg nummer" ToolTipService.ToolTip="Skriv låg nummer"/>
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter">
+                            <TextBlock Text="Helhed"/>
+                            <RadioButton Content="OK"/>
+                            <RadioButton Content="IKKE OK"/>
+                        </StackPanel>
+                        <TextBox Header="Kontrol temperatur"/>
+                        <TextBox Header="Kontrol Vægt"></TextBox>
+                        <TextBox Header="Signatur"></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection MinWidth="400">
+                <DataTemplate>
+                    <StackPanel>
+                        
+                        <TextBox Header=""></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+
     </Grid>
 </Page>
