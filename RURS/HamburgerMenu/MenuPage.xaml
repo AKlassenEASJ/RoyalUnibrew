@@ -16,9 +16,20 @@
                         AlwaysShowHeader="False"
                         MenuItemsSource="{Binding NavigationItems}"
                         ItemInvoked="NavView_OnItemInvoked"
-                        BackRequested="NavView_OnBackRequested"
-                        IsBackEnabled="{Binding ElementName=NavFrame, Path=CanGoBack}"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="False"
                         SelectedItem="">
+
+<NavigationView.PaneCustomContent>
+    <StackPanel Padding="10 10 0 0">
+        <TextBlock Text="Process Ordre Nr."/>
+        <TextBlock Text="{Binding ProcessOrdre.ProcessOrdreNr}"/>
+        <TextBlock Text="Færdigvare nr"/>
+        <TextBlock Text="{Binding ProcessOrdre.FaerdigVareNr}"/>
+        <TextBlock Text="Dato"/>
+        <TextBlock Text="{Binding ProcessOrdre.Dato}"/>
+    </StackPanel>
+</NavigationView.PaneCustomContent>
 
             <NavigationView.Content>
                 <Frame x:Name="NavFrame"/>
