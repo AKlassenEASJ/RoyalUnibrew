@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using AdminRURS.Handler;
+using ModelLibary.Models;
+
 
 namespace AdminRURS.ViewModel
 {
@@ -11,12 +15,21 @@ namespace AdminRURS.ViewModel
 
         #region InstanceFields
 
+        private ICommand _addCommand;
 
+        private Ansat NyAnsat = new Ansat();
 
 
         #endregion
 
         #region Properties
+
+        public ICommand AddCommand
+        {
+            get { return _addCommand; }
+            set { _addCommand = value; }
+        }
+
 
 
 
@@ -27,6 +40,8 @@ namespace AdminRURS.ViewModel
 
         public AnsatViewModel()
         {
+            AnsatHandler ansatHandler = new AnsatHandler(this);
+
             
         }
 

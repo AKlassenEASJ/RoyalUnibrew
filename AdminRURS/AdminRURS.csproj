@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
+    <Compile Include="Handler\AnsatHandler.cs" />
     <Compile Include="ViewModel\AnsatViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -168,8 +169,12 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Handler\" />
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ModelLibary">
+      <HintPath>..\ModelLibary\bin\Debug\ModelLibary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
