@@ -7,7 +7,7 @@ using AdminRURS.ViewModel;
 
 namespace AdminRURS.Handler
 {
-    class AnsatHandler
+    public class AnsatHandler
     {
 
         #region InstanceFields
@@ -35,6 +35,10 @@ namespace AdminRURS.Handler
 
         #region Methods
 
+        public void Add()
+        {
+
+        }
         
 
         #endregion
