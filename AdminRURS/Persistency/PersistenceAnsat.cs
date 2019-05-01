@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AdminRURS.Persistency
 {
-    class Persistence<T>
+    class PersistenceAnsat
     {
 
         #region InstanceFields
 
-        private const string URI = "";
+        private const string URI = "http://localhost:60096/";
 
 
         #endregion
@@ -19,11 +19,10 @@ namespace AdminRURS.Persistency
 
         #region Methods
 
-        public 
+        //public
 
-
+        
         #endregion
-
 
     }
 }
