@@ -7,5 +7,6 @@ namespace REST_Service.DBUtil
 {
     public class FaerdigVareManager
     {
+
     }
 }
