@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RURS.ViewModel
 {
-    class VaegtKontrolViewModel
+    class VaegtKontrolViewModel : VMBase
     {
     }
 }
