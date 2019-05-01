@@ -33,7 +33,8 @@ namespace REST_Service.Controllers
         // POST: api/FaerdigVares
         public bool Post([FromBody]FaerdigVare faerdigVare)
         {
-            return manager.
+            //return manager.
+            return false;
         }
 
         // PUT: api/FaerdigVares/5
