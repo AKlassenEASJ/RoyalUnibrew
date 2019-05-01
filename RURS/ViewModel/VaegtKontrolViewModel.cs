@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdminRURS.Persistence
+namespace RURS.ViewModel
 {
-    class Persistency<T>
+    class VaegtKontrolViewModel : VMBase
     {
-
-
-
     }
 }

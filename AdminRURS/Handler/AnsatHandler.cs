@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdminRURS.Persistency;
 using AdminRURS.ViewModel;
 
 namespace AdminRURS.Handler
@@ -12,7 +13,7 @@ namespace AdminRURS.Handler
 
         #region InstanceFields
 
-
+        private PersistenceAnsat persistence = new PersistenceAnsat();
 
         #endregion
 
@@ -37,7 +38,7 @@ namespace AdminRURS.Handler
 
         public void Add()
         {
-
+            persistence.Post(AnsatViewModel.NyAnsat);
         }
         
 
