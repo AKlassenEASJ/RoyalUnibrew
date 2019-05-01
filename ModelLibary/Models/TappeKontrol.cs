@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using ModelLibary.Annotations;
 
 namespace ModelLibrary.Models
 {
-    public class TappeKontrol
+    public class TappeKontrol : INotifyPropertyChanged
     {
         private int _processOrderNr;
         private DateTime _tidspunkt;
@@ -57,7 +61,11 @@ namespace ModelLibrary.Models
         public DateTime Tidspunkt
         {
             get => _tidspunkt;
-            set => _tidspunkt = value;
+            set
+            {
+                _tidspunkt = value;
+                OnPropertyChanged();
+            }
         }
 
         public int Daasenr
@@ -148,6 +156,15 @@ namespace ModelLibrary.Models
         {
             get => _signatur;
             set => _signatur = value;
+        }
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
