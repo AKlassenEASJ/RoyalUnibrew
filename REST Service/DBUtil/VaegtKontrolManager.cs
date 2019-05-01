@@ -5,8 +5,11 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Windows.Markup;
 using ModelLibary.Models;
+using ModelLibrary.Models;
 
 namespace REST_Service.DBUtil
 {
@@ -16,7 +19,7 @@ namespace REST_Service.DBUtil
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private const string GET = "SELECT * FROM VaegtKontrol";
-        private const string INSERT = "INSERT INTO VaegtKontrol ()";
+        private const string INSERT = "INSERT INTO VaegtKontrol (Process_Ordre_Nr, DatoTid, Vaegt_Kontrol_Nr) VALUES(@Process_Ordre_Nr, @DatoTid, @Vaegt_Kontrol_Nr)";
         
 
 
@@ -28,8 +31,17 @@ namespace REST_Service.DBUtil
             List<VaegtKontrol> liste = new List<VaegtKontrol>();
 
             SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
 
+            SqlCommand cmd = new SqlCommand(GET, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
 
+            while (reader.Read())
+            {
+                VaegtKontrol vaegtKontrol = ReadVaegtKontrol(reader);
+                liste.Add(vaegtKontrol);
+            }
+            conn.Close();
 
 
             return liste;
@@ -42,8 +54,23 @@ namespace REST_Service.DBUtil
         }
 
         // POST: api/VaegtKontrolManager
-        public void Post([FromBody]VaegtKontrol value)
+        public bool Post(VaegtKontrol vaegtKontrol)
         {
+            bool retValue = false;
+
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(INSERT, conn);
+            cmd.Parameters.AddWithValue("@Process_Ordre_Nr", vaegtKontrol.ProcessOrdreNr);
+            cmd.Parameters.AddWithValue("@DatoTid", vaegtKontrol.DatoTid);
+            cmd.Parameters.AddWithValue("@Vaegt_Kontrol_Nr", vaegtKontrol.KontrolNr);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            retValue = rowsAffected == 1 ? true : false;
+            conn.Close();
+            
+            return retValue;
         }
 
         // PUT: api/VaegtKontrolManager/5

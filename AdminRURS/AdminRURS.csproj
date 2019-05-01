@@ -126,6 +126,7 @@
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\AnsatHandler.cs" />
+    <Compile Include="Persistency\PersistenceAnsat.cs" />
     <Compile Include="ViewModel\AnsatViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

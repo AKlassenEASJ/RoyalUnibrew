@@ -127,6 +127,7 @@
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
+    <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
