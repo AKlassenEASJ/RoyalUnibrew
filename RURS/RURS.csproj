@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
+    <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
@@ -180,7 +181,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Handler\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>

@@ -41,8 +41,8 @@
                         <TextBox Text="{Binding SelectedTappeKontrol.Laagnr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv låg nummer"/>
                         <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
                             <TextBlock Text="Helhed"/>
-                            <RadioButton Content="OK"/>
-                            <RadioButton Content="IKKE OK"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Kontrol temperatur"/>
@@ -79,23 +79,23 @@
                     <StackPanel>
                         <StackPanel ToolTipService.ToolTip="Tjek ved opstart og skift at kameraet kører." Margin="0 10">
                             <TextBlock Text="Tjek Karmera"/>
-                            <RadioButton Content="OK"/>
-                            <RadioButton Content="IKKE OK"/>
+                            <CheckBox Content="OK" />
+                            <CheckBox Content="IKKE OK"/>
                         </StackPanel>
                         <StackPanel ToolTipService.ToolTip="Kviter, udføres en gang pr skift" Margin="0 10">
                             <TextBlock Text="CCP"/>
-                            <RadioButton Content="OK"/>
-                            <RadioButton Content="IKKE OK"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
                         </StackPanel>
                         <StackPanel ToolTipService.ToolTip="smagt ved produktskift, opstart og tank skift" Margin="0 10">
                             <TextBlock Text="Smags test"/>
-                            <RadioButton Content="OK"/>
-                            <RadioButton Content="IKKE OK"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
                         </StackPanel>
                         <StackPanel ToolTipService.ToolTip="Tjek for sukker rest ved opstart af light produkter &#x0d;&#x0a;Ifølge instruktionen " Margin="0 10">
                             <TextBlock Text="Tjek med sukker stick"/>
-                            <RadioButton Content="OK"/>
-                            <RadioButton Content="IKKE OK"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
