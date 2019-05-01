@@ -19,16 +19,22 @@ namespace RURS.Handler
 
         public void Clear()
         {
-            //foreach (var VARIABLE in radio)
-            //{
-                
-
-            //}
+            for (int i = 0; i < _viewModel.CheckHelpers.Count; i++)
+            {
+                _viewModel.CheckHelpers[i] = false;
+            }
         }
 
-        private void findRadioButton(List<RadioButton> list)
+        public void HelhedOK()
         {
-            
+            _viewModel.CheckboxHelhedOK = true;
+            _viewModel.CheckboxHelhedIkkeOK = false;
+        }
+
+        public void HelhedIkkeOk()
+        {
+            _viewModel.CheckboxHelhedIkkeOK = true;
+            _viewModel.CheckboxHelhedOK = false;
         }
     }
 }

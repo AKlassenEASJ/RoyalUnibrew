@@ -126,6 +126,7 @@
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\TappeKontrolHandler.cs" />
+    <Compile Include="Model\CheckboxHelper.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
@@ -181,9 +182,7 @@
       <Version>6.2.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ModelLibary\ModelLibary.csproj">
       <Project>{69fe7da5-366d-49f9-856d-95c99984c6c1}</Project>
