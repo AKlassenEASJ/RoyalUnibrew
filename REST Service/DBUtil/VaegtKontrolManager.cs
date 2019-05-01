@@ -62,7 +62,7 @@ namespace REST_Service.DBUtil
             conn.Open();
 
             SqlCommand cmd = new SqlCommand(INSERT, conn);
-            cmd.Parameters.AddWithValue("@@Process_Ordre_Nr", vaegtKontrol.ProcessOrdreNr);
+            cmd.Parameters.AddWithValue("@Process_Ordre_Nr", vaegtKontrol.ProcessOrdreNr);
             cmd.Parameters.AddWithValue("@DatoTid", vaegtKontrol.DatoTid);
             cmd.Parameters.AddWithValue("@Vaegt_Kontrol_Nr", vaegtKontrol.KontrolNr);
 

@@ -27,9 +27,9 @@ namespace REST_Service.Controllers
         }
 
         // POST: api/VaegtKontrol
-        public void Post([FromBody]VaegtKontrol value)
+        public bool Post([FromBody]VaegtKontrol value)
         {
-            manager.Post(value);
+            return manager.Post(value);
         }
         
         // PUT: api/VaegtKontrol/5
