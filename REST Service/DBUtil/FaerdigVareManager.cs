@@ -18,7 +18,7 @@ namespace REST_Service.DBUtil
         #endregion
 
         #region sqlStatements
-        private const string Insert = "Insert into FaerdigVare (FaerdigVare_Nr) Values (@FaerdigVare_Nr)";
+        private const string Insert = "Insert into FaerdigVare (FaerdigVare_Nr, FaerdigVareNavn, Min, Max, Snit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
         #endregion
 
         #region Methods
@@ -33,6 +33,10 @@ namespace REST_Service.DBUtil
             SqlCommand command = new SqlCommand(Insert, connection);
 
             command.Parameters.AddWithValue("@FaerdigVare_Nr", faerdigVare.FaerdigVare_Nr);
+            command.Parameters.AddWithValue("@FaerdigVareNavn", faerdigVare.FaerdigVareNavn);
+            command.Parameters.AddWithValue("@Min", faerdigVare.Min);
+            command.Parameters.AddWithValue("@Max", faerdigVare.Max);
+            command.Parameters.AddWithValue("@Snit", faerdigVare.Snit);
 
             int rowsAffected = command.ExecuteNonQuery();
 
@@ -45,8 +49,22 @@ namespace REST_Service.DBUtil
 
             return status;
         }
+        #endregion
 
+        #region HelpMethods
 
+        private FaerdigVare ReadFaerdigVare(SqlDataReader reader)
+        {
+            FaerdigVare tempFaerdigVare = new FaerdigVare();
+
+            tempFaerdigVare.FaerdigVare_Nr = reader.GetInt32(0);
+            tempFaerdigVare.FaerdigVareNavn = reader.GetString(1);
+            tempFaerdigVare.Min = reader.GetInt32(2);
+            tempFaerdigVare.Max = reader.GetInt32(3);
+            tempFaerdigVare.Snit = reader.GetInt32(4);
+
+            return tempFaerdigVare;
+        }
         #endregion
     }
 }
