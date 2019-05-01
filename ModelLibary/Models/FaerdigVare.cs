@@ -10,6 +10,10 @@ namespace ModelLibary.Models
     {
         #region InstanceFields
         private int _faerdigvare_Nr;
+        private string _faerdigvareNavn;
+        private double _min;
+        private double _max;
+        private double _snit;
         #endregion
 
 
@@ -18,6 +22,26 @@ namespace ModelLibary.Models
         {
             get => _faerdigvare_Nr;
             set => _faerdigvare_Nr = value;
+        }
+        public string FaerdigVareNavn
+        {
+            get => _faerdigvareNavn;
+            set => _faerdigvareNavn = value;
+        }
+        public double Min
+        {
+            get => _min;
+            set => _min = value;
+        }
+        public double Max
+        {
+            get => _max;
+            set => _max = value;
+        }
+        public double Snit
+        {
+            get => _snit;
+            set => _snit = value;
         }
         #endregion
 
@@ -28,19 +52,20 @@ namespace ModelLibary.Models
 
         }
 
-        public FaerdigVare(int faerdigvareNr)
+        public FaerdigVare(int faerdigvareNr, string faerdigvareNavn, double Min, double Max, double Snit)
         {
             _faerdigvare_Nr = FaerdigVare_Nr;
+            _faerdigvareNavn = FaerdigVareNavn;
+            _min = Min;
+            _max = Max;
+            _snit = Snit;
         }
 
         #endregion
 
         #region Methods
 
-        public override string ToString()
-        {
-            return $"{nameof(FaerdigVare_Nr)}: {FaerdigVare_Nr}";
-        }
+        //Måske toostring
 
         #endregion
     }
