@@ -5,10 +5,43 @@
     xmlns:local="using:RURS.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RURS.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <viewModel:TappeKontrolViewModel/>
+    </Page.DataContext>
     <Grid>
-        <Hub></Hub>
+      
+        <Hub Header="TappeKontrol">
+            <HubSection MinWidth="400">
+                <DataTemplate>
+                    <StackPanel>
+                        <TimePicker ClockIdentifier="24HourClock" Header="Tidspunkt" Time="{Binding SelectedTappeKontrol.Tidspunkt, Mode=TwoWay}"/>
+                        <TextBox Header="Dåse nummer" Text="{Binding SelectedTappeKontrol.Daasenr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv dåse nummer"/>
+                        <TextBox Header="Låg nummer" Text="{Binding SelectedTappeKontrol.Laagnr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv låg nummer"/>
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter">
+                            <TextBlock Text="Helhed"/>
+                            <RadioButton Content="OK"/>
+                            <RadioButton Content="IKKE OK"/>
+                        </StackPanel>
+                        <TextBox Header="Kontrol temperatur" Text="{Binding SelectedTappeKontrol.KontrolTemp, Mode=TwoWay}"/>
+                        <TextBox Header="væske temperatur" Text="{Binding SelectedTappeKontrol.VaeskeTemp}"/>
+                        <TextBox Header="Signatur" Text="{Binding SelectedTappeKontrol.Signatur}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection MinWidth="400">
+                <DataTemplate>
+                    <StackPanel>
+                        
+                        <TextBox Header=""></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+
     </Grid>
 </Page>

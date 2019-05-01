@@ -115,21 +115,21 @@ namespace REST_Service.Tests.DBUtil
 
         }
 
-        [TestMethod]
-        public void Delete_ANonExistingUser_False()
-        {
+        //[TestMethod]
+        //public void Delete_ANonExistingUser_False()
+        //{
 
-            //Arrange
+        //    //Arrange
 
-            //Act
+        //    //Act
 
-            bool status =_manager.Delete(_trialAnsat.Initial);
+        //    bool status =_manager.Delete(_trialAnsat.Initial);
 
-            //Assert
-            Assert.IsFalse(status);
+        //    //Assert
+        //    Assert.IsFalse(status);
 
 
-        }
+        //}
 
     }
 }

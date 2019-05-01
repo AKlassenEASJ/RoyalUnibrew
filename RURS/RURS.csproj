@@ -119,11 +119,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="HamburgerMenu\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
+    <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -178,7 +180,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Handler\" />
     <Folder Include="Model\" />
   </ItemGroup>
