@@ -18,23 +18,18 @@ namespace RURS.Handler
         }
 
         public void Clear()
+
         {
+            _viewModel.SelectedTappeKontrol.KontrolTemp = 0;
+            _viewModel.SelectedTappeKontrol.VaeskeTemp = 0;
+            _viewModel.SelectedTappeKontrol.VaegtKontrol = 0;
+            _viewModel.SelectedTappeKontrol.SmagsTestNr = 0;
+            _viewModel.SelectedTappeKontrol.KviterProve = null;
+            _viewModel.SelectedTappeKontrol.Co2Kontrol = 0;
             for (int i = 0; i < _viewModel.CheckHelpers.Count; i++)
             {
-                _viewModel.CheckHelpers[i] = false;
+                _viewModel.CheckHelpers[i].Index = -1;
             }
-        }
-
-        public void HelhedOK()
-        {
-            _viewModel.CheckboxHelhedOK = true;
-            _viewModel.CheckboxHelhedIkkeOK = false;
-        }
-
-        public void HelhedIkkeOk()
-        {
-            _viewModel.CheckboxHelhedIkkeOK = true;
-            _viewModel.CheckboxHelhedOK = false;
         }
     }
 }

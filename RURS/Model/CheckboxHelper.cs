@@ -12,33 +12,47 @@ namespace RURS.Model
 {
     class CheckboxHelper : VMBase
     {
-        private string _name;
-        private bool _isChecked;
+        //private string _name;
+        //private bool _isChecked;
 
-        public string Name
+        //public string Name
+        //{
+        //    get { return _name;}
+        //    set
+        //    {
+        //        _name = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        //public bool IsChecked
+        //{
+        //    get { return _isChecked; }
+        //    set
+        //    {
+        //        _isChecked = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+
+        private int _index;
+
+        public int Index
         {
-            get { return _name;}
+            get { return _index; }
             set
             {
-                _name = value;
+                _index = value;
                 OnPropertyChanged();
             }
         }
 
-        public bool IsChecked
-        {
-            get { return _isChecked; }
-            set
-            {
-                _isChecked = value;
-                OnPropertyChanged();
-            }
-        }
 
-        public CheckboxHelper( bool isChecked)
+        public CheckboxHelper()
         {
             //Name = name;
-            IsChecked = isChecked;
+            Index = -1;
         }
     }
 }

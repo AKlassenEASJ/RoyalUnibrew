@@ -27,39 +27,48 @@ namespace RURS.ViewModel
             }
         }
 
-        public List<bool> CheckHelpers { get; set; }
+        public List<CheckboxHelper> CheckHelpers { get; set; }
 
         public ICommand ClearCommand { get; set; }
-        public ICommand helhedokCommand { get; set; }
-        public ICommand helhedikkeCommand { get; set; }
+
 
         public TappeKontrolViewModel()
         {
             Handler = new TappeKontrolHandler(this);
             SelectedTappeKontrol = new TappeKontrol() {Tidspunkt = DateTime.Now};
-            CheckHelpers = new List<bool>() { CheckboxHelhedOK, CheckboxHelhedIkkeOK };
+            CheckHelpers = new List<CheckboxHelper>() { new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper()};
             ClearCommand = new RelayCommand(Handler.Clear);
-            helhedokCommand = new RelayCommand(Handler.HelhedOK);
 
         }
 
-        private bool _checkboxHelhedOK = true;
-        private bool _checkboxHelhedIkkeOK = false;
+        //private int _selectedIndex = -1;
+        //public int SelectedIndex
+        //{
+        //    get { return _selectedIndex; }
+        //    set
+        //    {
+        //        _selectedIndex = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
-        public bool CheckboxHelhedOK
-        {
-            get { return _checkboxHelhedOK;}
-            set { _checkboxHelhedOK = value;
-                OnPropertyChanged(); }
-        }
-        public bool CheckboxHelhedIkkeOK
-        {
-            get { return _checkboxHelhedIkkeOK; }
-            set
-            {
-                _checkboxHelhedIkkeOK = value;
-                OnPropertyChanged();
-            }
-        }
+        //private bool _checkboxHelhedOK = true;
+        //private bool _checkboxHelhedIkkeOK = false;
+
+        //public bool CheckboxHelhedOK
+        //{
+        //    get { return _checkboxHelhedOK;}
+        //    set { _checkboxHelhedOK = value;
+        //        OnPropertyChanged(); }
+        //}
+        //public bool CheckboxHelhedIkkeOK
+        //{
+        //    get { return _checkboxHelhedIkkeOK; }
+        //    set
+        //    {
+        //        _checkboxHelhedIkkeOK = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
     }
 }

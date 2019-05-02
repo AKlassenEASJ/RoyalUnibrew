@@ -14,7 +14,7 @@
     </Page.DataContext>
 
     <Page.BottomAppBar>
-        <AppBar>
+        <AppBar IsOpen="True" FlowDirection="RightToLeft">
             <AppBarButton Icon="clear" Command="{Binding ClearCommand}"></AppBarButton>
         </AppBar>
     </Page.BottomAppBar>
@@ -41,8 +41,12 @@
                         <TextBox Text="{Binding SelectedTappeKontrol.Laagnr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv låg nummer"/>
                         <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
                             <TextBlock Text="Helhed"/>
-                            <CheckBox Content="OK" IsChecked="{Binding CheckboxHelhedOK, Mode=TwoWay}" />
-                            <CheckBox Content="IKKE OK" IsChecked="{Binding CheckboxHelhedIkkeOK, Mode=TwoWay}"/>
+                            <ComboBox SelectedItem="{Binding SelectedTappeKontrol.Helhed, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                            <!--<CheckBox Content="OK" IsChecked="{Binding CheckboxHelhedOK, Mode=TwoWay}" />
+                            <CheckBox Content="IKKE OK" IsChecked="{Binding CheckboxHelhedIkkeOK, Mode=TwoWay}"/>-->
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Kontrol temperatur"/>
@@ -79,23 +83,43 @@
                     <StackPanel>
                         <StackPanel ToolTipService.ToolTip="Tjek ved opstart og skift at kameraet kører." Margin="0 10">
                             <TextBlock Text="Tjek Karmera"/>
-                            <CheckBox Content="OK" />
-                            <CheckBox Content="IKKE OK"/>
+                            <ComboBox SelectedItem="{Binding SelectedTappeKontrol.KameraTjek, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[1].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                            <!--<CheckBox Content="OK" />
+                            <CheckBox Content="IKKE OK"/>-->
                         </StackPanel>
                         <StackPanel ToolTipService.ToolTip="Kviter, udføres en gang pr skift" Margin="0 10">
                             <TextBlock Text="CCP"/>
-                            <CheckBox Content="OK"/>
-                            <CheckBox Content="IKKE OK"/>
+                            <ComboBox SelectedItem="{Binding SelectedTappeKontrol.Ccp, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[2].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                            <!--<CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>-->
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Noter tank nummeret ved smags test" Margin="0 10">
+                            <TextBlock Text="Tank Nummer"/>
+                            <TextBox Text="{Binding SelectedTappeKontrol.SmagsTestNr}"/>
                         </StackPanel>
                         <StackPanel ToolTipService.ToolTip="smagt ved produktskift, opstart og tank skift" Margin="0 10">
                             <TextBlock Text="Smags test"/>
-                            <CheckBox Content="OK"/>
-                            <CheckBox Content="IKKE OK"/>
+                            <ComboBox SelectedItem="{Binding SelectedTappeKontrol.SmagsTest, Mode=TwoWay}" PlaceholderText="Ikke Udført" Width="200" SelectedIndex="{Binding CheckHelpers[3].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                            <!--<CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>-->
                         </StackPanel>
                         <StackPanel ToolTipService.ToolTip="Tjek for sukker rest ved opstart af light produkter &#x0d;&#x0a;Ifølge instruktionen " Margin="0 10">
                             <TextBlock Text="Tjek med sukker stick"/>
-                            <CheckBox Content="OK"/>
-                            <CheckBox Content="IKKE OK"/>
+                            <ComboBox SelectedItem="{Binding SelectedTappeKontrol.SukkerTjek, Mode=TwoWay}"  PlaceholderText="Ikke Udført" Width="200" SelectedIndex="{Binding CheckHelpers[4].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                            <!--<CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>-->
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
