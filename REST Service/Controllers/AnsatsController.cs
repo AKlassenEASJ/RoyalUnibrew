@@ -26,6 +26,7 @@ namespace REST_Service.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        
         // GET: api/Ansats/5
         public Ansat Get(string initialer)
         {

@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using RURS.Annotations;
 using RURS.View;
+using RURS.ViewModel;
 
 namespace RURS.HamburgerMenu
 {
-    public class MenuViewModel : INotifyPropertyChanged
+    public class MenuViewModel : VMBase
     {
         public ObservableCollection<NavigationViewItemBase> NavigationItems { get; set; }
 
@@ -44,14 +45,6 @@ namespace RURS.HamburgerMenu
             //tilføj sider under her, ligesom oppeover
             NavigationItems.Add(new NavigationViewItem { Content = "Processordre", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(ProcessOrdrePage) });
             NavigationItems.Add(new NavigationViewItem {Content = "Tappe Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(TappeKontrolPage)});
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -165,13 +165,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AnsatsController.cs" />
+    <Compile Include="Controllers\FaerdigVaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProcessOrdreController.cs" />
     <Compile Include="Controllers\TappeKontrolsController.cs" />
+    <Compile Include="Controllers\VaegtKontrolController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DBUtil\AnsatManager.cs" />
+    <Compile Include="DBUtil\FaerdigVareManager.cs" />
     <Compile Include="DBUtil\ProcessOrdreManager.cs" />
     <Compile Include="DBUtil\TappeKontrolManger.cs" />
+    <Compile Include="DBUtil\VaegtKontrolManager.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

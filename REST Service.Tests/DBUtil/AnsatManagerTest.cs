@@ -66,6 +66,35 @@ namespace REST_Service.Tests.DBUtil
             _manager.Delete(_trialAnsat.Initial);
         }
 
+        //[TestMethod]
+        //public void Post_ANullUser_NullReferenceException()
+        //{
+        //    //Arrange
+
+        //    Ansat tempAnsat = null;
+
+        //    //Act
+
+        //    Assert.ThrowsException<NullReferenceException>(() => { _manager.Post(tempAnsat);});
+
+        //    //Assert
+        //}
+
+        //[TestMethod]
+        //public void Post_AUserWithNullValues()
+        //{
+        //    //Arrange
+
+        //    Ansat tempAnsat = new Ansat(null, null, 2);
+
+        //    //Act and Assert
+
+        //    Assert.ThrowsException<Exception>(() => { _manager.Post(tempAnsat); });
+
+
+        //}
+
+
         [TestMethod]
         public void Delete_AnExistingUser_true()
         {
@@ -86,19 +115,21 @@ namespace REST_Service.Tests.DBUtil
 
         }
 
-        [TestMethod]
-        public void Delete_ANonExistingUser_False()
-        {
+        //[TestMethod]
+        //public void Delete_ANonExistingUser_False()
+        //{
 
-            //Arrange
+        //    //Arrange
 
-            //Act
+        //    //Act
 
-            //Assert
+        //    bool status =_manager.Delete(_trialAnsat.Initial);
+
+        //    //Assert
+        //    Assert.IsFalse(status);
 
 
-
-        }
+        //}
 
     }
 }
