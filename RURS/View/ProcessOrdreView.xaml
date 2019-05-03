@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="RURS.View.ProcessOrdreView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RURS.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBox Header="Processordre Nummber"/>
+            <TextBox Header="Færdigvare Nummer"/>
+                <DatePicker Header="Dato"/>
+        </StackPanel>
+    </Grid>
+    <Page.BottomAppBar>
+        <AppBar FlowDirection="LeftToRight" IsOpen="True" IsSticky="true">
+            <StackPanel Orientation="Vertical">
+                <AppBarButton Label="" Icon="Add"/>
+                <AppBarButton/>
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+</Page>

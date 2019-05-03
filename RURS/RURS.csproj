@@ -126,8 +126,10 @@
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\TappeKontrolHandler.cs" />
+    <Compile Include="Handler\VaegtKontrolHandler.cs" />
     <Compile Include="Model\CheckboxHelper.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
+    <Compile Include="ViewModel\ProcessOrdreViewModel.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
