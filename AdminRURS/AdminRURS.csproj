@@ -128,11 +128,15 @@
     <Compile Include="Handler\AnsatHandler.cs" />
     <Compile Include="Persistency\PersistenceAnsat.cs" />
     <Compile Include="ViewModel\AnsatViewModel.cs" />
+    <Compile Include="ViewModel\FaerdigVareVM.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\NyFaerdigVare.xaml.cs">
+      <DependentUpon>NyFaerdigVare.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TilføjAnsatPage.xaml.cs">
       <DependentUpon>TilføjAnsatPage.xaml</DependentUpon>
     </Compile>
@@ -165,6 +169,10 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NyFaerdigVare.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TilføjAnsatPage.xaml">
       <SubType>Designer</SubType>
