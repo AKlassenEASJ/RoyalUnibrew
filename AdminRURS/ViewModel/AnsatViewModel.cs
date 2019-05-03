@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using AdminRURS.Annotations;
 using AdminRURS.Common;
 using AdminRURS.Handler;
 using ModelLibary.Models;
@@ -11,7 +14,7 @@ using ModelLibary.Models;
 
 namespace AdminRURS.ViewModel
 {
-    public class AnsatViewModel
+    public class AnsatViewModel : INotifyPropertyChanged
     {
 
         #region InstanceFields
@@ -42,7 +45,11 @@ namespace AdminRURS.ViewModel
         public bool ProgressRingIsActive
         {
             get { return _progressRingIsActive; }
-            set { _progressRingIsActive = value; }
+            set
+            {
+                _progressRingIsActive = value;
+                OnPropertyChanged();
+            }
         }
 
         public AnsatHandler AnsatHandler { get; set; }
@@ -70,9 +77,12 @@ namespace AdminRURS.ViewModel
         #endregion
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-
-
-
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
