@@ -14,8 +14,20 @@
     </Page.DataContext>
 
     <Page.BottomAppBar>
-        <AppBar IsOpen="True" FlowDirection="RightToLeft">
-            <AppBarButton Icon="clear" Command="{Binding ClearCommand}"></AppBarButton>
+        <AppBar FlowDirection="RightToLeft" IsOpen="True">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="clear" Label="Ryd" Command="{Binding ClearCommand}"/>
+            <AppBarButton Icon="add" Label="Gem">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBlock Text="Er du sikker på at alt er indtastet?"/>
+                            <Button Command="{Binding AddCommand}" Content="Gem"/>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </AppBarButton>
+            </StackPanel>
         </AppBar>
     </Page.BottomAppBar>
     <Grid>
@@ -40,7 +52,10 @@
                         </StackPanel>
                         <TextBox Text="{Binding SelectedTappeKontrol.Laagnr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv låg nummer"/>
                         <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
-                            <TextBlock Text="Helhed"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Helhed"/>
+                                <TextBlock Text="*" Foreground="Red"/>
+                            </StackPanel>
                             <ComboBox SelectedItem="{Binding SelectedTappeKontrol.Helhed, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
                                 <x:String>OK</x:String>
                                 <x:String>IKKE OK</x:String>

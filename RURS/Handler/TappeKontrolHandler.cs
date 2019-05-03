@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using RURS.Persistency;
 using RURS.ViewModel;
 
 namespace RURS.Handler
@@ -17,8 +18,17 @@ namespace RURS.Handler
             _viewModel = viewModel;
         }
 
-        public void Clear()
+        public void Add()
+        {
+            _viewModel.SelectedTappeKontrol.ProcessOrderNr = 1;
+            if (PersistenceTappeKontrol.Post(_viewModel.SelectedTappeKontrol))
+            {
+                Clear();
+            }
+            
+        }
 
+        public void Clear()
         {
             _viewModel.SelectedTappeKontrol.KontrolTemp = 0;
             _viewModel.SelectedTappeKontrol.VaeskeTemp = 0;

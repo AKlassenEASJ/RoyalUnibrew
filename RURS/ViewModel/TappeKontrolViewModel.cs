@@ -29,6 +29,7 @@ namespace RURS.ViewModel
 
         public List<CheckboxHelper> CheckHelpers { get; set; }
 
+        public ICommand AddCommand { get; set; }
         public ICommand ClearCommand { get; set; }
 
 
@@ -37,6 +38,7 @@ namespace RURS.ViewModel
             Handler = new TappeKontrolHandler(this);
             SelectedTappeKontrol = new TappeKontrol() {Tidspunkt = DateTime.Now};
             CheckHelpers = new List<CheckboxHelper>() { new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper()};
+            AddCommand = new RelayCommand(Handler.Add);
             ClearCommand = new RelayCommand(Handler.Clear);
 
         }
