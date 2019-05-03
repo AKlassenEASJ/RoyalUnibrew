@@ -19,6 +19,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <ProgressRing Grid.Column="1" IsActive="{Binding ProgressRingIsActive}"/>
+
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>

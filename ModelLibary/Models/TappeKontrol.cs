@@ -101,31 +101,51 @@ namespace ModelLibrary.Models
         public double VaeskeTemp
         {
             get => _vaeskeTemp;
-            set => _vaeskeTemp = value;
+            set
+            {
+                _vaeskeTemp = value;
+                OnPropertyChanged();
+            }
         }
 
         public double KontrolTemp
         {
             get => _kontrolTemp;
-            set => _kontrolTemp = value;
+            set
+            {
+                _kontrolTemp = value; 
+                OnPropertyChanged();
+            }
         }
 
         public string TunnelPhTjek
         {
             get => _tunnelPHTjek;
-            set => _tunnelPHTjek = value;
+            set
+            {
+                _tunnelPHTjek = value; 
+                OnPropertyChanged();
+            }
         }
 
         public double VaegtKontrol
         {
             get => _vaegtKontrol;
-            set => _vaegtKontrol = value;
+            set
+            {
+                _vaegtKontrol = value;
+                OnPropertyChanged();
+            }
         }
 
         public int SmagsTestNr
         {
             get => _smagsTestNr;
-            set => _smagsTestNr = value;
+            set
+            {
+                _smagsTestNr = value; 
+                OnPropertyChanged();
+            }
         }
 
         public string SmagsTest
@@ -137,7 +157,11 @@ namespace ModelLibrary.Models
         public string KviterProve
         {
             get => _kviterProve;
-            set => _kviterProve = value;
+            set
+            {
+                _kviterProve = value; 
+                OnPropertyChanged();
+            }
         }
 
         public string SukkerTjek
@@ -149,7 +173,11 @@ namespace ModelLibrary.Models
         public double Co2Kontrol
         {
             get => _co2Kontrol;
-            set => _co2Kontrol = value;
+            set
+            {
+                _co2Kontrol = value;
+                OnPropertyChanged();
+            }
         }
 
         public string Signatur
