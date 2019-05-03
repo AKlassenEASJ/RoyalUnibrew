@@ -45,25 +45,25 @@ namespace REST_Service.DBUtil
                 Tidspunkt = reader.GetDateTime(1),
                 Daasenr = reader.GetInt32(2),
                 Laagnr = reader.GetInt32(3),
-                Helhed = tjekStringNull(reader, 4),
-                KameraTjek = tjekStringNull(reader, 5),
-                Ccp = tjekStringNull(reader, 6),
+                Helhed = TjekStringNull(reader, 4),
+                KameraTjek = TjekStringNull(reader, 5),
+                Ccp = TjekStringNull(reader, 6),
                 VaeskeTemp = reader.GetDouble(7),
                 KontrolTemp = reader.GetDouble(8),
-                TunnelPhTjek = tjekStringNull(reader, 9),
-                VaegtKontrol = tjekDoubleNull(reader, 10),
-                SmagsTestNr = tjekIntNull(reader, 11),
-                SmagsTest = tjekStringNull(reader, 12),
-                KviterProve = tjekStringNull(reader, 13),
-                SukkerTjek = tjekStringNull(reader, 14),
-                Co2Kontrol = tjekDoubleNull(reader, 15),
+                TunnelPhTjek = TjekStringNull(reader, 9),
+                VaegtKontrol = TjekDoubleNull(reader, 10),
+                SmagsTestNr = TjekIntNull(reader, 11),
+                SmagsTest = TjekStringNull(reader, 12),
+                KviterProve = TjekStringNull(reader, 13),
+                SukkerTjek = TjekStringNull(reader, 14),
+                Co2Kontrol = TjekDoubleNull(reader, 15),
                 Signatur = reader.GetString(16)
             };
            
             return tappeKontrol;
         }
 
-        private string tjekStringNull(SqlDataReader reader, int index)
+        private string TjekStringNull(SqlDataReader reader, int index)
         {
             if (!reader.IsDBNull(index))
             {
@@ -73,7 +73,7 @@ namespace REST_Service.DBUtil
             return null;
         }
 
-        private int tjekIntNull(SqlDataReader reader, int index)
+        private int TjekIntNull(SqlDataReader reader, int index)
         {
             if (!reader.IsDBNull(index))
             {
@@ -83,7 +83,7 @@ namespace REST_Service.DBUtil
             return -1;
         }
 
-        private double tjekDoubleNull(SqlDataReader reader, int index)
+        private double TjekDoubleNull(SqlDataReader reader, int index)
         {
             if (!reader.IsDBNull(index))
             {

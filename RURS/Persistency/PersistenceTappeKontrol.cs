@@ -16,31 +16,25 @@ namespace RURS.Persistency
 
         public static bool Post(TappeKontrol NewTappeKontrol)
         {
-            bool status;
-
+            bool ok = true;
             using (HttpClient client = new HttpClient())
             {
-                string jsonString = JsonConvert.SerializeObject(NewTappeKontrol);
-                StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-        
-
-                Task<HttpResponseMessage> responseTask = client.PostAsync($"{URI}TappeKontrols", content);
-
-                HttpResponseMessage response = responseTask.Result;
-
-                if (response.IsSuccessStatusCode)
+                string serializeObject = JsonConvert.SerializeObject(NewTappeKontrol);
+                StringContent content = new StringContent(serializeObject, Encoding.UTF8, "application/json");
+                Task<HttpResponseMessage> postAsync = client.PostAsync($"{URI}/TappeKontrols", content);
+                HttpResponseMessage resps = postAsync.Result;
+                if (resps.IsSuccessStatusCode)
                 {
-                    string jsonStringRead = response.Content.ReadAsStringAsync().Result;
-                    status = JsonConvert.DeserializeObject<bool>(jsonStringRead);
+                    string jsonStr = resps.Content.ReadAsStringAsync().Result;
+                    ok = JsonConvert.DeserializeObject<bool>(jsonStr);
                 }
                 else
                 {
-                    status = false;
+                    ok = false;
                 }
-
             }
 
-            return status;
+            return ok;
 
         }
     }

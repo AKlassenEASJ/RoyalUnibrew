@@ -26,7 +26,6 @@ namespace REST_Service.Controllers
         }
 
         // POST: api/TappeKontrols
-        
         public bool Post([FromBody]TappeKontrol value)
         {
             return manger.Post(value);

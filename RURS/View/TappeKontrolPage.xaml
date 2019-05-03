@@ -49,7 +49,7 @@
                             <TextBlock Text="Tidspunkt"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TimePicker ClockIdentifier="24HourClock" Time="{Binding SelectedTappeKontrol.Tidspunkt, Mode=TwoWay}"/>
+                        <TimePicker ClockIdentifier="24HourClock" Time="{Binding SelectedTappeKontrol.Tidspunkt, Mode=TwoWay}" MinuteIncrement="15" />
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Dåse nummer"/>
                             <TextBlock Text="*" Foreground="Red"/>
