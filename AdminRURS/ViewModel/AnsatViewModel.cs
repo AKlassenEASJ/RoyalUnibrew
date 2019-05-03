@@ -25,6 +25,8 @@ namespace AdminRURS.ViewModel
 
         private bool _progressRingIsActive = false;
 
+        
+
 
         #endregion
 
