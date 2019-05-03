@@ -20,6 +20,8 @@ namespace AdminRURS.ViewModel
 
         private Ansat _nyAnsat = new Ansat();
 
+        private bool _progressRingIsActive = false;
+
 
         #endregion
 
@@ -35,6 +37,12 @@ namespace AdminRURS.ViewModel
         {
             get { return _nyAnsat; }
             set { _nyAnsat = value; }
+        }
+
+        public bool ProgressRingIsActive
+        {
+            get { return _progressRingIsActive; }
+            set { _progressRingIsActive = value; }
         }
 
         public AnsatHandler AnsatHandler { get; set; }

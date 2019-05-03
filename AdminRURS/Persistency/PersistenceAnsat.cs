@@ -37,7 +37,7 @@ namespace AdminRURS.Persistency
             return tempAnsat;
         }
 
-        public bool Post(Ansat ansatToPost)
+        public async Task<bool> Post(Ansat ansatToPost)
         {
             bool status;
 
@@ -47,6 +47,8 @@ namespace AdminRURS.Persistency
                 StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
                 Task<HttpResponseMessage> responseTask = client.PostAsync($"{URI}Ansats", content);
+
+                await responseTask;
 
                 HttpResponseMessage response = responseTask.Result;
 
