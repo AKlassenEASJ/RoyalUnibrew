@@ -127,6 +127,7 @@
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="Model\CheckboxHelper.cs" />
+    <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
@@ -181,13 +182,20 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.3</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ModelLibary\ModelLibary.csproj">
       <Project>{69fe7da5-366d-49f9-856d-95c99984c6c1}</Project>
       <Name>ModelLibary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Users\line\.nuget\packages\newtonsoft.json\12.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
