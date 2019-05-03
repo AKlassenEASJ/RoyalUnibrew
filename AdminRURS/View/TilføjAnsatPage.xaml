@@ -19,7 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ProgressRing Grid.Column="1" IsActive="{Binding ProgressRingIsActive}"/>
+        <ProgressRing Grid.Column="1" IsActive="{Binding ProgressRingIsActive}" Width="200" Height="200"/>
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
