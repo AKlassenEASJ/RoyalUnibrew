@@ -36,9 +36,11 @@ namespace AdminRURS.Handler
 
         #region Methods
 
-        public void Add()
+        public async void Add()
         {
-            persistence.Post(AnsatViewModel.NyAnsat);
+            AnsatViewModel.ProgressRingIsActive = true;
+            await persistence.Post(AnsatViewModel.NyAnsat);
+            AnsatViewModel.ProgressRingIsActive = false;
         }
         
 
