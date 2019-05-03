@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml.Controls;
 using ModelLibrary.Models;
 using RURS.Common;
 using RURS.Handler;
@@ -36,11 +37,24 @@ namespace RURS.ViewModel
         public TappeKontrolViewModel()
         {
             Handler = new TappeKontrolHandler(this);
-            SelectedTappeKontrol = new TappeKontrol() {Tidspunkt = DateTime.Now};
+            SelectedTappeKontrol = new TappeKontrol();
             CheckHelpers = new List<CheckboxHelper>() { new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper(), new CheckboxHelper()};
             AddCommand = new RelayCommand(Handler.Add);
             ClearCommand = new RelayCommand(Handler.Clear);
+            TimeSpan = DateTime.Now.TimeOfDay;
+            TimeSpan.FromMinutes(15);
+        }
 
+        private TimeSpan _time;
+
+        public TimeSpan TimeSpan
+        {
+            get { return _time;}
+            set
+            {
+                _time = value;
+                OnPropertyChanged();
+            }
         }
 
         //private int _selectedIndex = -1;

@@ -21,6 +21,9 @@ namespace RURS.Handler
         public void Add()
         {
             _viewModel.SelectedTappeKontrol.ProcessOrderNr = 1;
+            
+            _viewModel.SelectedTappeKontrol.Tidspunkt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            _viewModel.SelectedTappeKontrol.Tidspunkt = _viewModel.SelectedTappeKontrol.Tidspunkt + _viewModel.TimeSpan;
             if (PersistenceTappeKontrol.Post(_viewModel.SelectedTappeKontrol))
             {
                 Clear();
