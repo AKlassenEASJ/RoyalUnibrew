@@ -12,7 +12,15 @@
         <StackPanel Orientation="Vertical">
             <TextBox Header="Processordre Nummber"/>
             <TextBox Header="Færdigvare Nummer"/>
-                <DatePicker/>
+                <DatePicker Header="Dato"/>
         </StackPanel>
     </Grid>
+    <Page.BottomAppBar>
+        <AppBar FlowDirection="LeftToRight" IsOpen="True" IsSticky="true">
+            <StackPanel Orientation="Vertical">
+                <AppBarButton Label="" Icon="Add"/>
+                <AppBarButton/>
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
 </Page>
