@@ -14,9 +14,18 @@
     </Page.DataContext>
 
     <Page.BottomAppBar>
-        <AppBar FlowDirection="RightToLeft" IsOpen="True">
+        <AppBar FlowDirection="RightToLeft" IsOpen="True" IsSticky="true">
             <StackPanel Orientation="Horizontal">
-                <AppBarButton Icon="clear" Label="Ryd" Command="{Binding ClearCommand}"/>
+                <AppBarButton Icon="clear" Label="Ryd">
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel>
+                                <TextBlock>Er du sikker på at du vil ryde siden?</TextBlock>
+                                <Button Content="Ja" Command="{Binding ClearCommand}"></Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </AppBarButton>
             <AppBarButton Icon="add" Label="Gem">
                 <Button.Flyout>
                     <Flyout>

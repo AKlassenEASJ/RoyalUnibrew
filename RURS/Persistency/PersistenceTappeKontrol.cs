@@ -22,6 +22,7 @@ namespace RURS.Persistency
             {
                 string jsonString = JsonConvert.SerializeObject(NewTappeKontrol);
                 StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+        
 
                 Task<HttpResponseMessage> responseTask = client.PostAsync($"{URI}TappeKontrols", content);
 
