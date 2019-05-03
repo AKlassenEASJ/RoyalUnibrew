@@ -11,5 +11,19 @@ namespace RURS.ViewModel
     {
         private ProcessOrdre _selectedProcessOrdre;
 
+        public ProcessOrdre SelectedProcessOrdre
+        {
+            get => _selectedProcessOrdre;
+            set
+            {
+                _selectedProcessOrdre = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ProcessOrdreViewModel()
+        {
+
+        }
     }
 }
