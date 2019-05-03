@@ -33,12 +33,11 @@ namespace REST_Service.Controllers
         // POST: api/FaerdigVares
         public bool Post([FromBody]FaerdigVare faerdigVare)
         {
-            //return manager.
-            return false;
+            return manager.Post(faerdigVare);
         }
 
-        // PUT: api/FaerdigVares/5
-        public void Put(int id, [FromBody]string value)
+    // PUT: api/FaerdigVares/5
+    public void Put(int id, [FromBody]string value)
         {
         }
 

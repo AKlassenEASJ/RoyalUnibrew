@@ -12,32 +12,91 @@
     <Page.DataContext>
         <viewModel:TappeKontrolViewModel/>
     </Page.DataContext>
+
+    <Page.BottomAppBar>
+        <AppBar>
+            <AppBarButton Icon="clear" Command="{Binding ClearCommand}"></AppBarButton>
+        </AppBar>
+    </Page.BottomAppBar>
     <Grid>
-      
-        <Hub Header="TappeKontrol">
-            <HubSection MinWidth="400">
+
+        <Hub Header="TappeKontrol" Margin="4,0,-4,0">
+            <HubSection MinWidth="300">
                 <DataTemplate>
                     <StackPanel>
-                        <TimePicker ClockIdentifier="24HourClock" Header="Tidspunkt" Time="{Binding SelectedTappeKontrol.Tidspunkt, Mode=TwoWay}"/>
-                        <TextBox Header="Dåse nummer" Text="{Binding SelectedTappeKontrol.Daasenr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv dåse nummer"/>
-                        <TextBox Header="Låg nummer" Text="{Binding SelectedTappeKontrol.Laagnr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv låg nummer"/>
-                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter">
-                            <TextBlock Text="Helhed"/>
-                            <RadioButton Content="OK"/>
-                            <RadioButton Content="IKKE OK"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Tidspunkt"/>
+                            <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TextBox Header="Kontrol temperatur" Text="{Binding SelectedTappeKontrol.KontrolTemp, Mode=TwoWay}"/>
-                        <TextBox Header="væske temperatur" Text="{Binding SelectedTappeKontrol.VaeskeTemp}"/>
-                        <TextBox Header="Signatur" Text="{Binding SelectedTappeKontrol.Signatur}"/>
+                        <TimePicker ClockIdentifier="24HourClock" Time="{Binding SelectedTappeKontrol.Tidspunkt, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Dåse nummer"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedTappeKontrol.Daasenr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv dåse nummer"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Låg nummer"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedTappeKontrol.Laagnr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv låg nummer"/>
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                            <TextBlock Text="Helhed"/>
+                            <CheckBox Content="OK" IsChecked="{Binding CheckboxHelhedOK, Mode=TwoWay}" />
+                            <CheckBox Content="IKKE OK" IsChecked="{Binding CheckboxHelhedIkkeOK, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Kontrol temperatur"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedTappeKontrol.KontrolTemp, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="væske temperatur"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedTappeKontrol.VaeskeTemp, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Signatur"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedTappeKontrol.Signatur, Mode=TwoWay}"/>
                     </StackPanel>
                 </DataTemplate>
             </HubSection>
 
-            <HubSection MinWidth="400">
+            <HubSection MinWidth="300">
                 <DataTemplate>
                     <StackPanel>
-                        
-                        <TextBox Header=""></TextBox>
+                        <TextBox Header="Tjek af Tunnel pasteurs program,&#x0d;&#x0a; og ph = 7,0 - 8,5" Text="{Binding SelectedTappeKontrol.TunnelPhTjek, Mode=TwoWay}" ToolTipService.ToolTip="Skriv valgte PU" Margin="0 10"/>
+                        <TextBox Header="Kontrol vejning" Text="{Binding SelectedTappeKontrol.VaegtKontrol, Mode=TwoWay}" Margin="0 10"/>
+                        <TextBox Header="Kviter for udtaget prøve" Text="{Binding SelectedTappeKontrol.KviterProve, Mode=TwoWay}" ToolTipService.ToolTip="Noter her når der er udtaget prøve til labratoriet" Margin="0 10"/>
+                        <TextBox Header="Kontrol af CO2" Text="{Binding SelectedTappeKontrol.Co2Kontrol, Mode=TwoWay}" ToolTipService.ToolTip="Skriv værdien af aflæsningen" Margin="0 10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection MinWidth="300">
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Tjek ved opstart og skift at kameraet kører." Margin="0 10">
+                            <TextBlock Text="Tjek Karmera"/>
+                            <CheckBox Content="OK" />
+                            <CheckBox Content="IKKE OK"/>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Kviter, udføres en gang pr skift" Margin="0 10">
+                            <TextBlock Text="CCP"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="smagt ved produktskift, opstart og tank skift" Margin="0 10">
+                            <TextBlock Text="Smags test"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Tjek for sukker rest ved opstart af light produkter &#x0d;&#x0a;Ifølge instruktionen " Margin="0 10">
+                            <TextBlock Text="Tjek med sukker stick"/>
+                            <CheckBox Content="OK"/>
+                            <CheckBox Content="IKKE OK"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </HubSection>
