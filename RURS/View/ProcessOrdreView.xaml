@@ -12,7 +12,7 @@
         <StackPanel Orientation="Vertical" MaxWidth="500">
             <TextBox Header="Processordre Nummber"/>
             <TextBox Header="Færdigvare Nummer"/>
-                <DatePicker Header="Dato"/>
+            <DatePicker Header="Dato"/>
         </StackPanel>
     </Grid>
     <Page.BottomAppBar>
