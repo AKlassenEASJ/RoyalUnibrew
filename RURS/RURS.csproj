@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
+    <Compile Include="Handler\ProcessOrdreHandler.cs" />
     <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="Handler\VaegtKontrolHandler.cs" />
     <Compile Include="Model\CheckboxHelper.cs" />

@@ -13,11 +13,11 @@ using Newtonsoft.Json;
 
 namespace RURS.Persistency
 {
-    class PersistencyProcessOrdre
+    public class PersistencyProcessOrdre
     {
         private const string URI = "http://localhost:60096/api/ProcessOrdre";
 
-        public bool Post(ProcessOrdre processOrdre)
+        public static bool Post(ProcessOrdre processOrdre)
         {
             bool sucess=true;
 
@@ -50,7 +50,7 @@ namespace RURS.Persistency
             return sucess;
         }
 
-        public ProcessOrdre GetOne(int id)
+        public static ProcessOrdre GetOne(int id)
         {
             ProcessOrdre processOrdre = new ProcessOrdre();
 
@@ -66,7 +66,7 @@ namespace RURS.Persistency
             return processOrdre;
         }
 
-        public List<ProcessOrdre> GetAll()
+        public static List<ProcessOrdre> GetAll()
         {
             List<ProcessOrdre> processOrdrer = new List<ProcessOrdre>();
             
@@ -82,7 +82,7 @@ namespace RURS.Persistency
             return processOrdrer;
         }
 
-        public bool Delete(int ID)
+        public static bool Delete(int ID)
         {
             bool sucess;
             using (HttpClient client = new HttpClient())

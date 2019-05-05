@@ -10,7 +10,7 @@ using RURS.Annotations;
 
 namespace RURS.Model
 {
-    class SelectedPOSingleton
+    public class SelectedPOSingleton
     {
 
         private static ProcessOrdre _processOrdreSingleTonInstans = null;
