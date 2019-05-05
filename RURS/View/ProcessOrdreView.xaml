@@ -5,22 +5,39 @@
     xmlns:local="using:RURS.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RURS.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+<Page.DataContext>
+        <viewModel:ProcessOrdreViewModel/>
+    </Page.DataContext>
+
     <Grid>
-        <StackPanel Orientation="Vertical" MaxWidth="500">
-            <TextBox Header="Processordre Nummber"/>
-            <TextBox Header="Færdigvare Nummer"/>
-            <DatePicker Header="Dato"/>
+        <StackPanel Orientation="Horizontal" Margin="4,0,-10,0">
+            <StackPanel Orientation="Vertical" MaxWidth="500">
+                <Button  Content="Hent existerende processordrer" />
+                <ListView 
+                    ItemsSource="{Binding DisplayProcessOrdres, Mode=TwoWay}" 
+                    SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}">
+                </ListView>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" MaxWidth="500">
+                <Button Content="Opret ny processordrer"/>
+                <TextBox Header="Processordre Nummber" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
+                <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
+                <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
     <Page.BottomAppBar>
         <AppBar FlowDirection="LeftToRight" IsOpen="True" IsSticky="true">
-            <StackPanel Orientation="Vertical">
-                <AppBarButton Label="" Icon="Add"/>
-                <AppBarButton/>
-            </StackPanel>
-        </AppBar>
+            <StackPanel Orientation="Horizontal" Width="500">
+                <AppBarButton HorizontalAlignment="Center"  Icon="save" Label="Åben">
+                </AppBarButton>
+                <AppBarButton HorizontalAlignment="Center"  Icon="add" Label="Gem">
+                </AppBarButton>
+        </StackPanel>
+    </AppBar>
     </Page.BottomAppBar>
 </Page>

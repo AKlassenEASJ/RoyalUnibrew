@@ -128,6 +128,7 @@
     <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="Handler\VaegtKontrolHandler.cs" />
     <Compile Include="Model\CheckboxHelper.cs" />
+    <Compile Include="Model\SlectedProcessOrdreSingleton.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
     <Compile Include="ViewModel\ProcessOrdreViewModel.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />

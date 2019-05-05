@@ -15,7 +15,14 @@ namespace ModelLibary.Models
         private int _kolonne;
         #endregion
 
+
         #region constructors
+
+        public ProcessOrdre()
+        {
+            _kolonne = 4;
+        }
+
         public ProcessOrdre(int processOrdre, int faerdigVareNr, DateTime dato)
         {
             _processOrdreNr = processOrdre;
@@ -50,6 +57,15 @@ namespace ModelLibary.Models
         }
         #endregion
 
+
+        #region Methods
+
+        public override string ToString()
+        {
+            return $"PO#: {ProcessOrdreNr}, FV#: {FaerdigVareNr}, Dato: {Dato}, Kolonne: {Kolonne} ";
+        }
+
+        #endregion Methods
 
     }
 }
