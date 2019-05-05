@@ -13,7 +13,11 @@ namespace RURS.Persistency
     {
         private const string URI = "http://localhost:60096/api/";
 
-
+        /// <summary>
+        /// Metode til at overføre en TappeKontrol til database
+        /// </summary>
+        /// <param name="NewTappeKontrol">En ny tappeKontrol</param>
+        /// <returns>Retunere en bool, om den er gået igennem til databasen </returns>
         public static bool Post(TappeKontrol NewTappeKontrol)
         {
             bool ok = true;
