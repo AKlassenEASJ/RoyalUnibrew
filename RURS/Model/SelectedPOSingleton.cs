@@ -42,19 +42,6 @@ namespace RURS.Model
                 
             }
         }
-
-        public void setDato(DateTime dato)
-        {
-            _processOrdreSingleTonInstans.Dato = dato;
-        }
-        public void setPONr(int processOrdreNummer)
-        {
-            _processOrdreSingleTonInstans.ProcessOrdreNr = processOrdreNummer;
-        }
-        public void setFVNr(int faerdigVareNummer)
-        {
-            _processOrdreSingleTonInstans.FaerdigVareNr = faerdigVareNummer;
-        }
         
     }
 }

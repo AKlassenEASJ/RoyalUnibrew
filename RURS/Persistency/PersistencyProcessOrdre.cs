@@ -81,5 +81,29 @@ namespace RURS.Persistency
 
             return processOrdrer;
         }
+
+        public bool Delete(int ID)
+        {
+            bool sucess;
+            using (HttpClient client = new HttpClient())
+            {
+
+                Task<HttpResponseMessage> responseTask = client.DeleteAsync($"{URI}/{ID}");
+
+                HttpResponseMessage response = responseTask.Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonStringRead = response.Content.ReadAsStringAsync().Result;
+                    sucess = JsonConvert.DeserializeObject<bool>(jsonStringRead);
+                }
+                else
+                {
+                    sucess = false;
+                }
+
+                return sucess;
+            }
+        }
     }
 }
