@@ -28,6 +28,9 @@
                 <TextBox Header="Processordre Nummber" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
                 <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
                 <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay}"/>
+                <Button Content="Gem Ordre"  Command="{Binding UploadCommand}"/>
+                <ListView 
+                    ItemsSource="{Binding OpenOrdreDisplay, Mode=TwoWay}" />
             </StackPanel>
         </StackPanel>
     </Grid>

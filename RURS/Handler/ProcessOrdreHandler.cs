@@ -12,6 +12,14 @@ namespace RURS.Handler
     public class ProcessOrdreHandler
     {
         private ProcessOrdreViewModel _vM;
+        private List<ProcessOrdre> _loadedProcessOrdrer;
+
+        public List<ProcessOrdre> LoadedProcessOrdrer
+        {
+            set => _loadedProcessOrdrer=value;
+            get {return _loadedProcessOrdrer;}
+        }
+
 
         public ProcessOrdreHandler(ProcessOrdreViewModel vM)
         {
@@ -20,8 +28,7 @@ namespace RURS.Handler
 
         public void Load()
         {
-            List<ProcessOrdre> LoadedProcessOrdrer;
-            LoadedProcessOrdrer=Persistency.PersistencyProcessOrdre.GetAll();
+            _loadedProcessOrdrer=Persistency.PersistencyProcessOrdre.GetAll();
 
             foreach (ProcessOrdre p in LoadedProcessOrdrer)
             {
@@ -33,18 +40,21 @@ namespace RURS.Handler
 
         public void Open()
         {
-            OpenInternal(_vM.SelectedProcessOrdre);
+            foreach (ProcessOrdre p in LoadedProcessOrdrer)
+            {
+                if (p.ToString()==_vM.SelectedProcessOrdre)
+                {
+                    Model.SelectedPOSingleton.POSingletonInstans = p;
+                    _vM.OpenOrdreDisplay = Model.SelectedPOSingleton.POSingletonInstans;
+                }
+            }
         }
 
 
         public void Upload()
         {
             ProcessOrdre processOrdre=_vM.OpretningProcessOrdre;
-
-            if (Persistency.PersistencyProcessOrdre.Post(processOrdre))
-            {
-                OpenInternal(_vM.OpretningProcessOrdre);
-            }
+            Persistency.PersistencyProcessOrdre.Post(processOrdre);
 
         }
 

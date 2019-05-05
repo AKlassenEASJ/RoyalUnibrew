@@ -18,16 +18,16 @@ namespace RURS.ViewModel
         
         private ObservableCollection<ProcessOrdre> _displayProcessOrdres;
 
-        private ProcessOrdre _selectedProcessOrdre;
+        private string _selectedProcessOrdre;
         private ProcessOrdre _opretningProcessOrdre;
         private ProcessOrdre _openOrdreDisplay;
 
-        public ICommand UplaodCommand { get; set; }
+        public ICommand UploadCommand { get; set; }
         public ICommand OpenCommand {get; set; }
         public ICommand LoadCommand { get; set; }
 
 
-        public ProcessOrdre SelectedProcessOrdre
+        public string SelectedProcessOrdre
         {
             get => _selectedProcessOrdre;
             set
@@ -75,12 +75,11 @@ namespace RURS.ViewModel
             handler = new ProcessOrdreHandler(this);
 
             _opretningProcessOrdre = new ProcessOrdre();
-            _selectedProcessOrdre = new ProcessOrdre();
             _displayProcessOrdres = new ObservableCollection<ProcessOrdre>();
-            SelectedProcessOrdre.Dato = DateTime.Today;
+            _opretningProcessOrdre.Dato = DateTime.Today;
 
             LoadCommand=new RelayCommand(handler.Load);
-            UplaodCommand = new RelayCommand(handler.Upload);
+            UploadCommand = new RelayCommand(handler.Upload);
             OpenCommand = new RelayCommand(handler.Open);
 
 
