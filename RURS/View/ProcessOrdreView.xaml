@@ -22,15 +22,16 @@
                     SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}"
                 >
                 </ListView>
+                <Button  Content="Åben Ordre" Command="{Binding OpenCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" MaxWidth="500">
-                <TextBlock Text="Opret ny processordrer" FontSize="20"/>
+                <TextBlock Text="Opret ny processordre" FontSize="20"/>
                 <TextBox Header="Processordre Nummber" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
                 <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
                 <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay}"/>
                 <Button Content="Gem Ordre"  Command="{Binding UploadCommand}"/>
-                <ListView 
-                    ItemsSource="{Binding OpenOrdreDisplay, Mode=TwoWay}" />
+                <TextBlock
+                    Text="{Binding OpenOrdreDisplay.ProcessOrdre2, Mode=TwoWay}" />
             </StackPanel>
         </StackPanel>
     </Grid>

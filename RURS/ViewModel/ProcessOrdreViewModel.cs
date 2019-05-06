@@ -8,6 +8,7 @@ using System.Windows.Input;
 using ModelLibary.Models;
 using RURS.Common;
 using RURS.Handler;
+using RURS.Model;
 
 namespace RURS.ViewModel
 {
@@ -18,16 +19,16 @@ namespace RURS.ViewModel
         
         private ObservableCollection<ProcessOrdre> _displayProcessOrdres;
 
-        private string _selectedProcessOrdre;
+        private ProcessOrdre _selectedProcessOrdre;
         private ProcessOrdre _opretningProcessOrdre;
-        private ProcessOrdre _openOrdreDisplay;
+        private SelectedPOSingleton _openOrdreDisplay;
 
         public ICommand UploadCommand { get; set; }
         public ICommand OpenCommand {get; set; }
         public ICommand LoadCommand { get; set; }
 
 
-        public string SelectedProcessOrdre
+        public ProcessOrdre SelectedProcessOrdre
         {
             get => _selectedProcessOrdre;
             set
@@ -56,15 +57,12 @@ namespace RURS.ViewModel
             }
         }
 
-        public ProcessOrdre OpenOrdreDisplay
+        public SelectedPOSingleton OpenOrdreDisplay
         {
-            get
-            {
-                return _openOrdreDisplay;
-            }
+            get { return _openOrdreDisplay;}
             set
             {
-                _openOrdreDisplay = value;
+                _openOrdreDisplay = value; 
                 OnPropertyChanged();
             }
         }
@@ -73,7 +71,8 @@ namespace RURS.ViewModel
         public ProcessOrdreViewModel()
         {
             handler = new ProcessOrdreHandler(this);
-
+            _openOrdreDisplay=SelectedPOSingleton.GetInstance();
+            
             _opretningProcessOrdre = new ProcessOrdre();
             _displayProcessOrdres = new ObservableCollection<ProcessOrdre>();
             _opretningProcessOrdre.Dato = DateTime.Today;

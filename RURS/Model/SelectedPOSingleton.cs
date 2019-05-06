@@ -16,6 +16,8 @@ namespace RURS.Model
         private static SelectedPOSingleton _processOrdreSingleTonInstans = null;
         private ProcessOrdre _processOrdre;
 
+        private SelectedPOSingleton()
+        { }
 
         private SelectedPOSingleton(ProcessOrdre processOrdre)
         {
@@ -24,7 +26,7 @@ namespace RURS.Model
             _processOrdre.ProcessOrdreNr = processOrdre.ProcessOrdreNr;
         }
 
-        public ProcessOrdre ProcessOrdre
+        public ProcessOrdre ProcessOrdre2
         {
             get
             {
@@ -38,12 +40,13 @@ namespace RURS.Model
         }
         
 
-        public static SelectedPOSingleton GetInstance(ProcessOrdre pO)
+        public static SelectedPOSingleton GetInstance()
         {
             if (_processOrdreSingleTonInstans == null)
             {
-                _processOrdreSingleTonInstans=new SelectedPOSingleton(pO);
+                _processOrdreSingleTonInstans=new SelectedPOSingleton();
             }
+
             return _processOrdreSingleTonInstans;
         }
 

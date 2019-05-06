@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
+using RURS.Model;
 using RURS.ViewModel;
 
 namespace RURS.Handler
@@ -13,6 +14,7 @@ namespace RURS.Handler
     {
         private ProcessOrdreViewModel _vM;
         private List<ProcessOrdre> _loadedProcessOrdrer;
+        
 
         public List<ProcessOrdre> LoadedProcessOrdrer
         {
@@ -30,7 +32,7 @@ namespace RURS.Handler
         {
             _loadedProcessOrdrer=Persistency.PersistencyProcessOrdre.GetAll();
 
-            foreach (ProcessOrdre p in LoadedProcessOrdrer)
+            foreach (ProcessOrdre p in _loadedProcessOrdrer)
             {
                 _vM.DisplayProcessOrdres.Add(p);
             }
@@ -40,14 +42,7 @@ namespace RURS.Handler
 
         public void Open()
         {
-            foreach (ProcessOrdre p in LoadedProcessOrdrer)
-            {
-                if (p.ToString()==_vM.SelectedProcessOrdre)
-                {
-                    Model.SelectedPOSingleton.POSingletonInstans = p;
-                    _vM.OpenOrdreDisplay = Model.SelectedPOSingleton.POSingletonInstans;
-                }
-            }
+            _vM.OpenOrdreDisplay.ProcessOrdre2 = _vM.SelectedProcessOrdre;
         }
 
 
@@ -57,12 +52,7 @@ namespace RURS.Handler
             Persistency.PersistencyProcessOrdre.Post(processOrdre);
 
         }
-
-        public void OpenInternal(ProcessOrdre processOrdre)
-        {
-            Model.SelectedPOSingleton.POSingletonInstans = processOrdre;
-            _vM.OpenOrdreDisplay = Model.SelectedPOSingleton.POSingletonInstans;
-        }
+        
 
 
 
