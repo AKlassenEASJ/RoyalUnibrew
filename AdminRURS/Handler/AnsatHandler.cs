@@ -13,7 +13,7 @@ namespace AdminRURS.Handler
 
         #region InstanceFields
 
-        private PersistenceAnsat persistence = new PersistenceAnsat();
+        private PersistenceAnsat _persistence = new PersistenceAnsat();
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace AdminRURS.Handler
         public async void Add()
         {
             AnsatViewModel.ProgressRingIsActive = true;
-            await persistence.Post(AnsatViewModel.NyAnsat);
+            await _persistence.Post(AnsatViewModel.NyAnsat);
             AnsatViewModel.ProgressRingIsActive = false;
         }
         
