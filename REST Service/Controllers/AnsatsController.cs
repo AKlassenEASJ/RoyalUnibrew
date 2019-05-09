@@ -40,8 +40,9 @@ namespace REST_Service.Controllers
         }
 
         // PUT: api/Ansats/5
-        public void Put(int id, [FromBody]string value)
+        public bool Put(string initialer, [FromBody]Ansat ansat)
         {
+            return _manager.Put(initialer, ansat);
         }
 
         // DELETE: api/Ansats/5
