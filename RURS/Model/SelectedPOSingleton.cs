@@ -10,38 +10,52 @@ using RURS.Annotations;
 
 namespace RURS.Model
 {
-    public class SelectedPOSingleton
+    public class SelectedPOSingleton : INotifyPropertyChanged
     {
 
-        private static ProcessOrdre _processOrdreSingleTonInstans = null;
+        private static SelectedPOSingleton _processOrdreSingleTonInstans = null;
+        private ProcessOrdre _processOrdre;
+
+        private SelectedPOSingleton()
+        { }
 
         private SelectedPOSingleton(ProcessOrdre processOrdre)
         {
-            _processOrdreSingleTonInstans.Dato = processOrdre.Dato;
-            _processOrdreSingleTonInstans.FaerdigVareNr = processOrdre.FaerdigVareNr;
-            _processOrdreSingleTonInstans.ProcessOrdreNr = processOrdre.ProcessOrdreNr;
+            _processOrdre.Dato = processOrdre.Dato;
+            _processOrdre.FaerdigVareNr = processOrdre.FaerdigVareNr;
+            _processOrdre.ProcessOrdreNr = processOrdre.ProcessOrdreNr;
         }
-        
 
-        public static ProcessOrdre POSingletonInstans
+        public ProcessOrdre ProcessOrdre2
         {
             get
             {
-                return _processOrdreSingleTonInstans;
+                return _processOrdre;
             }
             set
             {
-                if (_processOrdreSingleTonInstans == null)
-                {
-                    new SelectedPOSingleton(value);
-                }
-                else
-                {
-                    _processOrdreSingleTonInstans = value;
-                }
-                
+                _processOrdre = value;
+                OnPropertyChanged();
             }
         }
         
+
+        public static SelectedPOSingleton GetInstance()
+        {
+            if (_processOrdreSingleTonInstans == null)
+            {
+                _processOrdreSingleTonInstans=new SelectedPOSingleton();
+            }
+
+            return _processOrdreSingleTonInstans;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [ModelLibary.Annotations.NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
