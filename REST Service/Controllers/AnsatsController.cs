@@ -15,7 +15,7 @@ namespace REST_Service.Controllers
 
         #region Manager
 
-        AnsatManager manager = new AnsatManager();
+        private AnsatManager _manager = new AnsatManager();
 
         #endregion
 
@@ -30,13 +30,13 @@ namespace REST_Service.Controllers
         // GET: api/Ansats/5
         public Ansat Get(string initialer)
         {
-            return manager.Get(initialer);
+            return _manager.Get(initialer);
         }
 
         // POST: api/Ansats
         public bool Post([FromBody]Ansat ansat)
         {
-            return manager.Post(ansat);
+            return _manager.Post(ansat);
         }
 
         // PUT: api/Ansats/5
@@ -47,7 +47,7 @@ namespace REST_Service.Controllers
         // DELETE: api/Ansats/5
         public bool Delete(string initialer)
         {
-            return manager.Delete(initialer);
+            return _manager.Delete(initialer);
         }
     }
 }
