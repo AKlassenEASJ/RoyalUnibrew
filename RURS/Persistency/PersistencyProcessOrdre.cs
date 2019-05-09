@@ -1,56 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Chat;
-using Windows.System;
-using Windows.UI.Xaml;
 using ModelLibary.Models;
 using Newtonsoft.Json;
 
 namespace RURS.Persistency
 {
-    class PersistencyProcessOrdre
+    public class PersistencyProcessOrdre
     {
         private const string URI = "http://localhost:60096/api/ProcessOrdre";
 
-        public bool Post(ProcessOrdre processOrdre)
+        public static bool Post(ProcessOrdre processOrdre)
         {
             bool sucess=true;
 
             using (HttpClient client = new HttpClient())
             {
-                string SerializedProcessOrdre = JsonConvert.SerializeObject(processOrdre);
+                String SerializedProcessOrdre = JsonConvert.SerializeObject(processOrdre);
                 StringContent content = new StringContent(SerializedProcessOrdre, Encoding.UTF8, "application/json");
 
                 Task<HttpResponseMessage> postAsync = client.PostAsync(URI, content);
 
 
-                HttpResponseMessage resp = postAsync.Result;
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resps = postAsync.Result;
+                if (resps.IsSuccessStatusCode)
                 {
-                    string jsonResString = resp.Content.ReadAsStringAsync().Result;
+                    string jsonResString = resps.Content.ReadAsStringAsync().Result;
                     sucess = JsonConvert.DeserializeObject<bool>(jsonResString);
                 }
                 else
                 {
                     sucess = false;
                 }
-                
-                return sucess;
             }
-
-
-
-
 
             return sucess;
         }
 
-        public ProcessOrdre GetOne(int id)
+        public static ProcessOrdre GetOne(int id)
         {
             ProcessOrdre processOrdre = new ProcessOrdre();
 
@@ -66,7 +56,7 @@ namespace RURS.Persistency
             return processOrdre;
         }
 
-        public List<ProcessOrdre> GetAll()
+        public static List<ProcessOrdre> GetAll()
         {
             List<ProcessOrdre> processOrdrer = new List<ProcessOrdre>();
             
@@ -82,7 +72,7 @@ namespace RURS.Persistency
             return processOrdrer;
         }
 
-        public bool Delete(int ID)
+        public static bool Delete(int ID)
         {
             bool sucess;
             using (HttpClient client = new HttpClient())

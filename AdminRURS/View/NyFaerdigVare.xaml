@@ -5,10 +5,49 @@
     xmlns:local="using:AdminRURS.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:AdminRURS.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
 
+    <Page.DataContext>
+        <viewModel:FaerdigVareVM></viewModel:FaerdigVareVM>
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+    <ListView>
+        
+    </ListView>
+</Grid>
+
+        <Grid Grid.Column="1">
+            <StackPanel>
+                <TextBlock Text="Færdigvare nummer"></TextBlock>
+                <TextBox Text=""></TextBox>
+                <TextBlock Text="Færdigvare navn"></TextBlock>
+                <TextBox Text=""></TextBox>
+                
+                <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                <TextBlock Text="Max"></TextBlock>
+                <TextBlock Text="Snit"></TextBlock>
+                <TextBlock Text="Min"></TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Max værdi"></TextBlock>
+                    <TextBlock Text="Snit værdi"></TextBlock>
+                    <TextBlock Text="Min værdi"></TextBlock>
+                </StackPanel>
+                </StackPanel>
+
+                <Button Content="Opret"></Button>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
+
 </Page>

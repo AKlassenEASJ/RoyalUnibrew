@@ -12,23 +12,20 @@ namespace RURS.ViewModel
 {
     class VaegtKontrolViewModel : VMBase
     {
-        
-        private VaegtKontrol _selectedVaegtKontrol;
-
-
-
         public VaegtKontrolHandler VaegtKontrolHandler
         {
             get;
             set;
         }
-
-
+        
+        private VaegtKontrol _selectedVaegtKontrol;
+        
         public VaegtKontrolViewModel()
         {
             VaegtKontrolHandler = new VaegtKontrolHandler(this);
             OpretNyVaegtKontrolCommand = new RelayCommand(VaegtKontrolHandler.CreateVaegtKontrol);
         }
+
 
 
 
@@ -38,7 +35,7 @@ namespace RURS.ViewModel
             set;
         }
 
-
+        /*
         #region Bindings
         public int nyProcessOrdreNr
         {
@@ -58,7 +55,7 @@ namespace RURS.ViewModel
             set;
         }
         #endregion
-
+        */
 
         private VaegtKontrol _nyVaegtKontrol;
 

@@ -125,10 +125,12 @@
     </Compile>
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
+    <Compile Include="Handler\ProcessOrdreHandler.cs" />
     <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="Handler\VaegtKontrolHandler.cs" />
     <Compile Include="Model\CheckboxHelper.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
+    <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
     <Compile Include="Persistency\PersistencyProcessOrdre.cs" />
     <Compile Include="ViewModel\ProcessOrdreViewModel.cs" />
@@ -145,6 +147,9 @@
     </Compile>
     <Compile Include="View\TappeKontrolPage.xaml.cs">
       <DependentUpon>TappeKontrolPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VaegtKontrolView.xaml.cs">
+      <DependentUpon>VaegtKontrolView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TappeKontrolPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VaegtKontrolView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

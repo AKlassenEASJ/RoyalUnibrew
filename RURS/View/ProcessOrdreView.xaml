@@ -16,26 +16,31 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Margin="4,0,-10,0">
             <StackPanel Orientation="Vertical" MaxWidth="500">
-                <Button  Content="Hent existerende processordrer" />
+                <Button  Content="Indlæs ProcessOrdrer" Command="{Binding LoadCommand}"/>
                 <ListView 
                     ItemsSource="{Binding DisplayProcessOrdres, Mode=TwoWay}" 
-                    SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}">
+                    SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}"
+                >
                 </ListView>
+                <Button  Content="Åben Ordre" Command="{Binding OpenCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" MaxWidth="500">
-                <Button Content="Opret ny processordrer"/>
+                <TextBlock Text="Opret ny processordre" FontSize="20"/>
                 <TextBox Header="Processordre Nummber" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
                 <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
                 <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay}"/>
+                <Button Content="Gem Ordre"  Command="{Binding UploadCommand}"/>
+                <TextBlock
+                    Text="{Binding OpenOrdreDisplay.ProcessOrdre2, Mode=TwoWay}" />
             </StackPanel>
         </StackPanel>
     </Grid>
     <Page.BottomAppBar>
         <AppBar FlowDirection="LeftToRight" IsOpen="True" IsSticky="true">
-            <StackPanel Orientation="Horizontal" Width="500">
-                <AppBarButton HorizontalAlignment="Center"  Icon="save" Label="Åben">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="play" Label="Åben Ordre" Command="{Binding OpenCommand}">
                 </AppBarButton>
-                <AppBarButton HorizontalAlignment="Center"  Icon="add" Label="Gem">
+                <AppBarButton Icon="save" Label="Gem Ordre" Command="{Binding UplaodCommand}">
                 </AppBarButton>
         </StackPanel>
     </AppBar>
