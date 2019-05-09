@@ -65,10 +65,124 @@
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
                         <DatePicker YearVisible="False" ></DatePicker>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Printer 1"/>
+                                <TextBlock Text="*" Foreground="Red"/>
+                            </StackPanel>
+                            <Grid>
 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Column="0">
+                                    <TextBox/>
+
+                                </Grid>
+                                <Grid Column="1">
+                                    <TextBox/>
+                                </Grid>
+                            </Grid>
                         </StackPanel>
-                        </DataTemplate>
-                
+
+                        <StackPanel>
+                            <TextBlock Text="Printer 2"/>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Column="0">
+                                    <TextBox/>
+
+                                </Grid>
+                                <Grid Column="1">
+                                    <TextBox/>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Kontrol af stabelmønster"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Tjek og Kontrol af averylabel"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox/>
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Helheds indtryk"/>
+                                <TextBlock Text="*" Foreground="Red"/>
+                            </StackPanel>
+                            <ComboBox SelectedItem="{Binding}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Signatur"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox/>
+                    </StackPanel>
+                </DataTemplate>
+
+
+            </HubSection>
+
+            <HubSection Width="350">
+                <DataTemplate>
+                    <StackPanel Width="300">
+
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                            <TextBlock Text="Fyldehøjde Kontrol"/>
+                            <ComboBox SelectedItem="{Binding}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                            <TextBlock Text="Skridlim på Karton"/>
+                            <ComboBox SelectedItem="{Binding}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Kontrol af pu Tunnelpasteur"/>
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                                <Grid Column="0">
+                                    <TextBox Header="Venstre"/>
+                                </Grid>
+                                <Grid Column="1">
+                                    <TextBox Header="Midt"/>
+                                </Grid>
+                                <Grid Column="2">
+                                    <TextBox Header="Højre"/>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                        <TextBlock Text="Kontrol af palle nr"/>
+                        <TextBox/>
+                        <TextBlock Text="Tjek for fremmede dåser"/>
+                        <TextBlock Text="På baner og paller"/>
+                        <TextBox/>
+                        <TextBlock Text="I Karton"/>
+                        <TextBox/>
+
+                    </StackPanel>
+                </DataTemplate>
             </HubSection>
         </Hub>
     </Grid>
