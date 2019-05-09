@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="RURS.View.VaegtKontrolView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RURS.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel ="using:RURS.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:VaegtKontrolViewModel/>
+    </Page.DataContext>
+
+
+
+
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Hub Header="Vægt Kotrol"></Hub>
+
+            <ListView ItemsSource="" SelectedItem="{Binding}" Height="650" Margin="0,0,0,0" HorizontalAlignment="Left" Width="300">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="22" Text="Kontrol Nummer:  "></TextBlock>
+                            <TextBlock FontSize="22" Text="{Binding}" Margin="2,0,0,0"></TextBlock>
+                            <!--kontrol nummer-->
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="18" Text="Proces Ordre nummer:  "></TextBlock>
+                                <TextBlock FontSize="18" Text="{Binding}" Margin="2,0,0,0"></TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock FontSize="16" Text="Oprettet Dato/Tid:  "></TextBlock>
+                                <TextBlock FontSize="16" Text="{Binding}" Margin="2,0,0,0"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid Margin="25,0,1200,0" HorizontalAlignment="Stretch" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Nyt Kontrol Nr." VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Ny Proces Ordre" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding}"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Ny Dato/Tid"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding}"/>
+
+                <Button Grid.Row="3" Grid.Column="1" Content="Opret ny Kontrol" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

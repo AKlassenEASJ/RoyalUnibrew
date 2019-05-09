@@ -147,6 +147,9 @@
     <Compile Include="View\TappeKontrolPage.xaml.cs">
       <DependentUpon>TappeKontrolPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\VaegtKontrolView.xaml.cs">
+      <DependentUpon>VaegtKontrolView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TappeKontrolPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VaegtKontrolView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
