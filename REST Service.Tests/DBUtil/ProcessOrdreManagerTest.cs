@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ModelLibrary.Models;
+using ModelLibary.Models;
 using REST_Service.DBUtil;
 
 namespace REST_Service.Tests.DBUtil
@@ -12,14 +8,27 @@ namespace REST_Service.Tests.DBUtil
     [TestClass]
     public class ProcessOrdreManagerTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        #region InstanceFields
+        private ProcessOrdreManager _processOrdreManager;
+        private ProcessOrdre _processOrdre;
+        private bool _result;
+        #endregion
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            //Arrange
+            _processOrdreManager = new ProcessOrdreManager();
+            _processOrdre = new ProcessOrdre(9000000, 1, DateTime.Now);
+            _processOrdreManager.Delete(_processOrdre.ProcessOrdreNr);
 
-            //Act
+        }
 
-            //Assert
+
+        [TestMethod]
+        public void PostProcessOrdre()
+        {
+            _result = _processOrdreManager.Post(_processOrdre);
+            Assert.IsTrue(_result);
         }
     }
 }

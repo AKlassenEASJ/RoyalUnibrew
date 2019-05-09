@@ -10,11 +10,12 @@ namespace REST_Service.DBUtil
     public class ProcessOrdreManager
     {
         private const string ConnectionString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RURS TestDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestRoyalUni;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        private const string GETAll = "GET * FROM ProcessOrdre";
-        private const string GETONE = "GET * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
+        private const string GETAll = "SELECT * FROM ProcessOrdre";
+        private const string GETONE = "SELECT * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
         private const string INSERT = "INSERT INTO ProcessOrdre (Process_Ordre_Nr, Faerdigvare_Nr, Dato, Kolonne) VALUES (@Process_Ordre_Nr, @Faerdigvare_Nr, @Dato, @Kolonne)";
+        private const string DELETE = "DELETE FROM ProcessORdre WHERE Process_Ordre_Nr = @No";
 
         //GETALL: API/ProcessOrdre
         public IEnumerable<ProcessOrdre> Get()
@@ -55,7 +56,7 @@ namespace REST_Service.DBUtil
             return processOrdre;
         }
 
-        // POST: api/Bookings
+        // POST: api/ProcessOrdre
         public bool Post(ProcessOrdre processOrdre)
         {
             bool retValue;
@@ -64,7 +65,7 @@ namespace REST_Service.DBUtil
             connection.Open();
             SqlCommand cmd = new SqlCommand(INSERT, connection);
             cmd.Parameters.AddWithValue("@Process_Ordre_Nr", processOrdre.ProcessOrdreNr);
-            cmd.Parameters.AddWithValue("@Faerdivare_Nr", processOrdre.FaerdigVareNr);
+            cmd.Parameters.AddWithValue("@Faerdigvare_Nr", processOrdre.FaerdigVareNr);
             cmd.Parameters.AddWithValue("@Dato", processOrdre.Dato);
             cmd.Parameters.AddWithValue("@Kolonne", processOrdre.Kolonne);
 
@@ -76,6 +77,23 @@ namespace REST_Service.DBUtil
 
             return retValue;
         }
+
+        // Delete api/ProcessOrdre/5
+        public bool Delete(int processOrdreNr)
+        {
+            bool sucesss = true;
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand(DELETE, connection);
+            command.Parameters.AddWithValue("@No", processOrdreNr);
+
+            int rowsAffected = command.ExecuteNonQuery();
+            sucesss = rowsAffected == 1;
+
+            return sucesss;
+        }
+
 
         //Hjælpemetode
         private ProcessOrdre ReadProcessOrdre(SqlDataReader reader)

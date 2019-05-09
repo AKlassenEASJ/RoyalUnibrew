@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ModelLibary.Models;
 using RURS.Common;
+using RURS.Handler;
 
 namespace RURS.ViewModel
 {
     class VaegtKontrolViewModel : VMBase
     {
+        public VaegtKontrolHandler VaegtKontrolHandler
+        {
+            get;
+            set;
+        }
         
         private VaegtKontrol _selectedVaegtKontrol;
-
-
-
+        
         public VaegtKontrolViewModel()
         {
-            //OpretNyVaegtKontrolCommand = new RelayCommand(OpretVaegtKontrol);
+            VaegtKontrolHandler = new VaegtKontrolHandler(this);
+            OpretNyVaegtKontrolCommand = new RelayCommand(VaegtKontrolHandler.CreateVaegtKontrol);
         }
+
 
 
 
@@ -29,7 +35,7 @@ namespace RURS.ViewModel
             set;
         }
 
-
+        /*
         #region Bindings
         public int nyProcessOrdreNr
         {
@@ -49,17 +55,19 @@ namespace RURS.ViewModel
             set;
         }
         #endregion
+        */
 
+        private VaegtKontrol _nyVaegtKontrol;
 
+        public VaegtKontrol NyVaegtKontrol
+        {
+            get { return _nyVaegtKontrol; }
+            set { _nyVaegtKontrol = value; }
 
+        }
 
 
         #region Operatorer
-        public VaegtKontrol OpretVaegtKontrol
-        {
-            get;
-            set;
-        }
         public VaegtKontrol SelectedVaegtKontrol
         {
             get { return _selectedVaegtKontrol; }

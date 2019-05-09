@@ -12,6 +12,7 @@ namespace REST_Service.Controllers
     public class ProcessOrdreController : ApiController
     {
         ProcessOrdreManager manager = new ProcessOrdreManager();
+
         // GET: api/ProcessOrdre
         public IEnumerable<ProcessOrdre> Get()
         {
@@ -28,6 +29,12 @@ namespace REST_Service.Controllers
         public bool Post([FromBody]ProcessOrdre processOrdre)
         {
             return manager.Post(processOrdre);
+        }
+
+        //Delete: api/ProcessOrdre/5
+        public bool Delete(int processOrdreNr)
+        {
+            return manager.Delete(processOrdreNr);
         }
     }
 }

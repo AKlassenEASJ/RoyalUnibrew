@@ -37,6 +37,11 @@ namespace AdminRURS.Persistency
             return tempAnsat;
         }
 
+        /// <summary>
+        /// Formålet er at gemme en ansat i databasen
+        /// </summary>
+        /// <param name="ansatToPost"> Ansat der skal gemmes i databasen</param>
+        /// <returns>Returnerer en bool</returns>
         public async Task<bool> Post(Ansat ansatToPost)
         {
             bool status;
