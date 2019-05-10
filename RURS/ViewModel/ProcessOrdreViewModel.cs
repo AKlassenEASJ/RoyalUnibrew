@@ -16,7 +16,7 @@ namespace RURS.ViewModel
     {
 
         private ProcessOrdreHandler handler;
-        
+
         private ObservableCollection<ProcessOrdre> _displayProcessOrdres;
 
         private ProcessOrdre _selectedProcessOrdre;

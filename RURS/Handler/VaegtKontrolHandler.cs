@@ -22,13 +22,19 @@ namespace RURS.Handler
         public void CreateVaegtKontrol()
         {
             //skal oprettes async
-            int processOrdreNr = VaegtKontrolViewModel.ProcessOrdre.ProcessOrdreNr;
-            int kontrolNr = VaegtKontrolViewModel.NyVaegtKontrol.KontrolNr;
+            int processOrdreNr = Model.SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
+            int kontrolNr = 4;
             DateTime datoTid = DateTime.Now;
             VaegtKontrol aVaegtKontrol = new VaegtKontrol(processOrdreNr,kontrolNr,datoTid);
-
-
-
+            PersistencyVaegtKontrol pVaegtKontrol = new PersistencyVaegtKontrol();
+            bool success = pVaegtKontrol.Post(aVaegtKontrol);
+            if (success)
+            { //feedback på oprettelse
+              }
+            else
+            {
+                //feedback på fejl. message dialog
+            }
         }
 
 

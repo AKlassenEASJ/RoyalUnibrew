@@ -26,7 +26,7 @@ namespace RURS.Model
             _processOrdre.ProcessOrdreNr = processOrdre.ProcessOrdreNr;
         }
 
-        public ProcessOrdre ProcessOrdre2
+        public ProcessOrdre ActiveProcessOrdre
         {
             get
             {

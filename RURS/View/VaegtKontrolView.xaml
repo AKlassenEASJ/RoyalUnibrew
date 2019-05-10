@@ -19,15 +19,15 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Hub Header="Vægt Kotrol"></Hub>
-
-            <ListView ItemsSource="" SelectedItem="{Binding}" Height="650" Margin="0,0,0,0" HorizontalAlignment="Left" Width="300">
+            <TextBlock FontSize="32" Text="Vægt Kontrol" FontStyle="Italic" FontWeight="Bold"  Margin="41,0,2,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            
+            <!--<ListView ItemsSource="" SelectedItem="{Binding}" Margin="0,0,0,0" HorizontalAlignment="Left" Width="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontSize="22" Text="Kontrol Nummer:  "></TextBlock>
                             <TextBlock FontSize="22" Text="{Binding}" Margin="2,0,0,0"></TextBlock>
-                            <!--kontrol nummer-->
+                            --><!--kontrol nummer--><!--
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="18" Text="Proces Ordre nummer:  "></TextBlock>
                                 <TextBlock FontSize="18" Text="{Binding}" Margin="2,0,0,0"></TextBlock>
@@ -39,9 +39,10 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
 
-            <Grid Margin="25,0,1200,0" HorizontalAlignment="Stretch" >
+            <StackPanel>
+                <!--<Grid Margin="25,0,1200,0" HorizontalAlignment="Stretch" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -53,14 +54,19 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Nyt Kontrol Nr." VerticalAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding}"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedVaegtKontrol}"/>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Ny Proces Ordre" VerticalAlignment="Center"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding}"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Ny Dato/Tid"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding}"/>
 
-                <Button Grid.Row="3" Grid.Column="1" Content="Opret ny Kontrol" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
+            </Grid>-->
+
+
+
+
+                <Button Command="{Binding OpretNyVaegtKontrolCommand}" Content="Opret ny Kontrol" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
