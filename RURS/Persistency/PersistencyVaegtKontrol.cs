@@ -31,7 +31,7 @@ namespace RURS.Persistency
 
 
 
-        public static bool Post(VaegtKontrol vaegtKontrol)
+        public bool Post(VaegtKontrol vaegtKontrol)
         {
             bool ok = true;
 
