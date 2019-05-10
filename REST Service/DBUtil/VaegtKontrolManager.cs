@@ -24,7 +24,7 @@ namespace REST_Service.DBUtil
 
         #region SQL statements
         private const String GET = "SELECT * FROM VaegtKontrol";
-        private const String INSERT = "INSERT INTO VaegtKontrol (Process_Ordre_Nr, DatoTid, Vaegt_Kontrol_Nr) VALUES(@Process_Ordre_Nr, @DatoTid, @Vaegt_Kontrol_Nr)";
+        private const String INSERT = "INSERT INTO VaegtKontrol (Process_Ordre_Nr, Kontrol_Nr, Dato_Tid) VALUES(@Process_Ordre_Nr, @Kontrol_Nr, @Dato_Tid)";
         #endregion
 
 
@@ -62,8 +62,8 @@ namespace REST_Service.DBUtil
 
             SqlCommand cmd = new SqlCommand(INSERT, conn);
             cmd.Parameters.AddWithValue("@Process_Ordre_Nr", vaegtKontrol.ProcessOrdreNr);
-            cmd.Parameters.AddWithValue("@Vaegt_Kontrol_Nr", vaegtKontrol.KontrolNr);
-            cmd.Parameters.AddWithValue("@DatoTid", vaegtKontrol.DatoTid);
+            cmd.Parameters.AddWithValue("@Kontrol_Nr", vaegtKontrol.KontrolNr);
+            cmd.Parameters.AddWithValue("@Dato_Tid", vaegtKontrol.DatoTid);
 
             int rowsAffected = cmd.ExecuteNonQuery();
             retValue = rowsAffected == 1 ? true : false;
@@ -98,8 +98,8 @@ namespace REST_Service.DBUtil
             VaegtKontrol tempVaegtKontrol = new VaegtKontrol();
 
             tempVaegtKontrol.ProcessOrdreNr = reader.GetInt32(0);
-            tempVaegtKontrol.DatoTid = reader.GetDateTime(1);
-            tempVaegtKontrol.KontrolNr = reader.GetInt32(2);
+            tempVaegtKontrol.KontrolNr = reader.GetInt32(1);
+            tempVaegtKontrol.DatoTid = reader.GetDateTime(2);
 
             return tempVaegtKontrol;
 
