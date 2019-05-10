@@ -44,27 +44,27 @@
                             <TextBlock Text="Tidspunkt"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TimePicker ClockIdentifier="24HourClock" Time="{Binding TimeSpan, Mode=TwoWay}" MinuteIncrement="15" />
+                        <TimePicker ClockIdentifier="24HourClock" Time="{Binding TimeSpan, Mode=TwoWay}" MinuteIncrement="15"  ToolTipService.ToolTip="Skriv Tidspunktet"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Folie råvare nummer"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TextBox/>
+                        <TextBox ToolTipService.ToolTip="Skriv råvare nummeret ved opstart,&#x0d;&#x0a;ved i brugtagning af ny palle,&#x0d;&#x0a;samt min 1 gang i timen samtidig med&#x0d;&#x0a;bibloteksprøverne til&#x0d;&#x0a;Færdigvarekontrollen"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Katon råvare nummer"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TextBox/>
+                        <TextBox  ToolTipService.ToolTip="Skriv råvare nummeret ved opstart,&#x0d;&#x0a;ved i brugtagning af ny palle,&#x0d;&#x0a;samt min 1 gang i timen samtidig med&#x0d;&#x0a;bibloteksprøverne til&#x0d;&#x0a;Færdigvarekontrollen"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Holdbarheds dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <DatePicker YearVisible="False"></DatePicker>
+                        <DatePicker YearVisible="False" ToolTipService.ToolTip="Skriv råvare nummeret ved opstart,&#x0d;&#x0a;samt min 1 gang i timen samtidig med&#x0d;&#x0a;bibloteksprøverne til&#x0d;&#x0a;Færdigvarekontrollen"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
-                            <TextBlock Text="Holdbarheds dato"/>
+                            <TextBlock Text="produktions dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <DatePicker YearVisible="False" ></DatePicker>
+                        <DatePicker YearVisible="False" ToolTipService.ToolTip="Skriv produtions datoen"/>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Printer 1"/>
@@ -78,11 +78,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Column="0">
-                                    <TextBox/>
+                                    <TextBox ToolTipService.ToolTip="Skriv ProdunktionsDato"/>
 
                                 </Grid>
                                 <Grid Column="1">
-                                    <TextBox/>
+                                    <TextBox ToolTipService.ToolTip="Skriv Udløbsdato"/>
                                 </Grid>
                             </Grid>
                         </StackPanel>
@@ -97,11 +97,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Column="0">
-                                    <TextBox/>
+                                    <TextBox ToolTipService.ToolTip="Skriv ProdunktionsDato"/>
 
                                 </Grid>
                                 <Grid Column="1">
-                                    <TextBox/>
+                                    <TextBox ToolTipService.ToolTip="Skriv Udløbsdato"/>
                                 </Grid>
                             </Grid>
                         </StackPanel>
@@ -109,12 +109,12 @@
                             <TextBlock Text="Kontrol af stabelmønster"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TextBox/>
+                        <TextBox ToolTipService.ToolTip="Skriv mønsterkode&#x0d;&#x0a;Se produktspecifikation "/>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Tjek og Kontrol af averylabel"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TextBox/>
+                        <TextBox ToolTipService.ToolTip="Skriv Batch nummer"/>
                         <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Helheds indtryk"/>
