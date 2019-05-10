@@ -16,7 +16,7 @@ namespace RURS.Persistency
 
 
 
-        public async Task<List<VaegtKontrol>> GetAllAsync()
+        public async Task<List<VaegtKontrol>> GetAll()
         {
             List<VaegtKontrol> hoteller = new List<VaegtKontrol>();
             using (HttpClient client = new HttpClient())
