@@ -46,6 +46,7 @@ namespace RURS.HamburgerMenu
             //tilføj sider under her, ligesom oppeover
             NavigationItems.Add(new NavigationViewItem { Content = "Processordre", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(ProcessOrdreView) });
             NavigationItems.Add(new NavigationViewItem {Content = "Tappe Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(TappeKontrolPage)});
+            NavigationItems.Add(new NavigationViewItem {Content = "Vægt Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(VaegtKontrolView)});
         }
     }
 }
