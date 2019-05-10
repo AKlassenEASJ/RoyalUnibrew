@@ -42,7 +42,7 @@ namespace RURS.Handler
 
         public void Open()
         {
-            _vM.OpenOrdreDisplay.ProcessOrdre2 = _vM.SelectedProcessOrdre;
+            _vM.OpenOrdreDisplay.ActiveProcessOrdre = _vM.SelectedProcessOrdre;
         }
 
 
