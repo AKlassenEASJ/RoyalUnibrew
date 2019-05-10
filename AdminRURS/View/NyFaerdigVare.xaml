@@ -27,9 +27,9 @@
         <Grid Grid.Column="1">
             <StackPanel>
                 <TextBlock Text="Færdigvare nummer"></TextBlock>
-                <TextBox Text=""></TextBox>
+                <TextBox Text="{Binding SelectedFaerdigVare.FaerdigVare_Nr, Mode=TwoWay}"></TextBox>
                 <TextBlock Text="Færdigvare navn"></TextBlock>
-                <TextBox Text=""></TextBox>
+                <TextBox Text="{Binding SelectedFaerdigVare.FaerdigVareNavn, Mode=TwoWay}"></TextBox>
                 
                 <StackPanel Orientation="Horizontal">
                 <StackPanel>
@@ -38,13 +38,16 @@
                 <TextBlock Text="Min"></TextBlock>
                 </StackPanel>
                 <StackPanel>
-                    <TextBlock Text="Max værdi"></TextBlock>
-                    <TextBlock Text="Snit værdi"></TextBlock>
-                    <TextBlock Text="Min værdi"></TextBlock>
+                    <TextBox Text="{Binding SelectedFaerdigVare.Max, Mode=TwoWay}"></TextBox>
+                    <TextBox Text="{Binding SelectedFaerdigVare.Snit, Mode=TwoWay}"></TextBox>
+                    <TextBox Text="{Binding SelectedFaerdigVare.Min, Mode=TwoWay}"></TextBox>
                 </StackPanel>
                 </StackPanel>
 
-                <Button Content="Opret"></Button>
+                <StackPanel Orientation="Horizontal">
+                <Button Content="Opret" Command="{Binding CreateCommand}"></Button>
+                <Button Content="Rediger" Command="{Binding EditCommand}"></Button>
+                </StackPanel>
             </StackPanel>
             
         </Grid>

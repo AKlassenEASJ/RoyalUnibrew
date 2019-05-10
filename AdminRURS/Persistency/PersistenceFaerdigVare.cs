@@ -11,10 +11,10 @@ namespace RURS.Persistency
 {
     class PersistenceFaerdigVare
     {
-        private const string URI = "http://localhost:60096/api/faerdigvare";
+        private const string URI = "http://localhost:60096/api/FaerdigVares";
 
 
-        private bool Post(FaerdigVare faerdigVare)
+        public static bool Post(FaerdigVare faerdigVare)
         {
             bool ok = true;
 
@@ -39,7 +39,7 @@ namespace RURS.Persistency
             return ok;
         }
 
-        private bool Put(int FaerdigVare_Nr, FaerdigVare faerdigVare)
+        public static bool Put(int FaerdigVare_Nr, FaerdigVare faerdigVare)
         {
             bool ok = true;
 

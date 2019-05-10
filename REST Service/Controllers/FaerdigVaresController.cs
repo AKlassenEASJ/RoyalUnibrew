@@ -42,8 +42,9 @@ namespace REST_Service.Controllers
         }
 
     // PUT: api/FaerdigVares/5
-    public void Put(int id, [FromBody]string value)
+    public bool Put(int nummer, [FromBody]FaerdigVare faerdigVare)
         {
+            return manager.Put(nummer, faerdigVare);
         }
 
         // DELETE: api/FaerdigVares/5

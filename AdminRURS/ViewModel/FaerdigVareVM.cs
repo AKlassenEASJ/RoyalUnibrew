@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AdminRURS.Annotations;
 using AdminRURS.Common;
+using AdminRURS.Handler;
+using ModelLibary.Models;
 
 namespace AdminRURS.ViewModel
 {
-    public class FaerdigVareVM 
+    public class FaerdigVareVM : INotifyPropertyChanged
     {
 
         #region Instancefields
 
-        private ICommand _createCommand;
-
+        private FaerdigVare _selectedFaerdigVare;
+    
 
 
         #endregion
@@ -25,29 +27,46 @@ namespace AdminRURS.ViewModel
         #region Properties      
 
         public ICommand CreateCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+        public FaerdigVareHandler Handler { get; set; }
+
+        public FaerdigVare SelectedFaerdigVare
+        {
+            get { return _selectedFaerdigVare; }
+            set
+            {
+                _selectedFaerdigVare = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
         #region Constructer
-
+        // Uncomment
         public FaerdigVareVM()
         {
-            CreateCommand = new RelayCommand();
+            // EditCommand = new RelayCommand();
+            Handler = new FaerdigVareHandler(this);
+            CreateCommand = new RelayCommand(Handler.Create);
+            
         }
 
         #endregion
 
         #region Methods
 
-        
+
         #endregion
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-
-
-
-
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
  
