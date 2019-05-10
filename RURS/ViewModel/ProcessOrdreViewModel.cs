@@ -21,7 +21,7 @@ namespace RURS.ViewModel
 
         private ProcessOrdre _selectedProcessOrdre;
         private ProcessOrdre _opretningProcessOrdre;
-        private SelectedPOSingleton _openOrdreDisplay;
+        private ActivePOSingleton _openOrdreDisplay;
 
         public ICommand UploadCommand { get; set; }
         public ICommand OpenCommand {get; set; }
@@ -57,7 +57,7 @@ namespace RURS.ViewModel
             }
         }
 
-        public SelectedPOSingleton OpenOrdreDisplay
+        public ActivePOSingleton OpenOrdreDisplay
         {
             get { return _openOrdreDisplay;}
             set
@@ -71,7 +71,7 @@ namespace RURS.ViewModel
         public ProcessOrdreViewModel()
         {
             handler = new ProcessOrdreHandler(this);
-            _openOrdreDisplay=SelectedPOSingleton.GetInstance();
+            _openOrdreDisplay=ActivePOSingleton.GetInstance();
             
             _opretningProcessOrdre = new ProcessOrdre();
             _displayProcessOrdres = new ObservableCollection<ProcessOrdre>();

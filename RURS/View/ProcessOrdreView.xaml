@@ -5,12 +5,12 @@
     xmlns:local="using:RURS.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="using:RURS.ViewModel"
+    xmlns:ViewModel="using:RURS.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 <Page.DataContext>
-        <viewModel:ProcessOrdreViewModel/>
+        <ViewModel:ProcessOrdreViewModel/>
     </Page.DataContext>
 
     <Grid>
@@ -35,14 +35,4 @@
             </StackPanel>
         </StackPanel>
     </Grid>
-    <Page.BottomAppBar>
-        <AppBar FlowDirection="LeftToRight" IsOpen="True" IsSticky="true">
-            <StackPanel Orientation="Horizontal">
-                <AppBarButton Icon="play" Label="Åben Ordre" Command="{Binding OpenCommand}">
-                </AppBarButton>
-                <AppBarButton Icon="save" Label="Gem Ordre" Command="{Binding UplaodCommand}">
-                </AppBarButton>
-        </StackPanel>
-    </AppBar>
-    </Page.BottomAppBar>
 </Page>

@@ -38,6 +38,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ActivePOSingleton.cs" />
     <Compile Include="Models\Ansat.cs" />
     <Compile Include="Models\FaerdigVare.cs" />
     <Compile Include="Models\ProcessOrdre.cs" />

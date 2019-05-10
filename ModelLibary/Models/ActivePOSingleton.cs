@@ -5,26 +5,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using ModelLibary.Models;
-using RURS.Annotations;
 
-namespace RURS.Model
+namespace ModelLibary.Models
 {
-    public class SelectedPOSingleton : INotifyPropertyChanged
+    public class ActivePOSingleton
     {
 
-        private static SelectedPOSingleton _processOrdreSingleTonInstans = null;
+        private static ActivePOSingleton _processOrdreSingleTonInstans = null;
         private ProcessOrdre _processOrdre;
 
-        private SelectedPOSingleton()
+        private ActivePOSingleton()
         { }
-
-        private SelectedPOSingleton(ProcessOrdre processOrdre)
-        {
-            _processOrdre.Dato = processOrdre.Dato;
-            _processOrdre.FaerdigVareNr = processOrdre.FaerdigVareNr;
-            _processOrdre.ProcessOrdreNr = processOrdre.ProcessOrdreNr;
-        }
 
         public ProcessOrdre ActiveProcessOrdre
         {
@@ -38,13 +29,13 @@ namespace RURS.Model
                 OnPropertyChanged();
             }
         }
-        
 
-        public static SelectedPOSingleton GetInstance()
+
+        public static ActivePOSingleton GetInstance()
         {
             if (_processOrdreSingleTonInstans == null)
             {
-                _processOrdreSingleTonInstans=new SelectedPOSingleton();
+                _processOrdreSingleTonInstans = new ActivePOSingleton();
             }
 
             return _processOrdreSingleTonInstans;
