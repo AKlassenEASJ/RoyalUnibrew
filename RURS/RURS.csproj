@@ -134,6 +134,7 @@
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
     <Compile Include="Persistency\PersistencyProcessOrdre.cs" />
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />
+    <Compile Include="ViewModel\PakkeKontrolViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreViewModel.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />

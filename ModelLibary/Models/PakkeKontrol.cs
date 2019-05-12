@@ -9,7 +9,7 @@ namespace ModelLibary.Models
     /// <summary>
     /// Klasse til Pakke kontrollen
     /// </summary>
-    class PakkeKontrol
+    public class PakkeKontrol
     {
         #region InstanceFields
         private int _prosessOrderNr;
