@@ -125,7 +125,7 @@
                                 <TextBlock Text="Helheds indtryk"/>
                                 <TextBlock Text="*" Foreground="Red"/>
                             </StackPanel>
-                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.HelhedsIndtryk, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.HelhedsIndtryk, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[helhed].Index, Mode=TwoWay}">
                                 <x:String>OK</x:String>
                                 <x:String>IKKE OK</x:String>
                             </ComboBox>
@@ -145,16 +145,16 @@
                 <DataTemplate>
                     <StackPanel Width="300">
 
-                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                        <StackPanel ToolTipService.ToolTip="Se instruktion&#x0d;&#x0a;IN_12.061.300.444" Margin="0 10">
                             <TextBlock Text="Fyldehøjde Kontrol"/>
-                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.FyldeHojdeKontrol, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.FyldeHojdeKontrol, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[FyldeHøjde].Index, Mode=TwoWay}">
                                 <x:String>OK</x:String>
                                 <x:String>IKKE OK</x:String>
                             </ComboBox>
                         </StackPanel>
-                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                        <StackPanel ToolTipService.ToolTip="tjekkes ved opstart og produktskifte" Margin="0 10">
                             <TextBlock Text="Skridlim på Karton"/>
-                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.SkridlimKarton, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding CheckHelpers[0].Index, Mode=TwoWay}">
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.SkridlimKarton, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[SkridLim].Index, Mode=TwoWay}">
                                 <x:String>OK</x:String>
                                 <x:String>IKKE OK</x:String>
                             </ComboBox>

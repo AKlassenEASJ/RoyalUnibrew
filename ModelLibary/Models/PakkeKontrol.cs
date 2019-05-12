@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ModelLibary.Annotations;
 
 namespace ModelLibary.Models
 {
     /// <summary>
     /// Klasse til Pakke kontrollen
     /// </summary>
-    public class PakkeKontrol
+    public class PakkeKontrol : INotifyPropertyChanged
     {
         #region InstanceFields
         private int _prosessOrderNr;
@@ -77,8 +80,17 @@ namespace ModelLibary.Models
 
         public DateTime ProduktionsDato
         {
-            get => _produktionsDato;
-            set => _produktionsDato = value;
+            get
+            {
+                return
+                    _produktionsDato;
+            }
+            set
+            {
+                _produktionsDato = value; 
+                OnPropertyChanged();
+            }
+
         }
 
         public string Print1ProDato
@@ -208,5 +220,12 @@ namespace ModelLibary.Models
 
         #endregion
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

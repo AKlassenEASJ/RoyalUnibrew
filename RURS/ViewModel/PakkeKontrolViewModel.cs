@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
+using RURS.Model;
 
 namespace RURS.ViewModel
 {
@@ -33,7 +34,23 @@ namespace RURS.ViewModel
             }
         }
 
+        public Dictionary<string, CheckboxHelper> Helpers { get; set; }
 
+        public PakkeKontrolViewModel()
+        {
+            SelectedPakkeKontrol = new PakkeKontrol() {ProduktionsDato = DateTime.Now.Date};
+            Helpers = new Dictionary<string, CheckboxHelper>();
+            addHeplers();
+            TimeSpan = DateTime.Now.TimeOfDay;
+            TimeSpan.FromMinutes(15);
+        }
+
+        private void addHeplers()
+        {
+            Helpers.Add("helhed", new CheckboxHelper());
+            Helpers.Add("FyldeHøjde", new CheckboxHelper());
+            Helpers.Add("SkridLim", new CheckboxHelper());
+        }
 
     }
 }
