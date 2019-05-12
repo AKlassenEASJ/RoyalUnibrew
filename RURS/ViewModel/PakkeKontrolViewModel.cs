@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
+using RURS.Handler;
 using RURS.Model;
 
 namespace RURS.ViewModel
@@ -35,9 +36,11 @@ namespace RURS.ViewModel
         }
 
         public Dictionary<string, CheckboxHelper> Helpers { get; set; }
+        public PakkeKontrolHandler Handler { get; set; }
 
         public PakkeKontrolViewModel()
         {
+            Handler = new PakkeKontrolHandler(this);
             SelectedPakkeKontrol = new PakkeKontrol() {ProduktionsDato = DateTime.Now.Date};
             Helpers = new Dictionary<string, CheckboxHelper>();
             addHeplers();
