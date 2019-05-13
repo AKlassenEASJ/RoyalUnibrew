@@ -61,9 +61,7 @@ namespace AdminRURS.Handler
 
         private void ClearNyAnsat()
         {
-            AnsatViewModel.NyAnsat.Initial = null;
-            AnsatViewModel.NyAnsat.Navn = null;
-            AnsatViewModel.NyAnsat.Id = 0;
+            AnsatViewModel.NyAnsat = new Ansat();
         }
 
         #endregion
