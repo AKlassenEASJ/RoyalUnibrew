@@ -74,16 +74,19 @@ namespace ModelLibary.Models
 
         public DateTime HoldbarhedsDato
         {
-            get => _holdbarhedsDato;
-            set => _holdbarhedsDato = value;
+            get { return _holdbarhedsDato; }
+            set
+            {
+                _holdbarhedsDato = value;
+                OnPropertyChanged();
+            }
         }
 
         public DateTime ProduktionsDato
         {
             get
             {
-                return
-                    _produktionsDato;
+                return _produktionsDato;
             }
             set
             {
@@ -131,32 +134,64 @@ namespace ModelLibary.Models
 
         public string KontrolStabelMonster
         {
-            get => _kontrolStabelMonster;
-            set => _kontrolStabelMonster = value;
+            get
+            {
+               return _kontrolStabelMonster;
+            }
+            set
+            {
+                _kontrolStabelMonster = value; 
+                OnPropertyChanged();
+            }
         }
 
         public string KontrolAverylable
         {
-            get => _kontrolAverylable;
-            set => _kontrolAverylable = value;
+            get { return _kontrolAverylable;}
+            set
+            {
+                _kontrolAverylable = value; 
+                OnPropertyChanged();
+            }
         }
 
         public double PuTunnelV
         {
-            get => _puTunnelV;
-            set => _puTunnelV = value;
+            get
+            {
+                return _puTunnelV;
+            }
+            set
+            {
+                _puTunnelV = value; 
+                OnPropertyChanged();
+            }
         }
 
         public double PuTunnelM
         {
-            get => _puTunnelM;
-            set => _puTunnelM = value;
+            get
+            {
+                return _puTunnelM;
+            }
+            set
+            {
+                _puTunnelM = value;
+                OnPropertyChanged();
+            }
         }
 
         public double PuTunnelH
         {
-            get => _puTunnelH;
-            set => _puTunnelH = value;
+            get
+            {
+                return _puTunnelH;
+            }
+            set
+            {
+                _puTunnelH = value;
+                OnPropertyChanged();
+            }
         }
 
         public string HelhedsIndtryk
@@ -167,8 +202,12 @@ namespace ModelLibary.Models
 
         public int KontrolPalleNr
         {
-            get => _kontrolPalleNr;
-            set => _kontrolPalleNr = value;
+            get { return _kontrolPalleNr; }
+            set
+            {
+                _kontrolPalleNr = value;
+                OnPropertyChanged();
+            }
         }
 
         public string FremmedDaaserKarton

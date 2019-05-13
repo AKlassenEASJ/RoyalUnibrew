@@ -64,7 +64,7 @@
                             <TextBlock Text="Holdbarheds dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <DatePicker Date="{Binding SelectedPakkeKontrol.HoldbarhedsDato.Date, Mode=TwoWay}"   YearVisible="False" ToolTipService.ToolTip="Skriv råvare nummeret ved opstart,&#x0d;&#x0a;samt min 1 gang i timen samtidig med&#x0d;&#x0a;bibloteksprøverne til&#x0d;&#x0a;Færdigvarekontrollen"/>
+                        <DatePicker Date="{Binding SelectedPakkeKontrol.HoldbarhedsDato.Date, Mode=TwoWay}"   YearVisible="False" ToolTipService.ToolTip="Skriv Holdbarheds datoen"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="produktions dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
@@ -180,11 +180,23 @@
                         </StackPanel>
                         <TextBlock Text="Kontrol af palle nr"/>
                         <TextBox Text="{Binding SelectedPakkeKontrol.KontrolPalleNr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv palle nummer"/>
-                        <TextBlock Text="Tjek for fremmede dåser"/>
-                        <TextBlock Text="På baner og paller"/>
-                        <TextBox Text="{Binding SelectedPakkeKontrol.PaaBanerPaller, Mode=TwoWay}" ToolTipService.ToolTip="Ved opstart og produktionsskifte"/>
-                        <TextBlock Text="I Karton"/>
-                        <TextBox Text="{Binding SelectedPakkeKontrol.FremmedDaaserKarton}" ToolTipService.ToolTip="Ved opstart og produktionsskifte"/>
+                        
+                        <StackPanel ToolTipService.ToolTip="Ved opstart og produktionsskifte" Margin="0 10">
+                            <TextBlock Text="Tjek for fremmede dåser"/>
+                            <TextBlock Text="På baner og paller"/>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.PaaBanerPaller, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[FremDPaller].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Ved opstart og produktionsskifte" Margin="0">
+                            <TextBlock Text="I Karton"/>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.FremmedDaaserKarton}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[FremDkarton].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                       
 
                     </StackPanel>
                 </DataTemplate>
