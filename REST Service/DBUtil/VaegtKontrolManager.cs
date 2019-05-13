@@ -23,21 +23,21 @@ namespace REST_Service.DBUtil
 
 
         #region SQL statements
-        private const String GET = "SELECT * FROM VaegtKontrol";
+        private const String GETALL = "SELECT * FROM VaegtKontrol";
+        private const String GETONE = "SELECT * FROM VaegtKontrol WHERE Kontrol_Nr = @ID";
         private const String INSERT = "INSERT INTO VaegtKontrol (Process_Ordre_Nr, Kontrol_Nr, Dato_Tid) VALUES(@Process_Ordre_Nr, @Kontrol_Nr, @Dato_Tid)";
-        #endregion
+       #endregion
 
 
         #region Metoder
-        // GET: api/VaegtKontrolManager
+        //GETALL: api/VaegtKontrolManager
         public IEnumerable<VaegtKontrol> Get()
         {
             List<VaegtKontrol> liste = new List<VaegtKontrol>();
 
             SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
-
-            SqlCommand cmd = new SqlCommand(GET, conn);
+            SqlCommand cmd = new SqlCommand(GETALL, conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -46,11 +46,28 @@ namespace REST_Service.DBUtil
                 liste.Add(vaegtKontrol);
             }
             conn.Close();
-
-
             return liste;
         }
       
+        // GET: api/VaegtKontrolManager/5
+        public VaegtKontrol Get(int idNr)
+        {
+            VaegtKontrol vaegtKontrol = null;
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(GETONE, connection);
+            cmd.Parameters.AddWithValue("@ID", idNr);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                vaegtKontrol = ReadVaegtKontrol(reader);
+            }
+            connection.Close();
+            return vaegtKontrol;
+        }
 
         // POST: api/VaegtKontrolManager
         public bool Post(VaegtKontrol vaegtKontrol)
@@ -73,12 +90,6 @@ namespace REST_Service.DBUtil
         }
         
         #region Ubrugte metoder
-        // GET: api/VaegtKontrolManager/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-        
         // PUT: api/VaegtKontrolManager/5
         public void Put(int id, [FromBody]string value)
         {

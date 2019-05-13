@@ -13,6 +13,7 @@ namespace RURS.Handler
     class VaegtKontrolHandler
     {
         public VaegtKontrolViewModel VaegtKontrolViewModel { get; set; }
+        private List<VaegtKontrol> _loadedVaegtKontroller;
 
         public VaegtKontrolHandler(VaegtKontrolViewModel vaegtKontrolViewModel)
         {
@@ -30,13 +31,45 @@ namespace RURS.Handler
             bool success = pVaegtKontrol.Post(aVaegtKontrol);
             if (success)
             { //feedback på oprettelse
-              }
+            }
             else
             {
                 //feedback på fejl. message dialog
             }
         }
 
+
+        public List<VaegtKontrol> LoadedVaegtKontroller
+        {
+            set => _loadedVaegtKontroller = value;
+            get { return _loadedVaegtKontroller; }
+        }
+
+
+        public void Load()
+        {
+            _loadedVaegtKontroller = Persistency.PersistencyProcessOrdre.GetAll();
+
+            foreach (VaegtKontrol i in _loadedVaegtKontroller)
+            {
+                VaegtKontrolViewModel.DisplayProcessOrdres.Add(p);
+            }
+
+        }
+
+
+        public void Open()
+        {
+            _vM.OpenOrdreDisplay.ActiveProcessOrdre = _vM.SelectedProcessOrdre;
+        }
+
+
+        public void Upload()
+        {
+            ProcessOrdre processOrdre = _vM.OpretningProcessOrdre;
+            Persistency.PersistencyProcessOrdre.Post(processOrdre);
+
+        }
 
 
     }

@@ -18,16 +18,28 @@ namespace RURS.Persistency
 
         public async Task<List<VaegtKontrol>> GetAll()
         {
-            List<VaegtKontrol> hoteller = new List<VaegtKontrol>();
+            List<VaegtKontrol> vaegtKontrols = new List<VaegtKontrol>();
             using (HttpClient client = new HttpClient())
             {
                 Task<string> resTask = client.GetStringAsync(URI);
                 await resTask;
                 String jsonStr = resTask.Result;
-                hoteller = JsonConvert.DeserializeObject<List<VaegtKontrol>>(jsonStr);
+                vaegtKontrols = JsonConvert.DeserializeObject<List<VaegtKontrol>>(jsonStr);
             }
-            return hoteller;
+            return vaegtKontrols;
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

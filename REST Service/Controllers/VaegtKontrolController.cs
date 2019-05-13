@@ -19,7 +19,12 @@ namespace REST_Service.Controllers
         {
             return manager.Get();
         }
-
+        
+        // GET: api/VaegtKontrol/5
+        public VaegtKontrol Get(int Kontrol_Nr)
+        {
+            return manager.Get(Kontrol_Nr);
+        }
 
         // POST: api/VaegtKontrol
         public bool Post([FromBody]VaegtKontrol value)
@@ -28,12 +33,8 @@ namespace REST_Service.Controllers
         }
         
         #region Ubrugte
-
-        // GET: api/VaegtKontrol/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        
+        
         // PUT: api/VaegtKontrol/5
         public void Put(int id, [FromBody]string value)
         {
