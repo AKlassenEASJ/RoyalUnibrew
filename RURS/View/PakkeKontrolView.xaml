@@ -64,12 +64,12 @@
                             <TextBlock Text="Holdbarheds dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <DatePicker Date="{Binding SelectedPakkeKontrol.HoldbarhedsDato.Date, Mode=TwoWay}"   YearVisible="False" ToolTipService.ToolTip="Skriv Holdbarheds datoen"/>
+                        <DatePicker Date="{Binding HoldbarhedsDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv Holdbarheds datoen"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="produktions dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <DatePicker Date="{Binding ProduktionsDato, Mode=TwoWay}" YearVisible="False" ToolTipService.ToolTip="Skriv produtions datoen"/>
+                        <DatePicker Date="{Binding ProduktionsDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv produtions datoen"/>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Printer 1"/>

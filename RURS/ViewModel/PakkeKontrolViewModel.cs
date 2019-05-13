@@ -19,6 +19,8 @@ namespace RURS.ViewModel
 
         private DateTimeOffset _produktionsDato;
 
+        private DateTimeOffset _holdbarhedsDato;
+
         public PakkeKontrol SelectedPakkeKontrol
         {
             get { return _selectedPakkeKontrol; }
@@ -49,6 +51,16 @@ namespace RURS.ViewModel
             }
         }
 
+        public DateTimeOffset HoldbarhedsDato
+        {
+            get { return _holdbarhedsDato; }
+            set
+            {
+                _holdbarhedsDato = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Dictionary<string, CheckboxHelper> Helpers { get; set; }
         public PakkeKontrolHandler Handler { get; set; }
         public ICommand ClearCommand { get; set; }
@@ -62,6 +74,7 @@ namespace RURS.ViewModel
             TimeSpan = DateTime.Now.TimeOfDay;
             TimeSpan.FromMinutes(15);
             ProduktionsDato = DateTimeOffset.Now;
+            HoldbarhedsDato = DateTime.Now.AddYears(1).AddMonths(6).AddDays(1);
             ClearCommand = new RelayCommand(Handler.Clear);
         }
 
