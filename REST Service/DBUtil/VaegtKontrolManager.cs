@@ -26,7 +26,8 @@ namespace REST_Service.DBUtil
         private const String GETALL = "SELECT * FROM VaegtKontrol";
         private const String GETONE = "SELECT * FROM VaegtKontrol WHERE Kontrol_Nr = @ID";
         private const String INSERT = "INSERT INTO VaegtKontrol (Process_Ordre_Nr, Kontrol_Nr, Dato_Tid) VALUES(@Process_Ordre_Nr, @Kontrol_Nr, @Dato_Tid)";
-       #endregion
+        private const String GETMAX = "SELECT * FROM hentMaxKontrol_Nr WHERE Process_Ordre_Nr = @PODID";
+        #endregion
 
 
         #region Metoder
@@ -68,6 +69,29 @@ namespace REST_Service.DBUtil
             connection.Close();
             return vaegtKontrol;
         }
+
+
+        // incremment get
+        public int Getmax(int idNr)
+        {
+            int vaegtKontrol = 0;
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(GETMAX, connection);
+            cmd.Parameters.AddWithValue("@PODID", idNr);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                vaegtKontrol = reader.GetInt32(0);
+            }
+            connection.Close();
+            return vaegtKontrol;
+        }
+
+
 
         // POST: api/VaegtKontrolManager
         public bool Post(VaegtKontrol vaegtKontrol)

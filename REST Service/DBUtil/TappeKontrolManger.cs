@@ -43,8 +43,8 @@ namespace REST_Service.DBUtil
             {
                 ProcessOrderNr = reader.GetInt32(0),
                 Tidspunkt = reader.GetDateTime(1),
-                Daasenr = reader.GetInt32(2),
-                Laagnr = reader.GetInt32(3),
+                DaaseNr = reader.GetInt32(2),
+                LaagNr = reader.GetInt32(3),
                 Helhed = TjekStringNull(reader, 4),
                 KameraTjek = TjekStringNull(reader, 5),
                 Ccp = TjekStringNull(reader, 6),
@@ -103,8 +103,8 @@ namespace REST_Service.DBUtil
             SqlCommand cmd = new SqlCommand(INSERT, conn);
             cmd.Parameters.AddWithValue("@Process_Ordre_Nr", tappeKontrol.ProcessOrderNr);
             cmd.Parameters.AddWithValue("@Tidspunkt", tappeKontrol.Tidspunkt);
-            cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.Daasenr);
-            cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.Laagnr);
+            cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.DaaseNr);
+            cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.LaagNr);
             cmd.Parameters.AddWithValue("@Helhed", tappeKontrol.Helhed == null ? (object)DBNull.Value: tappeKontrol.Helhed);
             cmd.Parameters.AddWithValue("@Kamera_Tjek", tappeKontrol.KameraTjek == null ? (object)DBNull.Value : tappeKontrol.KameraTjek);
             cmd.Parameters.AddWithValue("@CCP", tappeKontrol.Ccp == null ? (object)DBNull.Value : tappeKontrol.Ccp);

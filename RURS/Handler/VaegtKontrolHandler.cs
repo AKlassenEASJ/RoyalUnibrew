@@ -18,19 +18,22 @@ namespace RURS.Handler
         public VaegtKontrolHandler(VaegtKontrolViewModel vaegtKontrolViewModel)
         {
             VaegtKontrolViewModel = vaegtKontrolViewModel;
+
         }
 
         public void CreateVaegtKontrol()
         {
             //skal oprettes async
             int processOrdreNr = Model.SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
-            int kontrolNr = 4;
+            int maxKontrol = PersistencyVaegtKontrol.GetMax(processOrdreNr).Result;
+            int kontrolNr = maxKontrol++;
             DateTime datoTid = DateTime.Now;
             VaegtKontrol aVaegtKontrol = new VaegtKontrol(processOrdreNr,kontrolNr,datoTid);
             PersistencyVaegtKontrol pVaegtKontrol = new PersistencyVaegtKontrol();
             bool success = pVaegtKontrol.Post(aVaegtKontrol);
             if (success)
-            { //feedback på oprettelse
+            { 
+                //feedback på oprettelse
             }
             else
             {
@@ -45,14 +48,15 @@ namespace RURS.Handler
             get { return _loadedVaegtKontroller; }
         }
 
-
+        /*
+        //igangværende analyse af thomasses tilgang til listview
         public void Load()
         {
-            _loadedVaegtKontroller = Persistency.PersistencyProcessOrdre.GetAll();
+            _loadedVaegtKontroller = Persistency.PersistencyVaegtKontrol.GetAll();
 
             foreach (VaegtKontrol i in _loadedVaegtKontroller)
             {
-                VaegtKontrolViewModel.DisplayProcessOrdres.Add(p);
+                VaegtKontrolViewModel.DisplayVaegtKontrol.Add(i);
             }
 
         }
@@ -60,7 +64,7 @@ namespace RURS.Handler
 
         public void Open()
         {
-            _vM.OpenOrdreDisplay.ActiveProcessOrdre = _vM.SelectedProcessOrdre;
+            _loadedVaegtKontroller.OpenOrdreDisplay.ActiveProcessOrdre = _loadedVaegtKontroller.;
         }
 
 
@@ -70,7 +74,7 @@ namespace RURS.Handler
             Persistency.PersistencyProcessOrdre.Post(processOrdre);
 
         }
-
+        */
 
     }
 }

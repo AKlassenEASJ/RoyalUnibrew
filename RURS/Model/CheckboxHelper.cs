@@ -9,32 +9,11 @@ using RURS.Annotations;
 using RURS.ViewModel;
 
 namespace RURS.Model
-{
+{/// <summary>
+/// hjælper til nulstille comboboxe
+/// </summary>
     class CheckboxHelper : VMBase
     {
-        //private string _name;
-        //private bool _isChecked;
-
-        //public string Name
-        //{
-        //    get { return _name;}
-        //    set
-        //    {
-        //        _name = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        //public bool IsChecked
-        //{
-        //    get { return _isChecked; }
-        //    set
-        //    {
-        //        _isChecked = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
 
         private int _index;
 
@@ -51,7 +30,11 @@ namespace RURS.Model
 
         public CheckboxHelper()
         {
-            //Name = name;
+            clear();
+        }
+
+        public void clear()
+        {
             Index = -1;
         }
     }
