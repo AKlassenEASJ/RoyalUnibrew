@@ -9,8 +9,15 @@ namespace REST_Service.DBUtil
 {
     public class ProcessOrdreManager
     {
-        private const string ConnectionString =
+        //Thomas Local ConnectionString: @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestRoyalUni;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const string thomasConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestRoyalUni;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const string christianConnectionString =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
+        //private const string ConnectionString = thomasConnectionString;
+        private const string ConnectionString = christianConnectionString;
 
         private const string GETAll = "SELECT * FROM ProcessOrdre";
         private const string GETONE = "SELECT * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
