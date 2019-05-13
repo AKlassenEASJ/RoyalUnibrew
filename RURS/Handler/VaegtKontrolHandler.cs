@@ -21,12 +21,12 @@ namespace RURS.Handler
 
         }
 
-        public void CreateVaegtKontrol()
+        public async void CreateVaegtKontrol()
         {
             //skal oprettes async
             int processOrdreNr = Model.SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
-            int maxKontrol = PersistencyVaegtKontrol.GetMax(processOrdreNr).Result;
-            int kontrolNr = maxKontrol++;
+            int maxKontrol = await PersistencyVaegtKontrol.GetMax(processOrdreNr);
+            int kontrolNr = ++maxKontrol;
             DateTime datoTid = DateTime.Now;
             VaegtKontrol aVaegtKontrol = new VaegtKontrol(processOrdreNr,kontrolNr,datoTid);
             PersistencyVaegtKontrol pVaegtKontrol = new PersistencyVaegtKontrol();
@@ -40,7 +40,8 @@ namespace RURS.Handler
                 //feedback på fejl. message dialog
             }
         }
-
+        /*
+        //ikke implementeret listview til view
 
         public List<VaegtKontrol> LoadedVaegtKontroller
         {
@@ -48,8 +49,7 @@ namespace RURS.Handler
             get { return _loadedVaegtKontroller; }
         }
 
-        /*
-        //igangværende analyse af thomasses tilgang til listview
+        
         public void Load()
         {
             _loadedVaegtKontroller = Persistency.PersistencyVaegtKontrol.GetAll();
@@ -66,15 +66,6 @@ namespace RURS.Handler
         {
             _loadedVaegtKontroller.OpenOrdreDisplay.ActiveProcessOrdre = _loadedVaegtKontroller.;
         }
-
-
-        public void Upload()
-        {
-            ProcessOrdre processOrdre = _vM.OpretningProcessOrdre;
-            Persistency.PersistencyProcessOrdre.Post(processOrdre);
-
-        }
         */
-
     }
 }
