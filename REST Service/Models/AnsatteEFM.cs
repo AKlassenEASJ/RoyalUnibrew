@@ -7,15 +7,15 @@ namespace REST_Service.Models
     using System.Data.Entity.Spatial;
 
     [Table("Ansatte")]
-    public partial class Ansatte
+    public partial class AnsatteEFM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ansatte()
+        public AnsatteEFM()
         {
-            Bemanding = new HashSet<Bemanding>();
+            Bemanding = new HashSet<BemandingEFM>();
             PakkeKontrol = new HashSet<PakkeKontrolEFM>();
-            ProduktionsInformation = new HashSet<ProduktionsInformation>();
-            TappeKontrol = new HashSet<TappeKontrol>();
+            //ProduktionsInformation = new HashSet<ProduktionsInformation>();
+            //TappeKontrol = new HashSet<TappeKontrol>();
         }
 
         [Key]
@@ -29,15 +29,15 @@ namespace REST_Service.Models
         public int ID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bemanding> Bemanding { get; set; }
+        public virtual ICollection<BemandingEFM> Bemanding { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PakkeKontrolEFM> PakkeKontrol { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProduktionsInformation> ProduktionsInformation { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<ProduktionsInformation> ProduktionsInformation { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TappeKontrol> TappeKontrol { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<TappeKontrol> TappeKontrol { get; set; }
     }
 }

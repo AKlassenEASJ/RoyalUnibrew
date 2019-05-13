@@ -14,16 +14,16 @@ namespace RURS.Persistency
         private const string URI = "http://localhost:60096/api/";
 
         /// <summary>
-        /// Metode til at overføre en TappeKontrol til database
+        /// Post metode til at tilføje en PakkeKontrol til Databasen
         /// </summary>
-        /// <param name="NewTappeKontrol">En ny tappeKontrol</param>
-        /// <returns>Retunere en bool, om den er gået igennem til databasen </returns>
-        public static bool Post(PakkeKontrol NewTappeKontrol)
+        /// <param name="NewPakkeKontrol"></param>
+        /// <returns>bool </returns>
+        public static bool Post(PakkeKontrol NewPakkeKontrol)
         {
             bool ok = true;
             using (HttpClient client = new HttpClient())
             {
-                string serializeObject = JsonConvert.SerializeObject(NewTappeKontrol);
+                string serializeObject = JsonConvert.SerializeObject(NewPakkeKontrol);
                 StringContent content = new StringContent(serializeObject, Encoding.UTF8, "application/json");
                 Task<HttpResponseMessage> postAsync = client.PostAsync($"{URI}/PakkeKontrols", content);
                 HttpResponseMessage resps = postAsync.Result;

@@ -7,12 +7,12 @@ namespace REST_Service.Models
     using System.Data.Entity.Spatial;
 
     [Table("Faerdigvare")]
-    public partial class Faerdigvare
+    public partial class FaerdigvareEFM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Faerdigvare()
+        public FaerdigvareEFM()
         {
-            ProcessOrdre = new HashSet<ProcessOrdre>();
+            ProcessOrdre = new HashSet<ProcessOrdreEFM>();
         }
 
         [Key]
@@ -30,6 +30,6 @@ namespace REST_Service.Models
         public double Maximum { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProcessOrdre> ProcessOrdre { get; set; }
+        public virtual ICollection<ProcessOrdreEFM> ProcessOrdre { get; set; }
     }
 }

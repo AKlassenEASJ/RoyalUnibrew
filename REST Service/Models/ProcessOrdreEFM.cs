@@ -7,16 +7,16 @@ namespace REST_Service.Models
     using System.Data.Entity.Spatial;
 
     [Table("ProcessOrdre")]
-    public partial class ProcessOrdre
+    public partial class ProcessOrdreEFM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProcessOrdre()
+        public ProcessOrdreEFM()
         {
-            Bemanding = new HashSet<Bemanding>();
+            Bemanding = new HashSet<BemandingEFM>();
             DeltilbageMeldt = new HashSet<DeltilbageMeldt>();
             PakkeKontrol = new HashSet<PakkeKontrolEFM>();
-            TappeKontrol = new HashSet<TappeKontrol>();
-            VaegtKontrol = new HashSet<VaegtKontrol>();
+            //TappeKontrol = new HashSet<TappeKontrol>();
+            //VaegtKontrol = new HashSet<VaegtKontrol>();
         }
 
         [Key]
@@ -31,22 +31,22 @@ namespace REST_Service.Models
         public int Kolonne { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bemanding> Bemanding { get; set; }
+        public virtual ICollection<BemandingEFM> Bemanding { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeltilbageMeldt> DeltilbageMeldt { get; set; }
 
-        public virtual Faerdigvare Faerdigvare { get; set; }
+        public virtual FaerdigvareEFM Faerdigvare { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PakkeKontrolEFM> PakkeKontrol { get; set; }
 
-        public virtual ProduktionsInformation ProduktionsInformation { get; set; }
+        //public virtual ProduktionsInformation ProduktionsInformation { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TappeKontrol> TappeKontrol { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<TappeKontrol> TappeKontrol { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VaegtKontrol> VaegtKontrol { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<VaegtKontrol> VaegtKontrol { get; set; }
     }
 }

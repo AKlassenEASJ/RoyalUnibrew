@@ -7,7 +7,7 @@ namespace REST_Service.Models
     using System.Data.Entity.Spatial;
 
     [Table("Bemanding")]
-    public partial class Bemanding
+    public partial class BemandingEFM
     {
         [Key]
         [Column(Order = 0)]
@@ -26,8 +26,8 @@ namespace REST_Service.Models
 
         public int? Pauser { get; set; }
 
-        public virtual Ansatte Ansatte { get; set; }
+        public virtual AnsatteEFM Ansatte { get; set; }
 
-        public virtual ProcessOrdre ProcessOrdre { get; set; }
+        public virtual ProcessOrdreEFM ProcessOrdre { get; set; }
     }
 }
