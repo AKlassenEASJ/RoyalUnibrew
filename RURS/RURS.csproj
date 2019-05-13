@@ -132,6 +132,7 @@
     <Compile Include="Model\CheckboxHelper.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
+    <Compile Include="Persistency\PersistencePakkeKontrol.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
     <Compile Include="Persistency\PersistencyProcessOrdre.cs" />
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />

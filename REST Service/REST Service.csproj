@@ -194,9 +194,6 @@
     <Compile Include="Models\PakkeKontrolEFM.cs" />
     <Compile Include="Models\PakkeKontrolEF.cs" />
     <Compile Include="Models\ProcessOrdre.cs" />
-    <Compile Include="Models\ProduktionsInformation.cs" />
-    <Compile Include="Models\TappeKontrol.cs" />
-    <Compile Include="Models\VaegtKontrol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

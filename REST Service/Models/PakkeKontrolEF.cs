@@ -18,9 +18,9 @@ namespace REST_Service.Models
         public virtual DbSet<Faerdigvare> Faerdigvare { get; set; }
         public virtual DbSet<PakkeKontrolEFM> PakkeKontrol { get; set; }
         public virtual DbSet<ProcessOrdre> ProcessOrdre { get; set; }
-        public virtual DbSet<ProduktionsInformation> ProduktionsInformation { get; set; }
-        public virtual DbSet<TappeKontrol> TappeKontrol { get; set; }
-        public virtual DbSet<VaegtKontrol> VaegtKontrol { get; set; }
+        //public virtual DbSet<ProduktionsInformation> ProduktionsInformation { get; set; }
+        //public virtual DbSet<TappeKontrol> TappeKontrol { get; set; }
+        //public virtual DbSet<VaegtKontrol> VaegtKontrol { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

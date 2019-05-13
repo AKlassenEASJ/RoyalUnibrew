@@ -44,39 +44,39 @@ namespace REST_Service.Controllers
         }
 
         // PUT: api/PakkeKontrols/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPakkeKontrol(int id, PakkeKontrolEFM pakkeKontrol)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutPakkeKontrol(int id, PakkeKontrolEFM pakkeKontrol)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != pakkeKontrol.Process_Ordre_Nr)
-            {
-                return BadRequest();
-            }
+        //    if (id != pakkeKontrol.Process_Ordre_Nr)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(pakkeKontrol).State = EntityState.Modified;
+        //    db.Entry(pakkeKontrol).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PakkeKontrolExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PakkeKontrolExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/PakkeKontrols
         [ResponseType(typeof(PakkeKontrol))]
@@ -94,9 +94,9 @@ namespace REST_Service.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException e)
             {
-                if (PakkeKontrolExists(PKEFM.Process_Ordre_Nr))
+                if (PakkeKontrolExists(PKEFM.Process_Ordre_Nr, PKEFM.Tidspunkt))
                 {
                     return Conflict();
                 }
@@ -134,9 +134,18 @@ namespace REST_Service.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PakkeKontrolExists(int id)
+        private bool PakkeKontrolExists(int id , DateTime time)
         {
-            return db.PakkeKontrol.Count(e => e.Process_Ordre_Nr == id) > 0;
+
+            if (db.PakkeKontrol.Count(e => e.Process_Ordre_Nr == id) > 0)
+            {
+                if (db.PakkeKontrol.Count(f => f.Tidspunkt == time) > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private PakkeKontrol EFM2PakkeKontrol(PakkeKontrolEFM EFM)
