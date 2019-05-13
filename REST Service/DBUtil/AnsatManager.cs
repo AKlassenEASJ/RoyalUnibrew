@@ -23,6 +23,7 @@ namespace REST_Service.DBUtil
         private const string GetOne = "Select * from Ansatte where Initialer = @Initialer";
         private const string Insert = "Insert into Ansatte (Initialer, Navn, ID) Values (@Initialer, @Navn, @ID)";
         private const string DeleteStatement = "Delete from Ansatte where Initialer = @Initialer";
+        private const string Update = "Update Ansatte Set Initialer = @Initialer, Navn = @Navn, ID = @ID Where Initialer = @Ini";
 
 
         #endregion
@@ -102,6 +103,32 @@ namespace REST_Service.DBUtil
 
             return status;
 
+        }
+
+        public bool Put(string initialer, Ansat ansatToPut)
+        {
+            bool status = false;
+
+            SqlConnection connection = new SqlConnection();
+
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(Update, connection);
+            command.Parameters.AddWithValue("@Initialer", ansatToPut.Initial);
+            command.Parameters.AddWithValue("@Navn", ansatToPut.Navn);
+            command.Parameters.AddWithValue("@ID", ansatToPut.Id);
+            command.Parameters.AddWithValue("@Ini", initialer);
+
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected == 1)
+            {
+                status = true;
+            }
+
+            connection.Close();
+
+            return status;
         }
 
 
