@@ -51,11 +51,7 @@ namespace AdminRURS.Persistency
                 string jsonString = JsonConvert.SerializeObject(ansatToPost);
                 StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-                Task<HttpResponseMessage> responseTask = client.PostAsync($"{URI}Ansats", content);
-
-                await responseTask;
-
-                HttpResponseMessage response = responseTask.Result;
+                HttpResponseMessage response = await client.PostAsync($"{URI}Ansats", content);
 
                 if (response.IsSuccessStatusCode)
                 {
