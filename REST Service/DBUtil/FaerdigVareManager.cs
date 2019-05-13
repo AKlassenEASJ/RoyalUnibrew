@@ -18,7 +18,8 @@ namespace REST_Service.DBUtil
         #endregion
 
         #region sqlStatements
-        private const string Insert = "Insert into FaerdigVare (FaerdigVare_Nr, FaerdigVareNavn, Min, Max, Snit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
+        private const string Insert = "Insert into FaerdigVare (FaerdigVare_Nr, Navn, Minimum, Maximum, Gennemsnit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
+        private const string Update = "Update FaerdigVare" + "set FaerdigVare_Nr = @Nummer, FaerdigVareNavn = @Navn, Min = @Min, Max = @Max, Snit = @Snit" + "where FaerdigVare_Nr = @FVNummer";
         #endregion
 
         #region Methods
@@ -48,6 +49,34 @@ namespace REST_Service.DBUtil
             connection.Close();
 
             return status;
+        }
+
+        public bool Put(int Nummer, FaerdigVare faerdigVare)
+        {
+            bool retValue = false;
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(Update, conn);
+            cmd.Parameters.AddWithValue("@FaerdigVare_Nr", faerdigVare.FaerdigVare_Nr);
+            cmd.Parameters.AddWithValue("@FVNummer", Nummer);
+            cmd.Parameters.AddWithValue("@FaerdigVareNavn", faerdigVare.FaerdigVareNavn);
+            cmd.Parameters.AddWithValue("@Min", faerdigVare.Min);
+            cmd.Parameters.AddWithValue("@Max", faerdigVare.Max);
+            cmd.Parameters.AddWithValue("@Snit", faerdigVare.Snit);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+
+            if (rowsAffected == 1)
+            {
+                retValue = true;
+            }
+
+            else
+            {
+                retValue = false;
+            }
+
+            return retValue;
         }
         #endregion
 
