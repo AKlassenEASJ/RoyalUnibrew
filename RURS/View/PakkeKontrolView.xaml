@@ -69,7 +69,7 @@
                             <TextBlock Text="produktions dato"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <DatePicker Date="{Binding SelectedPakkeKontrol.ProduktionsDato.Date, Mode=TwoWay}" YearVisible="False" ToolTipService.ToolTip="Skriv produtions datoen"/>
+                        <DatePicker Date="{Binding ProduktionsDato, Mode=TwoWay}" YearVisible="False" ToolTipService.ToolTip="Skriv produtions datoen"/>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Printer 1"/>

@@ -90,7 +90,7 @@ namespace ModelLibary.Models
             }
             set
             {
-                _produktionsDato = value; 
+                _produktionsDato = value;
                 OnPropertyChanged();
             }
 
@@ -136,21 +136,21 @@ namespace ModelLibary.Models
         {
             get
             {
-               return _kontrolStabelMonster;
+                return _kontrolStabelMonster;
             }
             set
             {
-                _kontrolStabelMonster = value; 
+                _kontrolStabelMonster = value;
                 OnPropertyChanged();
             }
         }
 
         public string KontrolAverylable
         {
-            get { return _kontrolAverylable;}
+            get { return _kontrolAverylable; }
             set
             {
-                _kontrolAverylable = value; 
+                _kontrolAverylable = value;
                 OnPropertyChanged();
             }
         }
@@ -163,7 +163,7 @@ namespace ModelLibary.Models
             }
             set
             {
-                _puTunnelV = value; 
+                _puTunnelV = value;
                 OnPropertyChanged();
             }
         }
@@ -258,6 +258,66 @@ namespace ModelLibary.Models
         }
 
         #endregion
+
+
+        //public int Process_Ordre_Nr { get; set; }
+
+
+        //public DateTime Tidspunkt { get; set; }
+
+
+        //public string Paa_Baner_Paller { get; set; }
+
+        //public int Folie_Raavare_Nr { get; set; }
+
+        //public int Karton_Raavare_Nr { get; set; }
+
+
+        //public DateTime Holdbarheds_Dato { get; set; }
+
+
+        //public DateTime Produktions_Dato { get; set; }
+
+
+        //public string Printer1_Produktion_Dato { get; set; }
+
+
+        //public string Printer1_Holdbarheds_Dato { get; set; }
+
+
+        //public string Printer2_Produktion_Dato { get; set; }
+
+
+        //public string Printer2_Holdbarheds_Dato { get; set; }
+
+
+        //public string FyldeHojde_Kontrol { get; set; }
+
+
+        //public string Skridlim_Karton { get; set; }
+
+
+        //public string Kontrol_StabelMonster { get; set; }
+
+
+        //public string Kontrol_Averylabel { get; set; }
+
+        //public double? Pu_Tunnelpasteur_V { get; set; }
+
+        //public double? Pu_Tunnelpasteur_M { get; set; }
+
+        //public double? Pu_Tunnelpasteur_H { get; set; }
+
+
+        //public string Helhedsindtryk { get; set; }
+
+        //public int? Kontrol_Palle_Nr { get; set; }
+
+
+        //public string Fremmede_Daaser_Karton { get; set; }
+
+
+        //public string Signatur { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

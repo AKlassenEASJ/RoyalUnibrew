@@ -17,6 +17,8 @@ namespace RURS.ViewModel
 
         private TimeSpan _timeSpan;
 
+        private DateTimeOffset _produktionsDato;
+
         public PakkeKontrol SelectedPakkeKontrol
         {
             get { return _selectedPakkeKontrol; }
@@ -37,6 +39,16 @@ namespace RURS.ViewModel
             }
         }
 
+        public DateTimeOffset ProduktionsDato
+        {
+            get { return _produktionsDato; }
+            set
+            {
+                _produktionsDato = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Dictionary<string, CheckboxHelper> Helpers { get; set; }
         public PakkeKontrolHandler Handler { get; set; }
         public ICommand ClearCommand { get; set; }
@@ -44,11 +56,12 @@ namespace RURS.ViewModel
         public PakkeKontrolViewModel()
         {
             Handler = new PakkeKontrolHandler(this);
-            SelectedPakkeKontrol = new PakkeKontrol() {ProduktionsDato = DateTime.Now.Date};
+            SelectedPakkeKontrol = new PakkeKontrol();
             Helpers = new Dictionary<string, CheckboxHelper>();
             addHeplers();
             TimeSpan = DateTime.Now.TimeOfDay;
             TimeSpan.FromMinutes(15);
+            ProduktionsDato = DateTimeOffset.Now;
             ClearCommand = new RelayCommand(Handler.Clear);
         }
 
