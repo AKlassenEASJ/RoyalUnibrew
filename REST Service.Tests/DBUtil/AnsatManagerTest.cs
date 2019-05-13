@@ -59,12 +59,17 @@ namespace REST_Service.Tests.DBUtil
 
             bool status = _manager.Post(_trialAnsat);
 
-            //Assert
 
+            //Assert
+            _manager.Delete(_trialAnsat.Initial);
             Assert.IsTrue(status);
 
-            _manager.Delete(_trialAnsat.Initial);
+            
+
+
         }
+
+
 
         //[TestMethod]
         //public void Post_ANullUser_NullReferenceException()
@@ -130,6 +135,33 @@ namespace REST_Service.Tests.DBUtil
 
 
         //}
+
+        [TestMethod]
+        public void Put_AnExistingUser_True()
+        {
+            //    //Arrange
+
+            _manager.Post(_trialAnsat);
+
+            string gamleInitialer = _trialAnsat.Initial;
+
+            _trialAnsat.Navn = "Tonny Bunde";
+            _trialAnsat.Initial = "TB";
+            
+            //    //Act
+
+            bool status = _manager.Put(gamleInitialer, _trialAnsat);
+            
+
+            //    //Assert
+
+            Assert.IsTrue(status);
+
+            _manager.Delete(_trialAnsat.Initial);
+
+
+        }
+
 
     }
 }
