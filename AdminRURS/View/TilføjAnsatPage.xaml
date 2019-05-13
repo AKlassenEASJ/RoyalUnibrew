@@ -35,8 +35,11 @@
             <TextBox Grid.Row="0" Text="{Binding NyAnsat.Initial, Mode=TwoWay}" Header="Initial" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Height="102"/>
             <TextBox Grid.Row="1" Text="{Binding NyAnsat.Navn, Mode=TwoWay}" Header="Navn" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Height="102"/>
             <TextBox Grid.Row="2" Text="{Binding NyAnsat.Id, Mode=TwoWay}" Header="ID" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Height="102"/>
-
-            <Button Grid.Row="4" Content="Tilføj" Command="{Binding AddCommand}" Width="100" Height="50" FontSize="30"/>
+<StackPanel Grid.Row="4" Orientation="Horizontal">
+    <Button  Content="Tilføj" Command="{Binding AddCommand}" Width="100" Height="50" FontSize="30"/>
+    <Button Content="Opdater" Command="{Binding UpdateCommand}" Width="130" Height="50" FontSize="30" Margin="70,0,0,0"/>
+            </StackPanel>
+            
         </Grid>
 
 

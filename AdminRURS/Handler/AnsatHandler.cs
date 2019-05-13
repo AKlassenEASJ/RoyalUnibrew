@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdminRURS.Persistency;
 using AdminRURS.ViewModel;
+using ModelLibary.Models;
 
 namespace AdminRURS.Handler
 {
@@ -36,13 +37,34 @@ namespace AdminRURS.Handler
 
         #region Methods
 
-        public async void Add()
+        public async void AddAsync()
         {
             AnsatViewModel.ProgressRingIsActive = true;
-            await _persistence.Post(AnsatViewModel.NyAnsat);
+            await _persistence.PostAsync(AnsatViewModel.NyAnsat);
             AnsatViewModel.ProgressRingIsActive = false;
+            ClearNyAnsat();
+            
         }
-        
+
+        public async void UpdateAsync()
+        {
+            AnsatViewModel.ProgressRingIsActive = true;
+            await _persistence.PutAsync(AnsatViewModel.NyAnsat.Initial, AnsatViewModel.NyAnsat);
+            AnsatViewModel.ProgressRingIsActive = false;
+            ClearNyAnsat();
+        }
+
+
+        #endregion
+
+        #region HelpMethods
+
+        private void ClearNyAnsat()
+        {
+            AnsatViewModel.NyAnsat.Initial = null;
+            AnsatViewModel.NyAnsat.Navn = null;
+            AnsatViewModel.NyAnsat.Id = 0;
+        }
 
         #endregion
 
