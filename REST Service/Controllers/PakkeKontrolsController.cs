@@ -79,7 +79,7 @@ namespace REST_Service.Controllers
         }
 
         // POST: api/PakkeKontrols
-        [ResponseType(typeof(PakkeKontrolEFM))]
+        [ResponseType(typeof(PakkeKontrol))]
         public IHttpActionResult PostPakkeKontrol(PakkeKontrol pakkeKontrol)
         {
             if (!ModelState.IsValid)
@@ -106,7 +106,7 @@ namespace REST_Service.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = PKEFM.Process_Ordre_Nr }, pakkeKontrol);
+            return CreatedAtRoute("DefaultApi", new { id = PKEFM.Process_Ordre_Nr }, EFM2PakkeKontrol(PKEFM));
         }
 
         // DELETE: api/PakkeKontrols/5
@@ -190,15 +190,25 @@ namespace REST_Service.Controllers
             E.Skridlim_Karton = PK.SkridlimKarton;
             E.Kontrol_StabelMonster = PK.KontrolStabelMonster;
             E.Kontrol_Averylabel = PK.KontrolStabelMonster;
-            E.Pu_Tunnelpasteur_V = PK.PuTunnelV;
-            E.Pu_Tunnelpasteur_M = PK.PuTunnelM;
-            E.Pu_Tunnelpasteur_H = PK.PuTunnelH;
+            E.Pu_Tunnelpasteur_V = TjekNull(PK.PuTunnelV);
+            E.Pu_Tunnelpasteur_M = TjekNull(PK.PuTunnelM);
+            E.Pu_Tunnelpasteur_H = TjekNull(PK.PuTunnelH);
             E.Helhedsindtryk = PK.HelhedsIndtryk;
             E.Kontrol_Palle_Nr = PK.KontrolPalleNr;
             E.Fremmede_Daaser_Karton = PK.FremmedDaaserKarton;
             E.Signatur = PK.Signatur;
 
             return E;
+        }
+
+        private double? TjekNull(double Pk)
+        {
+            if (Pk == -1)
+            {
+                return null;
+            }
+
+            return Pk;
         }
     }
 }
