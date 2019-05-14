@@ -21,14 +21,14 @@ namespace RURS.Persistency
             using (HttpClient client = new HttpClient())
             {
                 string jsonStr = JsonConvert.SerializeObject(faerdigVare);
-                StringContent content = new StringContent(jsonStr, Encoding.ASCII, "application/json");
+                StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
                 Task<HttpResponseMessage> postAsync = client.PostAsync(URI, content);
 
                 HttpResponseMessage resp = postAsync.Result;
                 if (resp.IsSuccessStatusCode)
                 {
                     string jsonResStr = resp.Content.ReadAsStringAsync().Result;
-                    ok = JsonConvert.DeserializeObject<bool>(jsonStr);
+                    ok = JsonConvert.DeserializeObject<bool>(jsonResStr);
                 }
                 else
                 {

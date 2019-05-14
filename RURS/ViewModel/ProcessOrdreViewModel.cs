@@ -62,7 +62,7 @@ namespace RURS.ViewModel
             get { return _openOrdreDisplay;}
             set
             {
-                _openOrdreDisplay = value; 
+                _openOrdreDisplay = value;
                 OnPropertyChanged();
             }
         }
@@ -80,6 +80,7 @@ namespace RURS.ViewModel
             LoadCommand=new RelayCommand(handler.Load);
             UploadCommand = new RelayCommand(handler.Upload);
             OpenCommand = new RelayCommand(handler.Open);
+            handler.Load();
 
 
             //WIP input.

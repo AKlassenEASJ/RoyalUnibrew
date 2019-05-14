@@ -49,7 +49,7 @@ namespace AdminRURS.ViewModel
             // EditCommand = new RelayCommand();
             Handler = new FaerdigVareHandler(this);
             CreateCommand = new RelayCommand(Handler.Create);
-            
+            SelectedFaerdigVare = new FaerdigVare();
         }
 
         #endregion

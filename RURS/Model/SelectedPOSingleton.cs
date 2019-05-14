@@ -18,13 +18,7 @@ namespace RURS.Model
 
         private SelectedPOSingleton()
         { }
-
-        private SelectedPOSingleton(ProcessOrdre processOrdre)
-        {
-            _processOrdre.Dato = processOrdre.Dato;
-            _processOrdre.FaerdigVareNr = processOrdre.FaerdigVareNr;
-            _processOrdre.ProcessOrdreNr = processOrdre.ProcessOrdreNr;
-        }
+        
 
         public ProcessOrdre ActiveProcessOrdre
         {
