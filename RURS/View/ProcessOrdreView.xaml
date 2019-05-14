@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:RURS.ViewModel"
+    xmlns:Model="using:RURS.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -30,8 +31,8 @@
                 <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
                 <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay}"/>
                 <Button Content="Gem Ordre"  Command="{Binding UploadCommand}"/>
-                <TextBlock
-                    Text="{Binding OpenOrdreDisplay.ProcessOrdre2, Mode=TwoWay}" />
+                <TextBlock 
+                    Text="{Binding OpenOrdreDisplay.ActiveProcessOrdre, Mode=TwoWay}" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -19,7 +19,7 @@ namespace REST_Service.DBUtil
 
         #region sqlStatements
         private const string Insert = "Insert into FaerdigVare (FaerdigVare_Nr, Navn, Minimum, Maximum, Gennemsnit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
-        private const string Update = "Update FaerdigVare" + "set FaerdigVare_Nr = @Nummer, FaerdigVareNavn = @Navn, Min = @Min, Max = @Max, Snit = @Snit" + "where FaerdigVare_Nr = @FVNummer";
+        private const string Update = "Update FaerdigVare " + "set FaerdigVare_Nr = @Nummer, Navn = @Navn, Minimum = @Min, Maximum = @Max, Gennemsnit = @Snit" + " where FaerdigVare_Nr = @FVNummer";
         #endregion
 
         #region Methods
@@ -57,9 +57,9 @@ namespace REST_Service.DBUtil
             SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(Update, conn);
-            cmd.Parameters.AddWithValue("@FaerdigVare_Nr", faerdigVare.FaerdigVare_Nr);
+            cmd.Parameters.AddWithValue("@Nummer", faerdigVare.FaerdigVare_Nr);
             cmd.Parameters.AddWithValue("@FVNummer", Nummer);
-            cmd.Parameters.AddWithValue("@FaerdigVareNavn", faerdigVare.FaerdigVareNavn);
+            cmd.Parameters.AddWithValue("@Navn", faerdigVare.FaerdigVareNavn);
             cmd.Parameters.AddWithValue("@Min", faerdigVare.Min);
             cmd.Parameters.AddWithValue("@Max", faerdigVare.Max);
             cmd.Parameters.AddWithValue("@Snit", faerdigVare.Snit);

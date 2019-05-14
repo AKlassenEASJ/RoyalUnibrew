@@ -54,8 +54,8 @@ namespace ModelLibary.Models
 
         public FaerdigVare(int faerdigvareNr, string faerdigvareNavn, double Min, double Max, double Snit)
         {
-            _faerdigvare_Nr = FaerdigVare_Nr;
-            _faerdigvareNavn = FaerdigVareNavn;
+            _faerdigvare_Nr = faerdigvareNr;
+            _faerdigvareNavn = faerdigvareNavn;
             _min = Min;
             _max = Max;
             _snit = Snit;
