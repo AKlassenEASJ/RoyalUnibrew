@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLibary.Models
 {
-    class Bemanding
+    public class Bemanding
     {
 
         #region InstanceFields
