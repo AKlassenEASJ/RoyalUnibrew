@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBUtil\AnsatManagerTest.cs" />
+    <Compile Include="DBUtil\BemandingManagerTest.cs" />
     <Compile Include="DBUtil\PakkeKontrolsControllerTest.cs" />
     <Compile Include="DBUtil\TappeKontrolMangerTest.cs" />
     <Compile Include="DBUtil\FaerdigVareManagerTest.cs" />
