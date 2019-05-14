@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Bluetooth.Background;
+using AdminRURS.Common;
 using AdminRURS.Persistency;
 using AdminRURS.ViewModel;
 using ModelLibary.Models;
@@ -40,8 +42,19 @@ namespace AdminRURS.Handler
         public async void AddAsync()
         {
             AnsatViewModel.ProgressRingIsActive = true;
-            await _persistence.PostAsync(AnsatViewModel.NyAnsat);
+            bool status = await _persistence.PostAsync(AnsatViewModel.NyAnsat);
             AnsatViewModel.ProgressRingIsActive = false;
+
+            if (status)
+            {
+                MessageDialogHelper.Show("Den nye bruger blev oprette", "Succes");
+            }
+            else
+            {
+                MessageDialogHelper.Show("Brugeren blev ikke oprettet", "Fejl");
+            }
+
+
             ClearNyAnsat();
             
         }
@@ -49,8 +62,18 @@ namespace AdminRURS.Handler
         public async void UpdateAsync()
         {
             AnsatViewModel.ProgressRingIsActive = true;
-            await _persistence.PutAsync(AnsatViewModel.NyAnsat.Initial, AnsatViewModel.NyAnsat);
+            bool status = await _persistence.PutAsync(AnsatViewModel.NyAnsat.Initial, AnsatViewModel.NyAnsat);
             AnsatViewModel.ProgressRingIsActive = false;
+
+            if (status)
+            {
+                MessageDialogHelper.Show("Brugeren blev opdateret", "Succes");
+            }
+            else
+            {
+                MessageDialogHelper.Show("Brugeren blev ikke opdateret", "Fejl");
+            }
+
             ClearNyAnsat();
         }
 
@@ -61,9 +84,7 @@ namespace AdminRURS.Handler
 
         private void ClearNyAnsat()
         {
-            AnsatViewModel.NyAnsat.Initial = null;
-            AnsatViewModel.NyAnsat.Navn = null;
-            AnsatViewModel.NyAnsat.Id = 0;
+            AnsatViewModel.NyAnsat = new Ansat();
         }
 
         #endregion
