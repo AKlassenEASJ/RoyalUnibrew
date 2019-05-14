@@ -78,8 +78,8 @@ namespace REST_Service.Models
         [StringLength(10)]
         public string Signatur { get; set; }
 
-        public virtual Ansatte Ansatte { get; set; }
+        public virtual AnsatteEFM Ansatte { get; set; }
 
-        public virtual ProcessOrdre ProcessOrdre { get; set; }
+        public virtual ProcessOrdreEFM ProcessOrdre { get; set; }
     }
 }

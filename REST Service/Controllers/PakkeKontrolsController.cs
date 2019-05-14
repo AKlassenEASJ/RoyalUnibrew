@@ -44,42 +44,42 @@ namespace REST_Service.Controllers
         }
 
         // PUT: api/PakkeKontrols/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPakkeKontrol(int id, PakkeKontrolEFM pakkeKontrol)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutPakkeKontrol(int id, PakkeKontrolEFM pakkeKontrol)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != pakkeKontrol.Process_Ordre_Nr)
-            {
-                return BadRequest();
-            }
+        //    if (id != pakkeKontrol.Process_Ordre_Nr)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(pakkeKontrol).State = EntityState.Modified;
+        //    db.Entry(pakkeKontrol).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PakkeKontrolExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PakkeKontrolExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/PakkeKontrols
-        [ResponseType(typeof(PakkeKontrolEFM))]
+        [ResponseType(typeof(PakkeKontrol))]
         public IHttpActionResult PostPakkeKontrol(PakkeKontrol pakkeKontrol)
         {
             if (!ModelState.IsValid)
@@ -94,9 +94,9 @@ namespace REST_Service.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException e)
             {
-                if (PakkeKontrolExists(PKEFM.Process_Ordre_Nr))
+                if (PakkeKontrolExists(PKEFM.Process_Ordre_Nr, PKEFM.Tidspunkt))
                 {
                     return Conflict();
                 }
@@ -106,7 +106,7 @@ namespace REST_Service.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = PKEFM.Process_Ordre_Nr }, pakkeKontrol);
+            return CreatedAtRoute("DefaultApi", new { id = PKEFM.Process_Ordre_Nr }, EFM2PakkeKontrol(PKEFM));
         }
 
         // DELETE: api/PakkeKontrols/5
@@ -134,9 +134,18 @@ namespace REST_Service.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PakkeKontrolExists(int id)
+        private bool PakkeKontrolExists(int id , DateTime time)
         {
-            return db.PakkeKontrol.Count(e => e.Process_Ordre_Nr == id) > 0;
+
+            if (db.PakkeKontrol.Count(e => e.Process_Ordre_Nr == id) > 0)
+            {
+                if (db.PakkeKontrol.Count(f => f.Tidspunkt == time) > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private PakkeKontrol EFM2PakkeKontrol(PakkeKontrolEFM EFM)
@@ -190,15 +199,25 @@ namespace REST_Service.Controllers
             E.Skridlim_Karton = PK.SkridlimKarton;
             E.Kontrol_StabelMonster = PK.KontrolStabelMonster;
             E.Kontrol_Averylabel = PK.KontrolStabelMonster;
-            E.Pu_Tunnelpasteur_V = PK.PuTunnelV;
-            E.Pu_Tunnelpasteur_M = PK.PuTunnelM;
-            E.Pu_Tunnelpasteur_H = PK.PuTunnelH;
+            E.Pu_Tunnelpasteur_V = TjekNull(PK.PuTunnelV);
+            E.Pu_Tunnelpasteur_M = TjekNull(PK.PuTunnelM);
+            E.Pu_Tunnelpasteur_H = TjekNull(PK.PuTunnelH);
             E.Helhedsindtryk = PK.HelhedsIndtryk;
             E.Kontrol_Palle_Nr = PK.KontrolPalleNr;
             E.Fremmede_Daaser_Karton = PK.FremmedDaaserKarton;
             E.Signatur = PK.Signatur;
 
             return E;
+        }
+
+        private double? TjekNull(double Pk)
+        {
+            if (Pk == -1)
+            {
+                return null;
+            }
+
+            return Pk;
         }
     }
 }

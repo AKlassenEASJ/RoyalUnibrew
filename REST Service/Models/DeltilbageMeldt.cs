@@ -25,6 +25,6 @@ namespace REST_Service.Models
 
         public int Tappetal { get; set; }
 
-        public virtual ProcessOrdre ProcessOrdre { get; set; }
+        public virtual ProcessOrdreEFM ProcessOrdre { get; set; }
     }
 }

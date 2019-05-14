@@ -187,16 +187,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ansatte.cs" />
-    <Compile Include="Models\Bemanding.cs" />
+    <Compile Include="Models\AnsatteEFM.cs" />
+    <Compile Include="Models\BemandingEFM.cs" />
     <Compile Include="Models\DeltilbageMeldt.cs" />
-    <Compile Include="Models\Faerdigvare.cs" />
+    <Compile Include="Models\FaerdigvareEFM.cs" />
     <Compile Include="Models\PakkeKontrolEFM.cs" />
     <Compile Include="Models\PakkeKontrolEF.cs" />
-    <Compile Include="Models\ProcessOrdre.cs" />
-    <Compile Include="Models\ProduktionsInformation.cs" />
-    <Compile Include="Models\TappeKontrol.cs" />
-    <Compile Include="Models\VaegtKontrol.cs" />
+    <Compile Include="Models\ProcessOrdreEFM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

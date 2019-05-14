@@ -34,7 +34,7 @@ namespace RURS.ViewModel
         {
             VaegtKontrolHandler = new VaegtKontrolHandler(this);
             OpretNyVaegtKontrolCommand = new RelayCommand(VaegtKontrolHandler.CreateVaegtKontrol);
-            _displayVaegtKontrols = new ObservableCollection<VaegtKontrol>(Persistency.PersistencyVaegtKontrol.GetAll().Result);
+            //_displayVaegtKontrols = new ObservableCollection<VaegtKontrol>(Persistency.PersistencyVaegtKontrol.GetAll().Result);
         }
 
 
