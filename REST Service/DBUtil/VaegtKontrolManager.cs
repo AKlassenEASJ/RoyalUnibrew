@@ -27,6 +27,7 @@ namespace REST_Service.DBUtil
         private const String GETONE = "SELECT * FROM VaegtKontrol WHERE Kontrol_Nr = @ID";
         private const String INSERT = "INSERT INTO VaegtKontrol (Process_Ordre_Nr, Kontrol_Nr, Dato_Tid) VALUES(@Process_Ordre_Nr, @Kontrol_Nr, @Dato_Tid)";
         private const String GETMAX = "SELECT * FROM hentMaxKontrol_Nr WHERE Process_Ordre_Nr = @PODID";
+        private const String DELETE = "DELETE FROM VaegtKontrol WHERE Kontrol_Nr = @ID";
         #endregion
 
 
@@ -113,16 +114,34 @@ namespace REST_Service.DBUtil
             return retValue;
         }
         
+        // DELETE: api/VaegtKontrolManager/5
+        public bool Delete(int kontrolNr)
+        {
+
+            bool success = true;
+
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(DELETE, conn);
+            cmd.Parameters.AddWithValue("@ID", kontrolNr);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            success = rowsAffected == 1;
+
+            return success;
+        }
+
+
+
+
         #region Ubrugte metoder
         // PUT: api/VaegtKontrolManager/5
+
+
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/VaegtKontrolManager/5
-        public void Delete(int id)
-        {
-        }
         #endregion
         #endregion
 
