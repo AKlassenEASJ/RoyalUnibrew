@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using AdminRURS.Common;
 using ModelLibary.Models;
 using Newtonsoft.Json;
 
@@ -44,24 +45,25 @@ namespace AdminRURS.Persistency
         /// <returns>Returnerer en bool</returns>
         public async Task<bool> PostAsync(Ansat ansatToPost)
         {
-            bool status;
+            bool status = false;
 
             using (HttpClient client = new HttpClient())
             {
                 string jsonString = JsonConvert.SerializeObject(ansatToPost);
                 StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = await client.PostAsync($"{URI}Ansats", content);
+                
+                    HttpResponseMessage response = await client.PostAsync($"{URI}Ansats", content);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    string jsonStringRead = response.Content.ReadAsStringAsync().Result;
-                    status = JsonConvert.DeserializeObject<bool>(jsonStringRead);
-                }
-                else
-                {
-                    status = false;
-                }
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonStringRead = response.Content.ReadAsStringAsync().Result;
+                        status = JsonConvert.DeserializeObject<bool>(jsonStringRead);
+                    }
+                    else
+                    {
+                        status = false;
+                    }
 
             }
 
