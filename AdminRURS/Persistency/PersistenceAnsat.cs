@@ -42,7 +42,7 @@ namespace AdminRURS.Persistency
         /// </summary>
         /// <param name="ansatToPost"> Ansat der skal gemmes i databasen</param>
         /// <returns>Returnerer en bool</returns>
-        public async Task<bool> Post(Ansat ansatToPost)
+        public async Task<bool> PostAsync(Ansat ansatToPost)
         {
             bool status;
 
@@ -98,6 +98,42 @@ namespace AdminRURS.Persistency
 
             return status;
         }
+
+        /// <summary>
+        /// Formålet er at ændre på en ansat i databasen.
+        /// </summary>
+        /// <param name="initialer">Initialer for den ansatte i databasen, der skal opdateres</param>
+        /// <param name="ansatToPut">Det nye ansat objekt der skal erstatte, det valgte i databasen</param>
+        /// <returns>Returnerer en bool</returns>
+        public async Task<bool> PutAsync(string initialer, Ansat ansatToPut)
+        {
+            bool status;
+
+            using (HttpClient client = new HttpClient())
+            {
+                string jsonString = JsonConvert.SerializeObject(ansatToPut);
+                StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                Task<HttpResponseMessage> responseTask = client.PutAsync($"{URI}Ansats/{initialer}", content);
+                await responseTask;
+
+                HttpResponseMessage response = responseTask.Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonStringRead = response.Content.ReadAsStringAsync().Result;
+                    status = JsonConvert.DeserializeObject<bool>(jsonStringRead);
+                }
+                else
+                {
+                    status = false;
+                }
+
+                return status;
+
+            }
+        }
+
 
 
         #endregion

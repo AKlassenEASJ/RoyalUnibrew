@@ -10,6 +10,9 @@ using RURS.ViewModel;
 
 namespace RURS.Handler
 {
+    /// <summary>
+    /// Handler til TappekontrolViewModel, hvor metoder som skal bruge i view ligger
+    /// </summary>
     class TappeKontrolHandler
     {
         private TappeKontrolViewModel _viewModel;
@@ -21,7 +24,7 @@ namespace RURS.Handler
             
         }
 
-        private Stopwatch _stopwatch = new Stopwatch();
+        //private Stopwatch _stopwatch = new Stopwatch();
 
         public void Add()
         {
@@ -51,7 +54,7 @@ namespace RURS.Handler
             if (PersistenceTappeKontrol.Post(_viewModel.SelectedTappeKontrol))
             {
                 Clear();
-                _viewModel.MiniutesLeft = 15;
+                //_viewModel.MiniutesLeft = 15;
             }
         }
         /// <summary>
@@ -71,23 +74,23 @@ namespace RURS.Handler
             }
         }
 
-        private void TimeLeft()
-        {
-            _viewModel.MiniutesLeft = 0;
+        //private void TimeLeft()
+        //{
+        //    _viewModel.MiniutesLeft = 0;
 
-            _stopwatch.Start();
-            while (_stopwatch.IsRunning)
-            {
-                //_stopwatch.
-                //if ()
-                //{
+        //    _stopwatch.Start();
+        //    while (_stopwatch.IsRunning)
+        //    {
+        //        //_stopwatch.
+        //        //if ()
+        //        //{
                     
-                //}
-            }
+        //        //}
+        //    }
 
 
 
 
-        }
+        //}
     }
 }

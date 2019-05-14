@@ -20,6 +20,7 @@ namespace AdminRURS.ViewModel
         #region InstanceFields
 
         private ICommand _addCommand;
+        private ICommand _updateCommand;
 
         private Ansat _nyAnsat = new Ansat();
 
@@ -38,10 +39,20 @@ namespace AdminRURS.ViewModel
             set { _addCommand = value; }
         }
 
+        public ICommand UpdateCommand
+        {
+            get { return _updateCommand; }
+            set { _updateCommand = value; }
+        }
+
         public Ansat NyAnsat
         {
             get { return _nyAnsat; }
-            set { _nyAnsat = value; }
+            set
+            {
+                _nyAnsat = value; 
+                OnPropertyChanged();
+            }
         }
 
         public bool ProgressRingIsActive
@@ -65,7 +76,8 @@ namespace AdminRURS.ViewModel
         public AnsatViewModel()
         {
             AnsatHandler = new AnsatHandler(this);
-            _addCommand = new RelayCommand(AnsatHandler.Add);
+            _addCommand = new RelayCommand(AnsatHandler.AddAsync);
+            _updateCommand = new RelayCommand(AnsatHandler.UpdateAsync);
             
         }
 

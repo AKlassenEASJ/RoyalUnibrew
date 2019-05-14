@@ -26,6 +26,13 @@ namespace REST_Service.Controllers
             return manager.Get(Kontrol_Nr);
         }
 
+        //
+        [Route("api/VaegtKontrol/max/{process_ordre_nr}")]
+        public int GetKontrolMaxNr(int process_ordre_nr)
+        {
+            return manager.Getmax(process_ordre_nr);
+        }
+
         // POST: api/VaegtKontrol
         public bool Post([FromBody]VaegtKontrol value)
         {

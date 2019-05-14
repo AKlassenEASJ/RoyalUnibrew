@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,61 +13,43 @@ namespace RURS.ViewModel
 {
     class VaegtKontrolViewModel : VMBase
     {
+
+
+
+
+
+        private ObservableCollection<VaegtKontrol> _displayVaegtKontrols;
+        public ObservableCollection<VaegtKontrol> DisplayVaegtKontrols
+        {
+            get => _displayVaegtKontrols;
+            set => _displayVaegtKontrols = value;
+        }
+
+        //private VaegtKontrol _nyVaegtKontrol;
+        private VaegtKontrol _selectedVaegtKontrol;
+       
+
+
+        public VaegtKontrolViewModel()
+        {
+            VaegtKontrolHandler = new VaegtKontrolHandler(this);
+            OpretNyVaegtKontrolCommand = new RelayCommand(VaegtKontrolHandler.CreateVaegtKontrol);
+            //_displayVaegtKontrols = new ObservableCollection<VaegtKontrol>(Persistency.PersistencyVaegtKontrol.GetAll().Result);
+        }
+
+
         public VaegtKontrolHandler VaegtKontrolHandler
         {
             get;
             set;
         }
         
-        private VaegtKontrol _selectedVaegtKontrol;
-        
-        public VaegtKontrolViewModel()
-        {
-            VaegtKontrolHandler = new VaegtKontrolHandler(this);
-            OpretNyVaegtKontrolCommand = new RelayCommand(VaegtKontrolHandler.CreateVaegtKontrol);
-        }
-
-
-
-
         public ICommand OpretNyVaegtKontrolCommand
         {
             get;
             set;
         }
-
-        /*
-        #region Bindings
-        public int nyProcessOrdreNr
-        {
-            get;
-            set;
-        }
-
-        public int nyKontrolNr
-        {
-            get;
-            set;
-        }
-
-        public DateTime nyDatoTid
-        {
-            get;
-            set;
-        }
-        #endregion
-        */
-
-        private VaegtKontrol _nyVaegtKontrol;
-
-        public VaegtKontrol NyVaegtKontrol
-        {
-            get { return _nyVaegtKontrol; }
-            set { _nyVaegtKontrol = value; }
-
-        }
-
-
+        
         #region Operatorer
         public VaegtKontrol SelectedVaegtKontrol
         {

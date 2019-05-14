@@ -1,0 +1,206 @@
+﻿<Page
+    x:Class="RURS.View.PakkeKontrolView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RURS.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:gl="clr-namespace:System.Globalization;assembly=mscorlib"
+    xmlns:viewModel="using:RURS.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:PakkeKontrolViewModel/>
+    </Page.DataContext>
+
+    <Page.BottomAppBar>
+        <AppBar FlowDirection="RightToLeft" IsOpen="True" IsSticky="true">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="clear" Label="Ryd">
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel>
+                                <TextBlock>Er du sikker på at du vil ryde siden?</TextBlock>
+                                <Button Content="Ja" Command="{Binding ClearCommand}"></Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </AppBarButton>
+                <AppBarButton Icon="add" Label="Gem">
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel>
+                                <TextBlock Text="Er du sikker på at alt er indtastet?"/>
+                                <Button Command="{Binding AddCommand}" Content="Gem"/>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </AppBarButton>
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+    <Grid>
+        <Hub Header="Pakke Kontrollen">
+            <HubSection Width="350">
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Tidspunkt"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TimePicker ClockIdentifier="24HourClock" Time="{Binding TimeSpan, Mode=TwoWay}" MinuteIncrement="15"  ToolTipService.ToolTip="Skriv Tidspunktet"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Folie råvare nummer"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedPakkeKontrol.FolieRaavareNr, Mode= TwoWay}" ToolTipService.ToolTip="Skriv råvare nummeret ved opstart,&#x0d;&#x0a;ved i brugtagning af ny palle,&#x0d;&#x0a;samt min 1 gang i timen samtidig med&#x0d;&#x0a;bibloteksprøverne til&#x0d;&#x0a;Færdigvarekontrollen"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Katon råvare nummer"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedPakkeKontrol.KatonRåvareNr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv råvare nummeret ved opstart,&#x0d;&#x0a;ved i brugtagning af ny palle,&#x0d;&#x0a;samt min 1 gang i timen samtidig med&#x0d;&#x0a;bibloteksprøverne til&#x0d;&#x0a;Færdigvarekontrollen"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Holdbarheds dato"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <DatePicker Date="{Binding HoldbarhedsDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv Holdbarheds datoen"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="produktions dato"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <DatePicker Date="{Binding ProduktionsDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv produtions datoen"/>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Printer 1"/>
+                                <TextBlock Text="*" Foreground="Red"/>
+                            </StackPanel>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Column="0">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.Print1ProDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv ProdunktionsDato"/>
+
+                                </Grid>
+                                <Grid Column="1">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.Print1HolDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv Udløbsdato"/>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="Printer 2"/>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Column="0">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.Print2ProDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv ProdunktionsDato"/>
+
+                                </Grid>
+                                <Grid Column="1">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.Print2HolDato, Mode=TwoWay}" ToolTipService.ToolTip="Skriv Udløbsdato"/>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Kontrol af stabelmønster"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedPakkeKontrol.KontrolStabelMonster, Mode=TwoWay}" ToolTipService.ToolTip="Skriv mønsterkode&#x0d;&#x0a;Se produktspecifikation "/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Tjek og Kontrol af averylabel"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedPakkeKontrol.KontrolAverylable, Mode= TwoWay}" ToolTipService.ToolTip="Skriv Batch nummer"/>
+                        <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0 10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Helheds indtryk"/>
+                                <TextBlock Text="*" Foreground="Red"/>
+                            </StackPanel>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.HelhedsIndtryk, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[helhed].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Signatur"/>
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </StackPanel>
+                        <TextBox Text="{Binding SelectedPakkeKontrol.Signatur, Mode=TwoWay}"/>
+                    </StackPanel>
+                </DataTemplate>
+
+
+            </HubSection>
+
+            <HubSection Width="350">
+                <DataTemplate>
+                    <StackPanel Width="300">
+
+                        <StackPanel ToolTipService.ToolTip="Se instruktion&#x0d;&#x0a;IN_12.061.300.444" Margin="0 10">
+                            <TextBlock Text="Fyldehøjde Kontrol"/>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.FyldeHojdeKontrol, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[FyldeHøjde].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="tjekkes ved opstart og produktskifte" Margin="0 10">
+                            <TextBlock Text="Skridlim på Karton"/>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.SkridlimKarton, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[SkridLim].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Skriv opnået pu,&#x0d;&#x0a;Se Improve:&#x0d;&#x0a;IN-12.061.110.601&#x0d;&#x0a;IN-12.061.110.602&#x0d;&#x0a;IN-12.061.110.603">
+                            <TextBlock Text="Kontrol af pu Tunnelpasteur"/>
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                                <Grid Column="0">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.PuTunnelV, Mode=TwoWay}" Header="Venstre"/>
+                                </Grid>
+                                <Grid Column="1">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.PuTunnelM, Mode=TwoWay}"  Header="Midt"/>
+                                </Grid>
+                                <Grid Column="2">
+                                    <TextBox Text="{Binding SelectedPakkeKontrol.PuTunnelH, Mode=TwoWay}" Header="Højre"/>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                        <TextBlock Text="Kontrol af palle nr"/>
+                        <TextBox Text="{Binding SelectedPakkeKontrol.KontrolPalleNr, Mode=TwoWay}" ToolTipService.ToolTip="Skriv palle nummer"/>
+                        
+                        <StackPanel ToolTipService.ToolTip="Ved opstart og produktionsskifte" Margin="0 10">
+                            <TextBlock Text="Tjek for fremmede dåser"/>
+                            <TextBlock Text="På baner og paller"/>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.PaaBanerPaller, Mode=TwoWay}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[FremDPaller].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel ToolTipService.ToolTip="Ved opstart og produktionsskifte" Margin="0">
+                            <TextBlock Text="I Karton"/>
+                            <ComboBox SelectedItem="{Binding SelectedPakkeKontrol.FremmedDaaserKarton}" PlaceholderText="Ikke udført" Width="200" SelectedIndex="{Binding Helpers[FremDkarton].Index, Mode=TwoWay}">
+                                <x:String>OK</x:String>
+                                <x:String>IKKE OK</x:String>
+                            </ComboBox>
+                        </StackPanel>
+                       
+
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

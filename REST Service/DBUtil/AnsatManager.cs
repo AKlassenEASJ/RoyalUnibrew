@@ -109,7 +109,7 @@ namespace REST_Service.DBUtil
         {
             bool status = false;
 
-            SqlConnection connection = new SqlConnection();
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             connection.Open();
 

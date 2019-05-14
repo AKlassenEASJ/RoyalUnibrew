@@ -5,13 +5,17 @@ using System.Runtime.CompilerServices;
 using ModelLibary.Annotations;
 
 namespace ModelLibrary.Models
-{
+{   /// <summary>
+    /// TappeKontrol klasse lavet ud fra ExcelArk
+    /// </summary>
     public class TappeKontrol : INotifyPropertyChanged
     {
+        #region Instance Fields
+
         private int _processOrderNr;
         private DateTime _tidspunkt;
-        private int _daasenr;
-        private int _laagnr;
+        private int _daaseNr;
+        private int _laagNr;
         private string _helhed;
         private string _kameraTjek;
         private string _ccp;
@@ -26,17 +30,21 @@ namespace ModelLibrary.Models
         private double _co2Kontrol;
         private string _signatur;
 
+        #endregion
+
+        #region Constructors
+
         public TappeKontrol()
         {
-            
+
         }
 
-        public TappeKontrol(int processOrderNr, DateTime tidspunkt, int daasenr, int laagnr, string helhed, string kameraTjek, string ccp, double vaeskeTemp, double kontrolTemp, string tunnelPhTjek, double vaegtKontrol, int smagsTestNr, string smagsTest, string kviterProve, string sukkerTjek, double co2Kontrol, string signatur)
+        public TappeKontrol(int processOrderNr, DateTime tidspunkt, int daaseNr, int laagNr, string helhed, string kameraTjek, string ccp, double vaeskeTemp, double kontrolTemp, string tunnelPhTjek, double vaegtKontrol, int smagsTestNr, string smagsTest, string kviterProve, string sukkerTjek, double co2Kontrol, string signatur)
         {
             ProcessOrderNr = processOrderNr;
             Tidspunkt = tidspunkt;
-            Daasenr = daasenr;
-            Laagnr = laagnr;
+            DaaseNr = daaseNr;
+            LaagNr = laagNr;
             Helhed = helhed;
             KameraTjek = kameraTjek;
             Ccp = ccp;
@@ -51,6 +59,10 @@ namespace ModelLibrary.Models
             Co2Kontrol = co2Kontrol;
             Signatur = signatur;
         }
+
+        #endregion
+
+        #region Propperties
 
         public int ProcessOrderNr
         {
@@ -68,16 +80,16 @@ namespace ModelLibrary.Models
             }
         }
 
-        public int Daasenr
+        public int DaaseNr
         {
-            get => _daasenr;
-            set => _daasenr = value;
+            get => _daaseNr;
+            set => _daaseNr = value;
         }
 
-        public int Laagnr
+        public int LaagNr
         {
-            get => _laagnr;
-            set => _laagnr = value;
+            get => _laagNr;
+            set => _laagNr = value;
         }
 
         public string Helhed
@@ -113,7 +125,7 @@ namespace ModelLibrary.Models
             get => _kontrolTemp;
             set
             {
-                _kontrolTemp = value; 
+                _kontrolTemp = value;
                 OnPropertyChanged();
             }
         }
@@ -123,7 +135,7 @@ namespace ModelLibrary.Models
             get => _tunnelPHTjek;
             set
             {
-                _tunnelPHTjek = value; 
+                _tunnelPHTjek = value;
                 OnPropertyChanged();
             }
         }
@@ -143,7 +155,7 @@ namespace ModelLibrary.Models
             get => _smagsTestNr;
             set
             {
-                _smagsTestNr = value; 
+                _smagsTestNr = value;
                 OnPropertyChanged();
             }
         }
@@ -159,7 +171,7 @@ namespace ModelLibrary.Models
             get => _kviterProve;
             set
             {
-                _kviterProve = value; 
+                _kviterProve = value;
                 OnPropertyChanged();
             }
         }
@@ -185,6 +197,8 @@ namespace ModelLibrary.Models
             get => _signatur;
             set => _signatur = value;
         }
+
+        #endregion
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
         public event PropertyChangedEventHandler PropertyChanged;

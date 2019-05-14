@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="ModelLibary">
       <HintPath>..\ModelLibary\bin\Debug\ModelLibary.dll</HintPath>
@@ -55,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -167,6 +174,7 @@
     <Compile Include="Controllers\AnsatsController.cs" />
     <Compile Include="Controllers\FaerdigVaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PakkeKontrolsController.cs" />
     <Compile Include="Controllers\ProcessOrdreController.cs" />
     <Compile Include="Controllers\TappeKontrolsController.cs" />
     <Compile Include="Controllers\VaegtKontrolController.cs" />
@@ -179,6 +187,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AnsatteEFM.cs" />
+    <Compile Include="Models\BemandingEFM.cs" />
+    <Compile Include="Models\DeltilbageMeldt.cs" />
+    <Compile Include="Models\FaerdigvareEFM.cs" />
+    <Compile Include="Models\PakkeKontrolEFM.cs" />
+    <Compile Include="Models\PakkeKontrolEF.cs" />
+    <Compile Include="Models\ProcessOrdreEFM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,7 +249,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

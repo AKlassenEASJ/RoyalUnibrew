@@ -28,17 +28,17 @@ namespace RURS.ViewModel
             }
         }
 
-        private int _minituesLeft;
+        //private int _minituesLeft;
 
-        public int MiniutesLeft
-        {
-            get { return _minituesLeft; }
-            set
-            {
-                _minituesLeft = value;
-                OnPropertyChanged();
-            }
-        }
+        //public int MiniutesLeft
+        //{
+        //    get { return _minituesLeft; }
+        //    set
+        //    {
+        //        _minituesLeft = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         public List<CheckboxHelper> CheckHelpers { get; set; }
 

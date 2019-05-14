@@ -16,7 +16,7 @@ namespace RURS.Persistency
 
 
 
-        public async Task<List<VaegtKontrol>> GetAll()
+        public async static Task<List<VaegtKontrol>> GetAll()
         {
             List<VaegtKontrol> vaegtKontrols = new List<VaegtKontrol>();
             using (HttpClient client = new HttpClient())
@@ -30,23 +30,40 @@ namespace RURS.Persistency
         }
 
 
+        public async static Task<int> GetMax(int ponid)
+        {
+            int vaegtKontrolMax = 0;
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync(URI + "/max/" + ponid);
+                await resTask;
+                String jsonStr = resTask.Result;
+                vaegtKontrolMax = JsonConvert.DeserializeObject<int>(jsonStr);
+            }
+
+            return vaegtKontrolMax;
+        }
 
 
 
 
+        public static VaegtKontrol GetOne(int id)
+        {
+            VaegtKontrol vaegtKontrol = new VaegtKontrol();
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync(URI + $"/{id}");
+                string jsonStr = resTask.Result;
+                vaegtKontrol = JsonConvert.DeserializeObject<VaegtKontrol>(jsonStr);
+            }
 
-
-
-
-
-
-
+            return vaegtKontrol;
+        }
 
 
         public bool Post(VaegtKontrol vaegtKontrol)
         {
             bool ok = true;
-
             using (HttpClient client = new HttpClient())
             {
                 String jsonStr = JsonConvert.SerializeObject(vaegtKontrol);
