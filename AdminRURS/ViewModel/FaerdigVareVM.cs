@@ -45,10 +45,10 @@ namespace AdminRURS.ViewModel
         #region Constructer
         // Uncomment
         public FaerdigVareVM()
-        {
-            // EditCommand = new RelayCommand();
+        {           
             Handler = new FaerdigVareHandler(this);
             CreateCommand = new RelayCommand(Handler.Create);
+            EditCommand = new RelayCommand(Handler.Edit);
             SelectedFaerdigVare = new FaerdigVare();
         }
 

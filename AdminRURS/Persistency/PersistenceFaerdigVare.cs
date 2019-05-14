@@ -46,7 +46,7 @@ namespace RURS.Persistency
             using (HttpClient client = new HttpClient())
             {
                 string jsonStr = JsonConvert.SerializeObject(faerdigVare);
-                StringContent content = new StringContent(jsonStr, Encoding.ASCII, "application/json");
+                StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
 
                 Task<HttpResponseMessage> putAsync = client.PutAsync(URI+ "/" +FaerdigVare_Nr, content);
 
