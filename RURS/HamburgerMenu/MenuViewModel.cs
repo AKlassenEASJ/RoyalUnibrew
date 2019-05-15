@@ -7,7 +7,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using ModelLibary.Models;
 using RURS.Annotations;
+using RURS.Model;
 using RURS.View;
 using RURS.ViewModel;
 using ProcessOrdreViewModel = RURS.View.ProcessOrdreView;
@@ -30,6 +32,8 @@ namespace RURS.HamburgerMenu
             }
         }
 
+        public ProcessOrdre ProcessOrdre { get; set; }
+        public SelectedPOSingleton PoSingleton { get; set; }    
         public MenuViewModel()
         {
             NavigationItems = new ObservableCollection<NavigationViewItemBase>();
@@ -37,6 +41,8 @@ namespace RURS.HamburgerMenu
             GetNagivationItems();
 
             SelectedItem = NavigationItems.First(x => x.GetType() == typeof(NavigationViewItem));
+            PoSingleton = SelectedPOSingleton.GetInstance();
+            ProcessOrdre = PoSingleton.ActiveProcessOrdre;
 
         }
 
