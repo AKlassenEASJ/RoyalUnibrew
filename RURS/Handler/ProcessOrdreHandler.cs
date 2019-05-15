@@ -30,6 +30,7 @@ namespace RURS.Handler
 
         public void Load()
         {
+            InternalClear();
             _loadedProcessOrdrer=Persistency.PersistencyProcessOrdre.GetAll();
 
             foreach (ProcessOrdre p in _loadedProcessOrdrer)
@@ -50,11 +51,19 @@ namespace RURS.Handler
         {
             ProcessOrdre processOrdre=_vM.OpretningProcessOrdre;
             Persistency.PersistencyProcessOrdre.Post(processOrdre);
-
+            Load();
+            InternalOpen();
         }
         
+        private void InternalClear()
+        {
+            _vM.DisplayProcessOrdres.Clear();
+        }
 
-
+        private void InternalOpen()
+        {
+            _vM.OpenOrdreDisplay.ActiveProcessOrdre = _vM.OpretningProcessOrdre;
+        }
 
     }
 }

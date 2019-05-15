@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\MessageDialogHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="HamburgerMenu\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>

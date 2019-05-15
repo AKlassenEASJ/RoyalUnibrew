@@ -49,6 +49,7 @@ namespace ModelLibary.Models
         public Ansat(string initial, string navn, int id)
         {
             _Initial = initial;
+            
             _navn = navn;
             _id = id;
 

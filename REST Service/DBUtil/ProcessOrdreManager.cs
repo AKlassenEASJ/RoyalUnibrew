@@ -17,7 +17,7 @@ namespace REST_Service.DBUtil
 
 
         //private const string ConnectionString = thomasConnectionString;
-        private const string ConnectionString = christianConnectionString;
+        private const string ConnectionString = thomasConnectionString;
 
         private const string GETAll = "SELECT * FROM ProcessOrdre";
         private const string GETONE = "SELECT * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";

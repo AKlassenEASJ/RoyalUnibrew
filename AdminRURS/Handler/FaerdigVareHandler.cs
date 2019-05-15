@@ -42,6 +42,14 @@ namespace AdminRURS.Handler
             }
         }
 
+        public void Edit()
+        {
+            if (PersistenceFaerdigVare.Put(_viewModel.SelectedFaerdigVare.FaerdigVare_Nr, _viewModel.SelectedFaerdigVare))
+            {
+                _viewModel.SelectedFaerdigVare = new FaerdigVare();
+            }
+        }
+
         #endregion
     }
 }

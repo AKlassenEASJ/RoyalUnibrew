@@ -105,10 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBUtil\AnsatManagerTest.cs" />
+    <Compile Include="DBUtil\BemandingManagerTest.cs" />
     <Compile Include="DBUtil\PakkeKontrolsControllerTest.cs" />
     <Compile Include="DBUtil\TappeKontrolMangerTest.cs" />
     <Compile Include="DBUtil\FaerdigVareManagerTest.cs" />
     <Compile Include="DBUtil\ProcessOrdreManagerTest.cs" />
+    <Compile Include="DBUtil\VaegtKontrolManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

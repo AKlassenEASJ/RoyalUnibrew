@@ -39,8 +39,11 @@ namespace REST_Service.Controllers
             return manager.Post(value);
         }
         
+
+
         #region Ubrugte
         
+
         
         // PUT: api/VaegtKontrol/5
         public void Put(int id, [FromBody]string value)
@@ -50,6 +53,8 @@ namespace REST_Service.Controllers
         public void Delete(int id)
         {
         }
+        
+        
         #endregion
     }
 }

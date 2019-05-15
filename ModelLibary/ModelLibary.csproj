@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Ansat.cs" />
+    <Compile Include="Models\Bemanding.cs" />
     <Compile Include="Models\FaerdigVare.cs" />
     <Compile Include="Models\PakkeKontrol.cs" />
     <Compile Include="Models\ProcessOrdre.cs" />

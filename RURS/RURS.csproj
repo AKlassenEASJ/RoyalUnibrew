@@ -141,6 +141,7 @@
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />
     <Compile Include="Validation\ValidationBase.cs" />
     <Compile Include="Validation\ValidationTappeKontrol.cs" />
+    <Compile Include="ViewModel\BemandingViewModel.cs" />
     <Compile Include="ViewModel\PakkeKontrolViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreViewModel.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
