@@ -83,16 +83,6 @@ namespace RURS.ViewModel
             handler.Load();
 
 
-            //WIP input.
-            //DateTime date1=new DateTime(2019, 1, 1);
-            //DateTime date2 = new DateTime(2019, 1, 1);
-            //DateTime date3 = new DateTime(2019, 1, 1);
-            //ProcessOrdre p1 = new ProcessOrdre(1, 1, date1);
-            //ProcessOrdre p2 = new ProcessOrdre(2, 1, date2);
-            //ProcessOrdre p3 = new ProcessOrdre(3, 1, date3);
-            //DisplayProcessOrdres.Add(p1);
-            //DisplayProcessOrdres.Add(p2);
-            //DisplayProcessOrdres.Add(p3);
         }
     }
 }
