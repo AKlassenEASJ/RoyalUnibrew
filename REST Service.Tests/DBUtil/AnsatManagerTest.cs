@@ -19,7 +19,7 @@ namespace REST_Service.Tests.DBUtil
         public void TestInitialize()
         {
             _manager = new AnsatManager();
-            _trialAnsat = new Ansat("AB", "Anders Bunde", 25);
+            _trialAnsat = new Ansat("ABBB", "Anders Bunde Bande Bunds", 25);
         }
 
 

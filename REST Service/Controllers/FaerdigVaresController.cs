@@ -35,16 +35,17 @@ namespace REST_Service.Controllers
         {
 
             return manager.Post(faerdigVare);
-
-            //return manager.
+            
+           
             
 
         }
 
-    // PUT: api/FaerdigVares/5
-    public bool Put(int nummer, [FromBody]FaerdigVare faerdigVare)
+        // PUT: api/FaerdigVares/5
+        [Route("api/FaerdigVares/{nummer}")]
+        public bool Put(int nummer, [FromBody]FaerdigVare faerdigvare) 
         {
-            return manager.Put(nummer, faerdigVare);
+            return manager.Put(nummer, faerdigvare);
         }
 
         // DELETE: api/FaerdigVares/5

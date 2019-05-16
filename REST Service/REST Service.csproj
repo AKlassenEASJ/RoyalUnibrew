@@ -180,6 +180,7 @@
     <Compile Include="Controllers\VaegtKontrolController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DBUtil\AnsatManager.cs" />
+    <Compile Include="DBUtil\BemandingManager.cs" />
     <Compile Include="DBUtil\FaerdigVareManager.cs" />
     <Compile Include="DBUtil\ProcessOrdreManager.cs" />
     <Compile Include="DBUtil\TappeKontrolManger.cs" />

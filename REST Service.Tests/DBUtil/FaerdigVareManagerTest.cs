@@ -9,14 +9,24 @@ namespace REST_Service.Tests.DBUtil
     public class FaerdigVareManagerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Post_NewFaerdigVare_True()
         {
             FaerdigVareManager Manager = new FaerdigVareManager();
 
             
-            FaerdigVare ny = new FaerdigVare(2, "name", 1,3,2);
+            FaerdigVare ny = new FaerdigVare(124, "Test", 1.0,3.0,2.0);
             bool res = Manager.Post(ny);
             //Assert.AreEqual(res, Manager.Post(ny));
+            Assert.IsTrue(res);
+        }
+
+        [TestMethod]
+        public void Put_ExistingFaerdigVare_True()
+        {
+            FaerdigVareManager Manager = new FaerdigVareManager();
+
+            FaerdigVare edit = new FaerdigVare(124, "Test", 2.0,3.0,4.0);
+            bool res = Manager.Put(124, edit);
             Assert.IsTrue(res);
         }
     }
