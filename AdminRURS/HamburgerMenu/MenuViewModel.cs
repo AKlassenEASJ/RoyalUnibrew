@@ -48,6 +48,7 @@ namespace RURS.HamburgerMenu
             {
                 Content = "Tilføj/Ændre Ansat", Icon = new SymbolIcon(Symbol.AddFriend), Tag = typeof(TilføjAnsatPage)});
             NavigationItems.Add(new NavigationViewItem { Content = "Tilføj Færdigvare", Icon = new SymbolIcon(Symbol.PreviewLink), Tag = typeof(NyFaerdigVare) });
+            NavigationItems.Add(new NavigationViewItem { Content = "Se Processordrer", Icon = new SymbolIcon(Symbol.Admin), Tag = typeof(AdminProcessOrdreView) });
 
         }
 

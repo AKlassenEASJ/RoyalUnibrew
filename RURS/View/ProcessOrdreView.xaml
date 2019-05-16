@@ -17,20 +17,21 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Margin="4,0,-10,0">
             <StackPanel Orientation="Vertical" MaxWidth="500">
-                <Button  Content="Indlæs ProcessOrdrer" Command="{Binding LoadCommand}"/>
+                <TextBlock Text="Åben ProcessOrdre" FontSize="20"/>
+                <Button  Content="Åben Valgte" Command="{Binding OpenCommand}"/>
                 <ListView 
                     ItemsSource="{Binding DisplayProcessOrdres, Mode=TwoWay}" 
                     SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}"
                 >
                 </ListView>
-                <Button  Content="Åben Ordre" Command="{Binding OpenCommand}"/>
+                <Button  Content="Indlæs ProcessOrdrer" Command="{Binding LoadCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" MaxWidth="500">
                 <TextBlock Text="Opret ny processordre" FontSize="20"/>
-                <TextBox Header="Processordre Nummber" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
+                <TextBox Header="Processordre Nummer" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
                 <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
-                <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay}"/>
-                <Button Content="Gem Ordre"  Command="{Binding UploadCommand}"/>
+                <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="Gem og åben Ordre"  Command="{Binding UploadCommand}"/>
                 <TextBlock 
                     Text="{Binding OpenOrdreDisplay.ActiveProcessOrdre, Mode=TwoWay}" />
             </StackPanel>
