@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\MessageDialogHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="HamburgerMenu\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
@@ -130,12 +131,16 @@
     <Compile Include="Handler\TappeKontrolHandler.cs" />
     <Compile Include="Handler\VaegtKontrolHandler.cs" />
     <Compile Include="Model\CheckboxHelper.cs" />
+    <Compile Include="Model\FejlTjek.cs" />
+    <Compile Include="Model\INotyfiClass.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
     <Compile Include="Persistency\PersistencePakkeKontrol.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
     <Compile Include="Persistency\PersistencyProcessOrdre.cs" />
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />
+    <Compile Include="Validation\ValidationBase.cs" />
+    <Compile Include="Validation\ValidationTappeKontrol.cs" />
     <Compile Include="ViewModel\BemandingViewModel.cs" />
     <Compile Include="ViewModel\PakkeKontrolViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreAddViewModel.cs" />

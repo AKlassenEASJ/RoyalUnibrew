@@ -12,7 +12,7 @@ namespace RURS.Model
 {/// <summary>
 /// hjælper til nulstille comboboxe
 /// </summary>
-    class CheckboxHelper : VMBase
+    class CheckboxHelper : INotyfiClass
     {
 
         private int _index;
