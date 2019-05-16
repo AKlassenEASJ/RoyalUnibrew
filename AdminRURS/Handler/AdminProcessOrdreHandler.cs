@@ -23,14 +23,14 @@ namespace AdminRURS.Handler
 
         public void LoadAll()
         {
-            InternalAllClear();
+            InternalClear();
             _loadedProcessOrdrer = Persistency.PersistenceAdminProcessOrdre.GetAll();
 
             foreach(ProcessOrdre p in _loadedProcessOrdrer)
             {
                 _vM.DisplayProcessOrdrer.Add(p);
             }
-
+            _vM.Header = "Viser alle processordrer";
         }
 
         public void LoadByDate()
@@ -38,24 +38,20 @@ namespace AdminRURS.Handler
 
             DateTime date = _vM.DatePicked.DateTime;
 
-            InternalDateClear();
+            InternalClear();
             _loadedProcessOrdrer = Persistency.PersistenceAdminProcessOrdre.GetAll();
             foreach (ProcessOrdre p in _loadedProcessOrdrer)
             {
                 if(p.Dato==date)
                 { 
-                _vM.DisplayOrdrerByDate.Add(p);
+                _vM.DisplayProcessOrdrer.Add(p);
                 }
             }
+            _vM.Header = $"Viser processordrer for {date.Day}/{date.Month}/{date.Year}";
         }
+        
 
-
-        private void InternalDateClear()
-        {
-            _vM.DisplayOrdrerByDate.Clear();
-        }
-
-        private void InternalAllClear()
+        private void InternalClear()
         {
             _vM.DisplayProcessOrdrer.Clear();
         }

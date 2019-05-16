@@ -138,6 +138,8 @@
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />
     <Compile Include="ViewModel\BemandingViewModel.cs" />
     <Compile Include="ViewModel\PakkeKontrolViewModel.cs" />
+    <Compile Include="ViewModel\ProcessOrdreAddViewModel.cs" />
+    <Compile Include="ViewModel\ProcessOrdreOpenViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreViewModel.cs" />
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
@@ -149,6 +151,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\PakkeKontrolView.xaml.cs">
       <DependentUpon>PakkeKontrolView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProcessOrdreAddView.xaml.cs">
+      <DependentUpon>ProcessOrdreAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProcessOrdreOpenView.xaml.cs">
+      <DependentUpon>ProcessOrdreOpenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ProcessOrdreView.xaml.cs">
       <DependentUpon>ProcessOrdreView.xaml</DependentUpon>
@@ -193,6 +201,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ProcessOrdreAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProcessOrdreOpenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ProcessOrdreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +225,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
