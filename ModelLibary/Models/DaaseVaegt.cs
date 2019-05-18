@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLibary.Models
 {
-    class DaaseVaegt
+    public class DaaseVaegt
     {
         private int _processOrderNr;
         private int _kontrolOrderNr;
