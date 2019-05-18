@@ -4,11 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ModelLibary.Models;
+using REST_Service.DBUtil;
 
 namespace REST_Service.Controllers
 {
     public class DaaseVaegtsController : ApiController
     {
+        DaaseVaegtManger manger = new DaaseVaegtManger();
         // GET: api/DaaseVaegts
         public IEnumerable<string> Get()
         {
@@ -22,8 +25,9 @@ namespace REST_Service.Controllers
         }
 
         // POST: api/DaaseVaegts
-        public void Post([FromBody]string value)
+        public void Post([FromBody]DaaseVaegt value)
         {
+            manger.Post(value);
         }
 
         // PUT: api/DaaseVaegts/5
