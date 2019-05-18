@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:RURS.ViewModel"
+    xmlns:custom="using:Microsoft.Xaml.Interactivity"
+    xmlns:custom1="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Model="using:RURS.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -17,20 +19,29 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Margin="4,0,-10,0">
             <StackPanel Orientation="Vertical" MaxWidth="500">
-                <TextBlock Text="Åben ProcessOrdre" FontSize="20"/>
+                <Button>
+                    <custom:Interaction.Behaviors>
+                        <custom1:EventTriggerBehavior EventName="Click">
+                            <custom1:NavigateToPageAction TargetPage="RURS.View.ProcessOrdreOpenView">
+                            
+                        </custom1:NavigateToPageAction>
+                            </custom1:EventTriggerBehavior>
+                    </custom:Interaction.Behaviors>
+                </Button>
+                    <TextBlock Text="Åben ProcessOrdre" FontSize="20"/>
                 <Button  Content="Åben Valgte" Command="{Binding OpenCommand}"/>
                 <ListView 
                     ItemsSource="{Binding DisplayProcessOrdres, Mode=TwoWay}" 
                     SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}"
                 >
                 </ListView>
-                <Button  Content="Indlæs ProcessOrdrer" Command="{Binding LoadCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" MaxWidth="500">
+                <Button Content="Opret ny ordre"/>
                 <TextBlock Text="Opret ny processordre" FontSize="20"/>
                 <TextBox Header="Processordre Nummer" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
                 <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
-                <DatePicker Header="Dato" Date="{Binding OpretningProcessOrdre.Dato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DatePicker Header="Dato" Date="{Binding OpretningsProcessOrdreDate, Mode=TwoWay}"/>
                 <Button Content="Gem og åben Ordre"  Command="{Binding UploadCommand}"/>
                 <TextBlock 
                     Text="{Binding OpenOrdreDisplay.ActiveProcessOrdre, Mode=TwoWay}" />

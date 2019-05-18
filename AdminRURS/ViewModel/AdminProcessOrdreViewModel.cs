@@ -21,8 +21,10 @@ namespace AdminRURS.ViewModel
         private ObservableCollection<ProcessOrdre> _displayOrdrerByDate;
         private DateTime _datePicked;
         private AdminProcessOrdreHandler _handler;
+        private string _header;
 
         public ICommand LoadByDateCommand { get; set; }
+        public ICommand LoadAllCommand { get; set; }
 
         public ObservableCollection<ProcessOrdre> DisplayProcessOrdrer
         {
@@ -43,13 +45,25 @@ namespace AdminRURS.ViewModel
             }
         }
 
+        public string Header
+        {
+            get => _header;
+            set
+            {
+                _header = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DateTimeOffset DatePicked
         {
             get => _datePicked;
             set
             {
                 _datePicked = value.DateTime;
+                _handler.LoadByDate();
                 OnPropertyChanged();
+
             }
         }
 
@@ -62,6 +76,7 @@ namespace AdminRURS.ViewModel
             _datePicked = DateTime.Today;
 
             LoadByDateCommand = new RelayCommand(_handler.LoadByDate);
+            LoadAllCommand = new RelayCommand(_handler.LoadAll);
             _handler.LoadAll();
         }
 

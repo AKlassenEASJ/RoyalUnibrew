@@ -15,12 +15,12 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Alle Processordrer" FontSize="20"/>
+                <TextBlock Text="{Binding Header}" FontSize="20"/>
                 <ListView ItemsSource="{Binding DisplayProcessOrdrer}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <DatePicker Date="{Binding DatePicked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Content="Hent ordrer for dato" Command="{Binding LoadByDateCommand}"/>
+                <DatePicker Date="{Binding DatePicked, Mode=TwoWay}"/>
+                <Button Content="Hent alle ordrer" Command="{Binding LoadAllCommand}"/>
                 <ListView ItemsSource="{Binding DisplayOrdrerByDate}"/>
             </StackPanel>
         </StackPanel>

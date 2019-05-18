@@ -47,6 +47,15 @@ namespace RURS.ViewModel
                 OnPropertyChanged();
             }
         }
+        public DateTimeOffset OpretningsProcessOrdreDate
+        {
+            get => OpretningProcessOrdre.Dato;
+            set
+            {
+                OpretningProcessOrdre.Dato = value.DateTime;
+            }
+        }
+
         public ObservableCollection<ProcessOrdre> DisplayProcessOrdres
         {
             get => _displayProcessOrdres;
