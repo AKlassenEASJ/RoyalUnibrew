@@ -64,7 +64,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </TextBox>
-                        <TextBlock Text="{Binding Validatons[Daasenr].Bedsked}" Foreground="Red"></TextBlock>
+                        <TextBlock Text="{Binding Validatons[Daasenr].Besked}" Foreground="Red"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Låg nummer"/>
                             <TextBlock Text="*" Foreground="Red"/>
@@ -76,7 +76,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </TextBox>
-                        <TextBlock Text="{Binding Validatons[laagNr].Bedsked}" Foreground="Red"></TextBlock>
+                        <TextBlock Text="{Binding Validatons[laagNr].Besked}" Foreground="Red"/>
                         <StackPanel ToolTipService.ToolTip="Tjek efter tapper/seamer om dåse og låg er ok.&#x0d;&#x0a;Tjek samtidig for buler og ridser.&#x0d;&#x0a;Udføres hvert kvarter" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Helhed"/>
@@ -99,7 +99,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </TextBox>
-                        <TextBlock Text="{Binding Validatons[KontrolTemp].Bedsked}" Foreground="Red" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <TextBlock Text="{Binding Validatons[KontrolTemp].Besked}" Foreground="Red" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="væske temperatur"/>
                             <TextBlock Text="*" Foreground="Red"/>
@@ -111,7 +111,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </TextBox>
-                        <TextBlock Text="{Binding Validatons[VæskeTemp].Bedsked}" Foreground="Red"></TextBlock>
+                        <TextBlock Text="{Binding Validatons[VæskeTemp].Besked}" Foreground="Red"></TextBlock>
                         <StackPanel Orientation="Horizontal" Margin="0 10">
                             <TextBlock Text="Signatur"/>
                             <TextBlock Text="*" Foreground="Red"/>
@@ -123,7 +123,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </TextBox>
-                        <TextBlock Text="{Binding Validatons[Signatur].Bedsked}" Foreground="Red"></TextBlock>
+                        <TextBlock Text="{Binding Validatons[Signatur].Besked}" Foreground="Red"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </HubSection>

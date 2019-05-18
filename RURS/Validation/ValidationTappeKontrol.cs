@@ -14,23 +14,37 @@ namespace RURS.Validation
 
         public string TjekNr(int tjek)
         {
-            string valiRes = IntToSmall(tjek);
+            string test = tjek.ToString();
+            string valiRes = Empty(test);
 
-            if (valiRes == null)
-            {
-                if (tjek <= 100000)
+                if (valiRes == null)
                 {
-                    valiRes = "Tallet skal være mindst 6 cifre";
+
+                    if (test.Length < 6)
+                    {
+                        valiRes = "Tallet skal være mindst 6 cifre";
+                    }
+                    else if (test.Length > 8)
+                    {
+                        valiRes = "tallet er for stort";
+                    }
                 }
-                else if (tjek >= 10000000)
-                {
-                    valiRes = "tallet er for stort";
-                } 
-            }
-
             return valiRes;
         }
 
+        //public string TjekForBogstaver(string tjek)
+        //{
+
+        //    foreach (char c in tjek)
+        //    {
+        //        if (!char.IsDigit(c))
+        //        {
+        //            return "Der må kun være tal";
+        //        }
+        //    }
+
+        //    return null;
+        //}
 
         public string TjekTemperatur(double tjek)
         {
