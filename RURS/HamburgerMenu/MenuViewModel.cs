@@ -22,6 +22,8 @@ namespace RURS.HamburgerMenu
 
         private NavigationViewItemBase _selectedItem;
 
+        private ProcessOrdre _processOrdre;
+
         public NavigationViewItemBase SelectedItem
         {
             get { return _selectedItem; }
@@ -31,8 +33,16 @@ namespace RURS.HamburgerMenu
                 OnPropertyChanged();
             }
         }
-
-        public ProcessOrdre ProcessOrdre { get; set; }
+        
+        public ProcessOrdre ProcessOrdre
+        {
+            get { return _processOrdre;}
+            set
+            {
+                _processOrdre = value;
+                OnPropertyChanged();
+            }
+        }
         public SelectedPOSingleton PoSingleton { get; set; }    
         public MenuViewModel()
         {
@@ -41,8 +51,8 @@ namespace RURS.HamburgerMenu
             GetNagivationItems();
 
             SelectedItem = NavigationItems.First(x => x.GetType() == typeof(NavigationViewItem));
-            PoSingleton = SelectedPOSingleton.GetInstance();
-            ProcessOrdre = PoSingleton.ActiveProcessOrdre;
+           
+            ProcessOrdre = SelectedPOSingleton.GetInstance().ActiveProcessOrdre;
 
         }
 
