@@ -6,9 +6,78 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:ViewModel="using:RURS.ViewModel"
+    xmlns:custom="using:Microsoft.Xaml.Interactivity"
+    xmlns:custom1="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Model="using:RURS.Model"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <ViewModel:ProcessOrdreOpenViewModel/>
+    </Page.DataContext>
+    
     <Grid>
 
+        <Grid>
+            <StackPanel Orientation="Horizontal" Margin="4,0,-10,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Procesordrer" FontSize="20"/>
+                    <ListView 
+                        ItemsSource="{Binding DisplayProcessOrdres}" 
+                        SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                       <TextBlock Text="{Binding ProcessOrdreNr}" TextWrapping="NoWrap"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Processordre nummer" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="Dato" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Færdigvare nummer" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="Kolonne" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding SelectedProcessOrdre.ProcessOrdreNr}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Dato}"/>
+                        <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding SelectedProcessOrdre.FaerdigVareNr}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Kolonne}"/>
+
+                    </Grid>
+                    <Button  Content="Åben" Command="{Binding OpenCommand}">
+                        <custom:Interaction.Behaviors>
+                            <custom1:EventTriggerBehavior EventName="Click">
+                                <custom1:NavigateToPageAction TargetPage="RURS.HamburgerMenu.MenuPage">
+                                </custom1:NavigateToPageAction>
+                            </custom1:EventTriggerBehavior>
+                        </custom:Interaction.Behaviors>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

@@ -60,10 +60,10 @@ namespace ModelLibary.Models
 
         #region Methods
 
-        public override string ToString()
-        {
-            return $"PO#: {ProcessOrdreNr}, FV#: {FaerdigVareNr}, Dato: {Dato}, Kolonne: {Kolonne} ";
-        }
+        //public override string ToString()
+        //{
+        //    return $"PO#: {ProcessOrdreNr}, FV#: {FaerdigVareNr}, Dato: {Dato}, Kolonne: {Kolonne} ";
+        //}
 
         #endregion Methods
 
