@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using RURS.View;
 
 namespace RURS.HamburgerMenu
 {
@@ -17,13 +18,14 @@ namespace RURS.HamburgerMenu
                 ChangeMenuSelection();
             }
 
-            public static void GoBack()
-            {
-                NavigationFrame.GoBack();
-                ChangeMenuSelection();
-            }
+        public static void GoBack()
+        {
+            //NavigationFrame.GoBack();
+            NavigationFrame.Navigate(typeof(ProcessOrdreView));
+            ChangeMenuSelection();
+        }
 
-            private static void ChangeMenuSelection()
+        private static void ChangeMenuSelection()
             {
                 if ((Windows.UI.Xaml.Window.Current.Content as Frame).Content is MenuPage mp)
                 {

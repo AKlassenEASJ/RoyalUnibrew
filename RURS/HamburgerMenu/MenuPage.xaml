@@ -16,7 +16,9 @@
                         AlwaysShowHeader="False"
                         MenuItemsSource="{Binding NavigationItems}"
                         ItemInvoked="NavView_OnItemInvoked"
-                        IsBackButtonVisible="Collapsed"
+                        IsBackButtonVisible="Visible"
+                        IsBackEnabled="True"
+                        BackRequested="NavView_OnBackRequested"
                         IsSettingsVisible="False"
                         SelectedItem="">
 

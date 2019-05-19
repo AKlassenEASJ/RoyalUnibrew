@@ -126,14 +126,20 @@
     </Compile>
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
+    <Compile Include="Handler\AdminProcessOrdreHandler.cs" />
     <Compile Include="Handler\AnsatHandler.cs" />
     <Compile Include="Handler\FaerdigVareHandler.cs" />
+    <Compile Include="Persistency\PersistenceAdminProcessOrdre.cs" />
     <Compile Include="Persistency\PersistenceAnsat.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
     <Compile Include="Validation\ValidationAnsat.cs" />
     <Compile Include="Validation\ValidationBase.cs" />
+    <Compile Include="ViewModel\AdminProcessOrdreViewModel.cs" />
     <Compile Include="ViewModel\AnsatViewModel.cs" />
     <Compile Include="ViewModel\FaerdigVareVM.cs" />
+    <Compile Include="View\AdminProcessOrdreView.xaml.cs">
+      <DependentUpon>AdminProcessOrdreView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\AdminProcessOrdreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,6 +197,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
