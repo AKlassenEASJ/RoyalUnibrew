@@ -41,23 +41,7 @@ namespace RURS.Persistency
             return sucess;
         }
 
-        public static ProcessOrdre GetOne(int id)
-        {
-            ProcessOrdre processOrdre = new ProcessOrdre();
-
-
-            using (HttpClient client = new HttpClient())
-            {
-                Task<string> resTask = client.GetStringAsync(URI + $"/{id}");
-                string jsonStr = resTask.Result;
-
-                processOrdre = JsonConvert.DeserializeObject<ProcessOrdre>(jsonStr);
-            }
-
-            return processOrdre;
-        }
-
-        public static List<ProcessOrdre> GetAll()
+        public async static Task<List<ProcessOrdre>> GetAll()
         {
             List<ProcessOrdre> processOrdrer = new List<ProcessOrdre>();
             
@@ -65,36 +49,13 @@ namespace RURS.Persistency
             using (HttpClient client = new HttpClient())
             {
                 Task<string> resTask = client.GetStringAsync(URI);
+                await resTask;
                 string jsonStr = resTask.Result;
 
                 processOrdrer = JsonConvert.DeserializeObject<List<ProcessOrdre>>(jsonStr);
             }
 
             return processOrdrer;
-        }
-
-        public static bool Delete(int ID)
-        {
-            bool sucess;
-            using (HttpClient client = new HttpClient())
-            {
-
-                Task<HttpResponseMessage> responseTask = client.DeleteAsync($"{URI}/{ID}");
-
-                HttpResponseMessage response = responseTask.Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string jsonStringRead = response.Content.ReadAsStringAsync().Result;
-                    sucess = JsonConvert.DeserializeObject<bool>(jsonStringRead);
-                }
-                else
-                {
-                    sucess = false;
-                }
-
-                return sucess;
-            }
         }
     }
 }

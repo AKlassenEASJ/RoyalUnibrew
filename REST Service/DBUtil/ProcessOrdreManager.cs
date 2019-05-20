@@ -23,6 +23,7 @@ namespace REST_Service.DBUtil
         private const string GETONE = "SELECT * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
         private const string INSERT = "INSERT INTO ProcessOrdre (Process_Ordre_Nr, Faerdigvare_Nr, Dato, Kolonne) VALUES (@Process_Ordre_Nr, @Faerdigvare_Nr, @Dato, @Kolonne)";
         private const string DELETE = "DELETE FROM ProcessORdre WHERE Process_Ordre_Nr = @No";
+        private const string GETDATE = "SELECT * FROM ProcessOrdre WHERE Dato = @Date";
 
         //GETALL: API/ProcessOrdre
         public IEnumerable<ProcessOrdre> Get()
@@ -62,6 +63,27 @@ namespace REST_Service.DBUtil
             connection.Close();
             return processOrdre;
         }
+
+        public IEnumerable<ProcessOrdre> Get(DateTime date)
+        {
+            List<ProcessOrdre> liste = new List<ProcessOrdre>();
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(GETAll, connection);
+            cmd.Parameters.AddWithValue("@Date", date);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ProcessOrdre processOrdre = ReadProcessOrdre(reader);
+                liste.Add(processOrdre);
+            }
+            connection.Close();
+            return liste;
+        }
+
 
         // POST: api/ProcessOrdre
         public bool Post(ProcessOrdre processOrdre)
