@@ -29,10 +29,10 @@ namespace RURS.Handler
             _vM = vM;
         }
 
-        public void Load()
+        public async void Load()
         {
             InternalClear();
-            _loadedProcessOrdrer = Persistency.PersistencyProcessOrdre.GetAll();
+            _loadedProcessOrdrer = await Persistency.PersistencyProcessOrdre.GetAll();
 
             foreach (ProcessOrdre p in _loadedProcessOrdrer)
             {
