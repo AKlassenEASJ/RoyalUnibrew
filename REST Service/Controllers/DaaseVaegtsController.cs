@@ -19,9 +19,10 @@ namespace REST_Service.Controllers
         }
 
         // GET: api/DaaseVaegts/5
-        public string Get(int id)
+        [Route ("api/DaaseVaegts/{PONr}/{KNR}")]
+        public IEnumerable<DaaseVaegt> Get(int PONr, int KNR)
         {
-            return "value";
+            return manger.Get(PONr, KNR);
         }
 
         // POST: api/DaaseVaegts

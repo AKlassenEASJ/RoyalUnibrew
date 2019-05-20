@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:viewModel="using:RURS.ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 <Page.DataContext>
@@ -13,19 +14,66 @@
 </Page.DataContext>
     <Grid>
         <Hub Header="VægtKontrol">
-            <HubSection>
+            <HubSection MinWidth="300">  
                 <DataTemplate>
                     <TextBlock Text="VægtKontrols"/>
                 </DataTemplate>
             </HubSection>
 
-            <HubSection>
+            <HubSection MinWidth="700">
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="DåseVægt"/>
                         <TextBlock Text="DåseNr"/>
                         <TextBox Header="Vægt"></TextBox>
+                        <charting:Chart  
+                            x:Name="ColumnChart"  
+                            HorizontalAlignment="Left"  
+                            VerticalAlignment="Top"  
+                            Margin="0" Width="555" Height="316" 
+               
+                        >
+                            <charting:LineSeries Margin="0"  
+                                                 Title="Min"
+                                                 IndependentValuePath="Name"  
+                                                 DependentValuePath="Amount" 
+                                                 IsSelectionEnabled="False"
+                                                 ItemsSource="{Binding Minimum, Mode=TwoWay}"></charting:LineSeries>
+
+                            <charting:LineSeries Margin="0"  
+                                                 Title="Max"
+                                                 IndependentValuePath="Name"  
+                                                 DependentValuePath="Amount" 
+                                                 IsSelectionEnabled="False"
+                                                 ItemsSource="{Binding Maximum, Mode=TwoWay}" ></charting:LineSeries>
+
+                            <charting:LineSeries Margin="0"  
+                                                 Title="Snit"
+                                                 IndependentValuePath="Name"  
+                                                 DependentValuePath="Amount" 
+                                                 IsSelectionEnabled="False"
+                                                 ItemsSource="{Binding Snit, Mode=TwoWay}"
+                                                 ></charting:LineSeries>
+
+                            <charting:LineSeries Margin="0"  
+                                                 Title="For Ventet"
+                                                 IndependentValuePath="Name"  
+                                                 DependentValuePath="Amount" 
+                                                 IsSelectionEnabled="False"
+                                                 ItemsSource="{Binding Expted, Mode=TwoWay}"
+                            ></charting:LineSeries>
+
+                            <charting:LineSeries Margin="0"  
+                                                 Title="Vægte"
+                                                 IndependentValuePath="Name"  
+                                                 DependentValuePath="Amount" 
+                                                 IsSelectionEnabled="False"
+                                                 ItemsSource="{Binding Vaegts, Mode=TwoWay}"
+                            ></charting:LineSeries>
+
+                        </charting:Chart>
                     </StackPanel>
+                    
                 </DataTemplate>
             </HubSection>
 
