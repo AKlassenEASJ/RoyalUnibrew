@@ -40,11 +40,14 @@ namespace RURS.Handler
             _viewModel.SelectedTappeKontrol.Tidspunkt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             _viewModel.SelectedTappeKontrol.Tidspunkt = _viewModel.SelectedTappeKontrol.Tidspunkt + _viewModel.TimeSpan;
 
-            foreach (FejlTjek f in _viewModel.Validatons.Values)
+            //Tjekker om der er fejl
+
+
+            foreach (var f in _viewModel.Validatons)
             {
-                if (f.Bedsked != null)
+                if (f.Value.Besked != null)
                 {
-                    addToMessage(f.Bedsked);
+                    AddToMessage(f.Value.Besked, f.Key);
                 }
             }
 
@@ -52,6 +55,7 @@ namespace RURS.Handler
             {
                 MessageDialogHelper.Show(ErrorMessage, "Der mangler oplysninger");
             }
+
             else
             {
                 if (_validation.TjekPrimærNøgle(_viewModel.SelectedTappeKontrol.ProcessOrderNr, _viewModel.SelectedTappeKontrol.Tidspunkt))
@@ -111,28 +115,28 @@ namespace RURS.Handler
 
         public void TjekDasseNr()
         {
-            _viewModel.Validatons["Daasenr"].Bedsked = _validation.TjekNr(_viewModel.SelectedTappeKontrol.DaaseNr);
+            _viewModel.Validatons["Daasenr"].Besked = _validation.TjekNr(_viewModel.SelectedTappeKontrol.DaaseNr);
         }
 
         public void TjekLaagNr()
         {
-            _viewModel.Validatons["laagNr"].Bedsked = _validation.TjekNr(_viewModel.SelectedTappeKontrol.LaagNr);
+            _viewModel.Validatons["laagNr"].Besked = _validation.TjekNr(_viewModel.SelectedTappeKontrol.LaagNr);
         }
 
         public void TjekSignatur()
         {
-            _viewModel.Validatons["Signatur"].Bedsked = _validation.Empty(_viewModel.SelectedTappeKontrol.Signatur);
+            _viewModel.Validatons["Signatur"].Besked = _validation.Empty(_viewModel.SelectedTappeKontrol.Signatur);
         }
 
         public void TjekKontrolTemp()
         {
-            _viewModel.Validatons["KontrolTemp"].Bedsked =
+            _viewModel.Validatons["KontrolTemp"].Besked =
                 _validation.TjekTemperatur(_viewModel.SelectedTappeKontrol.KontrolTemp);
         }
 
         public void TjekVæskeTemp()
         {
-            _viewModel.Validatons["VæskeTemp"].Bedsked =
+            _viewModel.Validatons["VæskeTemp"].Besked =
                 _validation.TjekTemperatur(_viewModel.SelectedTappeKontrol.VaeskeTemp);
         }
 
@@ -153,12 +157,13 @@ namespace RURS.Handler
             //    }
 
 
-        private void addToMessage(string bedsked)
-        {
-            ErrorMessage = ErrorMessage + $"\n{bedsked}";
-        }
+            private void AddToMessage(string bedsked, string navn)
+            {
+                ErrorMessage = ErrorMessage + $"\n{navn}\n{bedsked}";
+            }
 
 
 
     }
 }
+    
