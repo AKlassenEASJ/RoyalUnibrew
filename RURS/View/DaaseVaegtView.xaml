@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="RURS.View.DaaseVaegtView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RURS.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:viewModel="using:RURS.ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+<Page.DataContext>
+        <viewModel:DaaseVaegtViewModel/>
+</Page.DataContext>
+    <Grid>
+        <Hub Header="VægtKontrol">
+            <HubSection>
+                <DataTemplate>
+                    <TextBlock Text="VægtKontrols"/>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="DåseVægt"/>
+                        <TextBlock Text="DåseNr"/>
+                        <TextBox Header="Vægt"></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+
+        </Hub>
+    </Grid>
+</Page>

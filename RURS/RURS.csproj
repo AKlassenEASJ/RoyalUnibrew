@@ -157,6 +157,9 @@
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
+    <Compile Include="View\DaaseVaegtView.xaml.cs">
+      <DependentUpon>DaaseVaegtView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="HamburgerMenu\MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DaaseVaegtView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
