@@ -12,7 +12,8 @@ namespace RURS.ViewModel
     {
         #region InstanceFields
 
-        private DateTimeOffset _date;
+        private DateTimeOffset _startTime;
+        private DateTimeOffset _endTime;
         private Bemanding _bemanding;
         private ICommand _addCommand;
 
@@ -21,14 +22,20 @@ namespace RURS.ViewModel
 
         #region Properties
 
-        public DateTimeOffset Date
+        public DateTimeOffset StartTime
         {
-            get { return _date; }
+            get { return _startTime; }
             set
             {
-                _date = value; 
+                _startTime = value; 
                 OnPropertyChanged();
             }
+        }
+
+        public DateTimeOffset EndTime
+        {
+            get { return _endTime; }
+            set { _endTime = value; }
         }
 
         public Bemanding Bemanding
