@@ -14,8 +14,7 @@ namespace RURS.ViewModel
 {
     public class ProcessOrdreViewModel:VMBase
     {
-
-        private ProcessOrdreHandler handler;
+        
 
         private ObservableCollection<ProcessOrdre> _displayProcessOrdres;
 
@@ -79,18 +78,12 @@ namespace RURS.ViewModel
 
         public ProcessOrdreViewModel()
         {
-            handler = new ProcessOrdreHandler(this);
             _openOrdreDisplay=SelectedPOSingleton.GetInstance();
             
             _opretningProcessOrdre = new ProcessOrdre();
             _displayProcessOrdres = new ObservableCollection<ProcessOrdre>();
             _opretningProcessOrdre.Dato = DateTime.Today;
-
-            LoadCommand=new RelayCommand(handler.Load);
-            UploadCommand = new RelayCommand(handler.Upload);
-            OpenCommand = new RelayCommand(handler.Open);
-            handler.Load();
-
+            
 
         }
     }

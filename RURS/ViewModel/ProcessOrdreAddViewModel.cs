@@ -12,7 +12,58 @@ using RURS.Model;
 
 namespace RURS.ViewModel
 {
-    class ProcessOrdreAddViewModel: VMBase
+    public class ProcessOrdreAddViewModel : VMBase
     {
+
+
+        private ProcessOrdreAddHandler handler;
+        
+        
+        private ProcessOrdre _opretningProcessOrdre;
+        private SelectedPOSingleton _openOrdreDisplay;
+
+        public ICommand UploadCommand { get; set; }
+
+        
+
+        public ProcessOrdre OpretningProcessOrdre
+        {
+            get => _opretningProcessOrdre;
+            set
+            {
+                _opretningProcessOrdre = value;
+                OnPropertyChanged();
+            }
+        }
+        public DateTimeOffset OpretningsProcessOrdreDate
+        {
+            get => OpretningProcessOrdre.Dato;
+            set
+            {
+                OpretningProcessOrdre.Dato = value.DateTime;
+            }
+        }
+        
+        public SelectedPOSingleton OpenOrdreDisplay
+        {
+            get { return _openOrdreDisplay; }
+            set
+            {
+                _openOrdreDisplay = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public ProcessOrdreAddViewModel()
+        {
+            handler = new ProcessOrdreAddHandler(this);
+            _openOrdreDisplay = SelectedPOSingleton.GetInstance();
+
+            _opretningProcessOrdre = new ProcessOrdre();
+            _opretningProcessOrdre.Dato = DateTime.Today;
+            
+            UploadCommand = new RelayCommand(handler.Upload);
+        }
     }
 }

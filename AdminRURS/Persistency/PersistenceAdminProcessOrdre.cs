@@ -28,5 +28,22 @@ namespace AdminRURS.Persistency
 
             return processOrdrer;
         }
+
+        public static List<ProcessOrdre> GetByDate(DateTime date)
+        {
+
+            List<ProcessOrdre> processOrdrer = new List<ProcessOrdre>();
+
+
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync($"{URI}/{date}");
+                string jsonStr = resTask.Result;
+
+                processOrdrer = JsonConvert.DeserializeObject<List<ProcessOrdre>>(jsonStr);
+            }
+
+            return processOrdrer;
+        }
     }
 }

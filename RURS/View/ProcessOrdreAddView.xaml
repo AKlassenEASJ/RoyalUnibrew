@@ -5,10 +5,34 @@
     xmlns:local="using:RURS.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:RURS.ViewModel"
+    xmlns:custom="using:Microsoft.Xaml.Interactivity"
+    xmlns:custom1="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Model="using:RURS.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <ViewModel:ProcessOrdreAddViewModel/>
+    </Page.DataContext>
+
+
     <Grid>
+        <StackPanel Orientation="Vertical" MaxWidth="300">
+            <TextBox Header="Processordre Nummer" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
+            <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
+            <DatePicker Header="Dato" Date="{Binding OpretningsProcessOrdreDate, Mode=TwoWay}"/>
+            <Button Content="Opret ordre"  Command="{Binding UploadCommand}">
+                <custom:Interaction.Behaviors>
+                    <custom1:EventTriggerBehavior EventName="Click">
+                        <custom1:NavigateToPageAction TargetPage="RURS.HamburgerMenu.MenuPage">
+
+                        </custom1:NavigateToPageAction>
+                    </custom1:EventTriggerBehavior>
+                </custom:Interaction.Behaviors>
+                
+            </Button>
+        </StackPanel>
 
     </Grid>
 </Page>

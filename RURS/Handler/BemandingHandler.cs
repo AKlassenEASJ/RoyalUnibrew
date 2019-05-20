@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RURS.Handler
 {
-    public class ProcessOrdreHandler
+    class BemandingHandler
     {
     }
 }

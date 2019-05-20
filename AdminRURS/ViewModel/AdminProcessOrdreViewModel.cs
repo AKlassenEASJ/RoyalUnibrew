@@ -35,15 +35,6 @@ namespace AdminRURS.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<ProcessOrdre> DisplayOrdrerByDate
-        {
-            get => _displayOrdrerByDate;
-            set
-            {
-                _displayOrdrerByDate = value;
-                OnPropertyChanged();
-            }
-        }
 
         public string Header
         {
