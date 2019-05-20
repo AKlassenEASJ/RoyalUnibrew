@@ -127,6 +127,7 @@
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\BemandingHandler.cs" />
+    <Compile Include="Handler\DaaseVaegtHandler.cs" />
     <Compile Include="Handler\PakkeKontrolHandler.cs" />
     <Compile Include="Handler\ProcessOrdreAddHandler.cs" />
     <Compile Include="Handler\ProcessOrdreHandler.cs" />
@@ -136,7 +137,9 @@
     <Compile Include="Model\CheckboxHelper.cs" />
     <Compile Include="Model\FejlTjek.cs" />
     <Compile Include="Model\INotyfiClass.cs" />
+    <Compile Include="Model\Record.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
+    <Compile Include="Persistency\PersistenceDaaseVaegt.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
     <Compile Include="Persistency\PersistencePakkeKontrol.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
@@ -146,6 +149,7 @@
     <Compile Include="Validation\ValidationPakkeKontrol.cs" />
     <Compile Include="Validation\ValidationTappeKontrol.cs" />
     <Compile Include="ViewModel\BemandingViewModel.cs" />
+    <Compile Include="ViewModel\DaaseVaegtViewModel.cs" />
     <Compile Include="ViewModel\PakkeKontrolViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreAddViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreOpenViewModel.cs" />
