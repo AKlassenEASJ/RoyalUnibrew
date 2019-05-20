@@ -14,9 +14,9 @@ namespace RURS.ViewModel
     {
         #region InstanceFields
 
-        private DateTimeOffset _startTime;
-        private DateTimeOffset _endTime;
-        private Bemanding _nyBemanding;
+        private TimeSpan _startTime;
+        private TimeSpan _endTime;
+        private Bemanding _nyBemanding = new Bemanding();
         private ICommand _addCommand;
 
 
@@ -24,7 +24,7 @@ namespace RURS.ViewModel
 
         #region Properties
 
-        public DateTimeOffset StartTime
+        public TimeSpan StartTime
         {
             get { return _startTime; }
             set
@@ -34,16 +34,24 @@ namespace RURS.ViewModel
             }
         }
 
-        public DateTimeOffset EndTime
+        public TimeSpan EndTime
         {
             get { return _endTime; }
-            set { _endTime = value; }
+            set
+            {
+                _endTime = value; 
+                OnPropertyChanged();
+            }
         }
 
         public Bemanding Bemanding
         {
             get { return _nyBemanding; }
-            set { _nyBemanding = value; }
+            set
+            {
+                _nyBemanding = value; 
+                OnPropertyChanged();
+            }
         }
 
         public ICommand AddCommand
