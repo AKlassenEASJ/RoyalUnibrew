@@ -31,7 +31,13 @@
 
             </TimePicker>
 
-            <TextBox Header="Antal medarbejdere" />
+            <TextBox Header="Antal medarbejdere" Text="{Binding Bemanding.Antal_Bemanding, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+
+            <TextBox Header="Signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+
+            <TextBox Header="Pauser" Text="{Binding Bemanding.Pauser, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,30"/>
+
+            <Button Content="Opret" Command="{Binding AddCommand}"/>
 
         </StackPanel>
 

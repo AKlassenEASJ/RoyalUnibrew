@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ModelLibary.Models;
+using RURS.Common;
+using RURS.Handler;
 
 namespace RURS.ViewModel
 {
@@ -14,7 +16,7 @@ namespace RURS.ViewModel
 
         private DateTimeOffset _startTime;
         private DateTimeOffset _endTime;
-        private Bemanding _bemanding;
+        private Bemanding _nyBemanding;
         private ICommand _addCommand;
 
 
@@ -40,11 +42,17 @@ namespace RURS.ViewModel
 
         public Bemanding Bemanding
         {
-            get { return _bemanding; }
-            set { _bemanding = value; }
+            get { return _nyBemanding; }
+            set { _nyBemanding = value; }
         }
 
+        public ICommand AddCommand
+        {
+            get { return _addCommand; }
+            set { _addCommand = value; }
+        }
 
+        public BemandingHandler BemandingHandler { get; set; }
 
 
         #endregion
@@ -53,7 +61,9 @@ namespace RURS.ViewModel
 
         public BemandingViewModel()
         {
-            
+            BemandingHandler = new BemandingHandler(this);
+            _addCommand = new RelayCommand(BemandingHandler.AddAsync);
+
         }
 
 

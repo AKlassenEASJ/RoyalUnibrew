@@ -37,7 +37,19 @@ namespace RURS.Handler
 
         public async void AddAsync()
         {
-            //_persistence.PostAsync()
+            DateTime tempStartDateTime = BemandingViewModel.StartTime.LocalDateTime;
+            tempStartDateTime.AddDays(DateTime.Now.Day);
+            tempStartDateTime.AddMonths(DateTime.Now.Month);
+            tempStartDateTime.AddYears(DateTime.Now.Year);
+
+            DateTime temp2DateTime = BemandingViewModel.EndTime.LocalDateTime;
+            temp2DateTime.AddDays(DateTime.Now.Day).AddMonths(DateTime.Now.Month).AddYears(DateTime.Now.Year);
+
+            BemandingViewModel.Bemanding.Tidspunkt_Start = tempStartDateTime;
+            BemandingViewModel.Bemanding.Tidspunkt_Slut = temp2DateTime;
+
+
+            await _persistence.PostAsync(BemandingViewModel.Bemanding);
         }
         
 
