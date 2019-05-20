@@ -158,6 +158,9 @@
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\OpretBemandingPage.xaml.cs">
+      <DependentUpon>OpretBemandingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PakkeKontrolView.xaml.cs">
       <DependentUpon>PakkeKontrolView.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OpretBemandingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PakkeKontrolView.xaml">
       <SubType>Designer</SubType>
