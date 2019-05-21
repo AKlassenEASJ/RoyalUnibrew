@@ -32,22 +32,25 @@ namespace AdminRURS.Handler
 
         #region Methods
 
-        public void Create()
-        {
-           
-
-            if (PersistenceFaerdigVare.Post(_viewModel.SelectedFaerdigVare))
+        public async void Create()
+        {          
+            if (await PersistenceFaerdigVare.Post(_viewModel.SelectedFaerdigVare))
             {
                 _viewModel.SelectedFaerdigVare = new FaerdigVare();
             }
         }
 
-        public void Edit()
+        public async void Edit()
         {
-            if (PersistenceFaerdigVare.Put(_viewModel.SelectedFaerdigVare.FaerdigVare_Nr, _viewModel.SelectedFaerdigVare))
+            if (await PersistenceFaerdigVare.Put(_viewModel.SelectedFaerdigVare.FaerdigVare_Nr, _viewModel.SelectedFaerdigVare))
             {
                 _viewModel.SelectedFaerdigVare = new FaerdigVare();
             }
+        }
+
+        public async void Delete()
+        {
+            await PersistenceFaerdigVare.Delete(_viewModel.SelectedFaerdigVare.FaerdigVare_Nr);
         }
 
         #endregion

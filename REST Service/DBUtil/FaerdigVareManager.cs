@@ -18,11 +18,48 @@ namespace REST_Service.DBUtil
         #endregion
 
         #region sqlStatements
-        private const string Insert = "Insert into FaerdigVare (FaerdigVare_Nr, Navn, Minimum, Maximum, Gennemsnit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
-        private const string Update = "Update FaerdigVare " + "set FaerdigVare_Nr = @Nummer, Navn = @Navn, Minimum = @Min, Maximum = @Max, Gennemsnit = @Snit" + " where FaerdigVare_Nr = @FVNummer";
+        private const string GET_ALL = "select * from FaerdigVare";
+        private const string GET_ONE = "select * from FaerdigVare where FaerdigVare_Nr = @Nummer";
+        private const string INSERT = "Insert into FaerdigVare (FaerdigVare_Nr, Navn, Minimum, Maximum, Gennemsnit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
+        private const string UPDATE = "Update FaerdigVare " + "set FaerdigVare_Nr = @Nummer, Navn = @Navn, Minimum = @Min, Maximum = @Max, Gennemsnit = @Snit" + " where FaerdigVare_Nr = @FVNummer";
+        private const string DELETE = "Delete from DemoFacilities where FaerdigVare_Nr = @Nummer";
         #endregion
 
         #region Methods
+
+        public IEnumerable<FaerdigVare> Get()
+        {
+            List<FaerdigVare> liste = new List<FaerdigVare>();
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(GET_ALL, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                FaerdigVare faerdigVare = ReadFaerdigVare(reader);
+                liste.Add(faerdigVare);
+            }
+            conn.Close();
+            return liste;
+        }
+
+        public FaerdigVare Get(int Nummer)
+        {
+            FaerdigVare faerdigVare = new FaerdigVare();
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(GET_ONE, conn);
+            cmd.Parameters.AddWithValue("@Nummer", Nummer);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                faerdigVare = ReadFaerdigVare(reader);
+            }
+            conn.Close();
+            return faerdigVare;
+        }
+
+
         public bool Post(FaerdigVare faerdigVare)
         {
             bool status = false;
@@ -31,7 +68,7 @@ namespace REST_Service.DBUtil
 
             connection.Open();
 
-            SqlCommand command = new SqlCommand(Insert, connection);
+            SqlCommand command = new SqlCommand(INSERT, connection);
 
             command.Parameters.AddWithValue("@FaerdigVare_Nr", faerdigVare.FaerdigVare_Nr);
             command.Parameters.AddWithValue("@FaerdigVareNavn", faerdigVare.FaerdigVareNavn);
@@ -56,13 +93,36 @@ namespace REST_Service.DBUtil
             bool retValue = false;
             SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand(Update, conn);
+            SqlCommand cmd = new SqlCommand(UPDATE, conn);
             cmd.Parameters.AddWithValue("@Nummer", faerdigVare.FaerdigVare_Nr);
             cmd.Parameters.AddWithValue("@FVNummer", Nummer);
             cmd.Parameters.AddWithValue("@Navn", faerdigVare.FaerdigVareNavn);
             cmd.Parameters.AddWithValue("@Min", faerdigVare.Min);
             cmd.Parameters.AddWithValue("@Max", faerdigVare.Max);
             cmd.Parameters.AddWithValue("@Snit", faerdigVare.Snit);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+
+            if (rowsAffected == 1)
+            {
+                retValue = true;
+            }
+
+            else
+            {
+                retValue = false;
+            }
+
+            return retValue;
+        }
+
+        public bool Delete(int Nummer)
+        {
+            bool retValue = false;
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(DELETE, conn);
+            cmd.Parameters.AddWithValue("@Nummer", Nummer);
 
             int rowsAffected = cmd.ExecuteNonQuery();
 

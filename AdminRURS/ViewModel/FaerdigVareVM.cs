@@ -28,7 +28,9 @@ namespace AdminRURS.ViewModel
 
         public ICommand CreateCommand { get; set; }
         public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }        
         public FaerdigVareHandler Handler { get; set; }
+
 
         public FaerdigVare SelectedFaerdigVare
         {
@@ -49,6 +51,7 @@ namespace AdminRURS.ViewModel
             Handler = new FaerdigVareHandler(this);
             CreateCommand = new RelayCommand(Handler.Create);
             EditCommand = new RelayCommand(Handler.Edit);
+            DeleteCommand = new RelayCommand(Handler.Delete);           
             SelectedFaerdigVare = new FaerdigVare();
         }
 
