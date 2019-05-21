@@ -75,8 +75,7 @@ namespace RURS.ViewModel
             
             _startTime = DateTime.Now.TimeOfDay;
             _endTime = DateTime.Now.TimeOfDay.Add(new TimeSpan(01, 00, 00));
-            TimeSpan.FromMinutes(15.0);
-
+            
         }
 
 
