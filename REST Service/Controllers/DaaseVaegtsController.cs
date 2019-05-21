@@ -40,5 +40,11 @@ namespace REST_Service.Controllers
         public void Delete(int id)
         {
         }
+
+        [Route("api/DaaseVaegts/VaegtKontrol/{PONr}")]
+        public IEnumerable<VaegtKontrol> VaegtKontrols(int ProcessOrderNr)
+        {
+            return manger.GetVaegtKontrols(ProcessOrderNr);
+        }
     }
 }

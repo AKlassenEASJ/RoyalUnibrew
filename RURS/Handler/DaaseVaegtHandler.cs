@@ -31,11 +31,16 @@ namespace RURS.Handler
 
         }
 
-
+        public void getVægtKontrol()
+        {
+            
+        }
 
         public async void GetDasser()
         {
+            _viewModel.IsLoading = true;
             _viewModel.DaaseVaegts = await PersistenceDaaseVaegt.GET_ALL(1, 1);
+            _viewModel.IsLoading = false;
         }
 
         #region GetValues

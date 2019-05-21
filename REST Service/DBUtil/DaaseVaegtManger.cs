@@ -15,6 +15,7 @@ namespace REST_Service.DBUtil
 
         private const string GET = "SELECT * FROM VaegtDaase WHERE Process_Ordre_Nr = @PONR AND Kontrol_Nr = @KNR;";
         private const string INSERT = "INSERT INTO VaegtDaase (Process_Ordre_Nr, Kontrol_Nr, Daase_Nr, Vaegt) VALUES (@PONR, @KNR, @DNR, @Vaegt)";
+        private const string GetVaegts = "SELECT * FROM VaegtKontrol WHERE Process_Ordre_Nr = @PONR;";
 
 
         public IEnumerable<DaaseVaegt> Get(int ProcessOrderNr, int KontrolNr)
@@ -84,7 +85,33 @@ namespace REST_Service.DBUtil
             return retValue;
         }
 
+        public IEnumerable<VaegtKontrol> GetVaegtKontrols(int ProcessOrderNr)
+        {
+            List<VaegtKontrol> liste = new List<VaegtKontrol>();
 
-       
+            SqlConnection conn = new SqlConnection(ConnString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(GetVaegts, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                VaegtKontrol vaegtKontrol = ReadVaegts(reader);
+                liste.Add(vaegtKontrol);
+            }
+            conn.Close();
+            return liste;
+        }
+
+        private VaegtKontrol ReadVaegts(SqlDataReader reader)
+        {
+            VaegtKontrol vaegtKontrol = new VaegtKontrol();
+
+            vaegtKontrol.ProcessOrdreNr = reader.GetInt32(0);
+            vaegtKontrol.KontrolNr = reader.GetInt32(1);
+            vaegtKontrol.DatoTid = reader.GetDateTime(2);
+
+            return vaegtKontrol;
+        }
     }
 }

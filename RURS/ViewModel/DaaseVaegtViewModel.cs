@@ -15,6 +15,7 @@ namespace RURS.ViewModel
     {
         private double _selectedVaegt;
         private int _selectedNr;
+        private int _selectedIndex;
 
         public double SelectedVaegt
         {
@@ -36,6 +37,16 @@ namespace RURS.ViewModel
             }
         }
 
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set
+            {
+                _selectedIndex = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DaaseVaegtHandler Handler { get; set; }
         public ObservableCollection<Record> Maximum { get; set; }
         public ObservableCollection<Record> Snit { get; set; }
@@ -49,7 +60,7 @@ namespace RURS.ViewModel
         public DaaseVaegtViewModel()
         {
             Handler = new DaaseVaegtHandler(this);
-            
+            Handler.GetDasser();
             Handler.GetValues();
             Expted = new ObservableCollection<Record>();
             Vaegts = new ObservableCollection<Record>();

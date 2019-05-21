@@ -16,7 +16,36 @@
         <Hub Header="VægtKontrol">
             <HubSection MinWidth="300">  
                 <DataTemplate>
-                    <TextBlock Text="VægtKontrols"/>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Column="0" Margin="10">
+                            <ListView Header="VægtKontroller" ItemsSource="{Binding DisplayVaegtKontrols}" SelectedItem="{Binding SelectedVaegtKontrol}" SelectedIndex="{Binding SelectedIndex}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding KontrolNr}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+
+                        <Grid Column="1" Margin="10">
+                            <ListView Header="Dåser" ItemsSource="{Binding DaaseVaegts}" IsItemClickEnabled="False">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding DaaseNr}"/>
+                                            <TextBlock Text="{Binding DasseVaegt}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
                 </DataTemplate>
             </HubSection>
 
@@ -78,5 +107,6 @@
             </HubSection>
 
         </Hub>
+        <ProgressRing Width="200" IsActive="{Binding IsLoading}" HorizontalAlignment="Center" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" />
     </Grid>
 </Page>

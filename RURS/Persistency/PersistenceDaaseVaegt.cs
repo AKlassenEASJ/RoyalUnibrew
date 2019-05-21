@@ -14,6 +14,7 @@ namespace RURS.Persistency
     {
         private const string URI = "http://localhost:60096/api/";
 
+
         public static async Task<ObservableCollection<DaaseVaegt>> GET_ALL(int processordernr, int kontrolnr)
         {
             ObservableCollection<DaaseVaegt> liste = new ObservableCollection<DaaseVaegt>();
@@ -21,6 +22,21 @@ namespace RURS.Persistency
             using (HttpClient client = new HttpClient())
             {
                 Task<string> resTask = client.GetStringAsync($"{ URI}/DaaseVaegts/{processordernr}/{kontrolnr}");
+                await resTask;
+                string jsonStr = resTask.Result;
+                liste = JsonConvert.DeserializeObject<ObservableCollection<DaaseVaegt>>(jsonStr);
+            }
+
+            return liste;
+        }
+
+        public static async Task<ObservableCollection<DaaseVaegt>> GET_VeagtsKontrol(int processordernr)
+        {
+            ObservableCollection<DaaseVaegt> liste = new ObservableCollection<DaaseVaegt>();
+
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync($"{ URI}/DaaseVaegts/VaegtKontrol/{processordernr}");
                 await resTask;
                 string jsonStr = resTask.Result;
                 liste = JsonConvert.DeserializeObject<ObservableCollection<DaaseVaegt>>(jsonStr);
