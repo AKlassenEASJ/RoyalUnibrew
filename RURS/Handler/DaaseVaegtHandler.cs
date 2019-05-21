@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModelLibary.Models;
 using RURS.Model;
+using RURS.Persistency;
 using RURS.ViewModel;
 
 namespace RURS.Handler
@@ -20,8 +22,23 @@ namespace RURS.Handler
 
         public void add()
         {
+            DaaseVaegt daase = new DaaseVaegt();
+            daase.ProcessOrderNr = 1;
+            daase.KontrolOrderNr = 1;
+            daase.DaaseNr = _viewModel.SelectedNr;
+            daase.DasseVaegt = _viewModel.SelectedVaegt;
+            PersistenceDaaseVaegt.Post(daase);
 
         }
+
+
+
+        public async void GetDasser()
+        {
+            _viewModel.DaaseVaegts = await PersistenceDaaseVaegt.GET_ALL(1, 1);
+        }
+
+        #region GetValues
 
         public void GetValues()
         {
@@ -50,5 +67,8 @@ namespace RURS.Handler
             _viewModel.Snit.Add(new Record(1, 347));
             _viewModel.Snit.Add(new Record(24, 347));
         }
+
+        #endregion
+
     }
 }

@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ModelLibary.Models;
 using RURS.Handler;
 using RURS.Model;
 
 namespace RURS.ViewModel
 {
-    class DaaseVaegtViewModel : VMBase
+    class DaaseVaegtViewModel : VaegtKontrolViewModel
     {
         private double _selectedVaegt;
+        private int _selectedNr;
 
         public double SelectedVaegt
         {
@@ -24,20 +26,34 @@ namespace RURS.ViewModel
             }
         }
 
+        public int SelectedNr
+        {
+            get { return _selectedNr;}
+            set
+            {
+                _selectedNr = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DaaseVaegtHandler Handler { get; set; }
         public ObservableCollection<Record> Maximum { get; set; }
         public ObservableCollection<Record> Snit { get; set; }
         public ObservableCollection<Record> Minimum { get; set; }
         public ObservableCollection<Record> Expted { get; set; }
         public ObservableCollection<Record> Vaegts { get; set; }
+        public ObservableCollection<DaaseVaegt> DaaseVaegts { get; set; }
+        
         public ICommand AddCommand { get; set; }
 
         public DaaseVaegtViewModel()
         {
             Handler = new DaaseVaegtHandler(this);
+            
             Handler.GetValues();
             Expted = new ObservableCollection<Record>();
             Vaegts = new ObservableCollection<Record>();
+
         }
     }
 }
