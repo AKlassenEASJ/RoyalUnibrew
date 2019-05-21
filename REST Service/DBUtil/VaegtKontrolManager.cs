@@ -160,5 +160,14 @@ namespace REST_Service.DBUtil
         }
         #endregion
 
+
+        // SQL kode til oprettelse af database view for at Getmax kan fungerer:
+        // skal skrives i en sql query efter vaegtkontrol er oprettet
+        // (du skal tilrette Vaegtkontrol til hvad du selv har kaldt vaegtkontrol i din database)
+        /*
+        create view hentMaxKontrol_Nr as 
+        select Max(Kontrol_Nr) as maxKontrol, Process_Ordre_Nr from VaegtKontrol group by Process_Ordre_Nr
+        */
+        
     }
 }
