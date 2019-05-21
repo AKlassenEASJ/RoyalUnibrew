@@ -13,8 +13,35 @@ namespace RURS.Persistency
     {
         private const string URI = "http://localhost:60096/api/FaerdigVares";
 
+        public async static Task<FaerdigVare> GetOne(int Nummer)
+        {
+            FaerdigVare faerdigVare = new FaerdigVare();
 
-        public static bool Post(FaerdigVare faerdigVare)
+            using (HttpClient client = new HttpClient())
+            {
+                string resTask = await client.GetStringAsync(URI + "/" + Nummer);
+
+                faerdigVare = JsonConvert.DeserializeObject<FaerdigVare>(resTask);
+            }
+
+            return faerdigVare;
+        }
+
+        public async static Task<List<FaerdigVare>> GetAll()
+        {
+            List<FaerdigVare> faerdigVares = new List<FaerdigVare>();
+
+            using (HttpClient client = new HttpClient())
+            {
+                string resTask = await client.GetStringAsync(URI);
+
+                faerdigVares = JsonConvert.DeserializeObject<List<FaerdigVare>>(resTask);
+            }
+
+            return faerdigVares;
+        }
+
+        public async static Task<bool> Post(FaerdigVare faerdigVare)
         {
             bool ok = true;
 
@@ -22,12 +49,12 @@ namespace RURS.Persistency
             {
                 string jsonStr = JsonConvert.SerializeObject(faerdigVare);
                 StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
-                Task<HttpResponseMessage> postAsync = client.PostAsync(URI, content);
+                HttpResponseMessage response = await client.PostAsync(URI, content);
 
-                HttpResponseMessage resp = postAsync.Result;
-                if (resp.IsSuccessStatusCode)
+                
+                if (response.IsSuccessStatusCode)
                 {
-                    string jsonResStr = resp.Content.ReadAsStringAsync().Result;
+                    string jsonResStr = response.Content.ReadAsStringAsync().Result;
                     ok = JsonConvert.DeserializeObject<bool>(jsonResStr);
                 }
                 else
@@ -39,7 +66,7 @@ namespace RURS.Persistency
             return ok;
         }
 
-        public static bool Put(int FaerdigVare_Nr, FaerdigVare faerdigVare)
+        public async static Task<bool> Put(int Nummer, FaerdigVare faerdigVare)
         {
             bool ok = true;
 
@@ -48,12 +75,11 @@ namespace RURS.Persistency
                 string jsonStr = JsonConvert.SerializeObject(faerdigVare);
                 StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
 
-                Task<HttpResponseMessage> putAsync = client.PutAsync(URI+ "/" +FaerdigVare_Nr, content);
+                HttpResponseMessage response = await client.PutAsync(URI+ "/" +Nummer, content);
 
-                HttpResponseMessage resp = putAsync.Result;
-                if (resp.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
-                    string jsonResStr = resp.Content.ReadAsStringAsync().Result;
+                    string jsonResStr = response.Content.ReadAsStringAsync().Result;
                     ok = JsonConvert.DeserializeObject<bool>(jsonResStr);
                 }
                 else
@@ -63,6 +89,28 @@ namespace RURS.Persistency
 
                 return ok;
             }
+        }
+
+        public async static Task<bool> Delete(int Nummer)
+        {
+            bool ok = true;
+
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.DeleteAsync(URI + "/" + Nummer);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonStr = response.Content.ReadAsStringAsync().Result;
+                    ok = JsonConvert.DeserializeObject<bool>(jsonStr);
+                }
+                else
+                {
+                    ok = false;
+                }
+            }
+
+            return ok;
         }
     }
 }
