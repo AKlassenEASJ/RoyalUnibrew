@@ -37,12 +37,22 @@ namespace RURS.Handler
 
         public async void AddAsync()
         {
+            
 
             DateTime tempStartDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.StartTime.Hours, BemandingViewModel.StartTime.Minutes, 00, DateTimeKind.Local);
-            DateTime temp2DateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.EndTime.Hours, BemandingViewModel.EndTime.Minutes, 00, DateTimeKind.Local);
+            DateTime tempEndDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.EndTime.Hours, BemandingViewModel.EndTime.Minutes, 00, DateTimeKind.Local);
+
+            if (BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == -1)
+            {
+                tempStartDateTime = tempStartDateTime.AddDays(1);
+            }
+
 
             BemandingViewModel.Bemanding.Tidspunkt_Start = tempStartDateTime;
-            BemandingViewModel.Bemanding.Tidspunkt_Slut = temp2DateTime;
+            BemandingViewModel.Bemanding.Tidspunkt_Slut = tempEndDateTime;
+
+            
+            
 
             BemandingViewModel.Bemanding.ProcessOrdre_Nr = 1;
 
