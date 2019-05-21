@@ -18,9 +18,9 @@ namespace REST_Service.Controllers
         {
             return manger.Get();
         }
-
+        [Route("api/CitysNames/{id}/{tid}")]
         // GET: api/TappeKontrols/5
-        public string Get(int id)
+        public string Get(int id, DateTime tid)
         {
             return "value";
         }

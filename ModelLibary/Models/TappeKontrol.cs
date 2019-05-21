@@ -194,13 +194,16 @@ namespace ModelLibrary.Models
 
         public string Signatur
         {
-            get => _signatur;
-            set => _signatur = value;
+            get { return _signatur; }
+            set
+           {
+                _signatur = value; 
+                OnPropertyChanged();
+            }
         }
 
         #endregion
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

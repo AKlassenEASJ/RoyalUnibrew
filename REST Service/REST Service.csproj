@@ -172,6 +172,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AnsatsController.cs" />
+    <Compile Include="Controllers\DaaseVaegtsController.cs" />
+    <Compile Include="Controllers\BemandingsController.cs" />
     <Compile Include="Controllers\FaerdigVaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PakkeKontrolsController.cs" />
@@ -181,6 +183,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DBUtil\AnsatManager.cs" />
     <Compile Include="DBUtil\BemandingManager.cs" />
+    <Compile Include="DBUtil\DaaseVaegtManger.cs" />
     <Compile Include="DBUtil\FaerdigVareManager.cs" />
     <Compile Include="DBUtil\ProcessOrdreManager.cs" />
     <Compile Include="DBUtil\TappeKontrolManger.cs" />

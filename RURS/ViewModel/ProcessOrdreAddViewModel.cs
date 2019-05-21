@@ -12,30 +12,19 @@ using RURS.Model;
 
 namespace RURS.ViewModel
 {
-    public class ProcessOrdreViewModel:VMBase
+    public class ProcessOrdreAddViewModel : VMBase
     {
+
+
+        private ProcessOrdreAddHandler handler;
         
-
-        private ObservableCollection<ProcessOrdre> _displayProcessOrdres;
-
-        private ProcessOrdre _selectedProcessOrdre;
+        
         private ProcessOrdre _opretningProcessOrdre;
         private SelectedPOSingleton _openOrdreDisplay;
 
         public ICommand UploadCommand { get; set; }
-        public ICommand OpenCommand {get; set; }
-        public ICommand LoadCommand { get; set; }
 
-
-        public ProcessOrdre SelectedProcessOrdre
-        {
-            get => _selectedProcessOrdre;
-            set
-            {
-                _selectedProcessOrdre = value;
-                OnPropertyChanged();
-            }
-        }
+        
 
         public ProcessOrdre OpretningProcessOrdre
         {
@@ -54,37 +43,27 @@ namespace RURS.ViewModel
                 OpretningProcessOrdre.Dato = value.DateTime;
             }
         }
-
-        public ObservableCollection<ProcessOrdre> DisplayProcessOrdres
-        {
-            get => _displayProcessOrdres;
-            set
-            {
-                _displayProcessOrdres=value;
-                OnPropertyChanged();
-            }
-        }
-
+        
         public SelectedPOSingleton OpenOrdreDisplay
         {
-            get { return _openOrdreDisplay;}
+            get { return _openOrdreDisplay; }
             set
             {
                 _openOrdreDisplay = value;
                 OnPropertyChanged();
             }
         }
-        
 
-        public ProcessOrdreViewModel()
+
+        public ProcessOrdreAddViewModel()
         {
-            _openOrdreDisplay=SelectedPOSingleton.GetInstance();
-            
+            handler = new ProcessOrdreAddHandler(this);
+            _openOrdreDisplay = SelectedPOSingleton.GetInstance();
+
             _opretningProcessOrdre = new ProcessOrdre();
-            _displayProcessOrdres = new ObservableCollection<ProcessOrdre>();
             _opretningProcessOrdre.Dato = DateTime.Today;
             
-
+            UploadCommand = new RelayCommand(handler.Upload);
         }
     }
 }

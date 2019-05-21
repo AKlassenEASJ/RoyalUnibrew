@@ -7,7 +7,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using ModelLibary.Models;
 using RURS.Annotations;
+using RURS.Model;
 using RURS.View;
 using RURS.ViewModel;
 using ProcessOrdreViewModel = RURS.View.ProcessOrdreView;
@@ -20,6 +22,8 @@ namespace RURS.HamburgerMenu
 
         private NavigationViewItemBase _selectedItem;
 
+        private ProcessOrdre _processOrdre;
+
         public NavigationViewItemBase SelectedItem
         {
             get { return _selectedItem; }
@@ -29,7 +33,17 @@ namespace RURS.HamburgerMenu
                 OnPropertyChanged();
             }
         }
-
+        
+        public ProcessOrdre ProcessOrdre
+        {
+            get { return _processOrdre;}
+            set
+            {
+                _processOrdre = value;
+                OnPropertyChanged();
+            }
+        }
+        public SelectedPOSingleton PoSingleton { get; set; }    
         public MenuViewModel()
         {
             NavigationItems = new ObservableCollection<NavigationViewItemBase>();
@@ -37,6 +51,8 @@ namespace RURS.HamburgerMenu
             GetNagivationItems();
 
             SelectedItem = NavigationItems.First(x => x.GetType() == typeof(NavigationViewItem));
+           
+            ProcessOrdre = SelectedPOSingleton.GetInstance().ActiveProcessOrdre;
 
         }
 
@@ -48,6 +64,7 @@ namespace RURS.HamburgerMenu
             NavigationItems.Add(new NavigationViewItem {Content = "Pakke Kontrol", Icon = new SymbolIcon(Symbol.Shop), Tag = typeof(PakkeKontrolView)});
             NavigationItems.Add(new NavigationViewItem {Content = "Tappe Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(TappeKontrolPage)});
             NavigationItems.Add(new NavigationViewItem {Content = "Vægt Kontrol", Icon = new SymbolIcon(Symbol.Scan), Tag = typeof(VaegtKontrolView)});
+            NavigationItems.Add(new NavigationViewItem {Content = "Bemanding", Icon = new SymbolIcon(Symbol.People), Tag = typeof(OpretBemandingPage)});
         }
     }
 }

@@ -14,6 +14,7 @@ namespace REST_Service.DBUtil
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private const string GET = "SELECT * FROM TappeKontrol";
+        private const string GET_ONE = "SELECT * FROM TappeKontrol WHERE Process_Ordre_Nr = @PONR AND Tidspunkt = @Tid";
         private const string INSERT =
             "INSERT INTO TappeKontrol (Process_Ordre_Nr, Tidspunkt, Daase_Nr, Laag_Nr, Helhed, Kamera_Tjek, CCP, Vaeske_Temp, Kontrol_Temp, Tunnel_PH_Tjek, Vaegt_Kontrol, Smag_Test_Nr, Smag_Test, Kvitter_Proeve, Sukker_Tjek, CO2_Kontrol, Signatur) VALUES (@Process_Ordre_Nr, @Tidspunkt, @Daase_Nr, @Laag_Nr, @Helhed, @Kamera_Tjek, @CCP, @Vaeske_Temp, @Kontrol_Temp, @Tunnel_PH_Tjek, @Vaegt_Kontrol, @Smag_Test_Nr, @Smag_Test, @Kvitter_Proeve, @Sukker_Tjek, @CO2_Kontrol, @Signatur)";
 
@@ -35,6 +36,25 @@ namespace REST_Service.DBUtil
             conn.Close();
 
             return liste;
+        }
+
+        public TappeKontrol Get(int id, DateTime tid)
+        {
+            TappeKontrol tappeKontrol = new TappeKontrol();
+
+            SqlConnection conn = new SqlConnection(ConnString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(GET_ONE, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                tappeKontrol = ReadTappeKontrol(reader);
+            }
+
+            conn.Close();
+            return tappeKontrol;
         }
 
         private TappeKontrol ReadTappeKontrol(SqlDataReader reader)
@@ -96,36 +116,61 @@ namespace REST_Service.DBUtil
         public bool Post(TappeKontrol tappeKontrol)
         {
             bool retValue = false;
-
             SqlConnection conn = new SqlConnection(ConnString);
-            conn.Open();
+            try
+            {
+                
+                conn.Open();
 
-            SqlCommand cmd = new SqlCommand(INSERT, conn);
-            cmd.Parameters.AddWithValue("@Process_Ordre_Nr", tappeKontrol.ProcessOrderNr);
-            cmd.Parameters.AddWithValue("@Tidspunkt", tappeKontrol.Tidspunkt);
-            cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.DaaseNr);
-            cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.LaagNr);
-            cmd.Parameters.AddWithValue("@Helhed", tappeKontrol.Helhed == null ? (object)DBNull.Value: tappeKontrol.Helhed);
-            cmd.Parameters.AddWithValue("@Kamera_Tjek", tappeKontrol.KameraTjek == null ? (object)DBNull.Value : tappeKontrol.KameraTjek);
-            cmd.Parameters.AddWithValue("@CCP", tappeKontrol.Ccp == null ? (object)DBNull.Value : tappeKontrol.Ccp);
-            cmd.Parameters.AddWithValue("@Vaeske_Temp", tappeKontrol.VaeskeTemp);
-            cmd.Parameters.AddWithValue("@Kontrol_Temp", tappeKontrol.KontrolTemp);
-            cmd.Parameters.AddWithValue("@Tunnel_PH_Tjek", tappeKontrol.TunnelPhTjek == null ? (object)DBNull.Value : tappeKontrol.TunnelPhTjek);
-            cmd.Parameters.AddWithValue("@Vaegt_Kontrol", tappeKontrol.VaegtKontrol == -1 ? (object)DBNull.Value : tappeKontrol.VaegtKontrol);
-            cmd.Parameters.AddWithValue("@Smag_Test_Nr", tappeKontrol.SmagsTestNr == -1 ? (object)DBNull.Value : tappeKontrol.SmagsTestNr);
-            cmd.Parameters.AddWithValue("@Smag_Test", tappeKontrol.SmagsTest == null ? (object)DBNull.Value :tappeKontrol.SmagsTest );
-            cmd.Parameters.AddWithValue("@Kvitter_Proeve", tappeKontrol.KviterProve == null ? (object)DBNull.Value : tappeKontrol.KviterProve);
-            cmd.Parameters.AddWithValue("@Sukker_Tjek", tappeKontrol.SukkerTjek == null ? (object)DBNull.Value : tappeKontrol.SukkerTjek);
-            cmd.Parameters.AddWithValue("@CO2_Kontrol", tappeKontrol.Co2Kontrol == -1 ? (object)DBNull.Value : tappeKontrol.Co2Kontrol);
-            cmd.Parameters.AddWithValue("@Signatur", tappeKontrol.Signatur);
+                SqlCommand cmd = new SqlCommand(INSERT, conn);
+                cmd.Parameters.AddWithValue("@Process_Ordre_Nr", tappeKontrol.ProcessOrderNr);
+                cmd.Parameters.AddWithValue("@Tidspunkt", tappeKontrol.Tidspunkt);
+                cmd.Parameters.AddWithValue("@Daase_Nr", tappeKontrol.DaaseNr);
+                cmd.Parameters.AddWithValue("@Laag_Nr", tappeKontrol.LaagNr);
+                cmd.Parameters.AddWithValue("@Helhed",
+                    tappeKontrol.Helhed == null ? (object) DBNull.Value : tappeKontrol.Helhed);
+                cmd.Parameters.AddWithValue("@Kamera_Tjek",
+                    tappeKontrol.KameraTjek == null ? (object) DBNull.Value : tappeKontrol.KameraTjek);
+                cmd.Parameters.AddWithValue("@CCP",
+                    tappeKontrol.Ccp == null ? (object) DBNull.Value : tappeKontrol.Ccp);
+                cmd.Parameters.AddWithValue("@Vaeske_Temp", tappeKontrol.VaeskeTemp);
+                cmd.Parameters.AddWithValue("@Kontrol_Temp", tappeKontrol.KontrolTemp);
+                cmd.Parameters.AddWithValue("@Tunnel_PH_Tjek",
+                    tappeKontrol.TunnelPhTjek == null ? (object) DBNull.Value : tappeKontrol.TunnelPhTjek);
+                cmd.Parameters.AddWithValue("@Vaegt_Kontrol",
+                    tappeKontrol.VaegtKontrol == -1 ? (object) DBNull.Value : tappeKontrol.VaegtKontrol);
+                cmd.Parameters.AddWithValue("@Smag_Test_Nr",
+                    tappeKontrol.SmagsTestNr == -1 ? (object) DBNull.Value : tappeKontrol.SmagsTestNr);
+                cmd.Parameters.AddWithValue("@Smag_Test",
+                    tappeKontrol.SmagsTest == null ? (object) DBNull.Value : tappeKontrol.SmagsTest);
+                cmd.Parameters.AddWithValue("@Kvitter_Proeve",
+                    tappeKontrol.KviterProve == null ? (object) DBNull.Value : tappeKontrol.KviterProve);
+                cmd.Parameters.AddWithValue("@Sukker_Tjek",
+                    tappeKontrol.SukkerTjek == null ? (object) DBNull.Value : tappeKontrol.SukkerTjek);
+                cmd.Parameters.AddWithValue("@CO2_Kontrol",
+                    tappeKontrol.Co2Kontrol == -1 ? (object) DBNull.Value : tappeKontrol.Co2Kontrol);
+                cmd.Parameters.AddWithValue("@Signatur", tappeKontrol.Signatur);
 
-            
-            int rowsAffected = cmd.ExecuteNonQuery();
-            retValue = rowsAffected == 1 ? true : false;
 
-            conn.Close();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                retValue = rowsAffected == 1 ? true : false;
+            }
+            catch (Exception e)
+            {
+                retValue = false;
+                //Kunne skrive til en log fil 
+            }
+            finally
+            {
+                //Sikre at conn altid bliver lukket
+                conn.Close();
+                
+            }
             return retValue;
             
+
+
+
         }
 
         

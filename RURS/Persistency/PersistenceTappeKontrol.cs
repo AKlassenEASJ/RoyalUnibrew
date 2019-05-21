@@ -13,6 +13,25 @@ namespace RURS.Persistency
     {
         private const string URI = "http://localhost:60096/api/";
 
+        public static bool GET_ONE(int PONR, DateTime Tid)
+        {
+            TappeKontrol tappeKontrol = new TappeKontrol();
+
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync(URI + "/" + PONR + "/" + Tid);
+                string jsonStr = resTask.Result;
+                tappeKontrol = JsonConvert.DeserializeObject<TappeKontrol>(jsonStr);
+            }
+
+            //if (tappeKontrol != null)
+            //{
+                
+            //}
+
+            return tappeKontrol == null ? false : true;
+        }
+
         /// <summary>
         /// Metode til at overføre en TappeKontrol til database
         /// </summary>
