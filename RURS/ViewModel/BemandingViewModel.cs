@@ -71,6 +71,11 @@ namespace RURS.ViewModel
         {
             BemandingHandler = new BemandingHandler(this);
             _addCommand = new RelayCommand(BemandingHandler.AddAsync);
+            
+            
+            _startTime = DateTime.Now.TimeOfDay;
+            _endTime = DateTime.Now.TimeOfDay.Add(new TimeSpan(01, 00, 00));
+            TimeSpan.FromMinutes(15.0);
 
         }
 
