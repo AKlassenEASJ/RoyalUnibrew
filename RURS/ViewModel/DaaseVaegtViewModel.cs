@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ModelLibary.Models;
+using RURS.Common;
 using RURS.Handler;
 using RURS.Model;
 
@@ -16,6 +17,8 @@ namespace RURS.ViewModel
         private double _selectedVaegt;
         private int _selectedNr;
         private int _selectedIndex;
+        private VaegtKontrol _newSelectedVaegtKontrol;
+        private Record _selectedRecord;
 
         public double SelectedVaegt
         {
@@ -37,12 +40,33 @@ namespace RURS.ViewModel
             }
         }
 
+        public VaegtKontrol NewSelectedVaegtKontrol
+        {
+            get { return _newSelectedVaegtKontrol; }
+            set
+            {
+                _newSelectedVaegtKontrol = value;
+                OnPropertyChanged();
+                Handler.GetDasser();
+            }
+        }
+
         public int SelectedIndex
         {
             get { return _selectedIndex; }
             set
             {
                 _selectedIndex = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Record SelectedRecord
+        {
+            get { return _selectedRecord; }
+            set
+            {
+                _selectedRecord = value;
                 OnPropertyChanged();
             }
         }
@@ -54,17 +78,19 @@ namespace RURS.ViewModel
         public ObservableCollection<Record> Expted { get; set; }
         public ObservableCollection<Record> Vaegts { get; set; }
         public ObservableCollection<DaaseVaegt> DaaseVaegts { get; set; }
-        
+
         public ICommand AddCommand { get; set; }
 
         public DaaseVaegtViewModel()
         {
             Handler = new DaaseVaegtHandler(this);
-            Handler.GetDasser();
             Handler.GetValues();
             Expted = new ObservableCollection<Record>();
             Vaegts = new ObservableCollection<Record>();
-
+            Handler.GetVægtKontrol();
+            AddCommand = new RelayCommand(Handler.add);
         }
+
+       
     }
 }

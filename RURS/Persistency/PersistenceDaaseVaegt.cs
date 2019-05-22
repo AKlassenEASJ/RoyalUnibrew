@@ -15,31 +15,31 @@ namespace RURS.Persistency
         private const string URI = "http://localhost:60096/api/";
 
 
-        public static async Task<ObservableCollection<DaaseVaegt>> GET_ALL(int processordernr, int kontrolnr)
+        public static async Task<List<DaaseVaegt>> GET_ALL(int processordernr, int kontrolnr)
         {
-            ObservableCollection<DaaseVaegt> liste = new ObservableCollection<DaaseVaegt>();
+            List<DaaseVaegt> liste = new List<DaaseVaegt>();
 
             using (HttpClient client = new HttpClient())
             {
-                Task<string> resTask = client.GetStringAsync($"{ URI}/DaaseVaegts/{processordernr}/{kontrolnr}");
+                Task<string> resTask = client.GetStringAsync($"{URI}/DaaseVaegts/{processordernr}/{kontrolnr}");
                 await resTask;
                 string jsonStr = resTask.Result;
-                liste = JsonConvert.DeserializeObject<ObservableCollection<DaaseVaegt>>(jsonStr);
+                liste = JsonConvert.DeserializeObject<List<DaaseVaegt>>(jsonStr);
             }
 
             return liste;
         }
 
-        public static async Task<ObservableCollection<DaaseVaegt>> GET_VeagtsKontrol(int processordernr)
+        public static async Task<List<VaegtKontrol>> GET_VeagtsKontrol(int processordernr)
         {
-            ObservableCollection<DaaseVaegt> liste = new ObservableCollection<DaaseVaegt>();
+            List<VaegtKontrol> liste = new List<VaegtKontrol>();
 
             using (HttpClient client = new HttpClient())
             {
-                Task<string> resTask = client.GetStringAsync($"{ URI}/DaaseVaegts/VaegtKontrol/{processordernr}");
+                Task<string> resTask = client.GetStringAsync($"{URI}/DaaseVaegts/{processordernr}");
                 await resTask;
                 string jsonStr = resTask.Result;
-                liste = JsonConvert.DeserializeObject<ObservableCollection<DaaseVaegt>>(jsonStr);
+                liste = JsonConvert.DeserializeObject<List<VaegtKontrol>>(jsonStr);
             }
 
             return liste;

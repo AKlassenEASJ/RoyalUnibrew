@@ -43,12 +43,14 @@ namespace REST_Service.DBUtil
 
         private DaaseVaegt ReadDaaseVaegt(SqlDataReader reader)
         {
-            DaaseVaegt daase = new DaaseVaegt();
+            DaaseVaegt daase = new DaaseVaegt
+            {
+                ProcessOrderNr = reader.GetInt32(0),
+                KontrolOrderNr = reader.GetInt32(1),
+                DaaseNr = reader.GetInt32(2),
+                DasseVaegt = reader.GetDouble(3)
+            };
 
-            daase.ProcessOrderNr = reader.GetInt32(0);
-            daase.KontrolOrderNr = reader.GetInt32(1);
-            daase.DaaseNr = reader.GetInt32(2);
-            daase.DasseVaegt = reader.GetDouble(3);
 
             return daase;
         }
@@ -92,6 +94,7 @@ namespace REST_Service.DBUtil
             SqlConnection conn = new SqlConnection(ConnString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(GetVaegts, conn);
+            cmd.Parameters.AddWithValue("@PONR", ProcessOrderNr);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -105,11 +108,11 @@ namespace REST_Service.DBUtil
 
         private VaegtKontrol ReadVaegts(SqlDataReader reader)
         {
-            VaegtKontrol vaegtKontrol = new VaegtKontrol();
+            VaegtKontrol vaegtKontrol = new VaegtKontrol
+            {
+                ProcessOrdreNr = reader.GetInt32(0), KontrolNr = reader.GetInt32(1), DatoTid = reader.GetDateTime(2)
+            };
 
-            vaegtKontrol.ProcessOrdreNr = reader.GetInt32(0);
-            vaegtKontrol.KontrolNr = reader.GetInt32(1);
-            vaegtKontrol.DatoTid = reader.GetDateTime(2);
 
             return vaegtKontrol;
         }
