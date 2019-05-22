@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ModelLibary.Models;
 using RURS.Common;
 using RURS.Handler;
+using RURS.Model;
 
 namespace RURS.ViewModel
 {
@@ -18,6 +19,7 @@ namespace RURS.ViewModel
         private TimeSpan _endTime;
         private Bemanding _nyBemanding = new Bemanding();
         private ICommand _addCommand;
+        private Dictionary<string, FejlTjek> _validations;
 
 
         #endregion
@@ -60,6 +62,12 @@ namespace RURS.ViewModel
             set { _addCommand = value; }
         }
 
+        public Dictionary<string, FejlTjek> Validations
+        {
+            get { return _validations; }
+            set { _validations = value; }
+        }
+
         public BemandingHandler BemandingHandler { get; set; }
 
 
@@ -83,7 +91,17 @@ namespace RURS.ViewModel
 
         #region Methods
 
-        
+
+
+        #endregion
+
+        #region HelpMethods
+
+        private void AddValidations()
+        {
+            _validations.Add("Medarbejdere", new FejlTjek());
+            _validations.Add("Pauser", new FejlTjek());
+        }
 
         #endregion
 

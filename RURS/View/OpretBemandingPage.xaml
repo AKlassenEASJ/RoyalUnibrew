@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RURS.View"
     xmlns:viewModel="using:RURS.ViewModel"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -31,11 +33,19 @@
 
             </TimePicker>
 
+            <StackPanel Orientation="Vertical">
+
             <TextBox Header="Antal medarbejdere" Text="{Binding Bemanding.Antal_Bemanding, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBlock Text="Lav Binding" Foreground="Red"/>
+
+            </StackPanel>
 
             <TextBox Header="Signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10"/>
 
+            <StackPanel Orientation="Vertical">
             <TextBox Header="Pauser" Text="{Binding Bemanding.Pauser, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,30"/>
+                <TextBlock Text="Lav binding" Foreground="Red"/>
+            </StackPanel>
 
             <Button Content="Opret" Command="{Binding AddCommand}"/>
 

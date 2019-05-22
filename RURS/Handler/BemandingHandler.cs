@@ -42,9 +42,9 @@ namespace RURS.Handler
             DateTime tempStartDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.StartTime.Hours, BemandingViewModel.StartTime.Minutes, 00, DateTimeKind.Local);
             DateTime tempEndDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.EndTime.Hours, BemandingViewModel.EndTime.Minutes, 00, DateTimeKind.Local);
 
-            if (BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == -1)
+            if (BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == -1 || BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == 0)
             {
-                tempStartDateTime = tempStartDateTime.AddDays(1);
+                tempEndDateTime = tempEndDateTime.AddDays(1);
             }
 
 
