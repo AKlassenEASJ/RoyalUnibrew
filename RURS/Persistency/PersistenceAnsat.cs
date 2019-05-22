@@ -27,7 +27,7 @@ namespace RURS.Persistency
             using (HttpClient client = new HttpClient())
             {
 
-                string jsonStringRead = await client.GetStringAsync($"{URI}Ansatte");
+                string jsonStringRead = await client.GetStringAsync($"{URI}Ansats");
 
                 tempAnsatte = JsonConvert.DeserializeObject<List<Ansat>>(jsonStringRead);
 

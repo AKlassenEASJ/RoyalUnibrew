@@ -83,7 +83,45 @@ namespace RURS.Handler
 
         public async void GetSuggestionsAsync()
         {
-            BemandingViewModel.Suggestions = await GenerateListOfEmployeeInitialsAsync();
+            List<Ansat> tempList = null;
+
+            IEnumerable<string> suggestionList = null;
+
+            if (BemandingViewModel.Bemanding.Signatur != null && BemandingViewModel.Bemanding.Signatur.Length >= 1)
+            {
+                tempList = await PersistenceAnsat.GetAllAsync();
+            }
+            else
+            {
+                BemandingViewModel.Suggestions = new List<string>(){"Ingen forslag"};
+            }
+
+            if (tempList != null)
+            {
+                suggestionList = from a in tempList
+                    where a.Initial.StartsWith(BemandingViewModel.Bemanding.Signatur)
+                    select a.Initial;
+
+                if (suggestionList.Count() > 0)
+                {
+                    BemandingViewModel.Suggestions = suggestionList.ToList();
+                }
+                else
+                {
+                    BemandingViewModel.Suggestions = new List<string>() { "Ingen forslag" };
+                }
+
+
+            }
+
+            
+
+            
+
+
+
+
+
 
 
 

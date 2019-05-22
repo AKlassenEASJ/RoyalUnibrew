@@ -93,7 +93,11 @@ namespace RURS.ViewModel
         public List<string> Suggestions
         {
             get { return _suggestions; }
-            set { _suggestions = value; }
+            set
+            {
+                _suggestions = value; 
+                OnPropertyChanged();
+            }
         }
 
         public BemandingHandler BemandingHandler { get; set; }
@@ -109,6 +113,7 @@ namespace RURS.ViewModel
             _addCommand = new RelayCommand(BemandingHandler.AddAsync);
             _validateEmployeesCommand = new RelayCommand(BemandingHandler.ValidateEmployees);
             _validateBreaksCommand = new RelayCommand(BemandingHandler.ValidateBreaks);
+            _getSuggestionsCommand = new RelayCommand(BemandingHandler.GetSuggestionsAsync);
             _startTime = DateTime.Now.TimeOfDay;
             _endTime = DateTime.Now.TimeOfDay.Add(new TimeSpan(01, 00, 00));
             AddValidations();

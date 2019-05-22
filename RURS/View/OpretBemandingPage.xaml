@@ -49,7 +49,7 @@
             <!--<TextBox Header="Signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10">-->
                 
             <!--</TextBox>-->
-            <AutoSuggestBox PlaceholderText="Skriv medarbejders signatur" QueryIcon="Find" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" ItemsSource="{Binding Suggestions}">
+            <AutoSuggestBox PlaceholderText="Skriv medarbejders signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" ItemsSource="{Binding Suggestions, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
                     <interactions:EventTriggerBehavior EventName="TextChanged">
                         <interactions:InvokeCommandAction Command="{Binding GetSuggestionsCommand}"></interactions:InvokeCommandAction>
