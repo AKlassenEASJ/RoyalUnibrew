@@ -21,7 +21,9 @@ namespace RURS.ViewModel
         private ICommand _addCommand;
         private ICommand _validateEmployeesCommand;
         private ICommand _validateBreaksCommand;
+        private ICommand _getSuggestionsCommand;
         private Dictionary<string, FejlTjek> _validations = new Dictionary<string, FejlTjek>();
+        private List<string> _suggestions = new List<string>();
 
 
         #endregion
@@ -76,10 +78,22 @@ namespace RURS.ViewModel
             set { _validateBreaksCommand = value; }
         }
 
+        public ICommand GetSuggestionsCommand
+        {
+            get { return _getSuggestionsCommand; }
+            set { _getSuggestionsCommand = value; }
+        }
+
         public Dictionary<string, FejlTjek> Validations
         {
             get { return _validations; }
             set { _validations = value; }
+        }
+
+        public List<string> Suggestions
+        {
+            get { return _suggestions; }
+            set { _suggestions = value; }
         }
 
         public BemandingHandler BemandingHandler { get; set; }

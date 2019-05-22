@@ -79,13 +79,14 @@ namespace RURS.Handler
                 }
             }
             
-            
+        }
 
-            
+        public async void GetSuggestionsAsync()
+        {
+            BemandingViewModel.Suggestions = await GenerateListOfEmployeeInitialsAsync();
 
-            
 
-            
+
         }
 
 
@@ -112,6 +113,18 @@ namespace RURS.Handler
         private void AddToErrorMessage(string name, string message)
         {
             _errorMessage = _errorMessage + $"\n{name}\n{message}";
+        }
+
+        private async Task<List<string>> GenerateListOfEmployeeInitialsAsync()
+        {
+            List<string> tempListOfInitials = new List<string>();
+
+            foreach (Ansat ansat in await PersistenceAnsat.GetAllAsync())
+            {
+                tempListOfInitials.Add(ansat.Initial);
+            }
+
+            return tempListOfInitials;
         }
 
         #endregion
