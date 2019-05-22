@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace RURS.Persistency
 {
-    public class PersistencyProcessOrdre
+    public static class PersistencyProcessOrdre
     {
         private const string URI = "http://localhost:60096/api/ProcessOrdre";
 

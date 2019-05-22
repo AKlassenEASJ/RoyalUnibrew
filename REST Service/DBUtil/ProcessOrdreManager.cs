@@ -22,7 +22,7 @@ namespace REST_Service.DBUtil
         private const string GETAll = "SELECT * FROM ProcessOrdre";
         private const string GETONE = "SELECT * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
         private const string INSERT = "INSERT INTO ProcessOrdre (Process_Ordre_Nr, Faerdigvare_Nr, Dato, Kolonne) VALUES (@Process_Ordre_Nr, @Faerdigvare_Nr, @Dato, @Kolonne)";
-        private const string DELETE = "DELETE FROM ProcessORdre WHERE Process_Ordre_Nr = @No";
+        private const string DELETE = "DELETE FROM ProcessOrdre WHERE Process_Ordre_Nr = @No";
         private const string GETDATE = "SELECT * FROM ProcessOrdre WHERE Dato = @Date";
 
         //GETALL: API/ProcessOrdre
@@ -44,25 +44,25 @@ namespace REST_Service.DBUtil
             return liste;
         }
 
-        //GETONE: api/ProcessOrdre/1
-        public ProcessOrdre Get(int pONr)
-        {
-            ProcessOrdre processOrdre = null;
+        ////GETONE: api/ProcessOrdre/1
+        //public ProcessOrdre Get(int pONr)
+        //{
+        //    ProcessOrdre processOrdre = null;
 
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(GETONE, connection);
-            cmd.Parameters.AddWithValue("@No", pONr);
+        //    SqlConnection connection = new SqlConnection(ConnectionString);
+        //    connection.Open();
+        //    SqlCommand cmd = new SqlCommand(GETONE, connection);
+        //    cmd.Parameters.AddWithValue("@No", pONr);
 
-            SqlDataReader reader = cmd.ExecuteReader();
+        //    SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                processOrdre = ReadProcessOrdre(reader);
-            }
-            connection.Close();
-            return processOrdre;
-        }
+        //    while (reader.Read())
+        //    {
+        //        processOrdre = ReadProcessOrdre(reader);
+        //    }
+        //    connection.Close();
+        //    return processOrdre;
+        //}
 
         public IEnumerable<ProcessOrdre> Get(DateTime date)
         {
@@ -70,7 +70,7 @@ namespace REST_Service.DBUtil
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand(GETAll, connection);
+            SqlCommand cmd = new SqlCommand(GETDATE, connection);
             cmd.Parameters.AddWithValue("@Date", date);
 
             SqlDataReader reader = cmd.ExecuteReader();
