@@ -19,6 +19,8 @@ namespace RURS.ViewModel
         private TimeSpan _endTime;
         private Bemanding _nyBemanding = new Bemanding();
         private ICommand _addCommand;
+        private ICommand _validateEmployeesCommand;
+        private ICommand _validateBreaksCommand;
         private Dictionary<string, FejlTjek> _validations;
 
 
@@ -60,6 +62,18 @@ namespace RURS.ViewModel
         {
             get { return _addCommand; }
             set { _addCommand = value; }
+        }
+
+        public ICommand ValidateEmployeesCommand
+        {
+            get {return _validateEmployeesCommand;}
+            set { _validateEmployeesCommand = value; }
+        }
+
+        public ICommand ValidateBreaksCommand
+        {
+            get { return _validateBreaksCommand; }
+            set { _validateBreaksCommand = value; }
         }
 
         public Dictionary<string, FejlTjek> Validations
