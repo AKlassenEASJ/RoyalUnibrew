@@ -15,8 +15,12 @@ namespace REST_Service.DBUtil
         private const string christianConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        private const string LineConnString =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        private const string ConnectionString = thomasConnectionString;
+        //private const string ConnectionString = thomasConnectionString;
+
+        private const string ConnectionString = LineConnString;
         //private const string ConnectionString = christianConnectionString;
 
         private const string GETAll = "SELECT * FROM ProcessOrdre";

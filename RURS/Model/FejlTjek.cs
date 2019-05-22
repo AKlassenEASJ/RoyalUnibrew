@@ -9,21 +9,21 @@ namespace RURS.Model
     class FejlTjek : INotyfiClass
     {
         
-        private string _bedsked;
+        private string _besked;
 
-        public string Bedsked
+        public string Besked
         {
-            get { return _bedsked;}
+            get { return _besked;}
             set
             {
-                _bedsked = value;
+                _besked = value;
                 OnPropertyChanged();
             }
         }
 
         public FejlTjek()
         {
-            _bedsked = null;
+            _besked = null;
         }
 
         

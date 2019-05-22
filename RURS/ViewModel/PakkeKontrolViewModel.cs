@@ -69,7 +69,7 @@ namespace RURS.ViewModel
         public PakkeKontrolViewModel()
         {
             Handler = new PakkeKontrolHandler(this);
-            SelectedPakkeKontrol = new PakkeKontrol();
+            SelectedPakkeKontrol = new PakkeKontrol() {Print1HolDato = "P: ", Print1ProDato = "E: "};
             Helpers = new Dictionary<string, CheckboxHelper>();
             addHeplers();
             Getdate();

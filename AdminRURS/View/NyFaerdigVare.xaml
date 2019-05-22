@@ -19,10 +19,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-    <ListView>
-        
-    </ListView>
-</Grid>
+            <ListView>
+
+            </ListView>
+        </Grid>
 
         <Grid Grid.Column="1">
             <StackPanel>
@@ -30,26 +30,27 @@
                 <TextBox Text="{Binding SelectedFaerdigVare.FaerdigVare_Nr, Mode=TwoWay}"></TextBox>
                 <TextBlock Text="Færdigvare navn"></TextBlock>
                 <TextBox Text="{Binding SelectedFaerdigVare.FaerdigVareNavn, Mode=TwoWay}"></TextBox>
-                
+
                 <StackPanel Orientation="Horizontal">
-                <StackPanel>
-                <TextBlock Text="Max"></TextBlock>
-                <TextBlock Text="Snit"></TextBlock>
-                <TextBlock Text="Min"></TextBlock>
-                </StackPanel>
-                <StackPanel>
-                    <TextBox Text="{Binding SelectedFaerdigVare.Max, Mode=TwoWay}"></TextBox>
-                    <TextBox Text="{Binding SelectedFaerdigVare.Snit, Mode=TwoWay}"></TextBox>
-                    <TextBox Text="{Binding SelectedFaerdigVare.Min, Mode=TwoWay}"></TextBox>
-                </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Max"></TextBlock>
+                        <TextBlock Text="Snit"></TextBlock>
+                        <TextBlock Text="Min"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox Text="{Binding SelectedFaerdigVare.Max, Mode=TwoWay}"></TextBox>
+                        <TextBox Text="{Binding SelectedFaerdigVare.Snit, Mode=TwoWay}"></TextBox>
+                        <TextBox Text="{Binding SelectedFaerdigVare.Min, Mode=TwoWay}"></TextBox>
+                    </StackPanel>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                <Button Content="Opret" Command="{Binding CreateCommand}"></Button>
-                <Button Content="Rediger" Command="{Binding EditCommand}"></Button>
+                    <Button Content="Opret" Command="{Binding CreateCommand}"></Button>
+                    <Button Content="Rediger" Command="{Binding EditCommand}"></Button>
+                    <Button Content="Slet" Command="{Binding DeleteCommand}"></Button>
                 </StackPanel>
             </StackPanel>
-            
+
         </Grid>
     </Grid>
 
