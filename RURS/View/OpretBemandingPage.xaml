@@ -35,16 +35,33 @@
 
             <StackPanel Orientation="Vertical">
 
-            <TextBox Header="Antal medarbejdere" Text="{Binding Bemanding.Antal_Bemanding, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-                <TextBlock Text="Lav Binding" Foreground="Red"/>
+            <TextBox Header="Antal medarbejdere" Text="{Binding Bemanding.Antal_Bemanding, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="242" HorizontalAlignment="Left" Margin="0,0,0,10">
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="TextChanged">
+                        <interactions:InvokeCommandAction Command="{Binding ValidateEmployeesCommand}"></interactions:InvokeCommandAction>
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                </TextBox>
+                        <TextBlock Text="{Binding Validations[Employees].Besked}" Foreground="Red"/>
 
             </StackPanel>
 
-            <TextBox Header="Signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+            <TextBox Header="Signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10">
+                
+            </TextBox>
+            <AutoSuggestBox PlaceholderText="Skriv medarbejders signatur" >
+
+            </AutoSuggestBox>
 
             <StackPanel Orientation="Vertical">
-            <TextBox Header="Pauser" Text="{Binding Bemanding.Pauser, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,30"/>
-                <TextBlock Text="Lav binding" Foreground="Red"/>
+            <TextBox Header="Pauser" Text="{Binding Bemanding.Pauser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,30">
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="TextChanged">
+                        <interactions:InvokeCommandAction Command="{Binding ValidateBreaksCommand}"></interactions:InvokeCommandAction>
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                </TextBox>
+                        <TextBlock Text="{Binding Validations[Breaks].Besked}" Foreground="Red"/>
             </StackPanel>
 
             <Button Content="Opret" Command="{Binding AddCommand}"/>

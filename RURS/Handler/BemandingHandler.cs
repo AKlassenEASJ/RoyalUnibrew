@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
+using RURS.Common;
 using RURS.Persistency;
 using RURS.Validation;
 using RURS.ViewModel;
@@ -16,6 +17,7 @@ namespace RURS.Handler
 
         private PersistenceBemanding<Bemanding> _persistence = new PersistenceBemanding<Bemanding>();
         private ValidationBase _validation = new ValidationBase();
+        private string _errorMessage;
 
         #endregion
 
@@ -49,20 +51,41 @@ namespace RURS.Handler
                 tempEndDateTime = tempEndDateTime.AddDays(1);
             }
 
-
             BemandingViewModel.Bemanding.Tidspunkt_Start = tempStartDateTime;
             BemandingViewModel.Bemanding.Tidspunkt_Slut = tempEndDateTime;
 
-            
-            
-
             BemandingViewModel.Bemanding.ProcessOrdre_Nr = 1;
 
-            await _persistence.PostAsync(BemandingViewModel.Bemanding);
+            foreach (var validation in BemandingViewModel.Validations)
+            {
+                if (validation.Value.Besked != null)
+                {
+                    AddToErrorMessage(validation.Key, validation.Value.Besked);
+                }
+            }
 
-            BemandingViewModel.Bemanding = new Bemanding();
-            BemandingViewModel.StartTime = new TimeSpan();
-            BemandingViewModel.EndTime = new TimeSpan();
+            if (_errorMessage != null)
+            {
+                MessageDialogHelper.Show(_errorMessage, "Angiv venligst følgende ting");
+            }
+            else
+            {
+                if (await _persistence.PostAsync(BemandingViewModel.Bemanding))
+                {
+                    BemandingViewModel.Bemanding = new Bemanding();
+                    BemandingViewModel.StartTime = new TimeSpan();
+                    BemandingViewModel.EndTime = new TimeSpan();
+
+                }
+            }
+            
+            
+
+            
+
+            
+
+            
         }
 
 
@@ -80,6 +103,15 @@ namespace RURS.Handler
         {
             BemandingViewModel.Validations["Breaks"].Besked =
                 _validation.IntToSmall(BemandingViewModel.Bemanding.Pauser);
+        }
+
+        #endregion
+
+        #region HelpMethods
+
+        private void AddToErrorMessage(string name, string message)
+        {
+            _errorMessage = _errorMessage + $"\n{name}\n{message}";
         }
 
         #endregion

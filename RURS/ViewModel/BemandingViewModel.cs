@@ -21,7 +21,7 @@ namespace RURS.ViewModel
         private ICommand _addCommand;
         private ICommand _validateEmployeesCommand;
         private ICommand _validateBreaksCommand;
-        private Dictionary<string, FejlTjek> _validations;
+        private Dictionary<string, FejlTjek> _validations = new Dictionary<string, FejlTjek>();
 
 
         #endregion
@@ -95,9 +95,9 @@ namespace RURS.ViewModel
             _addCommand = new RelayCommand(BemandingHandler.AddAsync);
             _validateEmployeesCommand = new RelayCommand(BemandingHandler.ValidateEmployees);
             _validateBreaksCommand = new RelayCommand(BemandingHandler.ValidateBreaks);
-            
             _startTime = DateTime.Now.TimeOfDay;
             _endTime = DateTime.Now.TimeOfDay.Add(new TimeSpan(01, 00, 00));
+            AddValidations();
             
         }
 
