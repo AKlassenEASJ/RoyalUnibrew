@@ -23,9 +23,9 @@ namespace REST_Service.Controllers
 
 
         // GET: api/Ansats
-        public IEnumerable<string> Get()
+        public IEnumerable<Ansat> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _manager.Get();
         }
 
         
