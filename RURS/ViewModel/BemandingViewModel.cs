@@ -93,7 +93,8 @@ namespace RURS.ViewModel
         {
             BemandingHandler = new BemandingHandler(this);
             _addCommand = new RelayCommand(BemandingHandler.AddAsync);
-            
+            _validateEmployeesCommand = new RelayCommand(BemandingHandler.ValidateEmployees);
+            _validateBreaksCommand = new RelayCommand(BemandingHandler.ValidateBreaks);
             
             _startTime = DateTime.Now.TimeOfDay;
             _endTime = DateTime.Now.TimeOfDay.Add(new TimeSpan(01, 00, 00));
@@ -113,8 +114,8 @@ namespace RURS.ViewModel
 
         private void AddValidations()
         {
-            _validations.Add("Medarbejdere", new FejlTjek());
-            _validations.Add("Pauser", new FejlTjek());
+            _validations.Add("Employees", new FejlTjek());
+            _validations.Add("Breaks", new FejlTjek());
         }
 
         #endregion

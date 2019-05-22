@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
 using RURS.Persistency;
+using RURS.Validation;
 using RURS.ViewModel;
 
 namespace RURS.Handler
@@ -14,6 +15,7 @@ namespace RURS.Handler
         #region InstanceFields
 
         private PersistenceBemanding<Bemanding> _persistence = new PersistenceBemanding<Bemanding>();
+        private ValidationBase _validation = new ValidationBase();
 
         #endregion
 
@@ -62,7 +64,23 @@ namespace RURS.Handler
             BemandingViewModel.StartTime = new TimeSpan();
             BemandingViewModel.EndTime = new TimeSpan();
         }
-        
+
+
+        #endregion
+
+        #region Validations
+
+        public void ValidateEmployees()
+        {
+            BemandingViewModel.Validations["Employees"].Besked =
+                _validation.IntToSmall(BemandingViewModel.Bemanding.Antal_Bemanding);
+        }
+
+        public void ValidateBreaks()
+        {
+            BemandingViewModel.Validations["Breaks"].Besked =
+                _validation.IntToSmall(BemandingViewModel.Bemanding.Pauser);
+        }
 
         #endregion
     }
