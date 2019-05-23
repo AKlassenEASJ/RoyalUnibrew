@@ -65,6 +65,7 @@ namespace RURS.HamburgerMenu
             NavigationItems.Add(new NavigationViewItem {Content = "Tappe Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(TappeKontrolPage)});
             NavigationItems.Add(new NavigationViewItem {Content = "Vægt Kontrol", Icon = new SymbolIcon(Symbol.Scan), Tag = typeof(VaegtKontrolView)});
             NavigationItems.Add(new NavigationViewItem {Content = "Bemanding", Icon = new SymbolIcon(Symbol.People), Tag = typeof(OpretBemandingPage)});
+            NavigationItems.Add(new NavigationViewItem {Content = "Ny Vægt Kontrol", Icon = new SymbolIcon(Symbol.Library), Tag = typeof(DaaseVaegtView)});
         }
     }
 }

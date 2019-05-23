@@ -13,7 +13,47 @@ namespace REST_Service.DBUtil
         private const string ConnString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        private const string GET = "SELECT * FROM VaegtDaase WHERE Process_Ordre_Nr = @PONR AND Kontrol_Nr = @KNR;";
         private const string INSERT = "INSERT INTO VaegtDaase (Process_Ordre_Nr, Kontrol_Nr, Daase_Nr, Vaegt) VALUES (@PONR, @KNR, @DNR, @Vaegt)";
+        private const string GetVaegts = "SELECT * FROM VaegtKontrol WHERE Process_Ordre_Nr = @PONR;";
+
+
+        public IEnumerable<DaaseVaegt> Get(int ProcessOrderNr, int KontrolNr)
+        {
+           List<DaaseVaegt> daaser = new List<DaaseVaegt>();
+
+            SqlConnection conn = new SqlConnection(ConnString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(GET, conn);
+            cmd.Parameters.AddWithValue("@PONR", ProcessOrderNr);
+            cmd.Parameters.AddWithValue("@KNR", KontrolNr);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                DaaseVaegt daaseVaegt = ReadDaaseVaegt(reader);
+                daaser.Add(daaseVaegt);
+            }
+            conn.Close();
+
+            return daaser;
+        }
+
+        private DaaseVaegt ReadDaaseVaegt(SqlDataReader reader)
+        {
+            DaaseVaegt daase = new DaaseVaegt
+            {
+                ProcessOrderNr = reader.GetInt32(0),
+                KontrolOrderNr = reader.GetInt32(1),
+                DaaseNr = reader.GetInt32(2),
+                DasseVaegt = reader.GetDouble(3)
+            };
+
+
+            return daase;
+        }
 
         public bool Post(DaaseVaegt daaseVeVaegt)
         {
@@ -35,15 +75,46 @@ namespace REST_Service.DBUtil
             }
             catch (Exception e)
             {
-                Console.WriteLine($"{daaseVeVaegt.ProcessOrderNr}/n{daaseVeVaegt.KontrolOrderNr}/n{daaseVeVaegt.DaaseNr}/n{daaseVeVaegt.DasseVaegt}");    
+                Console.WriteLine(
+                    $"{daaseVeVaegt.ProcessOrderNr}/n{daaseVeVaegt.KontrolOrderNr}/n{daaseVeVaegt.DaaseNr}/n{daaseVeVaegt.DasseVaegt}");
             }
 
-            conn.Close();
+            finally
+            {
+                conn.Close();
+            }
 
             return retValue;
         }
 
+        public IEnumerable<VaegtKontrol> GetVaegtKontrols(int ProcessOrderNr)
+        {
+            List<VaegtKontrol> liste = new List<VaegtKontrol>();
 
-       
+            SqlConnection conn = new SqlConnection(ConnString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(GetVaegts, conn);
+            cmd.Parameters.AddWithValue("@PONR", ProcessOrderNr);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                VaegtKontrol vaegtKontrol = ReadVaegts(reader);
+                liste.Add(vaegtKontrol);
+            }
+            conn.Close();
+            return liste;
+        }
+
+        private VaegtKontrol ReadVaegts(SqlDataReader reader)
+        {
+            VaegtKontrol vaegtKontrol = new VaegtKontrol
+            {
+                ProcessOrdreNr = reader.GetInt32(0), KontrolNr = reader.GetInt32(1), DatoTid = reader.GetDateTime(2)
+            };
+
+
+            return vaegtKontrol;
+        }
     }
 }

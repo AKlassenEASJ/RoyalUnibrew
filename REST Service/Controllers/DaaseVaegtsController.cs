@@ -13,21 +13,23 @@ namespace REST_Service.Controllers
     {
         DaaseVaegtManger manger = new DaaseVaegtManger();
         // GET: api/DaaseVaegts
-        public IEnumerable<string> Get()
+        [Route("api/DaaseVaegts/{ProcessOrderNr}")]
+        public IEnumerable<VaegtKontrol> Get(int ProcessOrderNr)
         {
-            return new string[] { "value1", "value2" };
+            return manger.GetVaegtKontrols(ProcessOrderNr);
         }
 
         // GET: api/DaaseVaegts/5
-        public string Get(int id)
+        [Route ("api/DaaseVaegts/{PONr}/{KNR}")]
+        public IEnumerable<DaaseVaegt> Get(int PONr, int KNR)
         {
-            return "value";
+            return manger.Get(PONr, KNR);
         }
 
         // POST: api/DaaseVaegts
-        public void Post([FromBody]DaaseVaegt value)
+        public bool Post([FromBody]DaaseVaegt value)
         {
-            manger.Post(value);
+            return manger.Post(value);
         }
 
         // PUT: api/DaaseVaegts/5
@@ -39,5 +41,11 @@ namespace REST_Service.Controllers
         public void Delete(int id)
         {
         }
+
+        //[Route("api/DaaseVaegts/VaegtKontrol/{ProcessOrderNr}")]
+        //public IEnumerable<VaegtKontrol> VaegtKontrols([FromBody]int ProcessOrderNr)
+        //{
+        //    return manger.GetVaegtKontrols(ProcessOrderNr);
+        //}
     }
 }

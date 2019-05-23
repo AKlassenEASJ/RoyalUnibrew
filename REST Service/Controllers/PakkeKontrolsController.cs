@@ -31,17 +31,17 @@ namespace REST_Service.Controllers
         }
 
         // GET: api/PakkeKontrols/5
-        [ResponseType(typeof(PakkeKontrolEFM))]
-        public IHttpActionResult GetPakkeKontrol(int id)
-        {
-            PakkeKontrolEFM pakkeKontrol = db.PakkeKontrol.Find(id);
-            if (pakkeKontrol == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(PakkeKontrolEFM))]
+        //public IHttpActionResult GetPakkeKontrol(int id)
+        //{
+        //    PakkeKontrolEFM pakkeKontrol = db.PakkeKontrol.Find(id);
+        //    if (pakkeKontrol == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(pakkeKontrol);
-        }
+        //    return Ok(pakkeKontrol);
+        //}
 
         // PUT: api/PakkeKontrols/5
         //[ResponseType(typeof(void))]
@@ -111,19 +111,19 @@ namespace REST_Service.Controllers
 
         // DELETE: api/PakkeKontrols/5
         [ResponseType(typeof(PakkeKontrolEFM))]
-        public IHttpActionResult DeletePakkeKontrol(int id)
-        {
-            PakkeKontrolEFM pakkeKontrol = db.PakkeKontrol.Find(id);
-            if (pakkeKontrol == null)
-            {
-                return NotFound();
-            }
+        //public IHttpActionResult DeletePakkeKontrol(int id)
+        //{
+        //    PakkeKontrolEFM pakkeKontrol = db.PakkeKontrol.Find(id);
+        //    if (pakkeKontrol == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.PakkeKontrol.Remove(pakkeKontrol);
-            db.SaveChanges();
+        //    db.PakkeKontrol.Remove(pakkeKontrol);
+        //    db.SaveChanges();
 
-            return Ok(pakkeKontrol);
-        }
+        //    return Ok(pakkeKontrol);
+        //}
 
         protected override void Dispose(bool disposing)
         {

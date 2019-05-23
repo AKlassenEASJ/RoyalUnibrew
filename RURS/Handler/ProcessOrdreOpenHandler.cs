@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ModelLibary.Models;
 using RURS.Model;
 using RURS.ViewModel;
+using RURS.Validation;
 
 
 namespace RURS.Handler
@@ -15,6 +16,7 @@ namespace RURS.Handler
     {
         private ProcessOrdreOpenViewModel _vM;
         private List<ProcessOrdre> _loadedProcessOrdrer;
+        private ValidationProcessOrdre validater;
 
 
         public List<ProcessOrdre> LoadedProcessOrdrer
@@ -27,6 +29,7 @@ namespace RURS.Handler
         public ProcessOrdreOpenHandler(ProcessOrdreOpenViewModel vM)
         {
             _vM = vM;
+            validater = new ValidationProcessOrdre();
         }
 
         public async void Load()

@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using ModelLibary.Models;
 using RURS.Model;
 using RURS.ViewModel;
+using RURS.Validation;
 
 namespace RURS.Handler
 {
     public class ProcessOrdreAddHandler
     {
         private ProcessOrdreAddViewModel _vM;
-        
+        private ValidationProcessOrdre validater;
+
         public ProcessOrdreAddHandler(ProcessOrdreAddViewModel vM)
         {
             _vM = vM;
+            validater = new ValidationProcessOrdre();
         }
 
 
@@ -30,7 +33,9 @@ namespace RURS.Handler
 
         private void InternalOpen()
         {
-            _vM.OpenOrdreDisplay.ActiveProcessOrdre = _vM.OpretningProcessOrdre;
+            //_vM.OpenOrdreDisplay.ActiveProcessOrdre = _vM.OpretningProcessOrdre;
+            SelectedPOSingleton.GetInstance().ActiveProcessOrdre = _vM.OpretningProcessOrdre;
+
         }
     }
 }

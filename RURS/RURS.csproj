@@ -127,6 +127,7 @@
     <Compile Include="HamburgerMenu\MenuViewModel.cs" />
     <Compile Include="HamburgerMenu\NavigationService.cs" />
     <Compile Include="Handler\BemandingHandler.cs" />
+    <Compile Include="Handler\DaaseVaegtHandler.cs" />
     <Compile Include="Handler\PakkeKontrolHandler.cs" />
     <Compile Include="Handler\ProcessOrdreAddHandler.cs" />
     <Compile Include="Handler\ProcessOrdreHandler.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Model\CheckboxHelper.cs" />
     <Compile Include="Model\FejlTjek.cs" />
     <Compile Include="Model\INotyfiClass.cs" />
+    <Compile Include="Model\Record.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
     <Compile Include="Persistency\PersistenceAnsat.cs" />
     <Compile Include="Persistency\PersistenceBemanding.cs" />
@@ -146,8 +148,10 @@
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />
     <Compile Include="Validation\ValidationBase.cs" />
     <Compile Include="Validation\ValidationPakkeKontrol.cs" />
+    <Compile Include="Validation\ValidationProcessOrdre.cs" />
     <Compile Include="Validation\ValidationTappeKontrol.cs" />
     <Compile Include="ViewModel\BemandingViewModel.cs" />
+    <Compile Include="ViewModel\DaaseVaegtViewModel.cs" />
     <Compile Include="ViewModel\PakkeKontrolViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreAddViewModel.cs" />
     <Compile Include="ViewModel\ProcessOrdreOpenViewModel.cs" />
@@ -155,6 +159,9 @@
     <Compile Include="ViewModel\TappeKontrolViewModel.cs" />
     <Compile Include="ViewModel\VaegtKontrolViewModel.cs" />
     <Compile Include="ViewModel\VMBase.cs" />
+    <Compile Include="View\DaaseVaegtView.xaml.cs">
+      <DependentUpon>DaaseVaegtView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -207,6 +214,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DaaseVaegtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -249,6 +260,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="WinRTXamlToolkit.Controls.DataVisualization.UWP">
+      <Version>2.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

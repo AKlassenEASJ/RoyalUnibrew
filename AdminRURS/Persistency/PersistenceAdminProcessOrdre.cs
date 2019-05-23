@@ -31,13 +31,11 @@ namespace AdminRURS.Persistency
 
         public static List<ProcessOrdre> GetByDate(DateTime date)
         {
-
             List<ProcessOrdre> processOrdrer = new List<ProcessOrdre>();
-
-
             using (HttpClient client = new HttpClient())
             {
-                Task<string> resTask = client.GetStringAsync($"{URI}/{date}");
+                string dateString = date.ToString("yyyy-MM-dd");
+                Task<string> resTask = client.GetStringAsync($"{URI}/{dateString}");
                 string jsonStr = resTask.Result;
 
                 processOrdrer = JsonConvert.DeserializeObject<List<ProcessOrdre>>(jsonStr);
