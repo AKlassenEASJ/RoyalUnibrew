@@ -79,7 +79,6 @@ namespace AdminRURS.ViewModel
 
             LoadByDateCommand = new RelayCommand(_handler.LoadByDate);
             LoadAllCommand = new RelayCommand(_handler.LoadAll);
-            TjekListeCommand = new RelayCommand(_handler.)
             _handler.LoadAll();
         }
 
