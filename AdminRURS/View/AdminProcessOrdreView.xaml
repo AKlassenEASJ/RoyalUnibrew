@@ -63,13 +63,6 @@
 
                 </Grid>
                 <DatePicker Header="Hent ordrer for dato"  Date="{Binding DatePicked, Mode=TwoWay}">
-                    <custom:Interaction.Behaviors>
-                        <custom1:EventTriggerBehavior EventName="DateChanged"> <!--possible conflict-->
-                            <custom1:InvokeCommandAction Command="{Binding }">
-                                
-                            </custom1:InvokeCommandAction>
-                        </custom1:EventTriggerBehavior>
-                    </custom:Interaction.Behaviors>
                 </DatePicker>
                 <Button Content="Hent alle ordrer" Command="{Binding LoadAllCommand}"/>
                 <ListView ItemsSource="{Binding DisplayOrdrerByDate}"/>
