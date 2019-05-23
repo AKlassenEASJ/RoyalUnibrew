@@ -22,6 +22,7 @@ namespace RURS.HamburgerMenu
         {
             //NavigationFrame.GoBack();
             NavigationFrame.Navigate(typeof(ProcessOrdreView));
+            //Navigate;
             ChangeMenuSelection();
         }
 

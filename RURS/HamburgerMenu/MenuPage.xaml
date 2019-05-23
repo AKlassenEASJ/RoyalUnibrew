@@ -25,11 +25,11 @@
 <NavigationView.PaneCustomContent>
     <StackPanel Padding="10 10 0 0">
         <TextBlock Text="Process Ordre Nr."/>
-        <TextBlock Text="{Binding ProcessOrdre.ProcessOrdreNr}"/>
+        <TextBlock Text="{Binding ProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
         <TextBlock Text="Færdigvare nr"/>
-        <TextBlock Text="{Binding ProcessOrdre.FaerdigVareNr}"/>
+        <TextBlock Text="{Binding ProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
         <TextBlock Text="Dato"/>
-        <TextBlock Text="{Binding ProcessOrdre.Dato}"/>
+        <TextBlock Text="{Binding ProcessOrdre.Dato, Mode=TwoWay}"/>
     </StackPanel>
 </NavigationView.PaneCustomContent>
 

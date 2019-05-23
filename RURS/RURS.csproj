@@ -140,6 +140,7 @@
     <Compile Include="Model\Record.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
     <Compile Include="Persistency\PersistenceBemanding.cs" />
+    <Compile Include="Persistency\PersistenceDaaseVaegt.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
     <Compile Include="Persistency\PersistencePakkeKontrol.cs" />
     <Compile Include="Persistency\PersistenceTappeKontrol.cs" />
