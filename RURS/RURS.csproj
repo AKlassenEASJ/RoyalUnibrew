@@ -139,6 +139,7 @@
     <Compile Include="Model\INotyfiClass.cs" />
     <Compile Include="Model\Record.cs" />
     <Compile Include="Model\SelectedPOSingleton.cs" />
+    <Compile Include="Persistency\PersistenceAnsat.cs" />
     <Compile Include="Persistency\PersistenceBemanding.cs" />
     <Compile Include="Persistency\PersistenceDaaseVaegt.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />

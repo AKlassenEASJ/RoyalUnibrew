@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
+using RURS.Common;
+using RURS.Model;
 using RURS.Persistency;
+using RURS.Validation;
 using RURS.ViewModel;
 
 namespace RURS.Handler
@@ -14,6 +17,8 @@ namespace RURS.Handler
         #region InstanceFields
 
         private PersistenceBemanding<Bemanding> _persistence = new PersistenceBemanding<Bemanding>();
+        private ValidationBase _validation = new ValidationBase();
+        private string _errorMessage;
 
         #endregion
 
@@ -42,27 +47,112 @@ namespace RURS.Handler
             DateTime tempStartDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.StartTime.Hours, BemandingViewModel.StartTime.Minutes, 00, DateTimeKind.Local);
             DateTime tempEndDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.EndTime.Hours, BemandingViewModel.EndTime.Minutes, 00, DateTimeKind.Local);
 
-            if (BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == -1)
+            if (BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == -1 || BemandingViewModel.EndTime.CompareTo(BemandingViewModel.StartTime) == 0)
             {
-                tempStartDateTime = tempStartDateTime.AddDays(1);
+                tempEndDateTime = tempEndDateTime.AddDays(1);
             }
-
 
             BemandingViewModel.Bemanding.Tidspunkt_Start = tempStartDateTime;
             BemandingViewModel.Bemanding.Tidspunkt_Slut = tempEndDateTime;
 
+            BemandingViewModel.Bemanding.ProcessOrdre_Nr = SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
+
+            foreach (var validation in BemandingViewModel.Validations)
+            {
+                if (validation.Value.Besked != null)
+                {
+                    AddToErrorMessage(validation.Key, validation.Value.Besked);
+                }
+            }
+
+            if (_errorMessage != null)
+            {
+                MessageDialogHelper.Show(_errorMessage, "Angiv venligst følgende ting");
+            }
+            else
+            {
+                if (await _persistence.PostAsync(BemandingViewModel.Bemanding))
+                {
+                    BemandingViewModel.Bemanding = new Bemanding();
+                    BemandingViewModel.StartTime = new TimeSpan();
+                    BemandingViewModel.EndTime = new TimeSpan();
+
+                }
+            }
             
-            
-
-            BemandingViewModel.Bemanding.ProcessOrdre_Nr = 1;
-
-            await _persistence.PostAsync(BemandingViewModel.Bemanding);
-
-            BemandingViewModel.Bemanding = new Bemanding();
-            BemandingViewModel.StartTime = new TimeSpan();
-            BemandingViewModel.EndTime = new TimeSpan();
         }
-        
+
+        public async void GetSuggestionsAsync()
+        {
+            List<Ansat> tempList = null;
+
+            IEnumerable<string> suggestionList = null;
+
+            if (BemandingViewModel.Bemanding.Signatur != null && BemandingViewModel.Bemanding.Signatur.Length >= 1)
+            {
+                tempList = await PersistenceAnsat.GetAllAsync();
+            }
+            else
+            {
+                BemandingViewModel.Suggestions = new List<string>(){"Ingen forslag"};
+            }
+
+            if (tempList != null)
+            {
+                suggestionList = from a in tempList
+                    where a.Initial.StartsWith(BemandingViewModel.Bemanding.Signatur.ToUpperInvariant())
+                    select a.Initial;
+
+                if (suggestionList.Any())
+                {
+                    BemandingViewModel.Suggestions = suggestionList.ToList();
+                }
+                else
+                {
+                    BemandingViewModel.Suggestions = new List<string>() { "Ingen forslag" };
+                }
+
+
+            }
+
+            
+
+            
+
+
+
+
+
+
+
+
+        }
+
+
+        #endregion
+
+        #region Validations
+
+        public void ValidateEmployees()
+        {
+            BemandingViewModel.Validations["Employees"].Besked =
+                _validation.IntToSmall(BemandingViewModel.Bemanding.Antal_Bemanding);
+        }
+
+        public void ValidateBreaks()
+        {
+            BemandingViewModel.Validations["Breaks"].Besked =
+                _validation.IntToSmall(BemandingViewModel.Bemanding.Pauser);
+        }
+
+        #endregion
+
+        #region HelpMethods
+
+        private void AddToErrorMessage(string name, string message)
+        {
+            _errorMessage = _errorMessage + $"\n{name}\n{message}";
+        }
 
         #endregion
     }
