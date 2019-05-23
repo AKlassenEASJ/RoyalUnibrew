@@ -19,12 +19,14 @@ namespace AdminRURS.ViewModel
 
         private ObservableCollection<ProcessOrdre> _displayAllProcessOrdrer;
         private ObservableCollection<ProcessOrdre> _displayOrdrerByDate;
+        private ProcessOrdre _selectedProcessOrdre;
         private DateTime _datePicked;
         private AdminProcessOrdreHandler _handler;
         private string _header;
 
         public ICommand LoadByDateCommand { get; set; }
         public ICommand LoadAllCommand { get; set; }
+        public ICommand TjekListeCommand { get; set; }
 
         public ObservableCollection<ProcessOrdre> DisplayProcessOrdrer
         {
@@ -32,6 +34,15 @@ namespace AdminRURS.ViewModel
             set
             {
                 _displayAllProcessOrdrer = value;
+                OnPropertyChanged();
+            }
+        }
+        public ProcessOrdre SelectedProcessOrdre
+        {
+            get => _selectedProcessOrdre;
+            set
+            {
+                _selectedProcessOrdre = value;
                 OnPropertyChanged();
             }
         }
@@ -68,6 +79,7 @@ namespace AdminRURS.ViewModel
 
             LoadByDateCommand = new RelayCommand(_handler.LoadByDate);
             LoadAllCommand = new RelayCommand(_handler.LoadAll);
+            TjekListeCommand = new RelayCommand(_handler.)
             _handler.LoadAll();
         }
 

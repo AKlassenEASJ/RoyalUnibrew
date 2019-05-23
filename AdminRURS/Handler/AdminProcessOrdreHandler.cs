@@ -6,18 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
 using AdminRURS.ViewModel;
+using AdminRURS.Validation;
 namespace AdminRURS.Handler
 {
     public class AdminProcessOrdreHandler
     {
         private AdminProcessOrdreViewModel _vM;
         private List<ProcessOrdre> _loadedProcessOrdrer;
+        private ValidationAdminProcessOrdre validater;
 
 
 
         public AdminProcessOrdreHandler(AdminProcessOrdreViewModel vM)
         {
             _vM =vM;
+            validater = new ValidationAdminProcessOrdre();
         }
 
 
@@ -64,6 +67,12 @@ namespace AdminRURS.Handler
                 //}
             }
             _vM.Header = $"Viser processordrer for {date.Day}/{date.Month}/{date.Year}";
+            validater.TjekListe(_loadedProcessOrdrer);
+
+        }
+        public void TjekListe()
+        {
+
         }
 
         private void InternalClear()
