@@ -132,6 +132,7 @@
     <Compile Include="Persistency\PersistenceAdminProcessOrdre.cs" />
     <Compile Include="Persistency\PersistenceAnsat.cs" />
     <Compile Include="Persistency\PersistenceFaerdigVare.cs" />
+    <Compile Include="Validation\ValidationAdminProcessOrdre.cs" />
     <Compile Include="Validation\ValidationAnsat.cs" />
     <Compile Include="Validation\ValidationBase.cs" />
     <Compile Include="ViewModel\AdminProcessOrdreViewModel.cs" />
