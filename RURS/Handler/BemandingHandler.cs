@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibary.Models;
 using RURS.Common;
+using RURS.Model;
 using RURS.Persistency;
 using RURS.Validation;
 using RURS.ViewModel;
@@ -54,7 +55,7 @@ namespace RURS.Handler
             BemandingViewModel.Bemanding.Tidspunkt_Start = tempStartDateTime;
             BemandingViewModel.Bemanding.Tidspunkt_Slut = tempEndDateTime;
 
-            BemandingViewModel.Bemanding.ProcessOrdre_Nr = 1;
+            BemandingViewModel.Bemanding.ProcessOrdre_Nr = SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
 
             foreach (var validation in BemandingViewModel.Validations)
             {
@@ -99,10 +100,10 @@ namespace RURS.Handler
             if (tempList != null)
             {
                 suggestionList = from a in tempList
-                    where a.Initial.StartsWith(BemandingViewModel.Bemanding.Signatur)
+                    where a.Initial.StartsWith(BemandingViewModel.Bemanding.Signatur.ToUpperInvariant())
                     select a.Initial;
 
-                if (suggestionList.Count() > 0)
+                if (suggestionList.Any())
                 {
                     BemandingViewModel.Suggestions = suggestionList.ToList();
                 }
@@ -151,18 +152,6 @@ namespace RURS.Handler
         private void AddToErrorMessage(string name, string message)
         {
             _errorMessage = _errorMessage + $"\n{name}\n{message}";
-        }
-
-        private async Task<List<string>> GenerateListOfEmployeeInitialsAsync()
-        {
-            List<string> tempListOfInitials = new List<string>();
-
-            foreach (Ansat ansat in await PersistenceAnsat.GetAllAsync())
-            {
-                tempListOfInitials.Add(ansat.Initial);
-            }
-
-            return tempListOfInitials;
         }
 
         #endregion
