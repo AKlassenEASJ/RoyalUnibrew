@@ -12,7 +12,7 @@
         <viewModel:DaaseVaegtViewModel/>
     </Page.DataContext>
     <Grid>
-        <Hub Header="VægtKontrol">
+        <Hub Header="VægtKontrol" TabIndex="2">
             <HubSection MinWidth="300">
                 <DataTemplate>
 
@@ -26,7 +26,10 @@
                             <ListView Header="VægtKontroller" ItemsSource="{Binding DisplayVaegtKontrols, Mode=TwoWay}" SelectedItem="{Binding NewSelectedVaegtKontrol, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding KontrolNr}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding KontrolNr}" Margin="5 0" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding DatoTid.TimeOfDay}"/>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
@@ -37,8 +40,10 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Amount}"/>
+                                            <TextBlock Text="{Binding Name}" Margin="5 0" FontWeight="Bold"/>
+                                            <TextBlock Text=":"/>
+                                            <TextBlock Text="{Binding Amount}" Margin="5 0"/>
+                                            <TextBlock Text="g"></TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -59,6 +64,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Vægt:"></TextBlock>
                             <TextBox Text="{Binding SelectedVaegt, Mode=TwoWay}" Margin="10 0 "/>
+                            <Image Source="/Assets/OK.png" Margin="0,0,0,0" Height="30" Width="41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             <Button Content="Tilføj" Command="{Binding AddCommand}"></Button>
                         </StackPanel>
 
@@ -114,6 +120,7 @@
             </HubSection>
 
         </Hub>
+        <!--<ProgressBar Maximum="24" Value="22"></ProgressBar>-->
         <ProgressRing Width="200" IsActive="{Binding IsLoading}" HorizontalAlignment="Center" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" />
     </Grid>
 </Page>

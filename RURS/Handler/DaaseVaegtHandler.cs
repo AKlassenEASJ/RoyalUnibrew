@@ -33,9 +33,36 @@ namespace RURS.Handler
             {
                _viewModel.Vaegts.Add(new Record(daase.DaaseNr, daase.DasseVaegt));
                 _viewModel.SelectedVaegt = 0;
+                ClearImage();
             }
 
         }
+
+        public void Tjek()
+        {
+            if (_viewModel.SelectedVaegt > 100)
+            {
+                if (_viewModel.SelectedVaegt > _viewModel.MaxVaegt || _viewModel.SelectedVaegt < _viewModel.MinVaegt)
+                {
+                    _viewModel.Image = "/Assets/NOTOK.png";
+                }
+                else
+                {
+                    _viewModel.Image = "/Assets/OK.png";
+                }
+            }
+            else
+            {
+                ClearImage();
+            }
+        }
+
+        public void ClearImage()
+        {
+            _viewModel.Image = null;
+        }
+
+        #region Gets
 
         public async void GetVægtKontrol()
         {
@@ -53,8 +80,8 @@ namespace RURS.Handler
         public async void GetDasser()
         {
             _viewModel.IsLoading = true;
-           //_viewModel.DaaseVaegts = new ObservableCollection<DaaseVaegt>();
-            
+            //_viewModel.DaaseVaegts = new ObservableCollection<DaaseVaegt>();
+
             List<DaaseVaegt> daases = await PersistenceDaaseVaegt.GET_ALL(1, _viewModel.NewSelectedVaegtKontrol.KontrolNr);
             _viewModel.Vaegts.Clear();
             foreach (DaaseVaegt daase in daases)
@@ -67,13 +94,25 @@ namespace RURS.Handler
             _viewModel.IsLoading = false;
         }
 
+        public async void GetMaxAndMin()
+        {
+            FaerdigVare FV =
+                await PersistenceFaerdigVare.GetOne(SelectedPOSingleton.GetInstance().ActiveProcessOrdre.FaerdigVareNr);
+            _viewModel.MaxVaegt = FV.Max;
+            _viewModel.MinVaegt = FV.Min;
+            addValues(_viewModel.Maximum, FV.Max);
+            
+        }
+
+        #endregion
+
         #region GetValues
 
         public void GetValues()
         {
-            GetMin();
-            GetSnit();
-            GetMax();
+            //GetMin();
+            //GetSnit();
+            //GetMax();
         }
 
         private void addValues(ObservableCollection<Record> list, double tal)
