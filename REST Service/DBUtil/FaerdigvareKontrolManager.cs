@@ -73,9 +73,9 @@ namespace REST_Service.DBUtil
             return faerdigvareKontrol;
         }
 
-
-        // incremment get
-        public int GetFaerdigvareKontrol(int idNr)
+        
+        // Get all data from view
+        public FaerdigvareKontrol GetFaerdigvareKontrol(int idNr)
         {
 
             FaerdigvareKontrol faerdigvareKontrol = new FaerdigvareKontrol();
