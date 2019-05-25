@@ -18,8 +18,11 @@ namespace REST_Service.DBUtil
         private const string LineConnString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        private const string ConnectionString = thomasConnectionString;
+        private const string AndersConnString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""RURS TestDatabase"";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        //private const string ConnectionString = thomasConnectionString;
+
+        private const string ConnectionString = AndersConnString;
         //private const string ConnectionString = LineConnString;
         //private const string ConnectionString = christianConnectionString;
 
