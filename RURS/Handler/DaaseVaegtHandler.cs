@@ -96,51 +96,60 @@ namespace RURS.Handler
 
         public async void GetMaxAndMin()
         {
-            FaerdigVare FV =
-                await PersistenceFaerdigVare.GetOne(SelectedPOSingleton.GetInstance().ActiveProcessOrdre.FaerdigVareNr);
+            FaerdigVare FV  = await PersistenceFaerdigVare.GetOne(SelectedPOSingleton.GetInstance().ActiveProcessOrdre.FaerdigVareNr);
             _viewModel.MaxVaegt = FV.Max;
             _viewModel.MinVaegt = FV.Min;
-            addValues(_viewModel.Maximum, FV.Max);
-            
+            _viewModel.SnitVaegt = FV.Snit;
+            //GetMin(FV.Min);
+            //GetSnit(FV.Snit);
+            //GetMax(FV.Max);
+
         }
 
         #endregion
 
         #region GetValues
 
-        public void GetValues()
+        //public async void GetValues()
+        //{
+        //    await GetVægtKontrol();
+        //    await GetMaxAndMin();
+        //    //GetDiagram();
+        //}
+
+        //private void addValues(ObservableCollection<Record> list, double tal)
+        //{
+        //    list = new ObservableCollection<Record>();
+        //    list.Add(new Record(1, tal));
+        //    list.Add(new Record(24, tal));
+        //}
+
+        public void GetDiagram()
         {
-            //GetMin();
-            //GetSnit();
-            //GetMax();
+            GetMax();
+            GetMin();
+            GetSnit();
         }
 
-        private void addValues(ObservableCollection<Record> list, double tal)
-        {
-            list = new ObservableCollection<Record>();
-            list.Add(new Record(1, tal));
-            list.Add(new Record(24, tal));
-        }
-
-        private void GetMax()
+        public void GetMax()
         {
             _viewModel.Maximum = new ObservableCollection<Record>();
-            _viewModel.Maximum.Add(new Record(1, 352.1));
-            _viewModel.Maximum.Add(new Record(24, 352.1));
+            _viewModel.Maximum.Add(new Record(1, _viewModel.MaxVaegt));
+            _viewModel.Maximum.Add(new Record(24, _viewModel.MaxVaegt));
         }
 
         private void GetMin()
         {
             _viewModel.Minimum = new ObservableCollection<Record>();
-            _viewModel.Minimum.Add(new Record(1, 336.9));
-            _viewModel.Minimum.Add(new Record(24, 336.9));
+            _viewModel.Minimum.Add(new Record(1, _viewModel.MinVaegt));
+            _viewModel.Minimum.Add(new Record(24, _viewModel.MinVaegt));
         }
 
         private void GetSnit()
         {
             _viewModel.Snit = new ObservableCollection<Record>();
-            _viewModel.Snit.Add(new Record(1, 347));
-            _viewModel.Snit.Add(new Record(24, 347));
+            _viewModel.Snit.Add(new Record(1, _viewModel.SnitVaegt));
+            _viewModel.Snit.Add(new Record(24, _viewModel.SnitVaegt));
         }
 
         #endregion

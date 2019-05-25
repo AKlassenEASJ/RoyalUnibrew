@@ -22,6 +22,7 @@ namespace RURS.ViewModel
         private Record _selectedRecord;
         private string _image;
         private double _minVaegt;
+        private double _snit;
         private double _maxVaegt;
 
         public double SelectedVaegt
@@ -105,6 +106,16 @@ namespace RURS.ViewModel
             }
         }
 
+        public double SnitVaegt
+        {
+            get { return _snit;}
+            set
+            {
+                _snit = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DaaseVaegtHandler Handler { get; set; }
         public ObservableCollection<Record> Maximum { get; set; }
         public ObservableCollection<Record> Snit { get; set; }
@@ -119,12 +130,15 @@ namespace RURS.ViewModel
         public DaaseVaegtViewModel()
         {
             Handler = new DaaseVaegtHandler(this);
-            Handler.GetValues();
+            Handler.GetMaxAndMin();
             Expted = new ObservableCollection<Record>();
             Vaegts = new ObservableCollection<Record>();
             Handler.GetVægtKontrol();
-            AddCommand = new RelayCommand(Handler.add);
+            
+            AddCommand = new RelayCommand(Handler.GetMax);
             TjekCommand = new RelayCommand(Handler.Tjek);
+
+            Handler.GetDiagram();
         }
 
        

@@ -12,7 +12,7 @@ namespace RURS.Persistency
 {
     class PersistenceFaerdigVare
     {
-        private const string URI = "http://localhost:60096/api/faerdigvare";
+        private const string URI = "http://localhost:60096/api/FaerdigVares";
 
         public static async Task<FaerdigVare> GetOne(int nr)
         {
