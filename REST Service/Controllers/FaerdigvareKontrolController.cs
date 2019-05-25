@@ -13,7 +13,7 @@ namespace REST_Service.Controllers
     {
         private FaerdigvareKontrolManager manager = new FaerdigvareKontrolManager();
 
-        [Route("api/VaegtKontrol/max/{process_ordre_nr}")]
+        [Route("api/Faerdigvare/{process_ordre_nr}")]
         public FaerdigvareKontrol GetFaerdigvareKontrol(int process_ordre_nr)
         {
             return manager.GetFaerdigvareKontrol(process_ordre_nr);

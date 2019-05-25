@@ -16,6 +16,7 @@ namespace REST_Service.DBUtil
     public class FaerdigvareKontrolManager
     {
 
+
         #region connectionstring
         private const string ConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";

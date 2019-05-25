@@ -17,7 +17,7 @@ namespace RURS.Handler
         #region InstanceFields
 
         private PersistenceBemanding<Bemanding> _persistence = new PersistenceBemanding<Bemanding>();
-        private ValidationBase _validation = new ValidationBase();
+        private ValidationBemanding _validation = new ValidationBemanding();
         private string _errorMessage;
 
         #endregion
@@ -74,6 +74,7 @@ namespace RURS.Handler
                 if (await _persistence.PostAsync(BemandingViewModel.Bemanding))
                 {
                     BemandingViewModel.Bemanding = new Bemanding();
+                    BemandingViewModel.Bemanding.Antal_Bemanding = 1;
                     BemandingViewModel.StartTime = new TimeSpan();
                     BemandingViewModel.EndTime = new TimeSpan();
 
@@ -136,7 +137,7 @@ namespace RURS.Handler
         public void ValidateEmployees()
         {
             BemandingViewModel.Validations["Employees"].Besked =
-                _validation.IntToSmall(BemandingViewModel.Bemanding.Antal_Bemanding);
+                _validation.BemandingTooSmall(BemandingViewModel.Bemanding.Antal_Bemanding);
         }
 
         public void ValidateBreaks()

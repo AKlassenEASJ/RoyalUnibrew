@@ -150,6 +150,7 @@
     <Compile Include="Persistency\PersistencyProcessOrdre.cs" />
     <Compile Include="Persistency\PersistencyVaegtKontrol.cs" />
     <Compile Include="Validation\ValidationBase.cs" />
+    <Compile Include="Validation\ValidationBemanding.cs" />
     <Compile Include="Validation\ValidationPakkeKontrol.cs" />
     <Compile Include="Validation\ValidationProcessOrdre.cs" />
     <Compile Include="Validation\ValidationTappeKontrol.cs" />
