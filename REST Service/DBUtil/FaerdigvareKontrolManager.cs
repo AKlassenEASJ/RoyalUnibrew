@@ -73,28 +73,28 @@ namespace REST_Service.DBUtil
             return faerdigvareKontrol;
         }
 
+        //By Thomas: Denne kode kan ikke kompiles. Pls fix.
+        // incremment get 
+        //public int GetFaerdigvareKontrol(int idNr)
+        //{
 
-        // incremment get
-        public int GetFaerdigvareKontrol(int idNr)
-        {
+        //    //FaerdigvareKontrol faerdigvareKontrol = new FaerdigvareKontrol();
 
-            FaerdigvareKontrol faerdigvareKontrol = new FaerdigvareKontrol();
+        //    //SqlConnection connection = new SqlConnection(ConnectionString);
+        //    //connection.Open();
+        //    //SqlCommand cmd = new SqlCommand(GETFAERDIGVAREKONTROL, connection);
+        //    //cmd.Parameters.AddWithValue("@PODID", idNr);
 
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(GETFAERDIGVAREKONTROL, connection);
-            cmd.Parameters.AddWithValue("@PODID", idNr);
+        //    //SqlDataReader reader = cmd.ExecuteReader();
 
-            SqlDataReader reader = cmd.ExecuteReader();
+        //    //while (reader.Read())
+        //    //{
+        //    //    faerdigvareKontrol = ReadFaerdigvareKontrol(reader);
+        //    //}
 
-            while (reader.Read())
-            {
-                faerdigvareKontrol = ReadFaerdigvareKontrol(reader);
-            }
-
-            connection.Close();
-            return faerdigvareKontrol;
-        }
+        //    //connection.Close();
+        //    //return faerdigvareKontrol;
+        //}
         
         #endregion
 

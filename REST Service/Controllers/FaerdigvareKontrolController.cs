@@ -12,11 +12,12 @@ namespace REST_Service.Controllers
     {
         private FaerdigvareKontrolManager manager = new FaerdigvareKontrolManager();
 
-        [Route("api/VaegtKontrol/max/{process_ordre_nr}")]
-        public int GetKontrolMaxNr(int process_ordre_nr)
-        {
-            return manager.GetFaerdigvareKontrol(process_ordre_nr);
-        }
+        //Thomas: Denne kode er afhænging af kode der ikke kan compile. pls fix.
+        //[Route("api/VaegtKontrol/max/{process_ordre_nr}")]
+        //public int GetKontrolMaxNr(int process_ordre_nr)
+        //{
+        //    return manager.GetFaerdigvareKontrol(process_ordre_nr);
+        //}
 
 
 
