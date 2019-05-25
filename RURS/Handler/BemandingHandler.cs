@@ -137,7 +137,7 @@ namespace RURS.Handler
         public void ValidateEmployees()
         {
             BemandingViewModel.Validations["Employees"].Besked =
-                _validation.IntToSmall(BemandingViewModel.Bemanding.Antal_Bemanding);
+                _validation.BemandingTooSmall(BemandingViewModel.Bemanding.Antal_Bemanding);
         }
 
         public void ValidateBreaks()
