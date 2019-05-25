@@ -122,18 +122,17 @@ namespace REST_Service.DBUtil
 
 
         // SQL kode til oprettelse af database view for at Getmax kan fungerer:
-        // skal skrives i en sql query efter vaegtkontrol er oprettet
         /*
-        create view hentFaerdigvareKontrol as 
-	        select distinct 
-		        PO.Process_Ordre_Nr as ProcessOrdreNr, 
-		        PO.Faerdigvare_Nr as FaerdigvareNr, 
-		        FV.Navn as FaerdigvareNavn,
-		        TK.Laag_Nr as LaagNr, 
-		        TK.Daase_Nr as DaaseNr, 
-		        PK.Folie_Raavare_Nr as MultipackNr, 
-		        PK.Karton_Raavare_Nr as KartonNr, 
-		        PK.Kontrol_Palle_Nr as PalleNr
+            create view hentFaerdigvareKontrol as 
+	    select distinct 
+		    PO.Process_Ordre_Nr as ProcessOrdreNr, 
+		    PO.Faerdigvare_Nr as FaerdigvareNr, 
+		    FV.Navn as FaerdigvareNavn,
+		    TK.Laag_Nr as LaagNr, 
+		    TK.Daase_Nr as DaaseNr, 
+		    PK.Folie_Raavare_Nr as MultipackNr, 
+		    PK.Karton_Raavare_Nr as KartonNr, 
+		    PK.Kontrol_Palle_Nr as PalleNr
 
 	    from ProcessOrdre PO
 		    inner join TappeKontrol TK
@@ -145,6 +144,8 @@ namespace REST_Service.DBUtil
 
 	
 	    where PK.Kontrol_Palle_Nr is not null
+	
+	    group by Process_Ordre_Nr
         */
 
     }
