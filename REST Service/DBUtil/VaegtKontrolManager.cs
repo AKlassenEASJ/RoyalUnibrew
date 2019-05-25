@@ -72,7 +72,7 @@ namespace REST_Service.DBUtil
         }
 
 
-        // incremment get
+        // Optælling af kontroller get
         public int Getmax(int idNr)
         {
             int vaegtKontrol = 0;

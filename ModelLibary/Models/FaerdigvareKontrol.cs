@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLibary.Models
 {
-    class FaerdigvareKontrol
+    public class FaerdigvareKontrol
     {
 
         #region Instances
