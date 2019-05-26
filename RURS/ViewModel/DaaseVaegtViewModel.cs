@@ -18,7 +18,7 @@ namespace RURS.ViewModel
         private double _selectedVaegt;
         private int _selectedNr;
         private int _selectedIndex;
-        private VaegtKontrol _newSelectedVaegtKontrol;
+        private UdviddetVaegtKontrol _newSelectedVaegtKontrol;
         private Record _selectedRecord;
         private string _image;
         private double _minVaegt;
@@ -45,7 +45,7 @@ namespace RURS.ViewModel
             }
         }
 
-        public VaegtKontrol NewSelectedVaegtKontrol
+        public UdviddetVaegtKontrol NewSelectedVaegtKontrol
         {
             get { return _newSelectedVaegtKontrol; }
             set
@@ -122,10 +122,12 @@ namespace RURS.ViewModel
         public ObservableCollection<Record> Minimum { get; set; }
         public ObservableCollection<Record> Expted { get; set; }
         public ObservableCollection<Record> Vaegts { get; set; }
-        //public ObservableCollection<DaaseVaegt> DaaseVaegts { get; set; }
+        //public ObservableCollection<Record> KontrolVaegts { get; set; }
+        public ObservableCollection<UdviddetVaegtKontrol> VaegtKontrols { get; set; }
 
         public ICommand AddCommand { get; set; }
         public ICommand TjekCommand { get; set; }
+        public ICommand TilføjVægtCommand { get; set; }
 
         public DaaseVaegtViewModel()
         {
@@ -134,11 +136,11 @@ namespace RURS.ViewModel
             Expted = new ObservableCollection<Record>();
             Vaegts = new ObservableCollection<Record>();
             Handler.GetVægtKontrol();
-            
-            AddCommand = new RelayCommand(Handler.GetMax);
+            TilføjVægtCommand = new RelayCommand(Handler.TilføjVægtKontrol);
+            AddCommand = new RelayCommand(Handler.add);
             TjekCommand = new RelayCommand(Handler.Tjek);
 
-            Handler.GetDiagram();
+            //Handler.GetDiagram();
         }
 
        
