@@ -84,7 +84,7 @@ namespace REST_Service.DBUtil
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
             SqlCommand cmd = new SqlCommand(GETFAERDIGVAREKONTROL, connection);
-            cmd.Parameters.AddWithValue("@PODID", idNr);
+            cmd.Parameters.AddWithValue("@POID", idNr);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
