@@ -26,7 +26,6 @@ namespace AdminRURS.ViewModel
 
         public ICommand LoadByDateCommand { get; set; }
         public ICommand LoadAllCommand { get; set; }
-        public ICommand TjekListeCommand { get; set; }
 
         public ObservableCollection<ProcessOrdre> DisplayProcessOrdrer
         {

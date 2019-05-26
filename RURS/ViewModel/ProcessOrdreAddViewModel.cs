@@ -21,9 +21,12 @@ namespace RURS.ViewModel
         
         private ProcessOrdre _opretningProcessOrdre;
         private SelectedPOSingleton _openOrdreDisplay;
+        private string _valMessagePONr;
+        private string _valMessageDate;
 
         public ICommand UploadCommand { get; set; }
-
+        public ICommand TjekPONrCommand { get; set; }
+        public ICommand TjekDateCommand { get; set; }
         
 
         public ProcessOrdre OpretningProcessOrdre
@@ -54,16 +57,43 @@ namespace RURS.ViewModel
             }
         }
 
+        public string ValMessagePONr
+        {
+            get { return _valMessagePONr; }
+            set
+            {
+                _valMessagePONr = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ValMessageDate
+        {
+            get {   return _valMessageDate; }
+            set
+            {
+                _valMessageDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public ProcessOrdreAddViewModel()
         {
             handler = new ProcessOrdreAddHandler(this);
             _openOrdreDisplay = SelectedPOSingleton.GetInstance();
 
-            _opretningProcessOrdre = new ProcessOrdre();
-            _opretningProcessOrdre.Dato = DateTime.Today;
+
+            _opretningProcessOrdre = new ProcessOrdre
+            {
+                Dato = DateTime.Today
+            };
+            handler.Load();
             
             UploadCommand = new RelayCommand(handler.Upload);
+            TjekPONrCommand = new RelayCommand(handler.TjekPONr);
+            TjekDateCommand = new RelayCommand(handler.TjekDate);
         }
     }
 }

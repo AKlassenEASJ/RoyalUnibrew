@@ -57,5 +57,20 @@ namespace RURS.Persistency
 
             return processOrdrer;
         }
+        public static ProcessOrdre Get(int processOrdreNr)
+        {
+            ProcessOrdre  processOrdre= new ProcessOrdre();
+
+
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync($"{URI}/{processOrdreNr}");
+                string jsonStr = resTask.Result;
+
+                processOrdre = JsonConvert.DeserializeObject<ProcessOrdre>(jsonStr);
+            }
+
+            return processOrdre;
+        }
     }
 }

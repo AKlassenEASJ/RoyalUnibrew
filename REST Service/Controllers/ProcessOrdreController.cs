@@ -20,15 +20,16 @@ namespace REST_Service.Controllers
         }
 
 
-        
-        //// GET: api/ProcessOrdre/5
-        //public ProcessOrdre Get(int processOrdreNr)
-        //{
-        //    return manager.Get(processOrdreNr);
-        //}
+
+        // GET: api/ProcessOrdre/5
+        [Route("api/ProcessOrdre/{processOrdreNr}")]
+        public ProcessOrdre Get(int processOrdreNr)
+        {
+            return manager.Get(processOrdreNr);
+        }
 
         //Get: api/ProcessOrdre/{date}
-        [Route("api/ProcessOrdre/{Dato}")]
+        [Route("api/ProcessOrdreDate/{Dato}")]
         public IEnumerable<ProcessOrdre> Get(DateTime Dato)
         {
             return manager.Get(Dato);
