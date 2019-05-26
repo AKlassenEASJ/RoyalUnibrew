@@ -16,6 +16,7 @@ namespace REST_Service.DBUtil
     public class FaerdigvareKontrolManager
     {
 
+
         #region connectionstring
         private const string ConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -73,28 +74,28 @@ namespace REST_Service.DBUtil
             return faerdigvareKontrol;
         }
 
-        //By Thomas: Denne kode kan ikke kompiles. Pls fix.
-        // incremment get 
-        //public int GetFaerdigvareKontrol(int idNr)
-        //{
+        
+        // Get all data from view
+        public FaerdigvareKontrol GetFaerdigvareKontrol(int idNr)
+        {
 
-        //    //FaerdigvareKontrol faerdigvareKontrol = new FaerdigvareKontrol();
+            FaerdigvareKontrol faerdigvareKontrol = new FaerdigvareKontrol();
 
-        //    //SqlConnection connection = new SqlConnection(ConnectionString);
-        //    //connection.Open();
-        //    //SqlCommand cmd = new SqlCommand(GETFAERDIGVAREKONTROL, connection);
-        //    //cmd.Parameters.AddWithValue("@PODID", idNr);
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(GETFAERDIGVAREKONTROL, connection);
+            cmd.Parameters.AddWithValue("@POID", idNr);
 
-        //    //SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
 
-        //    //while (reader.Read())
-        //    //{
-        //    //    faerdigvareKontrol = ReadFaerdigvareKontrol(reader);
-        //    //}
+            while (reader.Read())
+            {
+                faerdigvareKontrol = ReadFaerdigvareKontrol(reader);
+            }
 
-        //    //connection.Close();
-        //    //return faerdigvareKontrol;
-        //}
+            connection.Close();
+            return faerdigvareKontrol;
+        }
         
         #endregion
 
@@ -121,18 +122,17 @@ namespace REST_Service.DBUtil
 
 
         // SQL kode til oprettelse af database view for at Getmax kan fungerer:
-        // skal skrives i en sql query efter vaegtkontrol er oprettet
         /*
-        create view hentFaerdigvareKontrol as 
-	        select distinct 
-		        PO.Process_Ordre_Nr as ProcessOrdreNr, 
-		        PO.Faerdigvare_Nr as FaerdigvareNr, 
-		        FV.Navn as FaerdigvareNavn,
-		        TK.Laag_Nr as LaagNr, 
-		        TK.Daase_Nr as DaaseNr, 
-		        PK.Folie_Raavare_Nr as MultipackNr, 
-		        PK.Karton_Raavare_Nr as KartonNr, 
-		        PK.Kontrol_Palle_Nr as PalleNr
+            create view hentFaerdigvareKontrol as 
+	    select distinct 
+		    PO.Process_Ordre_Nr as ProcessOrdreNr, 
+		    PO.Faerdigvare_Nr as FaerdigvareNr, 
+		    FV.Navn as FaerdigvareNavn,
+		    TK.Laag_Nr as LaagNr, 
+		    TK.Daase_Nr as DaaseNr, 
+		    PK.Folie_Raavare_Nr as MultipackNr, 
+		    PK.Karton_Raavare_Nr as KartonNr, 
+		    PK.Kontrol_Palle_Nr as PalleNr
 
 	    from ProcessOrdre PO
 		    inner join TappeKontrol TK
@@ -144,6 +144,8 @@ namespace REST_Service.DBUtil
 
 	
 	    where PK.Kontrol_Palle_Nr is not null
+	
+	    group by Process_Ordre_Nr
         */
 
     }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using REST_Service.DBUtil;
+using ModelLibary.Models;
 
 namespace REST_Service.Controllers
 {
@@ -12,12 +13,11 @@ namespace REST_Service.Controllers
     {
         private FaerdigvareKontrolManager manager = new FaerdigvareKontrolManager();
 
-        //Thomas: Denne kode er afhænging af kode der ikke kan compile. pls fix.
-        //[Route("api/VaegtKontrol/max/{process_ordre_nr}")]
-        //public int GetKontrolMaxNr(int process_ordre_nr)
-        //{
-        //    return manager.GetFaerdigvareKontrol(process_ordre_nr);
-        //}
+        [Route("api/FaerdigvareKontrol/{process_ordre_nr}")]
+        public FaerdigvareKontrol GetFaerdigvareKontrol(int process_ordre_nr)
+        {
+            return manager.GetFaerdigvareKontrol(process_ordre_nr);
+        }
 
 
 
