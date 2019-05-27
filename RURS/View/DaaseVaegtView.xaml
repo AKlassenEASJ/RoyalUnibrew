@@ -6,13 +6,24 @@
     xmlns:viewModel="using:RURS.ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0">
     <Page.DataContext>
         <viewModel:DaaseVaegtViewModel/>
     </Page.DataContext>
+    <Page.BottomAppBar>
+        <AppBar FlowDirection="RightToLeft" IsOpen="True" IsSticky="true">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="add" Label="Tilføj ny vægtKontrol" Command="{Binding TilføjVægtCommand}">
+                   
+                </AppBarButton>
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
     <Grid>
-        <Hub Header="VægtKontrol">
+        <Hub Header="VægtKontrol" TabIndex="2">
             <HubSection MinWidth="300">
                 <DataTemplate>
 
@@ -23,10 +34,19 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Column="0" Margin="10">
-                            <ListView Header="VægtKontroller" ItemsSource="{Binding DisplayVaegtKontrols, Mode=TwoWay}" SelectedItem="{Binding NewSelectedVaegtKontrol, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                            <ListView Header="VægtKontroller" ItemsSource="{Binding VaegtKontrols, Mode=TwoWay}" SelectedItem="{Binding NewSelectedVaegtKontrol, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding KontrolNr}"/>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding VaegtKontrol.KontrolNr}" Margin="5 0" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding VaegtKontrol.DatoTid.TimeOfDay}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Antal lavet: " Margin="5 0"/>
+                                                <TextBlock Text="{Binding Antal}"></TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
@@ -37,8 +57,10 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Amount}"/>
+                                            <TextBlock Text="{Binding Name}" Margin="5 0" FontWeight="Bold"/>
+                                            <TextBlock Text=":"/>
+                                            <TextBlock Text="{Binding Amount}" Margin="5 0"/>
+                                            <TextBlock Text="g"></TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -51,39 +73,70 @@
             <HubSection MinWidth="700" Header="Vægte">
                 <DataTemplate>
                     <StackPanel>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="DåseNr"/>
-                            <TextBlock Text="{Binding SelectedNr}"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Vægt:"></TextBlock>
-                            <TextBox Text="{Binding SelectedVaegt, Mode=TwoWay}" Margin="10 0 "/>
-                            <Button Content="Tilføj" Command="{Binding AddCommand}"></Button>
-                        </StackPanel>
+                                <Grid Column="0">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="DåseNr"/>
+                                            <TextBlock Text="{Binding SelectedNr}"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Vægt:"></TextBlock>
+                                            <TextBox Text="{Binding SelectedVaegt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 ">
+                                                <interactivity:Interaction.Behaviors>
+                                                    <core:EventTriggerBehavior EventName="KeyUp">
+                                                        <core:InvokeCommandAction Command="{Binding TjekCommand}"></core:InvokeCommandAction>
+                                                    </core:EventTriggerBehavior>
+                                                </interactivity:Interaction.Behaviors>
+                                            </TextBox>
+                                            <Image Source="{Binding Image}" Margin="0,0,0,0" Height="30" Width="41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Button Content="Tilføj" Command="{Binding AddCommand}"></Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Column="1">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Antal Vægte: "/>
+                                            <TextBlock Text="{Binding NewSelectedVaegtKontrol.Antal}"/>
+                                        </StackPanel>
+                                        <ProgressBar Maximum="24" Value="{Binding NewSelectedVaegtKontrol.Antal, Mode=TwoWay}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Snit:"/>
+                                            <TextBlock Text="{Binding NewSelectedVaegtKontrol.Snit}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
 
-                        <charting:Chart  
-                            x:Name="ColumnChart"  
+                            <charting:Chart  
+                            x:Name="ColumnChartVaegtKontrol"  
                             HorizontalAlignment="Left"  
                             VerticalAlignment="Top"  
                             Margin="0" Width="555" Height="316" 
                
                         >
-                            <charting:LineSeries Margin="0"  
+                                <charting:LineSeries Margin="0"  
                                                  Title="Min"
                                                  IndependentValuePath="Name"  
                                                  DependentValuePath="Amount" 
                                                  IsSelectionEnabled="False"
                                                  ItemsSource="{Binding Minimum, Mode=TwoWay}"></charting:LineSeries>
 
-                            <charting:LineSeries Margin="0"  
+                                <charting:LineSeries Margin="0"  
                                                  Title="Max"
                                                  IndependentValuePath="Name"  
                                                  DependentValuePath="Amount" 
                                                  IsSelectionEnabled="False"
                                                  ItemsSource="{Binding Maximum, Mode=TwoWay}" ></charting:LineSeries>
 
-                            <charting:LineSeries Margin="0"  
+                                <charting:LineSeries Margin="0"  
                                                  Title="Snit"
                                                  IndependentValuePath="Name"  
                                                  DependentValuePath="Amount" 
@@ -91,7 +144,7 @@
                                                  ItemsSource="{Binding Snit, Mode=TwoWay}"
                                                  ></charting:LineSeries>
 
-                            <charting:LineSeries Margin="0"  
+                                <charting:LineSeries Margin="0"  
                                                  Title="For Ventet"
                                                  IndependentValuePath="Name"  
                                                  DependentValuePath="Amount" 
@@ -99,7 +152,7 @@
                                                  ItemsSource="{Binding Expted, Mode=TwoWay}"
                             ></charting:LineSeries>
 
-                            <charting:LineSeries Margin="0"  
+                                <charting:LineSeries Margin="0"  
                                                  Title="Vægte"
                                                  IndependentValuePath="Name"  
                                                  DependentValuePath="Amount" 
@@ -107,9 +160,56 @@
                                                  ItemsSource="{Binding Vaegts, Mode=TwoWay}"
                             ></charting:LineSeries>
 
-                        </charting:Chart>
-                    </StackPanel>
+                            </charting:Chart>
+                        </StackPanel>
 
+
+
+                        <StackPanel>
+
+
+
+                            <charting:Chart  
+                            x:Name="ColumnChart"  
+                            HorizontalAlignment="Left"  
+                            VerticalAlignment="Top"  
+                            Margin="0" Width="555" Height="316" 
+               
+                        >
+                                <charting:LineSeries Margin="0"  
+                                                     Title="Min"
+                                                     IndependentValuePath="Name"  
+                                                     DependentValuePath="Amount" 
+                                                     IsSelectionEnabled="False"
+                                                     ItemsSource="{Binding Minimum, Mode=TwoWay}"></charting:LineSeries>
+
+                                <charting:LineSeries Margin="0"  
+                                                     Title="Max"
+                                                     IndependentValuePath="Name"  
+                                                     DependentValuePath="Amount" 
+                                                     IsSelectionEnabled="False"
+                                                     ItemsSource="{Binding Maximum, Mode=TwoWay}" ></charting:LineSeries>
+
+                                <charting:LineSeries Margin="0"  
+                                                     Title="Snit"
+                                                     IndependentValuePath="Name"  
+                                                     DependentValuePath="Amount" 
+                                                     IsSelectionEnabled="False"
+                                                     ItemsSource="{Binding Snit, Mode=TwoWay}"
+                                ></charting:LineSeries>
+
+                                <charting:LineSeries Margin="0"  
+                                                 Title="vægte"
+                                                 IndependentValuePath="VaegtKontrol.KontrolNr"  
+                                                 DependentValuePath="Snit" 
+                                                 IsSelectionEnabled="true"
+                                                 SelectedItem="{Binding NewSelectedVaegtKontrol, Mode=TwoWay}"
+                                                 ItemsSource="{Binding VaegtKontrols, Mode=TwoWay}"></charting:LineSeries>
+
+
+                            </charting:Chart>
+                        </StackPanel>
+                    </StackPanel>
                 </DataTemplate>
             </HubSection>
 

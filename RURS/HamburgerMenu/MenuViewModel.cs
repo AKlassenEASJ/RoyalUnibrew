@@ -58,7 +58,7 @@ namespace RURS.HamburgerMenu
         {
             NavigationItems.Add(new NavigationViewItem { Content = "Home", Icon = new SymbolIcon(Symbol.Home), Tag = typeof(MainPage) });
             //tilføj sider under her, ligesom oppeover
-            NavigationItems.Add(new NavigationViewItem { Content = "Processordre", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(ProcessOrdreView) });
+            //NavigationItems.Add(new NavigationViewItem { Content = "Processordre", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(ProcessOrdreView) });
             NavigationItems.Add(new NavigationViewItem {Content = "Pakke Kontrol", Icon = new SymbolIcon(Symbol.Shop), Tag = typeof(PakkeKontrolView)});
             NavigationItems.Add(new NavigationViewItem {Content = "Tappe Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(TappeKontrolPage)});
             NavigationItems.Add(new NavigationViewItem {Content = "Vægt Kontrol", Icon = new SymbolIcon(Symbol.Scan), Tag = typeof(VaegtKontrolView)});
