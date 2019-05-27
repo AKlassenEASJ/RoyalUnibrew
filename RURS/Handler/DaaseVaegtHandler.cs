@@ -154,21 +154,21 @@ namespace RURS.Handler
 
         private void GetMax()
         {
-            _viewModel.Maximum = new ObservableCollection<Record>();
+            _viewModel.Maximum.Clear();
             _viewModel.Maximum.Add(new Record(1, _viewModel.MaxVaegt));
             _viewModel.Maximum.Add(new Record(24, _viewModel.MaxVaegt));
         }
 
         private void GetMin()
         {
-            _viewModel.Minimum = new ObservableCollection<Record>();
+            _viewModel.Minimum.Clear();
             _viewModel.Minimum.Add(new Record(1, _viewModel.MinVaegt));
             _viewModel.Minimum.Add(new Record(24, _viewModel.MinVaegt));
         }
 
         private void GetSnit()
         {
-            _viewModel.Snit = new ObservableCollection<Record>();
+            _viewModel.Snit.Clear();
             _viewModel.Snit.Add(new Record(1, _viewModel.SnitVaegt));
             _viewModel.Snit.Add(new Record(24, _viewModel.SnitVaegt));
         }

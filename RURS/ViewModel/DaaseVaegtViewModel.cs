@@ -132,9 +132,13 @@ namespace RURS.ViewModel
         public DaaseVaegtViewModel()
         {
             Handler = new DaaseVaegtHandler(this);
-            Handler.GetMaxAndMin();
+            
             Expted = new ObservableCollection<Record>();
             Vaegts = new ObservableCollection<Record>();
+            Minimum = new ObservableCollection<Record>();
+            Snit = new ObservableCollection<Record>();
+            Maximum = new ObservableCollection<Record>();
+            Handler.GetMaxAndMin();
             Handler.GetVægtKontrol();
             TilføjVægtCommand = new RelayCommand(Handler.TilføjVægtKontrol);
             AddCommand = new RelayCommand(Handler.add);
