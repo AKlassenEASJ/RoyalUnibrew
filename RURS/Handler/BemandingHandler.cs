@@ -111,21 +111,7 @@ namespace RURS.Handler
                 {
                     BemandingViewModel.Suggestions = new List<string>() { "Ingen forslag" };
                 }
-
-
             }
-
-            
-
-            
-
-
-
-
-
-
-
-
         }
 
 

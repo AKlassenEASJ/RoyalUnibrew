@@ -49,13 +49,13 @@
             <!--<TextBox Header="Signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,10">-->
                 
             <!--</TextBox>-->
-            <AutoSuggestBox Header="Signatur" PlaceholderText="Skriv medarbejders signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" ItemsSource="{Binding Suggestions, UpdateSourceTrigger=PropertyChanged}">
+            <AutoSuggestBox Header="Signatur" PlaceholderText="Skriv medarbejders signatur" Text="{Binding Bemanding.Signatur, Mode=TwoWay}" 
+                            ItemsSource="{Binding Suggestions, UpdateSourceTrigger=PropertyChanged}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,20">
                 <interactivity:Interaction.Behaviors>
                     <interactions:EventTriggerBehavior EventName="TextChanged">
                         <interactions:InvokeCommandAction Command="{Binding GetSuggestionsCommand}"></interactions:InvokeCommandAction>
                     </interactions:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
-
             </AutoSuggestBox>
 
             <StackPanel Orientation="Vertical">

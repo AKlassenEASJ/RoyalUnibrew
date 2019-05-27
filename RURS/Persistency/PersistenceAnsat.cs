@@ -20,7 +20,7 @@ namespace RURS.Persistency
 
         #region Methods
 
-        public async static Task<List<Ansat>> GetAllAsync()
+        public static async Task<List<Ansat>> GetAllAsync()
         {
             List<Ansat> tempAnsatte = new List<Ansat>();
 
