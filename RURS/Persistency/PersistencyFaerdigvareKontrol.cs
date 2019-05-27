@@ -34,7 +34,7 @@ namespace RURS.Persistency
             FaerdigvareKontrol faerdigvareKontrol = new FaerdigvareKontrol();
             using (HttpClient client = new HttpClient())
             {
-                Task<string> resTask = client.GetStringAsync(URI + "/max/" + ponid);
+                Task<string> resTask = client.GetStringAsync(URI + "/" + ponid);
                 await resTask;
                 String jsonStr = resTask.Result;
                 faerdigvareKontrol = JsonConvert.DeserializeObject<FaerdigvareKontrol>(jsonStr);

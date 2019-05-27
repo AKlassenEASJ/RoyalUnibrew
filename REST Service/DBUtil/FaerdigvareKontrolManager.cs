@@ -26,7 +26,7 @@ namespace REST_Service.DBUtil
         #region SQL statements
         private const String GETALL = "SELECT * FROM hentFaerdigvareKontrol";
         private const String GETONE = "SELECT * FROM hentFaerdigvareKontrol WHERE Process_Ordre_Nr = @POID";
-        private const String GETFAERDIGVAREKONTROL = "SELECT * FROM hentFaerdigvareKontrol WHERE Process_Ordre_Nr = @POID";
+        private const String GETFAERDIGVAREKONTROL = "SELECT * FROM hentFaerdigvareKontrol WHERE ProcesOrdreNr = @POID";
         #endregion
 
 
@@ -84,7 +84,7 @@ namespace REST_Service.DBUtil
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
             SqlCommand cmd = new SqlCommand(GETFAERDIGVAREKONTROL, connection);
-            cmd.Parameters.AddWithValue("@PODID", idNr);
+            cmd.Parameters.AddWithValue("@POID", idNr);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -120,20 +120,19 @@ namespace REST_Service.DBUtil
         }
         #endregion
 
-
-        // SQL kode til oprettelse af database view for at Getmax kan fungerer:
-        // skal skrives i en sql query efter vaegtkontrol er oprettet
+        #region SQL code til oprettelse af view
+        // SQL kode til oprettelse af database view for at GetFaerdigvareKontrol kan fungerer:
         /*
-        create view hentFaerdigvareKontrol as 
-	        select distinct 
-		        PO.Process_Ordre_Nr as ProcessOrdreNr, 
-		        PO.Faerdigvare_Nr as FaerdigvareNr, 
-		        FV.Navn as FaerdigvareNavn,
-		        TK.Laag_Nr as LaagNr, 
-		        TK.Daase_Nr as DaaseNr, 
-		        PK.Folie_Raavare_Nr as MultipackNr, 
-		        PK.Karton_Raavare_Nr as KartonNr, 
-		        PK.Kontrol_Palle_Nr as PalleNr
+            create view hentFaerdigvareKontrol as 
+	    select distinct 
+		    PO.Process_Ordre_Nr as ProcesOrdreNr, 
+		    PO.Faerdigvare_Nr as FaerdigvareNr, 
+		    FV.Navn as FaerdigvareNavn,
+		    TK.Laag_Nr as LaagNr, 
+		    TK.Daase_Nr as DaaseNr, 
+		    PK.Folie_Raavare_Nr as MultipackNr, 
+		    PK.Karton_Raavare_Nr as KartonNr, 
+		    PK.Kontrol_Palle_Nr as PalleNr
 
 	    from ProcessOrdre PO
 		    inner join TappeKontrol TK
@@ -145,7 +144,8 @@ namespace REST_Service.DBUtil
 
 	
 	    where PK.Kontrol_Palle_Nr is not null
-        */
+        //*/
+        #endregion
 
     }
 }

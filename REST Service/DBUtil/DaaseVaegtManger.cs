@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Microsoft.Ajax.Utilities;
 using ModelLibary.Models;
 
 
@@ -10,8 +11,10 @@ namespace REST_Service.DBUtil
 {
     public class DaaseVaegtManger
     {
-        private const string ConnString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const string ConnString = "Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        //private const string ConnString =
+        //    @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private const string GET = "SELECT * FROM VaegtDaase WHERE Process_Ordre_Nr = @PONR AND Kontrol_Nr = @KNR;";
         private const string INSERT = "INSERT INTO VaegtDaase (Process_Ordre_Nr, Kontrol_Nr, Daase_Nr, Vaegt) VALUES (@PONR, @KNR, @DNR, @Vaegt)";
@@ -45,10 +48,11 @@ namespace REST_Service.DBUtil
         {
             DaaseVaegt daase = new DaaseVaegt
             {
-                ProcessOrderNr = reader.GetInt32(0),
-                KontrolOrderNr = reader.GetInt32(1),
-                DaaseNr = reader.GetInt32(2),
-                DasseVaegt = reader.GetDouble(3)
+                DaaseNr = reader.GetInt32(0),
+                DasseVaegt = reader.GetDouble(1),
+                KontrolOrderNr = reader.GetInt32(2),
+                ProcessOrderNr = reader.GetInt32(3)
+
             };
 
 

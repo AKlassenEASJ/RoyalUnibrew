@@ -19,7 +19,7 @@
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding Header}" FontSize="20"/>
                 <ListView ItemsSource="{Binding DisplayProcessOrdrer}"
-                          SelectedItem="{Binding SelectedProcessOrdre}">
+                          SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="6">
@@ -56,10 +56,10 @@
                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="Kolonne" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
-                    <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="0" Text="{Binding SelectedProcessOrdre.ProcessOrdreNr}"/>
-                    <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Dato}"/>
-                    <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="0" Text="{Binding SelectedProcessOrdre.FaerdigVareNr}"/>
-                    <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Kolonne}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="0" Text="{Binding SelectedProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Dato, Mode=TwoWay}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="0" Text="{Binding SelectedProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Kolonne, Mode=TwoWay}"/>
 
                 </Grid>
                 <DatePicker Header="Hent ordrer for dato"  Date="{Binding DatePicked, Mode=TwoWay}">

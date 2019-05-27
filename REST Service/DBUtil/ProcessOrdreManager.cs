@@ -18,11 +18,10 @@ namespace REST_Service.DBUtil
         private const string LineConnString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        private const string AndersConnString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""RURS TestDatabase"";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+        private const string ConnectionString =
+            "Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         //private const string ConnectionString = thomasConnectionString;
 
-        private const string ConnectionString = AndersConnString;
         //private const string ConnectionString = LineConnString;
         //private const string ConnectionString = christianConnectionString;
 
@@ -51,25 +50,25 @@ namespace REST_Service.DBUtil
             return liste;
         }
 
-        ////GETONE: api/ProcessOrdre/1
-        //public ProcessOrdre Get(int pONr)
-        //{
-        //    ProcessOrdre processOrdre = null;
+        //GETONE: api/ProcessOrdre/1
+        public ProcessOrdre Get(int pONr)
+        {
+            ProcessOrdre processOrdre = new ProcessOrdre();
 
-        //    SqlConnection connection = new SqlConnection(ConnectionString);
-        //    connection.Open();
-        //    SqlCommand cmd = new SqlCommand(GETONE, connection);
-        //    cmd.Parameters.AddWithValue("@No", pONr);
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(GETONE, connection);
+            cmd.Parameters.AddWithValue("@No", pONr);
 
-        //    SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
 
-        //    while (reader.Read())
-        //    {
-        //        processOrdre = ReadProcessOrdre(reader);
-        //    }
-        //    connection.Close();
-        //    return processOrdre;
-        //}
+            while (reader.Read())
+            {
+                processOrdre = ReadProcessOrdre(reader);
+            }
+            connection.Close();
+            return processOrdre;
+        }
 
         public IEnumerable<ProcessOrdre> Get(DateTime date)
         {

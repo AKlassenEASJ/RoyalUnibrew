@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Xaml.Controls;
 using ModelLibary.Models;
 using RURS.Annotations;
@@ -21,8 +22,7 @@ namespace RURS.HamburgerMenu
         public ObservableCollection<NavigationViewItemBase> NavigationItems { get; set; }
 
         private NavigationViewItemBase _selectedItem;
-
-        private ProcessOrdre _processOrdre;
+        
 
         public NavigationViewItemBase SelectedItem
         {
@@ -36,14 +36,13 @@ namespace RURS.HamburgerMenu
         
         public ProcessOrdre ProcessOrdre
         {
-            get { return _processOrdre;}
+            get { return SelectedPOSingleton.GetInstance().ActiveProcessOrdre; }
             set
             {
-                _processOrdre = value;
+                SelectedPOSingleton.GetInstance().ActiveProcessOrdre = value;
                 OnPropertyChanged();
             }
         }
-        public SelectedPOSingleton PoSingleton { get; set; }    
         public MenuViewModel()
         {
             NavigationItems = new ObservableCollection<NavigationViewItemBase>();
@@ -52,7 +51,6 @@ namespace RURS.HamburgerMenu
 
             SelectedItem = NavigationItems.First(x => x.GetType() == typeof(NavigationViewItem));
            
-            ProcessOrdre = SelectedPOSingleton.GetInstance().ActiveProcessOrdre;
 
         }
 
@@ -60,12 +58,13 @@ namespace RURS.HamburgerMenu
         {
             NavigationItems.Add(new NavigationViewItem { Content = "Home", Icon = new SymbolIcon(Symbol.Home), Tag = typeof(MainPage) });
             //tilføj sider under her, ligesom oppeover
-            NavigationItems.Add(new NavigationViewItem { Content = "Processordre", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(ProcessOrdreView) });
+            //NavigationItems.Add(new NavigationViewItem { Content = "Processordre", Icon = new SymbolIcon(Symbol.Add), Tag = typeof(ProcessOrdreView) });
             NavigationItems.Add(new NavigationViewItem {Content = "Pakke Kontrol", Icon = new SymbolIcon(Symbol.Shop), Tag = typeof(PakkeKontrolView)});
             NavigationItems.Add(new NavigationViewItem {Content = "Tappe Kontrol", Icon = new SymbolIcon(Symbol.Filter), Tag = typeof(TappeKontrolPage)});
             NavigationItems.Add(new NavigationViewItem {Content = "Vægt Kontrol", Icon = new SymbolIcon(Symbol.Scan), Tag = typeof(VaegtKontrolView)});
             NavigationItems.Add(new NavigationViewItem {Content = "Bemanding", Icon = new SymbolIcon(Symbol.People), Tag = typeof(OpretBemandingPage)});
             NavigationItems.Add(new NavigationViewItem {Content = "Ny Vægt Kontrol", Icon = new SymbolIcon(Symbol.Library), Tag = typeof(DaaseVaegtView)});
+            NavigationItems.Add(new NavigationViewItem {Content = "FærdigvareKontrol", Icon = new SymbolIcon(Symbol.Contact), Tag = typeof(FaerdigvareKontrolView)});
         }
     }
 }

@@ -38,8 +38,10 @@ namespace REST_Service.Controllers
         }
 
         // DELETE: api/DaaseVaegts/5
+        
         public void Delete(int id)
         {
+            
         }
 
         //[Route("api/DaaseVaegts/VaegtKontrol/{ProcessOrderNr}")]
