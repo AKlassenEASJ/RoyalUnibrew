@@ -20,34 +20,34 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Vare Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{}" Margin="155,0,0,0"/>
-                    <TextBox/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.FaerdigvareNr}" Margin="155,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.FaerdigvareNavn}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Dåse Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Margin="150,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.DaaseNr}" Margin="150,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Låg Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Margin="162,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.LaagNr}" Margin="162,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Proces Ordre Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Margin="80,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.ProcessOrdreNr}" Margin="80,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Multipack Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Margin="108,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.MultipackNr}" Margin="108,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Karton Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Margin="138,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.KartonNr}" Margin="138,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="20" Text="Palle Nr:" Margin="10,10,10,10" HorizontalAlignment="left" VerticalAlignment="Center"/>
-                    <TextBox Margin="155,0,0,0"/>
+                    <TextBox Text="{Binding NyFaerdigvareKontrol.PalleNr}" Margin="155,0,0,0"/>
                 </StackPanel>
-                <Button Content="Load Kontrol"/>
+                <Button Content="Load Kontrol" Command="{Binding LoadFKCommand}"/>
             </StackPanel>
             
 

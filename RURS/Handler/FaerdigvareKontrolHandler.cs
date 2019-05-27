@@ -14,13 +14,13 @@ namespace RURS.Handler
     {
         public FaerdigvareKontrolViewModel FaerdigvareKontrolViewModel { get; set; }
         
-
+        
         public FaerdigvareKontrolHandler(FaerdigvareKontrolViewModel faerdigvareKontrolViewModel)
         {
             FaerdigvareKontrolViewModel = faerdigvareKontrolViewModel;
         }
 
-        public async Task<FaerdigvareKontrol> LoadFKontrol()
+        public async void LoadFKontrol()
         {
             int processOrdreNr = Model.SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
             
@@ -34,12 +34,12 @@ namespace RURS.Handler
             int kartonNr = loadedFK.KartonNr;
             int palleNr = loadedFK.PalleNr;
             //*/
-            FaerdigvareKontrol loadedFKontrol = new FaerdigvareKontrol();
-            loadedFKontrol = loadedFK;
-            return loadedFKontrol;
+            //FaerdigvareKontrol loadedFKontrol = new FaerdigvareKontrol();
+            //loadedFKontrol = loadedFK;
+            FaerdigvareKontrolViewModel.NyFaerdigvareKontrol = loadedFK;
             //FaerdigvareKontrol aFaerdigvareKontrol = new FaerdigvareKontrol();
             //PersistencyFaerdigvareKontrol pFaerdigvareKontrol = new PersistencyFaerdigvareKontrol();
-           
+
         }
     }
 }

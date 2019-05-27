@@ -20,9 +20,15 @@ namespace RURS.ViewModel
         public FaerdigvareKontrol NyFaerdigvareKontrol
         {
             get { return _nyFaerdigvareKontrol; }
-            set { _nyFaerdigvareKontrol = value; }
+            set
+            {
+                _nyFaerdigvareKontrol = value;
+                OnPropertyChanged();
+            }
         }
+
         
+       
         
 
 
@@ -30,7 +36,8 @@ namespace RURS.ViewModel
         {
             _nyFaerdigvareKontrol = new FaerdigvareKontrol();
             FaerdigvareKontrolHandler = new FaerdigvareKontrolHandler(this);
-            //LoadFKCommand = new RelayCommand(FaerdigvareKontrolHandler.LoadFKontrol);
+            LoadFKCommand = new RelayCommand(FaerdigvareKontrolHandler.LoadFKontrol);
+            
         }
 
 

@@ -26,7 +26,7 @@ namespace REST_Service.DBUtil
         #region SQL statements
         private const String GETALL = "SELECT * FROM hentFaerdigvareKontrol";
         private const String GETONE = "SELECT * FROM hentFaerdigvareKontrol WHERE Process_Ordre_Nr = @POID";
-        private const String GETFAERDIGVAREKONTROL = "SELECT * FROM hentFaerdigvareKontrol WHERE Process_Ordre_Nr = @POID";
+        private const String GETFAERDIGVAREKONTROL = "SELECT * FROM hentFaerdigvareKontrol WHERE ProcesOrdreNr = @POID";
         #endregion
 
 
@@ -125,7 +125,7 @@ namespace REST_Service.DBUtil
         /*
             create view hentFaerdigvareKontrol as 
 	    select distinct 
-		    PO.Process_Ordre_Nr as ProcessOrdreNr, 
+		    PO.Process_Ordre_Nr as ProcesOrdreNr, 
 		    PO.Faerdigvare_Nr as FaerdigvareNr, 
 		    FV.Navn as FaerdigvareNavn,
 		    TK.Laag_Nr as LaagNr, 
@@ -144,8 +144,6 @@ namespace REST_Service.DBUtil
 
 	
 	    where PK.Kontrol_Palle_Nr is not null
-	
-	    group by Process_Ordre_Nr
         */
 
     }

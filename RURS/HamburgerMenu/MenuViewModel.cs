@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Xaml.Controls;
 using ModelLibary.Models;
 using RURS.Annotations;
@@ -63,6 +64,7 @@ namespace RURS.HamburgerMenu
             NavigationItems.Add(new NavigationViewItem {Content = "Vægt Kontrol", Icon = new SymbolIcon(Symbol.Scan), Tag = typeof(VaegtKontrolView)});
             NavigationItems.Add(new NavigationViewItem {Content = "Bemanding", Icon = new SymbolIcon(Symbol.People), Tag = typeof(OpretBemandingPage)});
             NavigationItems.Add(new NavigationViewItem {Content = "Ny Vægt Kontrol", Icon = new SymbolIcon(Symbol.Library), Tag = typeof(DaaseVaegtView)});
+            NavigationItems.Add(new NavigationViewItem {Content = "FærdigvareKontrol", Icon = new SymbolIcon(Symbol.Contact), Tag = typeof(FaerdigvareKontrolView)});
         }
     }
 }
