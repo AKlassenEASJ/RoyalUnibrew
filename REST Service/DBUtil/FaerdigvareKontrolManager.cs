@@ -120,7 +120,7 @@ namespace REST_Service.DBUtil
         }
         #endregion
 
-
+        #region SQL code til oprettelse af view
         // SQL kode til oprettelse af database view for at GetFaerdigvareKontrol kan fungerer:
         /*
             create view hentFaerdigvareKontrol as 
@@ -144,7 +144,8 @@ namespace REST_Service.DBUtil
 
 	
 	    where PK.Kontrol_Palle_Nr is not null
-        */
+        //*/
+        #endregion
 
     }
 }

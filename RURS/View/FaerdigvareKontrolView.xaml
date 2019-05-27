@@ -47,7 +47,7 @@
                     <TextBlock FontSize="20" Text="Palle Nr:" Margin="10,10,10,10" HorizontalAlignment="left" VerticalAlignment="Center"/>
                     <TextBox Text="{Binding NyFaerdigvareKontrol.PalleNr}" Margin="155,0,0,0"/>
                 </StackPanel>
-                <Button Content="Load Kontrol" Command="{Binding LoadFKCommand}"/>
+                <!--<Button Content="Load Kontrol" Command="{Binding LoadFKCommand}"/>--> 
             </StackPanel>
             
 
