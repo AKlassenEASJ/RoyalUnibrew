@@ -121,7 +121,7 @@ namespace REST_Service.DBUtil
         #endregion
 
 
-        // SQL kode til oprettelse af database view for at Getmax kan fungerer:
+        // SQL kode til oprettelse af database view for at GetFaerdigvareKontrol kan fungerer:
         /*
             create view hentFaerdigvareKontrol as 
 	    select distinct 

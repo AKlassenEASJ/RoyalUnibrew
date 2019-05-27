@@ -36,8 +36,8 @@ namespace RURS.ViewModel
         {
             _nyFaerdigvareKontrol = new FaerdigvareKontrol();
             FaerdigvareKontrolHandler = new FaerdigvareKontrolHandler(this);
-            LoadFKCommand = new RelayCommand(FaerdigvareKontrolHandler.LoadFKontrol);
-            
+            //LoadFKCommand = new RelayCommand(FaerdigvareKontrolHandler.LoadFKontrol);
+            FaerdigvareKontrolHandler.LoadFKontrol();
         }
 
 
