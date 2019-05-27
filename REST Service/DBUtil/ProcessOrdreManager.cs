@@ -50,25 +50,25 @@ namespace REST_Service.DBUtil
             return liste;
         }
 
-        ////GETONE: api/ProcessOrdre/1
-        //public ProcessOrdre Get(int pONr)
-        //{
-        //    ProcessOrdre processOrdre = null;
+        //GETONE: api/ProcessOrdre/1
+        public ProcessOrdre Get(int pONr)
+        {
+            ProcessOrdre processOrdre = new ProcessOrdre();
 
-        //    SqlConnection connection = new SqlConnection(ConnectionString);
-        //    connection.Open();
-        //    SqlCommand cmd = new SqlCommand(GETONE, connection);
-        //    cmd.Parameters.AddWithValue("@No", pONr);
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(GETONE, connection);
+            cmd.Parameters.AddWithValue("@No", pONr);
 
-        //    SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
 
-        //    while (reader.Read())
-        //    {
-        //        processOrdre = ReadProcessOrdre(reader);
-        //    }
-        //    connection.Close();
-        //    return processOrdre;
-        //}
+            while (reader.Read())
+            {
+                processOrdre = ReadProcessOrdre(reader);
+            }
+            connection.Close();
+            return processOrdre;
+        }
 
         public IEnumerable<ProcessOrdre> Get(DateTime date)
         {

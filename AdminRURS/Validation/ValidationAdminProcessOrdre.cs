@@ -15,7 +15,7 @@ namespace AdminRURS.Validation
         {
         }
 
-        public void TjekListe(List<ProcessOrdre> liste)
+        public string TjekListe(List<ProcessOrdre> liste)
         {
 
             
@@ -24,8 +24,8 @@ namespace AdminRURS.Validation
             if(liste.Count==0)
             {
                 valiRes = "Der er ingen ordrer for den valgte dato.";
-                MessageDialogHelper.Show(valiRes, "Dato");
             }
+            return valiRes;
 
         }
     }

@@ -42,6 +42,7 @@
     <Compile Include="Models\Bemanding.cs" />
     <Compile Include="Models\DaaseVaegt.cs" />
     <Compile Include="Models\FaerdigVare.cs" />
+    <Compile Include="Models\FaerdigvareKontrol.cs" />
     <Compile Include="Models\PakkeKontrol.cs" />
     <Compile Include="Models\ProcessOrdre.cs" />
     <Compile Include="Models\TappeKontrol.cs" />

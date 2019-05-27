@@ -35,7 +35,7 @@ namespace AdminRURS.Persistency
             using (HttpClient client = new HttpClient())
             {
                 string dateString = date.ToString("yyyy-MM-dd");
-                Task<string> resTask = client.GetStringAsync($"{URI}/{dateString}");
+                Task<string> resTask = client.GetStringAsync($"{URI}Date/{dateString}");
                 string jsonStr = resTask.Result;
 
                 processOrdrer = JsonConvert.DeserializeObject<List<ProcessOrdre>>(jsonStr);

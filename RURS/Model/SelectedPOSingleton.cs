@@ -13,6 +13,7 @@ namespace RURS.Model
     public class SelectedPOSingleton : INotifyPropertyChanged
     {
 
+        private static readonly object _lock = new object();
         private static SelectedPOSingleton _processOrdreSingleTonInstans = null;
         private ProcessOrdre _processOrdre;
 
@@ -36,12 +37,15 @@ namespace RURS.Model
 
         public static SelectedPOSingleton GetInstance()
         {
-            if (_processOrdreSingleTonInstans == null)
-            {
-                _processOrdreSingleTonInstans=new SelectedPOSingleton();
-            }
+            lock (_lock)
+            { 
+                if (_processOrdreSingleTonInstans == null)
+                {
+                    _processOrdreSingleTonInstans=new SelectedPOSingleton();
+                }
 
-            return _processOrdreSingleTonInstans;
+                return _processOrdreSingleTonInstans;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
