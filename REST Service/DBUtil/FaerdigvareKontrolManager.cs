@@ -18,14 +18,20 @@ namespace REST_Service.DBUtil
 
 
         #region connectionstring
+
+        private const string ConnectionString =
+            "Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        /*
         private const string ConnectionString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //*/
         #endregion
 
 
         #region SQL statements
         private const String GETALL = "SELECT * FROM hentFaerdigvareKontrol";
-        private const String GETONE = "SELECT * FROM hentFaerdigvareKontrol WHERE Process_Ordre_Nr = @POID";
+        private const String GETONE = "SELECT * FROM hentFaerdigvareKontrol WHERE ProcesOrdreNr = @POID";
         private const String GETFAERDIGVAREKONTROL = "SELECT * FROM hentFaerdigvareKontrol WHERE ProcesOrdreNr = @POID";
         #endregion
 
@@ -75,7 +81,7 @@ namespace REST_Service.DBUtil
         }
 
         
-        // Get all data from view
+        // Get all data from view with specific process order nr.
         public FaerdigvareKontrol GetFaerdigvareKontrol(int idNr)
         {
 

@@ -28,11 +28,7 @@ namespace RURS.ViewModel
         }
 
         
-       
-        
-
-
-        public FaerdigvareKontrolViewModel()
+       public FaerdigvareKontrolViewModel()
         {
             _nyFaerdigvareKontrol = new FaerdigvareKontrol();
             FaerdigvareKontrolHandler = new FaerdigvareKontrolHandler(this);
