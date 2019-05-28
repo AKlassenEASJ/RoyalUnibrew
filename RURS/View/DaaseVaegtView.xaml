@@ -167,8 +167,6 @@
 
                         <StackPanel>
 
-
-
                             <charting:Chart  
                             x:Name="ColumnChart"  
                             HorizontalAlignment="Left"  

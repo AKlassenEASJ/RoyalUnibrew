@@ -20,7 +20,7 @@ namespace RURS.Handler
 
         public void Add()
         {
-            _viewModel.SelectedPakkeKontrol.ProsessOrderNr = 1;
+            _viewModel.SelectedPakkeKontrol.ProsessOrderNr = SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
             _viewModel.SelectedPakkeKontrol.Tidspunkt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             _viewModel.SelectedPakkeKontrol.Tidspunkt = _viewModel.SelectedPakkeKontrol.Tidspunkt + _viewModel.TimeSpan;
 
