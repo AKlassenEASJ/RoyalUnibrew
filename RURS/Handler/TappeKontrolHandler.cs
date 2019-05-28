@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using ModelLibary.Models;
 using RURS.Common;
 using RURS.Model;
 using RURS.Persistency;
@@ -162,7 +163,37 @@ namespace RURS.Handler
                 ErrorMessage = ErrorMessage + $"\n{navn}\n{bedsked}";
             }
 
+        public async void GetSuggestionsAsync()
+        {
+            List<Ansat> tempList = null;
 
+            IEnumerable<string> suggestionList = null;
+
+            if (_viewModel.SelectedTappeKontrol.Signatur != null && _viewModel.SelectedTappeKontrol.Signatur.Length >= 1)
+            {
+                tempList = await PersistenceAnsat.GetAllAsync();
+            }
+            else
+            {
+                _viewModel.Suggestions = new List<string>() { "Ingen forslag" };
+            }
+
+            if (tempList != null)
+            {
+                suggestionList = from a in tempList
+                    where a.Initial.StartsWith(_viewModel.SelectedTappeKontrol.Signatur.ToUpperInvariant())
+                    select a.Initial;
+
+                if (suggestionList.Any())
+                {
+                    _viewModel.Suggestions = suggestionList.ToList();
+                }
+                else
+                {
+                    _viewModel.Suggestions = new List<string>() { "Ingen forslag" };
+                }
+            }
+        }
 
     }
 }

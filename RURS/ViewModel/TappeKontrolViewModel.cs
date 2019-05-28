@@ -17,6 +17,7 @@ namespace RURS.ViewModel
         public TappeKontrolHandler Handler { get; set; }
 
         private TappeKontrol _selectedTappeKontrol;
+        private List<string> _suggestions = new List<string>();
 
         public TappeKontrol SelectedTappeKontrol
         {
@@ -52,6 +53,15 @@ namespace RURS.ViewModel
         public ICommand TjekVæskeTempCommand { get; set; }
 
 
+        public List<string> Suggestions
+        {
+            get { return _suggestions; }
+            set
+            {
+                _suggestions = value;
+                OnPropertyChanged();
+            }
+        }
         public TappeKontrolViewModel()
         {
             Handler = new TappeKontrolHandler(this);
@@ -65,7 +75,7 @@ namespace RURS.ViewModel
             TjeklaagNrCommand = new RelayCommand(Handler.TjekLaagNr);
             TjekKontrolTempCommand = new RelayCommand(Handler.TjekKontrolTemp);
             TjekVæskeTempCommand = new RelayCommand(Handler.TjekVæskeTemp);
-            TjekSignaturCommand = new RelayCommand(Handler.TjekSignatur);
+            TjekSignaturCommand = new RelayCommand(Handler.GetSuggestionsAsync);
             TimeSpan = DateTime.Now.TimeOfDay;
             TimeSpan.FromMinutes(15);
         }

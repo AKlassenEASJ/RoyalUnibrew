@@ -116,14 +116,15 @@
                             <TextBlock Text="Signatur"/>
                             <TextBlock Text="*" Foreground="Red"/>
                         </StackPanel>
-                        <TextBox Text="{Binding SelectedTappeKontrol.Signatur, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <AutoSuggestBox PlaceholderText="Skriv medarbejders signatur" Text="{Binding SelectedTappeKontrol.Signatur, Mode=TwoWay}" 
+                                        ItemsSource="{Binding Suggestions, UpdateSourceTrigger=PropertyChanged}" Width="242" HorizontalAlignment="Left" Margin="0,0,0,20">
                             <interactivity:Interaction.Behaviors>
                                 <core:EventTriggerBehavior EventName="TextChanged">
                                     <core:InvokeCommandAction Command="{Binding TjekSignaturCommand}"></core:InvokeCommandAction>
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
-                        </TextBox>
-                        <TextBlock Text="{Binding Validatons[Signatur].Besked}" Foreground="Red"></TextBlock>
+                        </AutoSuggestBox>
+                        <!--<TextBlock Text="{Binding Validatons[Signatur].Besked}" Foreground="Red"></TextBlock>-->
                     </StackPanel>
                 </DataTemplate>
             </HubSection>
