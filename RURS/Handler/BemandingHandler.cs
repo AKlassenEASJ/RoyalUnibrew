@@ -42,7 +42,7 @@ namespace RURS.Handler
 
         public async void AddAsync()
         {
-            
+            _errorMessage = null;
 
             DateTime tempStartDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.StartTime.Hours, BemandingViewModel.StartTime.Minutes, 00, DateTimeKind.Local);
             DateTime tempEndDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, BemandingViewModel.EndTime.Hours, BemandingViewModel.EndTime.Minutes, 00, DateTimeKind.Local);
@@ -74,7 +74,6 @@ namespace RURS.Handler
                 if (await _persistence.PostAsync(BemandingViewModel.Bemanding))
                 {
                     BemandingViewModel.Bemanding = new Bemanding();
-                    BemandingViewModel.Bemanding.Antal_Bemanding = 1;
                     BemandingViewModel.StartTime = new TimeSpan();
                     BemandingViewModel.EndTime = new TimeSpan();
 
@@ -112,21 +111,7 @@ namespace RURS.Handler
                 {
                     BemandingViewModel.Suggestions = new List<string>() { "Ingen forslag" };
                 }
-
-
             }
-
-            
-
-            
-
-
-
-
-
-
-
-
         }
 
 
