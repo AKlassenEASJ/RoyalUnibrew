@@ -217,7 +217,7 @@ namespace RURS.Handler
 
                 for (int i = _viewModel.Vaegts.Count + 1; i <= 24; i++)
                 {
-                    if (y > _viewModel.MinVaegt || y < _viewModel.MaxVaegt)
+                    if (y > _viewModel.MinVaegt && y < _viewModel.MaxVaegt)
                     {
                         y = (a * i) + B;
 

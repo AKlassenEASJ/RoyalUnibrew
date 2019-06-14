@@ -151,8 +151,8 @@ namespace REST_Service.DBUtil
             tempFaerdigVare.FaerdigVare_Nr = reader.GetInt32(0);
             tempFaerdigVare.FaerdigVareNavn = reader.GetString(1);
             tempFaerdigVare.Min = reader.GetDouble(2);
-            tempFaerdigVare.Max = reader.GetDouble(3);
-            tempFaerdigVare.Snit = reader.GetDouble(4);
+            tempFaerdigVare.Snit = reader.GetDouble(3);
+            tempFaerdigVare.Max = reader.GetDouble(4);
 
             return tempFaerdigVare;
         }
