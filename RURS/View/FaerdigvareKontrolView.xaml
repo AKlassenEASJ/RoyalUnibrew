@@ -17,41 +17,44 @@
         
         <StackPanel Orientation="Vertical">
             <TextBlock FontSize="32" Text="Færdigvare Kontrol" FontStyle="Italic" FontWeight="Bold" Margin="41,0,2,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Vare Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.FaerdigvareNr}" Margin="155,0,0,0"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.FaerdigvareNavn}"/>
+            <StackPanel Orientation="Horizontal">
+                <!--titler/indhold-->
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="20" Text="Vare Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="Dåse Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="Låg Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="Proces Ordre Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="Multipack Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="Karton Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="Palle Nr:" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Dåse Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.DaaseNr}" Margin="150,0,0,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Låg Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.LaagNr}" Margin="162,0,0,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Proces Ordre Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.ProcessOrdreNr}" Margin="80,0,0,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Multipack Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.MultipackNr}" Margin="108,0,0,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Karton Nr:" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.KartonNr}" Margin="138,0,0,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="20" Text="Palle Nr:" Margin="10,10,10,10" HorizontalAlignment="left" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding NyFaerdigvareKontrol.PalleNr}" Margin="155,0,0,0"/>
-                </StackPanel>
-                <!--<Button Content="Load Kontrol" Command="{Binding LoadFKCommand}"/>--> 
-            </StackPanel>
-            
 
-        </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.FaerdigvareNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.DaaseNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.LaagNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.ProcessOrdreNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.MultipackNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.KartonNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.PalleNr}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="20" Text="{Binding NyFaerdigvareKontrol.FaerdigvareNavn}" Margin="5,5,5,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </StackPanel>
+
+
+
+
+
+            </StackPanel>
+
+
+
+
+
+
+            </StackPanel>
         
     </Grid>
 </Page>
