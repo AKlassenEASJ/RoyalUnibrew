@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,13 +20,13 @@ namespace AdminRURS.ViewModel
         #region Instancefields
 
         private FaerdigVare _selectedFaerdigVare;
-    
+
 
 
         #endregion
 
         #region Properties      
-
+        public ObservableCollection<FaerdigVare> faerdigVares { get; set; }
         public ICommand CreateCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }        
@@ -44,7 +45,7 @@ namespace AdminRURS.ViewModel
 
         #endregion
 
-        #region Constructer
+        #region Constructor
         // Uncomment
         public FaerdigVareVM()
         {           
@@ -53,6 +54,7 @@ namespace AdminRURS.ViewModel
             EditCommand = new RelayCommand(Handler.Edit);
             DeleteCommand = new RelayCommand(Handler.Delete);           
             SelectedFaerdigVare = new FaerdigVare();
+            faerdigVares= new ObservableCollection<FaerdigVare>();
         }
 
         #endregion
