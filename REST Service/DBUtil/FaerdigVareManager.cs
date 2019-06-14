@@ -19,7 +19,7 @@ namespace REST_Service.DBUtil
 
         #region sqlStatements
         private const string GET_ALL = "select * from FaerdigVare";
-        private const string GET_ONE = "select * from FaerdigVare where FaerdigVare_Nr = @Nummer";
+        private const string GET_ONE = "select * from FaerdigVare where FaerdigVare_Nr = @Nummer";      
         private const string INSERT = "Insert into FaerdigVare (FaerdigVare_Nr, Navn, Minimum, Maximum, Gennemsnit) Values (@FaerdigVare_Nr, @FaerdigVareNavn, @Min, @Max, @Snit)";
         private const string UPDATE = "Update FaerdigVare " + "set FaerdigVare_Nr = @Nummer, Navn = @Navn, Minimum = @Min, Maximum = @Max, Gennemsnit = @Snit" + " where FaerdigVare_Nr = @FVNummer";
         private const string DELETE = "Delete from DemoFacilities where FaerdigVare_Nr = @Nummer";

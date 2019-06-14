@@ -19,26 +19,21 @@ namespace REST_Service.Controllers
         #endregion
 
         // GET: api/FaerdigVares
-        public IEnumerable<string> Get()
+        public IEnumerable<FaerdigVare> Get()
         {
-            return new string[] { "value1", "value2" };
+            return manager.Get();
         }
 
         // GET: api/FaerdigVares/5
-        public string Get(int id)
+        public FaerdigVare Get(int Nummer)
         {
-            return "value";
+            return manager.Get(Nummer);
         }
 
         // POST: api/FaerdigVares
         public bool Post([FromBody]FaerdigVare faerdigVare)
         {
-
             return manager.Post(faerdigVare);
-            
-           
-            
-
         }
 
         // PUT: api/FaerdigVares/5
@@ -49,8 +44,9 @@ namespace REST_Service.Controllers
         }
 
         // DELETE: api/FaerdigVares/5
-        public void Delete(int id)
+        public bool Delete(int Nummer)
         {
+            return manager.Delete(Nummer);
         }
     }
 }

@@ -14,9 +14,8 @@ namespace REST_Service.Tests.DBUtil
             FaerdigVareManager Manager = new FaerdigVareManager();
 
             
-            FaerdigVare ny = new FaerdigVare(124, "Test", 1.0,3.0,2.0);
+            FaerdigVare ny = new FaerdigVare(1245, "Test", 1.0,3.0,2.0);
             bool res = Manager.Post(ny);
-            //Assert.AreEqual(res, Manager.Post(ny));
             Assert.IsTrue(res);
         }
 
