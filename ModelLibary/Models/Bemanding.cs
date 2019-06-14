@@ -64,7 +64,7 @@ namespace ModelLibary.Models
 
         public Bemanding()
         {
-            
+            _antal_Bemanding = 1;
         }
 
         public Bemanding(int processOrdreNr, DateTime tidspunktStart, DateTime tidspunktSlut, int antalBemanding, string signatur, int pauser)

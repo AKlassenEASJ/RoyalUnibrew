@@ -13,23 +13,8 @@ namespace RURS.ViewModel
 {
     class VaegtKontrolViewModel : VMBase
     {
-
-
-
-
-
-        private ObservableCollection<VaegtKontrol> _displayVaegtKontrols;
-        public ObservableCollection<VaegtKontrol> DisplayVaegtKontrols
-        {
-            get => _displayVaegtKontrols;
-            set => _displayVaegtKontrols = value;
-        }
-
-        //private VaegtKontrol _nyVaegtKontrol;
-        private VaegtKontrol _selectedVaegtKontrol;
-       
-
-
+        
+        
         public VaegtKontrolViewModel()
         {
             VaegtKontrolHandler = new VaegtKontrolHandler(this);
@@ -49,7 +34,19 @@ namespace RURS.ViewModel
             get;
             set;
         }
-        
+
+        #region Ubrugt funktionalitet
+        /*
+        private ObservableCollection<VaegtKontrol> _displayVaegtKontrols;
+        public ObservableCollection<VaegtKontrol> DisplayVaegtKontrols
+        {
+            get => _displayVaegtKontrols;
+            set => _displayVaegtKontrols = value;
+        }
+
+        //private VaegtKontrol _nyVaegtKontrol;
+        private VaegtKontrol _selectedVaegtKontrol;
+
         #region Operatorer
         public VaegtKontrol SelectedVaegtKontrol
         {
@@ -60,6 +57,8 @@ namespace RURS.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
+        */
         #endregion
 
 

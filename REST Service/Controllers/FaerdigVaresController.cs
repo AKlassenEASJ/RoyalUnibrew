@@ -25,9 +25,10 @@ namespace REST_Service.Controllers
         }
 
         // GET: api/FaerdigVares/5
-        public FaerdigVare Get(int Nummer)
+        [Route("api/FaerdigVares/{nummer}")]
+        public FaerdigVare Get(int nummer)
         {
-            return manager.Get(Nummer);
+            return manager.Get(nummer);
         }
 
         // POST: api/FaerdigVares

@@ -11,7 +11,7 @@ namespace REST_Service.DBUtil
     public class TappeKontrolManger
     {
         private const string ConnString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            "Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private const string GET = "SELECT * FROM TappeKontrol";
         private const string GET_ONE = "SELECT * FROM TappeKontrol WHERE Process_Ordre_Nr = @PONR AND Tidspunkt = @Tid";

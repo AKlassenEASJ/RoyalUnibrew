@@ -14,6 +14,7 @@ namespace RURS.ViewModel
     {
         #region InstanceFields
         protected ProcessOrdre _processOrdre;
+        private bool _isLoading;
         #endregion
 
         #region Constructors
@@ -34,6 +35,15 @@ namespace RURS.ViewModel
             set => _processOrdre = value;
         }
 
+        public bool IsLoading
+        {
+            get { return _isLoading;}
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
         
         #endregion
 

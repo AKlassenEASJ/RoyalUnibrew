@@ -17,8 +17,9 @@ namespace REST_Service.DBUtil
     {
 
         #region connectionstring
-        private const string ConnectionString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const string ConnectionString = "Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //private const string ConnectionString =
+        //    @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = RoyalUniBrew; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         #endregion
 
 
@@ -72,7 +73,7 @@ namespace REST_Service.DBUtil
         }
 
 
-        // incremment get
+        // Optælling af kontroller get
         public int Getmax(int idNr)
         {
             int vaegtKontrol = 0;

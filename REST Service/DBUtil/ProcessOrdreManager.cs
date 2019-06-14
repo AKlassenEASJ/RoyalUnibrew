@@ -18,15 +18,17 @@ namespace REST_Service.DBUtil
         private const string LineConnString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalRoyalUnibrew;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        private const string ConnectionString =
+            "Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         //private const string ConnectionString = thomasConnectionString;
 
-        private const string ConnectionString = LineConnString;
+        //private const string ConnectionString = LineConnString;
         //private const string ConnectionString = christianConnectionString;
 
         private const string GETAll = "SELECT * FROM ProcessOrdre";
         private const string GETONE = "SELECT * FROM ProcessOrdre WHERE Process_Ordre_Nr = @No ";
         private const string INSERT = "INSERT INTO ProcessOrdre (Process_Ordre_Nr, Faerdigvare_Nr, Dato, Kolonne) VALUES (@Process_Ordre_Nr, @Faerdigvare_Nr, @Dato, @Kolonne)";
-        private const string DELETE = "DELETE FROM ProcessORdre WHERE Process_Ordre_Nr = @No";
+        private const string DELETE = "DELETE FROM ProcessOrdre WHERE Process_Ordre_Nr = @No";
         private const string GETDATE = "SELECT * FROM ProcessOrdre WHERE Dato = @Date";
 
         //GETALL: API/ProcessOrdre
@@ -51,7 +53,7 @@ namespace REST_Service.DBUtil
         //GETONE: api/ProcessOrdre/1
         public ProcessOrdre Get(int pONr)
         {
-            ProcessOrdre processOrdre = null;
+            ProcessOrdre processOrdre = new ProcessOrdre();
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
@@ -74,7 +76,7 @@ namespace REST_Service.DBUtil
 
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand(GETAll, connection);
+            SqlCommand cmd = new SqlCommand(GETDATE, connection);
             cmd.Parameters.AddWithValue("@Date", date);
 
             SqlDataReader reader = cmd.ExecuteReader();

@@ -35,7 +35,7 @@ namespace RURS.Handler
         {
             ErrorMessage = null;
             //Indsætter ProcessOrderNr
-            _viewModel.SelectedTappeKontrol.ProcessOrderNr = 1;
+            _viewModel.SelectedTappeKontrol.ProcessOrderNr = SelectedPOSingleton.GetInstance().ActiveProcessOrdre.ProcessOrdreNr;
             //Indsætter tid
             _viewModel.SelectedTappeKontrol.Tidspunkt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             _viewModel.SelectedTappeKontrol.Tidspunkt = _viewModel.SelectedTappeKontrol.Tidspunkt + _viewModel.TimeSpan;

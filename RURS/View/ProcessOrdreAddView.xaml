@@ -18,10 +18,39 @@
 
 
     <Grid>
-        <StackPanel Orientation="Vertical" MaxWidth="300">
-            <TextBox Header="Processordre Nummer" Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
-            <TextBox Header="Færdigvare Nummer" Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
-            <DatePicker Header="Dato" Date="{Binding OpretningsProcessOrdreDate, Mode=TwoWay}"/>
+        <StackPanel Orientation="Vertical" MaxWidth="300" Margin="0 10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Procesordre Nummer "/>
+                <TextBlock Text="*" Foreground=" Red"/>
+            </StackPanel>
+            <TextBox Text="{Binding OpretningProcessOrdre.ProcessOrdreNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip="Procesordrens unikke tal-ID. Skal udfyldes.">
+                <custom:Interaction.Behaviors>
+                    <custom1:EventTriggerBehavior EventName="TextChanged">
+                        <custom1:InvokeCommandAction Command="{Binding TjekPONrCommand}"/>
+                    </custom1:EventTriggerBehavior>
+                </custom:Interaction.Behaviors>
+            </TextBox>
+            <TextBlock Height="20" Text="{Binding ValMessagePONr}" Foreground=" Red"/>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Færdigvare Nummer "/>
+                <TextBlock Text="*" Foreground=" Red"/>
+            </StackPanel>
+            <TextBox Text="{Binding OpretningProcessOrdre.FaerdigVareNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip="Eksisterende færdigvarenummer. Skal udfyldes.">
+            </TextBox>
+            <TextBlock Height="20" Foreground=" Red"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Dato "/>
+                <TextBlock Text="*" Foreground=" Red"/>
+            </StackPanel>
+            <DatePicker Date="{Binding OpretningsProcessOrdreDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <custom:Interaction.Behaviors>
+                    <custom1:EventTriggerBehavior EventName="SelectedDateChanged">
+                        
+                        <custom1:InvokeCommandAction Command="{Binding TjekDateCommand}"/>
+                    </custom1:EventTriggerBehavior>
+                </custom:Interaction.Behaviors>
+            </DatePicker>
+            <TextBlock Height="20" Foreground=" Red" Text="{Binding ValMessageDate}"/>
             <Button Content="Opret ordre"  Command="{Binding UploadCommand}">
                 <custom:Interaction.Behaviors>
                     <custom1:EventTriggerBehavior EventName="Click">

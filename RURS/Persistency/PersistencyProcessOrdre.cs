@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace RURS.Persistency
 {
-    public class PersistencyProcessOrdre
+    public static class PersistencyProcessOrdre
     {
         private const string URI = "http://localhost:60096/api/ProcessOrdre";
 
@@ -56,6 +56,21 @@ namespace RURS.Persistency
             }
 
             return processOrdrer;
+        }
+        public static ProcessOrdre Get(int processOrdreNr)
+        {
+            ProcessOrdre  processOrdre= new ProcessOrdre();
+
+
+            using (HttpClient client = new HttpClient())
+            {
+                Task<string> resTask = client.GetStringAsync($"{URI}/{processOrdreNr}");
+                string jsonStr = resTask.Result;
+
+                processOrdre = JsonConvert.DeserializeObject<ProcessOrdre>(jsonStr);
+            }
+
+            return processOrdre;
         }
     }
 }

@@ -13,13 +13,12 @@ namespace REST_Service.DBUtil
 
         #region ConnectionString
 
-        private const string ConnectionString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""RURS TestDatabase"";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+        private const string ConnectionString = @"Data Source=aklassen-zeland2019.database.windows.net;Initial Catalog=RoyalUniBrew;User ID=Line644s;Password=Database123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         #endregion
 
         #region SqlStatements
 
+        private const string GetAll = "Select * from Ansatte";
         private const string GetOne = "Select * from Ansatte where Initialer = @Initialer";
         private const string Insert = "Insert into Ansatte (Initialer, Navn, ID) Values (@Initialer, @Navn, @ID)";
         private const string DeleteStatement = "Delete from Ansatte where Initialer = @Initialer";
@@ -30,6 +29,29 @@ namespace REST_Service.DBUtil
 
 
         #region Methods
+
+        public List<Ansat> Get()
+        {
+            List<Ansat> tempList = new List<Ansat>();
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(GetAll, connection);
+            
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Ansat tempAnsat = ReadAnsat(reader);
+                tempList.Add(tempAnsat);
+            }
+
+            connection.Close();
+
+            return tempList;
+        }
 
         public Ansat Get(string initialer)
         {

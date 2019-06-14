@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:AdminRURS.ViewModel"
+    xmlns:custom="using:Microsoft.Xaml.Interactivity"
+    xmlns:custom1="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -16,10 +18,52 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding Header}" FontSize="20"/>
-                <ListView ItemsSource="{Binding DisplayProcessOrdrer}"/>
+                <ListView ItemsSource="{Binding DisplayProcessOrdrer}"
+                          SelectedItem="{Binding SelectedProcessOrdre, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                    <TextBlock Text="{Binding ProcessOrdreNr}" TextWrapping="NoWrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <DatePicker Date="{Binding DatePicked, Mode=TwoWay}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Processordre nummer" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Dato" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Færdigvare nummer" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Kolonne" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                    <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="0" Text="{Binding SelectedProcessOrdre.ProcessOrdreNr, Mode=TwoWay}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Dato, Mode=TwoWay}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="0" Text="{Binding SelectedProcessOrdre.FaerdigVareNr, Mode=TwoWay}"/>
+                    <TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="1" Text="{Binding SelectedProcessOrdre.Kolonne, Mode=TwoWay}"/>
+
+                </Grid>
+                <DatePicker Header="Hent ordrer for dato"  Date="{Binding DatePicked, Mode=TwoWay}">
+                </DatePicker>
                 <Button Content="Hent alle ordrer" Command="{Binding LoadAllCommand}"/>
                 <ListView ItemsSource="{Binding DisplayOrdrerByDate}"/>
             </StackPanel>
