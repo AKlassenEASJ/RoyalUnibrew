@@ -15,7 +15,7 @@
         <Setter Property="Width" Value="auto"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="OrangeRed"/>
+        <Setter Property="Foreground" Value="Yellow"/>
             <Setter Property="Margin" Value="0,0,50,0"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
     </Style>

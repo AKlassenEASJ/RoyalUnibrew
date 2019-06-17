@@ -144,6 +144,9 @@
     <Compile Include="View\EksempelResourceDictionaryView.xaml.cs">
       <DependentUpon>EksempelResourceDictionaryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EksempelResourceDictionaryView2.xaml.cs">
+      <DependentUpon>EksempelResourceDictionaryView2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EksempelResourceDictionaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EksempelResourceDictionaryView2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

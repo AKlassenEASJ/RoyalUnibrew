@@ -50,6 +50,7 @@ namespace RURS.HamburgerMenu
             NavigationItems.Add(new NavigationViewItem { Content = "Tilføj Færdigvare", Icon = new SymbolIcon(Symbol.PreviewLink), Tag = typeof(NyFaerdigVare) });
             NavigationItems.Add(new NavigationViewItem { Content = "Se Processordrer", Icon = new SymbolIcon(Symbol.Admin), Tag = typeof(AdminProcessOrdreView) });
             NavigationItems.Add(new NavigationViewItem {Content = "ResourceDictionary Eksempel", Icon = new SymbolIcon(Symbol.Important), Tag = typeof(EksempelResourceDictionaryView)});
+            NavigationItems.Add(new NavigationViewItem {Content = "ResourceDictionary Eksempel 2", Icon = new SymbolIcon(Symbol.Library), Tag = typeof(EksempelResourceDictionaryView2)});
 
         }
 
