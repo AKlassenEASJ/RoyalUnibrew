@@ -20,7 +20,7 @@ namespace REST_Service.DBUtil
 
         #region SqlStatements
 
-        private const string Insert = "Insert into Bemanding (Process_Order_Nr, Tidspunkt_Start, Tidspunkt_Slut, Antal_Bemanding, Signatur, Pauser) Values (@Process_Order_Nr, @Tidspunkt_Start, @Tidspunkt_Slut, @Antal_Bemanding, @Signatur, @Pauser)";
+        private const string Insert = "Insert into Bemanding (Process_Order_Nr, Tidspunk_Start, Tidspunk_Slut, Antal_Bemanding, Signatur, Pauser) Values (@Process_Order_Nr, @Tidspunkt_Start, @Tidspunkt_Slut, @Antal_Bemanding, @Signatur, @Pauser)";
 
 
         #endregion
