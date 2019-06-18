@@ -13,9 +13,14 @@ namespace REST_Service.Tests.DBUtil
         {
             FaerdigVareManager Manager = new FaerdigVareManager();
 
-            
+            //Arrange
             FaerdigVare ny = new FaerdigVare(1245, "Test", 1.0,3.0,2.0);
+
+            //Act
             bool res = Manager.Post(ny);
+            Manager.Delete(1245);
+
+            //Assert
             Assert.IsTrue(res);
         }
 
@@ -24,8 +29,15 @@ namespace REST_Service.Tests.DBUtil
         {
             FaerdigVareManager Manager = new FaerdigVareManager();
 
+            //Arrange
+            Manager.Post(new FaerdigVare(124, "Test", 1.0, 3.0, 2.0));
             FaerdigVare edit = new FaerdigVare(124, "Test", 2.0,3.0,4.0);
+            
+            //Act
             bool res = Manager.Put(124, edit);
+            Manager.Delete(124);
+
+            //Assert
             Assert.IsTrue(res);
         }
     }
